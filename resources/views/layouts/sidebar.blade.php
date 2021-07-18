@@ -162,7 +162,6 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="#">Pembimbing Akademik</a>
                     <a class="collapse-item" href="#">Pembimbing Lapangan</a>
-                    <a class="collapse-item" href="buttons.html">Surat Telah Menjalani KP</a>
                 </div>
             </div>
         </li>
@@ -175,16 +174,10 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseDokumen" aria-expanded="true" aria-controls="collapseDokumen">
+            <a class="nav-link pb-0" href="#">
                 <i class="fas fa-fw fa-file-alt"></i>
                 <span>Dokumen KP</span>
             </a>
-            <div id="collapseDokumen" class="collapse mt-2" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="cards.html">Surat Diterima KP</a>
-                    <a class="collapse-item" href="buttons.html">Surat Telah Menjalani KP</a>
-                </div>
-            </div>
         </li>
 
         <!-- Divider -->
@@ -227,9 +220,16 @@
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link pb-0" href="#">
-                <i class="fas fa-fw fa-envelope-open-text"></i>
-                <span>Data Mahasiswa</span></a>
+            <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapsePembimbing" aria-expanded="true" aria-controls="collapsePembimbing">
+                <i class="fas fa-fw fa-address-book"></i>
+                <span>Data Mahasiswa</span>
+            </a>
+            <div id="collapsePembimbing" class="collapse mt-2" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="#">Input Mahasiswa</a>
+                    <a class="collapse-item" href="#">Data Mahasiswa</a>
+                </div>
+            </div>
         </li>
 
         <li class="nav-item">
@@ -243,18 +243,11 @@
                 <i class="fas fa-fw fa-envelope-open-text"></i>
                 <span>Penilaian</span></a>
         </li>
-
+        
         <li class="nav-item">
-            <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseDokumen" aria-expanded="true" aria-controls="collapseDokumen">
-                <i class="fas fa-fw fa-file-alt"></i>
-                <span>Dokumen KP</span>
-            </a>
-            <div id="collapseDokumen" class="collapse mt-2" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="cards.html">Surat Diterima KP</a>
-                    <a class="collapse-item" href="buttons.html">Surat Telah Menjalani KP</a>
-                </div>
-            </div>
+            <a class="nav-link pb-0" href="#">
+                <i class="fas fa-fw fa-envelope-open-text"></i>
+                <span>Laporan KP</span></a>
         </li>
 
         <!-- Divider -->
@@ -315,16 +308,9 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseDokumen" aria-expanded="true" aria-controls="collapseDokumen">
-                <i class="fas fa-fw fa-file-alt"></i>
-                <span>Dokumen KP</span>
-            </a>
-            <div id="collapseDokumen" class="collapse mt-2" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="cards.html">Surat Diterima KP</a>
-                    <a class="collapse-item" href="buttons.html">Surat Telah Menjalani KP</a>
-                </div>
-            </div>
+            <a class="nav-link pb-0" href="#">
+                <i class="fas fa-fw fa-envelope-open-text"></i>
+                <span>Laporan KP</span></a>
         </li>
 
         <!-- Divider -->
