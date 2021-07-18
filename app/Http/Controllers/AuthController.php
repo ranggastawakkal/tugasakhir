@@ -19,6 +19,10 @@ class AuthController extends Controller
             return redirect('admin/');
         } elseif (Str::length(Auth::guard('mahasiswa')->user()) > 0) {
             return redirect('mahasiswa/');
+        } elseif (Str::length(Auth::guard('pembimbing-akademik')->user()) > 0) {
+            return redirect('pembimbing-akademik/');
+        } elseif (Str::length(Auth::guard('pembimbing-lapangan')->user()) > 0) {
+            return redirect('pembimbing-lapangan/');
         }
         return view('auth/login');
     }
@@ -47,6 +51,10 @@ class AuthController extends Controller
             return redirect('admin/');
         } elseif (Auth::guard('mahasiswa')->attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect('mahasiswa/');
+        } elseif (Auth::guard('pembimbing-akademik')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect('pembimbing-akademik/');
+        } elseif (Auth::guard('pembimbing-lapangan')->attempt(['email' => $request->email, 'password' => $request->password])) {
+            return redirect('pembimbing-lapangan/');
         } else {
             Session::flash('error', 'Email atau password salah');
         }
@@ -59,6 +67,10 @@ class AuthController extends Controller
             Auth::guard('admin')->logout();
         } elseif (Auth::guard('mahasiswa')->check()) {
             Auth::guard('mahasiswa')->logout();
+        } elseif (Auth::guard('pembimbing-akademik')->check()) {
+            Auth::guard('pembimbing-akademik')->logout();
+        } elseif (Auth::guard('pembimbing-lapangan')->check()) {
+            Auth::guard('pembimbing-lapangan')->logout();
         }
         return redirect('/');
     }

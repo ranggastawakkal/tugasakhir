@@ -15,4 +15,29 @@ class AdminController extends Controller
     {
         return view('admin/surat-pengantar');
     }
+
+    public function dataMahasiswa()
+    {
+        return view('admin/data/mahasiswa');
+    }
+
+    public function dataPembimbingAkademik()
+    {
+        return view('admin/data/pembimbing-akademik');
+    }
+
+    public function dataPembimbingLapangan()
+    {
+        return view('admin/data/pembimbing-lapangan');
+    }
+
+    public function dataProgramStudi()
+    {
+        return view('admin/data/program-studi');
+    }
+
+    public function dataKelas()
+    {
+        return view('admin/data/kelas');
+    }
 }

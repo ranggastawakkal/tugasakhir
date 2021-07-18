@@ -61,6 +61,16 @@ return [
             'driver' => 'session',
             'provider' => 'mahasiswas',
         ],
+
+        'pembimbing-akademik' => [
+            'driver' => 'session',
+            'provider' => 'pembimbing-akademiks',
+        ],
+
+        'pembimbing-lapangan' => [
+            'driver' => 'session',
+            'provider' => 'pembimbing-lapangans',
+        ],
     ],
 
     /*
@@ -99,6 +109,16 @@ return [
         'mahasiswas' => [
             'driver' => 'eloquent',
             'model' => App\Models\Mahasiswa::class,
+        ],
+
+        'pembimbing-akademiks' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\PembimbingAkademik::class,
+        ],
+
+        'pembimbing-lapangans' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\PembimbingLapangan::class,
         ],
     ],
 

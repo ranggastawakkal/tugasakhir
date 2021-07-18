@@ -14,7 +14,7 @@ class PembimbingLapanganController extends Controller
      */
     public function index()
     {
-        //
+        return view('pembimbing-lapangan/index');
     }
 
     /**

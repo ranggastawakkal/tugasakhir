@@ -28,16 +28,18 @@
         </div>
 
         <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
+        <li class="nav-item {{ (request()->is("admin/data/*")) ? 'active' : '' }}">
             <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseData" aria-expanded="true" aria-controls="collapseData">
                 <i class="fas fa-fw fa-database"></i>
                 <span>Data</span>
             </a>
             <div id="collapseData" class="collapse mt-2" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item {{ (request()->is("admin/pembimbing-akademik")) ? 'active' : '' }}" href="#">Pembimbing Akademik</a>
-                    <a class="collapse-item {{ (request()->is("admin/pembimbing-lapangan")) ? 'active' : '' }}" href="#">Pembimbing Lapangan</a>
-                    <a class="collapse-item {{ (request()->is("admin/pembimbing-akademik")) ? 'active' : '' }}" href="#">Mahasiswa</a>
+                    <a class="collapse-item {{ (request()->is("admin/data/mahasiswa")) ? 'active' : '' }}" href="{{ route('admin.data.mahasiswa') }}">Mahasiswa</a>
+                    <a class="collapse-item {{ (request()->is("admin/data/pembimbing-akademik")) ? 'active' : '' }}" href="{{ route('admin.data.pembimbing-akademik') }}">Pembimbing Akademik</a>
+                    <a class="collapse-item {{ (request()->is("admin/data/pembimbing-lapangan")) ? 'active' : '' }}" href="{{ route('admin.data.pembimbing-lapangan') }}">Pembimbing Lapangan</a>
+                    <a class="collapse-item {{ (request()->is("admin/data/program-studi")) ? 'active' : '' }}" href="{{ route('admin.data.program-studi') }}">Program Studi</a>
+                    <a class="collapse-item {{ (request()->is("admin/data/kelas")) ? 'active' : '' }}" href="{{ route('admin.data.kelas') }}">Kelas</a>
                 </div>
             </div>
         </li>
@@ -208,77 +210,145 @@
         </li>
     @endif
 
+    @if (Str::length(Auth::guard('pembimbing-akademik')->user()) > 0)
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item {{ (request()->is("pembimbing-akademik")) ? 'active' : '' }}">
+            <a class="nav-link py-0" href="{{ route('pembimbing-akademik.index') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
 
-    {{-- <!-- Divider -->
-    <hr class="sidebar-divider">
+        <!-- Divider -->
+        <hr class="sidebar-divider mt-3">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item {{ (request()->is("mahasiswa")) ? 'active' : '' }}">
-        <a class="nav-link py-0" href="{{ route('mahasiswa.index') }}">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider mt-3">
-
-    <div class="sidebar-heading">
-        Pembimbing Akademik
-    </div>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item {{ (request()->is("mahasiswa/surat-pengantar")) ? 'active' : '' }}">
-        <a class="nav-link pb-0" href="#">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
-            <span>Data Mahasiswa</span></a>
-    </li>
-
-    <li class="nav-item {{ (request()->is("mahasiswa/surat-pengantar")) ? 'active' : '' }}">
-        <a class="nav-link pb-0" href="#">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
-            <span>Log Aktivitas</span></a>
-    </li>
-    
-    <li class="nav-item {{ (request()->is("mahasiswa/surat-pengantar")) ? 'active' : '' }}">
-        <a class="nav-link pb-0" href="#">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
-            <span>Penilaian</span></a>
-    </li>
-
-    <li class="nav-item">
-        <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseDokumen" aria-expanded="true" aria-controls="collapseDokumen">
-            <i class="fas fa-fw fa-file-alt"></i>
-            <span>Dokumen KP</span>
-        </a>
-        <div id="collapseDokumen" class="collapse mt-2" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="cards.html">Surat Diterima KP</a>
-                <a class="collapse-item" href="buttons.html">Surat Telah Menjalani KP</a>
-            </div>
+        <div class="sidebar-heading">
+            Pembimbing Akademik
         </div>
-    </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider mt-3">
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="#">
+                <i class="fas fa-fw fa-envelope-open-text"></i>
+                <span>Data Mahasiswa</span></a>
+        </li>
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        User
-    </div>
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="#">
+                <i class="fas fa-fw fa-envelope-open-text"></i>
+                <span>Log Aktivitas</span></a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="#">
+                <i class="fas fa-fw fa-envelope-open-text"></i>
+                <span>Penilaian</span></a>
+        </li>
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link pb-0" href="charts.html">
-            <i class="fas fas fa-fw fa-user"></i>
-            <span>Profil</span></a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseDokumen" aria-expanded="true" aria-controls="collapseDokumen">
+                <i class="fas fa-fw fa-file-alt"></i>
+                <span>Dokumen KP</span>
+            </a>
+            <div id="collapseDokumen" class="collapse mt-2" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="cards.html">Surat Diterima KP</a>
+                    <a class="collapse-item" href="buttons.html">Surat Telah Menjalani KP</a>
+                </div>
+            </div>
+        </li>
 
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link pb-0" href="tables.html">
-            <i class="fas fa-fw fa-key"></i>
-            <span>Ubah Password</span></a>
-    </li> --}}
+        <!-- Divider -->
+        <hr class="sidebar-divider mt-3">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            User
+        </div>
+
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="charts.html">
+                <i class="fas fas fa-fw fa-user"></i>
+                <span>Profil</span></a>
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="tables.html">
+                <i class="fas fa-fw fa-key"></i>
+                <span>Ubah Password</span></a>
+        </li>
+    @endif
+
+    @if (Str::length(Auth::guard('pembimbing-lapangan')->user()) > 0)
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item {{ (request()->is("pembimbing-lapangan")) ? 'active' : '' }}">
+            <a class="nav-link py-0" href="{{ route('pembimbing-lapangan.index') }}">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span></a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider mt-3">
+
+        <div class="sidebar-heading">
+            Pembimbing Lapangan
+        </div>
+
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="#">
+                <i class="fas fa-fw fa-envelope-open-text"></i>
+                <span>Data Mahasiswa</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="#">
+                <i class="fas fa-fw fa-envelope-open-text"></i>
+                <span>Log Aktivitas</span></a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="#">
+                <i class="fas fa-fw fa-envelope-open-text"></i>
+                <span>Penilaian</span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseDokumen" aria-expanded="true" aria-controls="collapseDokumen">
+                <i class="fas fa-fw fa-file-alt"></i>
+                <span>Dokumen KP</span>
+            </a>
+            <div id="collapseDokumen" class="collapse mt-2" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="cards.html">Surat Diterima KP</a>
+                    <a class="collapse-item" href="buttons.html">Surat Telah Menjalani KP</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider mt-3">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            User
+        </div>
+
+        <!-- Nav Item - Charts -->
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="charts.html">
+                <i class="fas fas fa-fw fa-user"></i>
+                <span>Profil</span></a>
+        </li>
+
+        <!-- Nav Item - Tables -->
+        <li class="nav-item">
+            <a class="nav-link pb-0" href="tables.html">
+                <i class="fas fa-fw fa-key"></i>
+                <span>Ubah Password</span></a>
+        </li>
+    @endif
 
     <!-- Divider -->
     <hr class="sidebar-divider mt-3">

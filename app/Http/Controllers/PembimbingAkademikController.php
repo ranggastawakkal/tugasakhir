@@ -14,7 +14,7 @@ class PembimbingAkademikController extends Controller
      */
     public function index()
     {
-        //
+        return view('pembimbing-akademik/index');
     }
 
     /**

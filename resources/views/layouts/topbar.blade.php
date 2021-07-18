@@ -159,6 +159,10 @@
                         {{ Auth::guard('admin')->user()->nama }}
                     @elseif (Str::length(Auth::guard('mahasiswa')->user()) > 0)
                         {{ Auth::guard('mahasiswa')->user()->nama }}
+                    @elseif (Str::length(Auth::guard('pembimbing-akademik')->user()) > 0)
+                        {{ Auth::guard('pembimbing-akademik')->user()->nama }}
+                    @elseif (Str::length(Auth::guard('pembimbing-lapangan')->user()) > 0)
+                        {{ Auth::guard('pembimbing-lapangan')->user()->nama }}
                     @endif
                 </span>
                 <img class="img-profile rounded-circle" src="{{ asset('img/undraw_profile.svg') }}">
