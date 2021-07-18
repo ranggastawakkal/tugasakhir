@@ -13,7 +13,7 @@ class CreateSuratPengantarsTable extends Migration
      */
     public function up()
     {
-        Schema::create('surat_pengantars', function (Blueprint $table) {
+        Schema::create('surat_pengantar', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ class CreateSuratPengantarsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('surat_pengantars');
+        Schema::dropIfExists('surat_pengantar');
     }
 }
