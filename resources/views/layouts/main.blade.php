@@ -4,7 +4,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    @include('layouts/sidebar')
+    @include('layouts/sidebar/sidebar')
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
