@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PembimbingAkademikController;
 use App\Http\Controllers\PembimbingLapanganController;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,14 +24,18 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-    Route::get('/admin/data/mahasiswa', [AdminController::class, 'dataMahasiswa'])->name('admin.data.mahasiswa');
-    Route::get('/admin/data/pembimbing-akademik', [AdminController::class, 'dataPembimbingAkademik'])->name('admin.data.pembimbing-akademik');
-    Route::get('/admin/data/pembimbing-lapangan', [AdminController::class, 'dataPembimbingLapangan'])->name('admin.data.pembimbing-lapangan');
-    Route::get('/admin/data/kelas', [AdminController::class, 'dataKelas'])->name('admin.data.kelas');
-    Route::get('/admin/data/program-studi', [AdminController::class, 'dataProgramStudi'])->name('admin.data.program-studi');
-    Route::get('/admin/surat-pengantar', [AdminController::class, 'suratPengantar'])->name('admin.surat-pengantar');
+Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::prefix('data')->group(function () {
+        Route::get('/mahasiswa', [AdminController::class, 'dataMahasiswa'])->name('admin.data.mahasiswa');
+        Route::get('/pembimbing-akademik', [AdminController::class, 'dataPembimbingAkademik'])->name('admin.data.pembimbing-akademik');
+        Route::get('/pembimbing-lapangan', [AdminController::class, 'dataPembimbingLapangan'])->name('admin.data.pembimbing-lapangan');
+        Route::get('/kelas', [AdminController::class, 'dataKelas'])->name('admin.data.kelas');
+        Route::get('/program-studi', [AdminController::class, 'dataProgramStudi'])->name('admin.data.program-studi');
+    });
+    Route::get('/surat-pengantar', [AdminController::class, 'suratPengantar'])->name('admin.surat-pengantar');
+    Route::get('/template-laporan', [AdminController::class, 'templateLaporan'])->name('admin.template-laporan');
+    Route::get('/dokumen-kp', [AdminController::class, 'dokumenKP'])->name('admin.dokumen-kp');
 });
 
 Route::middleware(['auth:mahasiswa'])->group(function () {

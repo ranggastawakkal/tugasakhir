@@ -40,4 +40,14 @@ class AdminController extends Controller
     {
         return view('admin/data/kelas');
     }
+
+    public function templateLaporan()
+    {
+        return view('admin/template-laporan');
+    }
+
+    public function dokumenKP()
+    {
+        return view('admin/dokumen-kp');
+    }
 }
