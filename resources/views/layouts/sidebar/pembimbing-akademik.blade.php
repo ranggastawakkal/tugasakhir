@@ -13,33 +13,27 @@
     </div>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapsePembimbing" aria-expanded="true" aria-controls="collapsePembimbing">
+    <li class="nav-item {{ (request()->is("pembimbing-akademik/data-mahasiswa")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.data-mahasiswa') }}">
             <i class="fas fa-fw fa-address-book"></i>
             <span>Data Mahasiswa</span>
         </a>
-        <div id="collapsePembimbing" class="collapse mt-2" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Input Mahasiswa</a>
-                <a class="collapse-item" href="#">Data Mahasiswa</a>
-            </div>
-        </div>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link pb-0" href="#">
+    <li class="nav-item {{ (request()->is("pembimbing-akademik/log-kegiatan")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.log-kegiatan') }}">
             <i class="fas fa-fw fa-envelope-open-text"></i>
             <span>Log Aktivitas</span></a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link pb-0" href="#">
+    <li class="nav-item {{ (request()->is("pembimbing-akademik/penilaian")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.penilaian') }}">
             <i class="fas fa-fw fa-envelope-open-text"></i>
             <span>Penilaian</span></a>
     </li>
 
-    <li class="nav-item">
-        <a class="nav-link pb-0" href="#">
+    <li class="nav-item {{ (request()->is("pembimbing-akademik/laporan-kp")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.laporan-kp') }}">
             <i class="fas fa-fw fa-envelope-open-text"></i>
             <span>Laporan KP</span></a>
     </li>

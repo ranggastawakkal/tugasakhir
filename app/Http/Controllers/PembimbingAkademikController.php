@@ -17,6 +17,25 @@ class PembimbingAkademikController extends Controller
         return view('pembimbing-akademik/index');
     }
 
+    public function dataMahasiswa()
+    {
+        return view('pembimbing-akademik/data-mahasiswa');
+    }
+
+    public function logKegiatan()
+    {
+        return view('pembimbing-akademik/log-kegiatan');
+    } 
+
+    public function penilaian()
+    {
+        return view('pembimbing-akademik/penilaian');
+    }
+
+    public function laporanKP()
+    {
+        return view('pembimbing-akademik/laporan-kp');
+    }
     /**
      * Show the form for creating a new resource.
      *
