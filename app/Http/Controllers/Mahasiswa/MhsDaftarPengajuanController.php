@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UbahPasswordController extends Controller
+class MhsDaftarPengajuanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +16,9 @@ class UbahPasswordController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.ubah-password.index');
+        $users = Mahasiswa::all();
+
+        return view('mahasiswa.surat-pengantar.daftar-pengajuan.index', compact('users'));
     }
+
 }

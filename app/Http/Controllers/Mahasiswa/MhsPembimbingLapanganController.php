@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
-class BuatPengajuanController extends Controller
+class MhsPembimbingLapanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class BuatPengajuanController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.surat-pengantar.buat-pengajuan.index');
+        return view('mahasiswa.pembimbing.lapangan.index');
     }
 
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
-class TemplateLaporanController extends Controller
+class MhsTemplateLaporanController extends Controller
 {
     /**
      * Display a listing of the resource.

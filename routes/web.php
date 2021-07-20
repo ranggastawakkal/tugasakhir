@@ -11,18 +11,17 @@ use App\Http\Controllers\Admin\AdminProgramStudiController;
 use App\Http\Controllers\Admin\AdminSuratPengantarController;
 use App\Http\Controllers\Admin\AdminTemplateLaporanController;
 use App\Http\Controllers\Admin\AdminDokumenKPController;
-use App\Http\Controllers\Mahasiswa\BuatPengajuanController;
-use App\Http\Controllers\Mahasiswa\DaftarPengajuanController;
-use App\Http\Controllers\Mahasiswa\DashboardController;
-use App\Http\Controllers\Mahasiswa\DokumenController;
-use App\Http\Controllers\Mahasiswa\MahasiswaController;
-use App\Http\Controllers\Mahasiswa\PembimbingController;
-use App\Http\Controllers\Mahasiswa\ProfileController;
-use App\Http\Controllers\Mahasiswa\SuratPengantarController;
-use App\Http\Controllers\Mahasiswa\TemplateLaporanController;
-use App\Http\Controllers\Mahasiswa\UbahPasswordController;
-use App\Http\Controllers\PembimbingAkademikController;
-use App\Http\Controllers\PembimbingLapanganController;
+use App\Http\Controllers\Mahasiswa\MhsBuatPengajuanController;
+use App\Http\Controllers\Mahasiswa\MhsDaftarPengajuanController;
+use App\Http\Controllers\Mahasiswa\MhsDashboardController;
+use App\Http\Controllers\Mahasiswa\MhsDokumenController;
+use App\Http\Controllers\Mahasiswa\MhsPembimbingAkademikController;
+use App\Http\Controllers\Mahasiswa\MhsPembimbingLapanganController;
+use App\Http\Controllers\Mahasiswa\MhsProfileController;
+use App\Http\Controllers\Mahasiswa\MhsTemplateLaporanController;
+use App\Http\Controllers\Mahasiswa\MhsUbahPasswordController;
+use App\Http\Controllers\Mahasiswa\PembimbingAkademikController;
+use App\Http\Controllers\Mahasiswa\PembimbingLapanganController;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
@@ -59,29 +58,21 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
 });
 
 Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], function () {
-    Route::get('/', [DashboardController::class, 'index'])->name('mahasiswa.index');
-
-    Route::get('/buat-pengajuan/index', [BuatPengajuanController::class, 'index'])->name('mahasiswa.buat-pengajuan.index');
-    Route::get('/daftar-pengajuan/index', [DaftarPengajuanController::class, 'index'])->name('mahasiswa.daftar-pengajuan.index');
-
+    Route::get('/', [MhsDashboardController::class, 'index'])->name('mahasiswa.index');
+    Route::get('/buat-pengajuan/index', [MhsBuatPengajuanController::class, 'index'])->name('mahasiswa.buat-pengajuan.index');
+    Route::get('/daftar-pengajuan/index', [MhsDaftarPengajuanController::class, 'index'])->name('mahasiswa.daftar-pengajuan.index');
     Route::group(['prefix' => 'profil'], function () {
-        Route::get('/', [ProfileController::class, 'index'])->name('mahasiswa.profil.index');
+        Route::get('/', [MhsProfileController::class, 'index'])->name('mahasiswa.profil.index');
     });
-
     Route::group(['prefix' => 'pembimbing'], function () {
-        Route::get('/akademik', [PembimbingAkademikController::class, 'index'])->name('mahasiswa.pembimbing.akademik.index');
-        Route::get('/lapangan', [PembimbingLapanganController::class, 'index'])->name('mahasiswa.pembimbing.lapangan.index');
+        Route::get('/akademik', [MhsPembimbingAkademikController::class, 'index'])->name('mahasiswa.pembimbing.akademik.index');
+        Route::get('/lapangan', [MhsPembimbingLapanganController::class, 'index'])->name('mahasiswa.pembimbing.lapangan.index');
     });
-
-    Route::get('/ubah-password', [UbahPasswordController::class, 'index'])->name('mahasiswa.ubah-password.index');
-
-    Route::get('/dokumen', [DokumenController::class, 'index'])->name('mahasiswa.dokumen.index');
-
-    Route::get('/template-laporan', [TemplateLaporanController::class, 'index'])->name('mahasiswa.template-laporan.index');
+    Route::get('/ubah-password', [MhsUbahPasswordController::class, 'index'])->name('mahasiswa.ubah-password.index');
+    Route::get('/dokumen', [MhsDokumenController::class, 'index'])->name('mahasiswa.dokumen.index');
+    Route::get('/template-laporan', [MhsTemplateLaporanController::class, 'index'])->name('mahasiswa.template-laporan.index');
 });
 
-// Route::group(['prefix' => 'suratPengantar   '], function () {
-// Route::get('/ubah-password', [UbahPasswordController::class, 'index'])->name('mahasiswa.ubah-password.index');
 
 Route::middleware(['auth:pembimbing-akademik'])->group(function () {
     Route::get('/pembimbing-akademik', [PembimbingAkademikController::class, 'index'])->name('pembimbing-akademik.index');

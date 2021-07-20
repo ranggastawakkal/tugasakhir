@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
-class PembimbingAkademikController extends Controller
+class MhsUbahPasswordController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,6 @@ class PembimbingAkademikController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.pembimbing.akademik.index');
+        return view('mahasiswa.ubah-password.index');
     }
-
 }
