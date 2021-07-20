@@ -37,12 +37,12 @@ Route::middleware(['auth:mahasiswa'])->group(function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
 });
 
-Route::middleware(['auth:pembimbing-akademik'])->group(function () {
-    Route::get('/pembimbing-akademik', [PembimbingAkademikController::class, 'index'])->name('pembimbing-akademik.index');
-    Route::get('/pembimbing-akademik/data-mahasiswa', [PembimbingAkademikController::class, 'dataMahasiswa'])->name('pembimbing-akademik.data-mahasiswa');
-    Route::get('/pembimbing-akademik/log-kegiatan', [PembimbingAkademikController::class, 'logKegiatan'])->name('pembimbing-akademik.log-kegiatan');
-    Route::get('/pembimbing-akademik/penilaian', [PembimbingAkademikController::class, 'penilaian'])->name('pembimbing-akademik.penilaian');
-    Route::get('/pembimbing-akademik/laporan-kp', [PembimbingAkademikController::class, 'laporanKP'])->name('pembimbing-akademik.laporan-kp');
+Route::middleware(['auth:pembimbing-akademik'])->prefix('pembimbing-akademik')->group(function () {
+    Route::get('/', [PembimbingAkademikController::class, 'index'])->name('pembimbing-akademik.index');
+    Route::get('/data-mahasiswa', [PembimbingAkademikController::class, 'dataMahasiswa'])->name('pembimbing-akademik.data-mahasiswa');
+    Route::get('/log-kegiatan', [PembimbingAkademikController::class, 'logKegiatan'])->name('pembimbing-akademik.log-kegiatan');
+    Route::get('/penilaian', [PembimbingAkademikController::class, 'penilaian'])->name('pembimbing-akademik.penilaian');
+    Route::get('/laporan-kp', [PembimbingAkademikController::class, 'laporanKP'])->name('pembimbing-akademik.laporan-kp');
 });
 
 Route::middleware(['auth:pembimbing-lapangan'])->group(function () {
