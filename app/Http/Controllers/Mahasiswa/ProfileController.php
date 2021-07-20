@@ -7,7 +7,7 @@ use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MhsProfileController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.

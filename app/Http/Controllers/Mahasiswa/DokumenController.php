@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 
-class MhsDashboardController extends Controller
+class DokumenController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +15,6 @@ class MhsDashboardController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.dashboard.index');
+        return view('mahasiswa.dokumen.index');
     }
 }

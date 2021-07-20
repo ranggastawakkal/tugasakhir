@@ -7,49 +7,52 @@
     <div class="card-header py-3">
     </div>
     <div class="card-body">
-        <div class="form-group row">
-            <label for="email" class="col-md-2 col-form-label text-md-left ml-2">Current Password</label>
-
-            <div class="col-md-9">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="email" class="col-md-2 col-form-label text-md-left ml-2">New Password</label>
-
-            <div class="col-md-9">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="email" class="col-md-2 col-form-label text-md-left ml-2">Repeat New Password</label>
-
-            <div class="col-md-9">
-                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <div class="text-center">
+        <form action="{{ route('mahasiswa.ubah-password.update') }}" method="post">
+        @csrf
             
-        <button class="btn btn-success col-md-2">Save</button>
-        </div>
+            <div class="form-group row">
+                <label for="currentPassword" class="col-md-2 col-form-label text-md-left ml-2">Current Password</label>
+
+                <div class="col-md-9">
+                    <input id="currentPassword" type="password" class="form-control @error('currentPassword') is-invalid @enderror" name="currentPassword" required>
+
+                    @error('currentPassword')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-md-2 col-form-label text-md-left ml-2">New Password</label>
+
+                <div class="col-md-9">
+                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required>
+
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="password_confirmation" class="col-md-2 col-form-label text-md-left ml-2">Repeat New Password</label>
+
+                <div class="col-md-9">
+                    <input id="password_confirmation" type="password" class="form-control @error('email') is-invalid @enderror" name="password_confirmation" required>
+
+                    @error('password_confirmation')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="text-center">
+                <button class="btn btn-success col-md-2" type="submit">Save</button>
+            </div>
+        </form>
     </div>
 </div>
 @endsection
