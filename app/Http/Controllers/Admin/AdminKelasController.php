@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\SuratPengantar;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Kelas;
 
-class SuratPengantarController extends Controller
+class AdminKelasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class SuratPengantarController extends Controller
      */
     public function index()
     {
-        //
+        $kelas = Kelas::all();
+        return view('admin/data/kelas', compact('kelas'));
     }
 
     /**
@@ -41,10 +43,10 @@ class SuratPengantarController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\SuratPengantar  $suratPengantar
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function show(SuratPengantar $suratPengantar)
+    public function show(Kelas $kelas)
     {
         //
     }
@@ -52,10 +54,10 @@ class SuratPengantarController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\SuratPengantar  $suratPengantar
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function edit(SuratPengantar $suratPengantar)
+    public function edit(Kelas $kelas)
     {
         //
     }
@@ -64,10 +66,10 @@ class SuratPengantarController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\SuratPengantar  $suratPengantar
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SuratPengantar $suratPengantar)
+    public function update(Request $request, Kelas $kelas)
     {
         //
     }
@@ -75,10 +77,10 @@ class SuratPengantarController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\SuratPengantar  $suratPengantar
+     * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SuratPengantar $suratPengantar)
+    public function destroy(Kelas $kelas)
     {
         //
     }
