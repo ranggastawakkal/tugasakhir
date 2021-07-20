@@ -2,7 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminKelasController;
+use App\Http\Controllers\Admin\AdminMahasiswaController;
+use App\Http\Controllers\Admin\AdminPembimbingAkademikController;
+use App\Http\Controllers\Admin\AdminPembimbingLapanganController;
+use App\Http\Controllers\Admin\AdminProgramStudiController;
+use App\Http\Controllers\Admin\AdminSuratPengantarController;
+use App\Http\Controllers\Admin\AdminTemplateLaporanController;
+use App\Http\Controllers\Admin\AdminDokumenKPController;
 use App\Http\Controllers\Mahasiswa\BuatPengajuanController;
 use App\Http\Controllers\Mahasiswa\DaftarPengajuanController;
 use App\Http\Controllers\Mahasiswa\DashboardController;
@@ -34,17 +42,20 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/', [AdminDashboardController::class, 'index'])->name('admin.index');
     Route::prefix('data')->group(function () {
-        Route::get('/mahasiswa', [AdminController::class, 'dataMahasiswa'])->name('admin.data.mahasiswa');
-        Route::get('/pembimbing-akademik', [AdminController::class, 'dataPembimbingAkademik'])->name('admin.data.pembimbing-akademik');
-        Route::get('/pembimbing-lapangan', [AdminController::class, 'dataPembimbingLapangan'])->name('admin.data.pembimbing-lapangan');
-        Route::get('/kelas', [AdminController::class, 'dataKelas'])->name('admin.data.kelas');
-        Route::get('/program-studi', [AdminController::class, 'dataProgramStudi'])->name('admin.data.program-studi');
+        Route::prefix('mahasiswa')->group(function () {
+            Route::get('/', [AdminMahasiswaController::class, 'index'])->name('admin.data.mahasiswa');
+            Route::get('/cari', [AdminMahasiswaController::class, 'cari'])->name('admin.data.mahasiswa.cari');
+        });
+        Route::get('/pembimbing-akademik', [AdminPembimbingAkademikController::class, 'index'])->name('admin.data.pembimbing-akademik');
+        Route::get('/pembimbing-lapangan', [AdminPembimbingLapanganController::class, 'index'])->name('admin.data.pembimbing-lapangan');
+        Route::get('/kelas', [AdminKelasController::class, 'index'])->name('admin.data.kelas');
+        Route::get('/program-studi', [AdminProgramStudiController::class, 'index'])->name('admin.data.program-studi');
     });
-    Route::get('/surat-pengantar', [AdminController::class, 'suratPengantar'])->name('admin.surat-pengantar');
-    Route::get('/template-laporan', [AdminController::class, 'templateLaporan'])->name('admin.template-laporan');
-    Route::get('/dokumen-kp', [AdminController::class, 'dokumenKP'])->name('admin.dokumen-kp');
+    Route::get('/surat-pengantar', [AdminSuratPengantarController::class, 'index'])->name('admin.surat-pengantar');
+    Route::get('/template-laporan', [AdminTemplateLaporanController::class, 'index'])->name('admin.template-laporan');
+    Route::get('/dokumen-kp', [AdminDokumenKPController::class, 'index'])->name('admin.dokumen-kp');
 });
 
 Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], function () {
@@ -67,12 +78,10 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
     Route::get('/dokumen', [DokumenController::class, 'index'])->name('mahasiswa.dokumen.index');
 
     Route::get('/template-laporan', [TemplateLaporanController::class, 'index'])->name('mahasiswa.template-laporan.index');
+});
 
-    
-    });
-
-    // Route::group(['prefix' => 'suratPengantar   '], function () {
-    // Route::get('/ubah-password', [UbahPasswordController::class, 'index'])->name('mahasiswa.ubah-password.index');
+// Route::group(['prefix' => 'suratPengantar   '], function () {
+// Route::get('/ubah-password', [UbahPasswordController::class, 'index'])->name('mahasiswa.ubah-password.index');
 
 Route::middleware(['auth:pembimbing-akademik'])->group(function () {
     Route::get('/pembimbing-akademik', [PembimbingAkademikController::class, 'index'])->name('pembimbing-akademik.index');

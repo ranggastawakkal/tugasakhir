@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\PembimbingAkademik;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\PembimbingAkademik;
 
-class PembimbingAkademikController extends Controller
+class AdminPembimbingAkademikController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class PembimbingAkademikController extends Controller
      */
     public function index()
     {
-        return view('pembimbing-akademik/index');
+        $pembimbing_akademik = PembimbingAkademik::all();
+        return view('admin/data/pembimbing-akademik', compact('pembimbing_akademik'));
     }
 
     /**

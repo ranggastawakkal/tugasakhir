@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Kelas;
+use App\Http\Controllers\Controller;
+use App\Models\ProgramStudi;
 use Illuminate\Http\Request;
 
-class KelasController extends Controller
+class AdminProgramStudiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class KelasController extends Controller
      */
     public function index()
     {
-        //
+        $program_studi = ProgramStudi::all();
+        return view('admin/data/program-studi', compact('program_studi'));
     }
 
     /**
@@ -41,10 +43,10 @@ class KelasController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Kelas  $kelas
+     * @param  \App\Models\ProgramStudi  $programStudi
      * @return \Illuminate\Http\Response
      */
-    public function show(Kelas $kelas)
+    public function show(ProgramStudi $programStudi)
     {
         //
     }
@@ -52,10 +54,10 @@ class KelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Kelas  $kelas
+     * @param  \App\Models\ProgramStudi  $programStudi
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kelas $kelas)
+    public function edit(ProgramStudi $programStudi)
     {
         //
     }
@@ -64,10 +66,10 @@ class KelasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kelas  $kelas
+     * @param  \App\Models\ProgramStudi  $programStudi
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Kelas $kelas)
+    public function update(Request $request, ProgramStudi $programStudi)
     {
         //
     }
@@ -75,10 +77,10 @@ class KelasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Kelas  $kelas
+     * @param  \App\Models\ProgramStudi  $programStudi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelas $kelas)
+    public function destroy(ProgramStudi $programStudi)
     {
         //
     }

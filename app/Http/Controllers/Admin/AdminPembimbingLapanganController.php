@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\PembimbingLapangan;
 use Illuminate\Http\Request;
 
-class PembimbingLapanganController extends Controller
+class AdminPembimbingLapanganController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,8 @@ class PembimbingLapanganController extends Controller
      */
     public function index()
     {
-        return view('pembimbing-lapangan/index');
+        $pembimbing_lapangan = PembimbingLapangan::all();
+        return view('admin/data/pembimbing-lapangan', compact('pembimbing_lapangan'));
     }
 
     /**

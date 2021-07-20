@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\ProgramStudi;
+use App\Http\Controllers\Controller;
+use App\Models\SuratPengantar;
 use Illuminate\Http\Request;
 
-class ProgramStudiController extends Controller
+class AdminSuratPengantarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class ProgramStudiController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin/surat-pengantar');
     }
 
     /**
@@ -41,10 +42,10 @@ class ProgramStudiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ProgramStudi  $programStudi
+     * @param  \App\Models\SuratPengantar  $suratPengantar
      * @return \Illuminate\Http\Response
      */
-    public function show(ProgramStudi $programStudi)
+    public function show(SuratPengantar $suratPengantar)
     {
         //
     }
@@ -52,10 +53,10 @@ class ProgramStudiController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ProgramStudi  $programStudi
+     * @param  \App\Models\SuratPengantar  $suratPengantar
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProgramStudi $programStudi)
+    public function edit(SuratPengantar $suratPengantar)
     {
         //
     }
@@ -64,10 +65,10 @@ class ProgramStudiController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProgramStudi  $programStudi
+     * @param  \App\Models\SuratPengantar  $suratPengantar
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProgramStudi $programStudi)
+    public function update(Request $request, SuratPengantar $suratPengantar)
     {
         //
     }
@@ -75,10 +76,10 @@ class ProgramStudiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ProgramStudi  $programStudi
+     * @param  \App\Models\SuratPengantar  $suratPengantar
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProgramStudi $programStudi)
+    public function destroy(SuratPengantar $suratPengantar)
     {
         //
     }
