@@ -11,9 +11,9 @@
                 <h6 class="m-0 font-weight-bold text-primary">Data Mahasiswa</h6>
             </div>
             <div class="card-body">
-                {{-- <form action="{{ route('admin.data.mahasiswa.cari') }}" class="form-inline ml-md-0 my-2 my-md-2 mw-100 navbar-search"> --}}
+                <form action="{{ route('pembimbing-akademik.data-mahasiswa.cari') }}" class="form-inline ml-md-0 my-2 my-md-2 mw-100 navbar-search">
                     <div class="input-group">
-                        <input type="text" name="cari" value="{{ old('cari') }}" class="form-control bg-light border-0 small" placeholder="Cari nama mahasiswa.." aria-label="Search" aria-describedby="basic-addon2">
+                        <input type="text" name="cari" value="{{ old('cari') }}" class="form-control bg-light border-0 small" placeholder="Cari mahasiswa.." aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
                             <button class="btn btn-success" type="submit">
                                 <i class="fas fa-search fa-sm"></i>
@@ -30,6 +30,7 @@
                             <th>Program Studi</th>
                             <th>Kelas</th>
                             <th>Angkatan</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,11 +45,12 @@
                             <td>{{ $mhs->nama_prodi }}</td>
                             <td>{{ $mhs->nama_kelas }}</td>
                             <td>{{ $mhs->tahun_angkatan }}</td>
-                        </tr>
+                            <td><button type="button" class="btn btn-secondary">Delete</button>                          <button type="button" class="btn btn-secondary">Add</button></td>
                         @php 
                         $i++;
                         @endphp
                         @endforeach
+                        </tr>
                     </tbody>
                 </table>
             </div>
