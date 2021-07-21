@@ -24,9 +24,8 @@ class CreateMahasiswasTable extends Migration
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->unsignedBigInteger('id_kelas');
             $table->integer('tahun_angkatan');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('password');
-            $table->string('level')->default('Mahasiswa');
             $table->timestamps();
 
             $table->primary('nim');

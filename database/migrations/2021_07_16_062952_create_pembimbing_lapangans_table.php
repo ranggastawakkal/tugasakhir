@@ -22,7 +22,6 @@ class CreatePembimbingLapangansTable extends Migration
             $table->string('posisi');
             $table->string('image');
             $table->string('password');
-            $table->string('level')->default('Pembimbing Lapangan');
             $table->timestamps();
 
             $table->primary('nip');

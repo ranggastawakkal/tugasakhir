@@ -23,9 +23,8 @@ class CreatePembimbingAkademiksTable extends Migration
             $table->string('no_telepon');
             $table->string('alamat');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->string('password');
-            $table->string('level')->default('Pembimbing Akademik');
             $table->timestamps();
 
             $table->primary('nip');

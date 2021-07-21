@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
             MahasiswaSeeder::class,
             PembimbingAkademikSeeder::class,
             PembimbingLapanganSeeder::class,
-            UserSeeder::class,
         ]);
     }
 }
