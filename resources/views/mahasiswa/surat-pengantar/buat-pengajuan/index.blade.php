@@ -97,11 +97,11 @@
 </div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-dark">Data Tugas Akhir</h6>
+        <h6 class="m-0 font-weight-bold text-dark">Bidang yang diminati</h6>
     </div>
     <div class="card-body">
         <div class="form-group row">
-            <label for="email" class="col-md-2 col-form-label text-md-left ml-2">Topik Tugas Akhir</label>
+            <label for="email" class="col-md-2 col-form-label text-md-left ml-2">Bidang yang diminati</label>
 
             <div class="col-md-9">
                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
@@ -115,8 +115,7 @@
         </div>
         
         <div class="text-center">
-            
-        <button class="btn btn-success col-md-2">Save</button>
+            <button class="btn btn-success col-md-2">Save</button>
         </div>
     </div>
 </div>

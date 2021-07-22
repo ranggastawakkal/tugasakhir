@@ -2,11 +2,11 @@
 @section('title','Dashboard')
 
 @section('main-content')
-<h1 class="h3 mb-2 text-gray-800">Research Topic</h1>
+<h1 class="h3 mb-2 text-gray-800">History</h1>
     
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-2">
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -25,12 +25,12 @@
                     <tbody>
                         @foreach($users as $user)
                         <tr>
-                            <td>{{ $user->name }}</td>
-                            <td>System Architect</td>
-                            <td>Edinburgh</td>
-                            <td>61</td>
-                            <td>{{ $user->email }}</td>
-                            <td>$320,800</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         @endforeach
                     </tbody>

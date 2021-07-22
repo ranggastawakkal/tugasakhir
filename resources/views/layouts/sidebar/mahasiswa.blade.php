@@ -40,12 +40,14 @@
         </div>
     </li>
 
+ 
+
     <!-- Nav Item - Charts -->
     <li class="nav-item {{ (request()->is("mahasiswa/template-laporan")) ? 'active' : '' }}">
-            <a class="nav-link pb-0" href="{{ route('mahasiswa.template-laporan.index') }}">
-                <i class="fas fa-fw fa-envelope-open-text"></i>
-                <span>Template Laporan</span></a>
-        </li>
+        <a class="nav-link pb-0" href="{{ route('mahasiswa.template-laporan.index') }}">
+            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <span>Template Laporan</span></a>
+    </li>
 
     <li class="nav-item {{ (request()->is("mahasiswa/dokumen")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('mahasiswa.dokumen.index') }}">
@@ -53,6 +55,15 @@
             <span>Dokumen KP</span>
         </a>
     </li>
+
+    <li class="nav-item {{ (request()->is("mahasiswa/log")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('mahasiswa.log-activity.index') }}">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Log Activity</span>
+        </a>
+    </li>
+
+    
 
     <!-- Divider -->
     <hr class="sidebar-divider mt-3">

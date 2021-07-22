@@ -3,11 +3,10 @@
 
 @section('main-content')
 <h1 class="h3 mb-2 text-gray-800">Template Laporan</h1>
-    <p class="mb-4">Ini deskripsi</p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-2">
         </div>
         <div class="card-body">
             <div class="table-responsive">

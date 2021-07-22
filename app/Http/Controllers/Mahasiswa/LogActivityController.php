@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class PembimbingLapanganController extends Controller
+class LogActivityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +16,8 @@ class PembimbingLapanganController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.pembimbing.lapangan.index');
-    }
-
-    public function create()
-    {
-        return view('mahasiswa.pembimbing.lapangan.create');
+        $user = Auth::user();
+        return view('mahasiswa.log-activity.index', compact('user'));
     }
 
 }
