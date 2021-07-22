@@ -15,7 +15,9 @@ class AdminSuratPengantarController extends Controller
      */
     public function index()
     {
-        return view('admin/surat-pengantar');
+        $suratPengantar = SuratPengantar::all();
+
+        return view('admin/surat-pengantar', compact('suratPengantar'));
     }
 
     /**

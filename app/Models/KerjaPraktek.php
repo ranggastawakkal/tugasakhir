@@ -5,23 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SuratPengantar extends Model
+class KerjaPraktek extends Model
 {
     use HasFactory;
 
-    protected $table = "surat_pengantar";
+    protected $table = "kerja_praktek";
     protected $primaryKey = "id";
-    protected $foreignKey = "nim";
+    protected $foreignKey = ['nim', 'nip_pemb_akd', 'nip_pemb_lap'];
     protected $fillable = [
         'nim',
-        'tanggal',
-        'tujuan_surat',
-        'nama_instansi',
-        'alamat_instansi',
-        'kota_instansi',
-        'kontak_instansi',
-        'bidang_minat',
-        'file',
+        'nip_pemb_akd',
+        'nip_pemb_lap',
+        'lokasi_kerja',
+        'unit',
+        'tanggal_mulai',
+        'tanggal_berakhir',
+        'surat_diterima',
+        'surat_selesai',
     ];
 
     public function mahasiswa()

@@ -56,22 +56,6 @@
                         @endphp
                         @endforeach
                     </tbody>
-                    {{-- <tfoot class="text-center">
-                        <tr>
-                            <td>No.</td>
-                            <td>NIM</td>
-                            <td>Nama</td>
-                            <td>Program Studi</td>
-                            <td>Kelas</td>
-                            <td>Angkatan</td>
-                            <td>Email</td>
-                            <td>No. Telepon</td>
-                            <td>Alamat</td>
-                            <td>Jenis Kelamin</td>
-                            <td>Dibuat</td>
-                            <td>Diperbarui</td>
-                        </tr>
-                    </tfoot> --}}
                 </table>
             </div>
         </div>

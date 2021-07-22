@@ -38,4 +38,9 @@ class Mahasiswa extends Authenticatable
     {
         return $this->hasOne(Kelas::class, 'id', 'id_kelas');
     }
+
+    public function suratPengantar()
+    {
+        return $this->hasMany(SuratPengantar::class, 'nim', 'nim');
+    }
 }
