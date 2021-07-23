@@ -26,7 +26,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string|null
      */
-    // protected $namespace = 'App\\Http\\Controllers';
+    protected $namespace = 'App\\Http\\Controllers';
+    protected $adminNamespace = 'App\\Http\\Controllers\\Admin';
+    protected $pembakademikNamespace = 'App\\Http\\Controllers\\PembAkademik';
+    protected $pemblapanganNamespace = 'App\\Http\\Controllers\\PembLapangan';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -48,8 +51,16 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             Route::middleware('web')
-                ->namespace($this->namespace)
+                ->namespace($this->pembakademikNamespace)
                 ->group(base_path('routes/pembakademik.php'));
+
+            Route::middleware('web')
+                ->namespace($this->pemblapanganNamespace)
+                ->group(base_path('routes/pemblapangan.php'));
+
+            Route::middleware('web')
+                ->namespace($this->adminNamespace)
+                ->group(base_path('routes/admin.php'));
         });
     }
 

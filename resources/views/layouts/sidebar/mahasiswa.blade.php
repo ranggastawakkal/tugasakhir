@@ -13,42 +13,42 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item {{ (request()->is("mahasiswa/surat-pengantar")) ? 'active' : '' }}">
         <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseSuratPengantar" aria-expanded="true" aria-controls="collapseSuratPengantar">
             <i class="fas fa-fw fa-database"></i>
             <span>Surat Pengantar</span>
         </a>
         <div id="collapseSuratPengantar" class="collapse mt-2" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Daftar Pengajuan SP</a>
-                <a class="collapse-item" href="#">Buat Pengajuan SP</a>
+                <a class="collapse-item" href="{{ route('mahasiswa.daftar-pengajuan.index') }}">Daftar Pengajuan SP</a>
+                <a class="collapse-item" href="{{ route('mahasiswa.buat-pengajuan.index') }}">Buat Pengajuan SP</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <li class="nav-item {{ (request()->is("mahasiswa/pembimbing")) ? 'active' : '' }}">
         <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapsePembimbing" aria-expanded="true" aria-controls="collapsePembimbing">
             <i class="fas fa-fw fa-file-alt"></i>
             <span>Pembimbing</span>
         </a>
         <div id="collapsePembimbing" class="collapse mt-2" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="#">Pembimbing Akademik</a>
-                <a class="collapse-item" href="#">Pembimbing Lapangan</a>
+            <a class="collapse-item" href="{{ route('mahasiswa.pembimbing.akademik.index') }}">Pembimbing Akademik</a>
+            <a class="collapse-item" href="{{ route('mahasiswa.pembimbing.lapangan.index') }}">Pembimbing Lapangan</a>
             </div>
         </div>
     </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item {{ (request()->is("mahasiswa/surat-pengantar")) ? 'active' : '' }}">
-        <a class="nav-link pb-0" href="#">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
-            <span>Template Laporan</span></a>
-    </li>
+    <li class="nav-item {{ (request()->is("mahasiswa/template-laporan")) ? 'active' : '' }}">
+            <a class="nav-link pb-0" href="{{ route('mahasiswa.template-laporan.index') }}">
+                <i class="fas fa-fw fa-envelope-open-text"></i>
+                <span>Template Laporan</span></a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link pb-0" href="#">
+    <li class="nav-item {{ (request()->is("mahasiswa/dokumen")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('mahasiswa.dokumen.index') }}">
             <i class="fas fa-fw fa-file-alt"></i>
             <span>Dokumen KP</span>
         </a>
@@ -63,15 +63,15 @@
     </div>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link pb-0" href="charts.html">
-            <i class="fas fas fa-fw fa-user"></i>
-            <span>Profil</span></a>
+    <li class="nav-item {{ (request()->is("mahasiswa/profil")) ? 'active' : '' }}">
+            <a class="nav-link pb-0" href="{{ route('mahasiswa.profil.index') }}">
+                <i class="fas fas fa-fw fa-user"></i>
+                <span>Profil</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link pb-0" href="tables.html">
-            <i class="fas fa-fw fa-key"></i>
-            <span>Ubah Password</span></a>
+    <li class="nav-item {{ (request()->is("mahasiswa/ubah-password")) ? 'active' : '' }}">
+            <a class="nav-link pb-0" href="{{ route('mahasiswa.ubah-password.index') }}">
+                <i class="fas fa-fw fa-key"></i>
+                <span>Ubah Password</span></a>
     </li>
