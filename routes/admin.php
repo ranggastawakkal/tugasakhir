@@ -16,7 +16,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::prefix('data')->group(function () {
         Route::prefix('mahasiswa')->group(function () {
             Route::get('/', [AdminMahasiswaController::class, 'index'])->name('admin.data.mahasiswa');
-            Route::get('/cari', [AdminMahasiswaController::class, 'cari'])->name('admin.data.mahasiswa.cari');
+            Route::post('/store', [AdminMahasiswaController::class, 'store'])->name('admin.data.mahasiswa.store');
         });
         Route::get('/pembimbing-akademik', [AdminPembimbingAkademikController::class, 'index'])->name('admin.data.pembimbing-akademik');
         Route::get('/pembimbing-lapangan', [AdminPembimbingLapanganController::class, 'index'])->name('admin.data.pembimbing-lapangan');

@@ -15,20 +15,19 @@ class CreateKerjaPraktekTable extends Migration
     {
         Schema::create('kerja_praktek', function (Blueprint $table) {
             $table->id();
-            $table->integer('nim');
-            $table->integer('nip_pemb_akd');
-            $table->integer('nip_pemb_lap')->nullable()->nullable();
-            $table->string('lokasi_kerja')->nullable();
-            $table->string('unit')->nullable();
+            $table->unsignedBigInteger('id_mahasiswa')->unique();
+            $table->unsignedBigInteger('id_pemb_akd');
+            $table->unsignedBigInteger('id_pemb_lap')->nullable();
+            $table->string('unit_kerja')->nullable();
             $table->date('tanggal_mulai')->nullable();
             $table->date('tanggal_berakhir')->nullable();
-            $table->string('surat_diterima')->nullable();
-            $table->string('surat_selesai')->nullable();
+            $table->text('target')->nullable();
+            $table->text('program_kegiatan')->nullable();
             $table->timestamps();
 
-            $table->foreign('nim')->references('nim')->on('mahasiswa')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('nip_pemb_akd')->references('nip')->on('pembimbing_akademik')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('nip_pemb_lap')->references('nip')->on('pembimbing_lapangan')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_pemb_akd')->references('id')->on('pembimbing_akademik')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_pemb_lap')->references('id')->on('pembimbing_lapangan')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

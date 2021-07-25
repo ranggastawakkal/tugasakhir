@@ -19,7 +19,7 @@ class PembimbingLapangan extends Authenticatable
         'nama',
         'email',
         'no_telepon',
-        'perusahaan',
+        'id_perusahaan',
         'posisi',
         'image',
         'password',
@@ -28,4 +28,9 @@ class PembimbingLapangan extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function perusahaan()
+    {
+        return $this->hasOne(Perusahaan::class, 'id', 'id_perusahaan');
+    }
 }

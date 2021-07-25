@@ -7,32 +7,37 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Mahasiswa extends Authenticatable
 {
     use HasFactory, Notifiable;
 
     protected $table = "mahasiswa";
-    protected $primaryKey = "nim";
+    protected $primaryKey = "id";
     protected $foreignKey = "id_kelas";
     protected $fillable = [
         'nim',
         'nama',
+        'id_kelas',
+        'id_peminatan',
         'email',
-        'tempat_lahir',
-        'tanggal_lahir',
         'no_telepon',
         'alamat',
         'jenis_kelamin',
-        'id_kelas',
-        'tahun_angkatan',
-        'image',
+        'tempat_lahir',
+        'tanggal_lahir',
         'password',
     ];
 
     protected $hidden = [
         'password',
     ];
+
+    public function getTanggalLahirAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_lahir'])->format('d-m-Y');
+    }
 
     public function kelas()
     {
@@ -41,6 +46,16 @@ class Mahasiswa extends Authenticatable
 
     public function suratPengantar()
     {
-        return $this->hasMany(SuratPengantar::class, 'nim', 'nim');
+        return $this->hasMany(SuratPengantar::class, 'id_mahasiswa', 'id');
+    }
+
+    public function kerjaPraktek()
+    {
+        return $this->hasOne(KerjaPraktek::class, 'id_mahasiswa', 'id');
+    }
+
+    public function peminatan()
+    {
+        return $this->hasOne(Peminatan::class, 'id', 'id_peminatan');
     }
 }

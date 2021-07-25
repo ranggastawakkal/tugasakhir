@@ -15,7 +15,7 @@ class CreateSuratPengantarsTable extends Migration
     {
         Schema::create('surat_pengantar', function (Blueprint $table) {
             $table->id();
-            $table->integer('nim');
+            $table->unsignedBigInteger('id_mahasiswa');
             $table->timestamp('tanggal');
             $table->string('tujuan_surat');
             $table->string('nama_instansi');
@@ -23,10 +23,11 @@ class CreateSuratPengantarsTable extends Migration
             $table->string('kota_instansi');
             $table->string('kontak_instansi');
             $table->string('bidang_minat');
+            $table->string('status')->nullable();
             $table->string('file')->nullable();
             $table->timestamps();
 
-            $table->foreign('nim')->references('nim')->on('mahasiswa')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

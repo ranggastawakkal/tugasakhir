@@ -19,4 +19,9 @@ class Kelas extends Model
     {
         return $this->hasOne(ProgramStudi::class, 'id', 'id_prodi');
     }
+
+    public function mahasiswa()
+    {
+        return $this->belongsTo(Mahasiswa::class, 'id', 'id_kelas');
+    }
 }

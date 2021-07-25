@@ -22,13 +22,31 @@ class KelasSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'nama_kelas' => "TI-41-02",
+                'nama_kelas' => "SI-41-02",
+                'id_prodi' => "1",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama_kelas' => "TI-41-03",
                 'id_prodi' => "2",
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
             [
-                'nama_kelas' => "TL-41-03",
+                'nama_kelas' => "TI-41-04",
+                'id_prodi' => "2",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama_kelas' => "TL-41-05",
+                'id_prodi' => "3",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'nama_kelas' => "TL-41-06",
                 'id_prodi' => "3",
                 'created_at' => now(),
                 'updated_at' => now(),

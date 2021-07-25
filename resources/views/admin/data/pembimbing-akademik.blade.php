@@ -19,6 +19,13 @@
                             <th scope="col">NIP</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Kode Dosen</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">No. Telepon</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Jenis Kelamin</th>
+                            <th scope="col">TTL</th>
+                            <th scope="col">Dibuat</th>
+                            <th scope="col">Diperbarui</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +38,13 @@
                             <td scope="row">{{ $pemb_akd->nip }}</td>
                             <td scope="row">{{ $pemb_akd->nama }}</td>
                             <td scope="row">{{ $pemb_akd->kode_dosen }}</td>
+                            <td scope="row">{{ $pemb_akd->email }}</td>
+                            <td scope="row">{{ $pemb_akd->no_telepon }}</td>
+                            <td scope="row">{{ Str::limit($pemb_akd->alamat,50) }}</td>
+                            <td scope="row">{{ $pemb_akd->jenis_kelamin }}</td>
+                            <td scope="row">{{ $pemb_akd->tempat_lahir }}, {{ $pemb_akd->tanggal_lahir }}</td>
+                            <td scope="row">{{ $pemb_akd->created_at }}</td>
+                            <td scope="row">{{ $pemb_akd->updated_at }}</td>
                         </tr>
                         @php 
                         $i++;
