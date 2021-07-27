@@ -14,18 +14,19 @@ class CreatePembimbingLapangansTable extends Migration
     public function up()
     {
         Schema::create('pembimbing_lapangan', function (Blueprint $table) {
-            $table->integer('nip');
+            $table->id();
+            $table->integer('nip')->unique();
             $table->string('nama');
             $table->string('email')->unique();
             $table->string('no_telepon');
-            $table->string('perusahaan');
-            $table->string('posisi');
-            $table->string('image');
+            $table->string('jabatan');
+            $table->string('nama_perusahaan');
+            $table->string('alamat_perusahaan');
+            $table->string('kota_perusahaan');
+            $table->string('email_perusahaan')->nullable();
+            $table->string('no_telepon_perusahaan')->nullable();
             $table->string('password');
-            $table->string('level')->default('Pembimbing Lapangan');
             $table->timestamps();
-
-            $table->primary('nip');
         });
     }
 

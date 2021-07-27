@@ -2,6 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\BobotPenilaian;
+use App\Models\KelompokKeahlian;
+use App\Models\Peminatan;
+use App\Models\SuratPengantar;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -16,13 +20,24 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call([
-            ProgramStudiSeeder::class,
-            KelasSeeder::class,
-            AdminSeeder::class,
-            MahasiswaSeeder::class,
             PembimbingAkademikSeeder::class,
             PembimbingLapanganSeeder::class,
-            UserSeeder::class,
+            AdminSeeder::class,
+            ProgramStudiSeeder::class,
+            KelompokKeahlianSeeder::class,
+            PeminatanSeeder::class,
+            KelasSeeder::class,
+            MahasiswaSeeder::class,
+            SuratPengantarSeeder::class,
+            KerjaPraktekSeeder::class,
+            DokumenSeeder::class,
+            TemplateLaporanSeeder::class,
+            CloSeeder::class,
+            SubCloSeeder::class,
+            BobotPenilaianSeeder::class,
+            PenilaianPembimbingLapanganSeeder::class,
+            PenilaianSeeder::class,
+            LogActivitySeeder::class,
         ]);
     }
 }

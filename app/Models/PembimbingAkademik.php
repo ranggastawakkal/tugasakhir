@@ -7,13 +7,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class PembimbingAkademik extends Authenticatable
 {
     use HasFactory, Notifiable;
 
     protected $table = "pembimbing_akademik";
-    protected $primaryKey = "nip";
+    protected $primaryKey = "id";
     protected $fillable = [
         'nip',
         'nama',
@@ -31,4 +32,19 @@ class PembimbingAkademik extends Authenticatable
     protected $hidden = [
         'password',
     ];
+
+    public function getTanggalLahirAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_lahir'])->format('d-m-Y');
+    }
+
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('d-m-Y H:i:s');
+    }
+
+    public function getUpdatedAtAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
+    }
 }

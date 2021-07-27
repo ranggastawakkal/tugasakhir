@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Kelas;
+use App\Models\ProgramStudi;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class AdminKelasController extends Controller
 {
@@ -16,17 +20,8 @@ class AdminKelasController extends Controller
     public function index()
     {
         $kelas = Kelas::all();
-        return view('admin/data/kelas', compact('kelas'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $program_studi = ProgramStudi::all();
+        return view('admin/data/kelas', compact('kelas', 'program_studi'));
     }
 
     /**
@@ -37,7 +32,38 @@ class AdminKelasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // buat validasi utk semua field yang diinput
+        $rules = [
+            'nama_kelas'            => 'required|unique:kelas,nama_kelas',
+            'id_prodi'              => 'required'
+        ];
+
+        $messages = [
+            'nama_kelas.required'          => 'Nama Kelas wajib diisi.',
+            'nama_kelas.unique'            => 'Kelas sudah terdaftar.',
+            'id_prodi.required'            => 'Program studi wajib diisi.'
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        // insert setiap request dari form ke database via model
+        $kelas = new Kelas;
+        $kelas->nama_kelas = $request->nama_kelas;
+        $kelas->id_prodi = $request->id_prodi;
+
+        $simpan = $kelas->save();
+
+        if ($simpan) {
+            Session::flash('success', 'Data berhasil ditambahkan.');
+            return redirect()->route('admin.data.kelas');
+        } else {
+            Session::flash('errors', 'Data gagal ditambahkan.');
+            return redirect()->route('admin.data.kelas');
+        }
     }
 
     /**
@@ -80,8 +106,10 @@ class AdminKelasController extends Controller
      * @param  \App\Models\Kelas  $kelas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kelas $kelas)
+    public function destroy($id)
     {
-        //
+        DB::table('kelas')->where('id', $id)->delete();
+
+        return redirect()->route('admin.data.kelas')->with('success', 'Data berhasil dihapus.');
     }
 }

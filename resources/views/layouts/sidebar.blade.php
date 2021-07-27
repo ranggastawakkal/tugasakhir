@@ -259,8 +259,8 @@
         </div>
 
         <!-- Nav Item - Charts -->
-        <li class="nav-item">
-            <a class="nav-link pb-0" href="charts.html">
+        <li class="nav-item {{ (request()->is("pembimbing-akademik/profil")) ? 'active' : '' }}">
+            <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.profil') }}">
                 <i class="fas fas fa-fw fa-user"></i>
                 <span>Profil</span></a>
         </li>
