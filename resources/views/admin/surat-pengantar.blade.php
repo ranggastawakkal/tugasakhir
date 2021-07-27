@@ -10,13 +10,13 @@
                 <h6 class="m-0 font-weight-bold text-success">Data Surat Pengantar</h6>
             </div>
             <div class="card-body">
-                {{-- <form action="{{ route('admin.data.mahasiswa.cari') }}" class="form-inline ml-md-0 my-2 my-md-2 mw-100 navbar-search"><div class="input-group"><input type="search" class="'+b.sFilterInput+' form-control bg-light border-0 small" placeholder="Cari.."/><div class="input-group-append"><button class="btn btn-success" type="submit"><i class="fas fa-search fa-sm"></i></button></div></div></form> --}}
-                {{-- <form class="form-inline ml-md-0 my-2 my-md-2 mw-100 navbar-search"><div class="input-group"><input type="search" class="'+classes.sFilterInput+' form-control bg-light border-0 small" placeholder="Cari.."/><div class="input-group-append"><button class="btn btn-success" type="submit"><i class="fas fa-search fa-sm"></i></button></div></div></form> --}}
                 <table class="table table-striped table-bordered display nowrap" id="dataTable">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
+                            <th scope="col">Nama</th>
                             <th scope="col">NIM</th>
+                            <th scope="col">Prodi</th>
                             <th scope="col">Tanggal</th>
                             <th scope="col">Tujuan Surat</th>
                             <th scope="col">Nama Instansi</th>
@@ -24,8 +24,10 @@
                             <th scope="col">Kota</th>
                             <th scope="col">Kontak Instansi</th>
                             <th scope="col">Bidang Minat</th>
-                            <th scope="col">Diperbarui</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Aksi</th>
+                            <th scope="col">Dibuat</th>
+                            <th scope="col">Diperbarui</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,7 +37,9 @@
                         @foreach ($suratPengantar as $sp)
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
-                            <td scope="row">{{ $sp->nim }}</td>
+                            <td scope="row">{{ $sp->mahasiswa->nama }}</td>
+                            <td scope="row">{{ $sp->mahasiswa->nim }}</td>
+                            <td scope="row">{{ $sp->mahasiswa->kelas->prodi->nama_prodi }}</td>
                             <td scope="row">{{ $sp->tanggal }}</td>
                             <td scope="row">{{ $sp->tujuan_surat }}</td>
                             <td scope="row">{{ $sp->nama_instansi }}</td>
@@ -43,8 +47,10 @@
                             <td scope="row">{{ $sp->kota_instansi }}</td>
                             <td scope="row">{{ $sp->kontak_instansi }}</td>
                             <td scope="row">{{ $sp->bidang_minat }}</td>
-                            <td scope="row">{{ $sp->updated_at }}</td>
+                            <td scope="row">{{ $sp->status }}</td>
                             <td scope="row">{{ $sp->file }}</td>
+                            <td scope="row">{{ $sp->created_at }}</td>
+                            <td scope="row">{{ $sp->updated_at }}</td>
                         </tr>
                         @php 
                         $i++;

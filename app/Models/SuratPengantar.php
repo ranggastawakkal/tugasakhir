@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class SuratPengantar extends Model
 {
@@ -11,9 +12,9 @@ class SuratPengantar extends Model
 
     protected $table = "surat_pengantar";
     protected $primaryKey = "id";
-    protected $foreignKey = "nim";
+    protected $foreignKey = "id_mahasiswa";
     protected $fillable = [
-        'nim',
+        'id_mahasiswa',
         'tanggal',
         'tujuan_surat',
         'nama_instansi',
@@ -24,8 +25,18 @@ class SuratPengantar extends Model
         'file',
     ];
 
+    public function getTanggalAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['tanggal'])->format('d-m-Y');
+    }
+
+    public function getUpdatedAtAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
+    }
+
     public function mahasiswa()
     {
-        return $this->belongsTo(Mahasiswa::class, 'nim', 'nim');
+        return $this->hasOne(Mahasiswa::class, 'id', 'id_mahasiswa');
     }
 }

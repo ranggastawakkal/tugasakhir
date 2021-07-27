@@ -46,7 +46,7 @@ class Mahasiswa extends Authenticatable
 
     public function suratPengantar()
     {
-        return $this->hasMany(SuratPengantar::class, 'id_mahasiswa', 'id');
+        return $this->belongsTo(SuratPengantar::class, 'id_mahasiswa', 'id');
     }
 
     public function kerjaPraktek()

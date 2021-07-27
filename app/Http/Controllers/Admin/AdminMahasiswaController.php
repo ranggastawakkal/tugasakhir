@@ -54,8 +54,8 @@ class AdminMahasiswaController extends Controller
 
         // insert setiap request dari form ke database via model
         $mhs = new Mahasiswa;
-        $mhs->nama = $request->nama;
         $mhs->nim = $request->nim;
+        $mhs->nama = $request->nama;
         $mhs->id_kelas = $request->id_kelas;
         $mhs->id_peminatan = $request->id_peminatan;
         $mhs->email = $request->email;
@@ -84,34 +84,64 @@ class AdminMahasiswaController extends Controller
         return view('admin.data.mahasiswa.show', compact('mahasiswa'));
     }
 
-    public function edit(Mahasiswa $mahasiswa)
+    public function update(Request $request)
     {
-        return view('admin.data.mahasiswa.edit', compact('mahasiswa'));
+        // buat validasi utk semua field yang diinput
+        $rules = [
+            'nim'                   => 'required|unique:mahasiswa,nim',
+            'nama'                  => 'required',
+            'id_kelas'              => 'required',
+            'id_peminatan'          => 'required',
+            'email'                 => 'required|email|unique:mahasiswa,email',
+        ];
+
+        $messages = [
+            'nim.required'          => 'NIM wajib diisi.',
+            'nim.unique'            => 'NIM sudah terdaftar.',
+            'nama.required'         => 'nama wajib diisi',
+            'id_kelas.required'     => 'Kelas wajib diisi',
+            'id_peminatan.required' => 'Peminatan wajib diisi',
+            'email.required'        => 'Email wajib diisi',
+            'email.email'           => 'Email tidak valid',
+            'email.unique'          => 'Email sudah terdaftar',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        // insert setiap request dari form ke database via model
+        $data = array(
+            'nim' => $request->nim,
+            'nama' => $request->nama,
+            'nama' => $request->nama,
+            'id_kelas' => $request->id_kelas,
+            'id_peminatan' => $request->id_peminatan,
+            'email' => $request->email,
+            'no_telepon' => $request->no_telepon,
+            'alamat' => $request->alamat,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'tempat_lahir' => $request->tempat_lahir,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'password' => $request->password
+        );
+
+        $simpan = DB::table('mahasiswa')->where('id', $request->id)->update($data);
+
+        if ($simpan) {
+            Session::flash('success', 'Data berhasil diubah.');
+            return redirect()->route('admin.data.mahasiswa');
+        } else {
+            Session::flash('errors', 'Data gagal diubah.');
+            return redirect()->route('admin.data.mahasiswa');
+        }
     }
 
-    public function update(Request $request, Mahasiswa $mahasiswa)
+    public function destroy($id)
     {
-        $request->validate([
-            'nim' => 'required',
-            'nama' => 'required',
-            'id_kelas' => 'required',
-            'tahun_angkatan' => 'required',
-            'email' => 'required|email|unique:mahasiswa,email',
-            'no_telepon' => 'required',
-            'alamat' => 'required',
-            'jenis_kelamin' => 'required',
-            'tempat_lahir' => 'required',
-            'tanggal_lahir' => 'required',
-        ]);
-
-        $mahasiswa->update($request->all());
-
-        return redirect()->route('admin.data.mahasiswa')->with('success', 'Data berhasil diperbarui.');
-    }
-
-    public function destroy(Mahasiswa $mahasiswa)
-    {
-        $mahasiswa->delete();
+        DB::table('mahasiswa')->where('id', $id)->delete();
 
         return redirect()->route('admin.data.mahasiswa')->with('success', 'Data berhasil dihapus.');
     }
