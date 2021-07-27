@@ -23,6 +23,41 @@ class AdminPembimbingAkademikController extends Controller
         return view('admin/data/pembimbing-akademik', compact('pembimbing_akademik'));
     }
 
+    public function dataMahasiswa()
+    {
+        return view('pembimbing-akademik/data-mahasiswa');
+    }
+
+    public function logKegiatan()
+    {
+        return view('pembimbing-akademik/log-kegiatan');
+    }
+
+    public function penilaian()
+    {
+        return view('pembimbing-akademik/penilaian');
+    }
+
+    public function laporanKP()
+    {
+        return view('pembimbing-akademik/laporan-kp');
+    }
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         // buat validasi utk semua field yang diinput
