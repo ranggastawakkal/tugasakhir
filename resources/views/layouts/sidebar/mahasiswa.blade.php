@@ -40,6 +40,19 @@
         </div>
     </li>
 
+    <li class="nav-item {{ (request()->is("mahasiswa/kerja-praktek")) ? 'active' : '' }}">
+        <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseKerjaPraktek" aria-expanded="true" aria-controls="collapseKerjaPraktek">
+            <i class="fas fa-fw fa-database"></i>
+            <span>Kerja Praktek</span>
+        </a>
+        <div id="collapseKerjaPraktek" class="collapse mt-2" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('mahasiswa.kerja-praktek.data.index') }}">Data Kerja Praktek</a>
+                <a class="collapse-item" href="{{ route('mahasiswa.kerja-praktek.dokumen.index') }}">Dokumen</a>
+            </div>
+        </div>
+    </li>
+
  
 
     <!-- Nav Item - Charts -->
@@ -49,12 +62,6 @@
             <span>Template Laporan</span></a>
     </li>
 
-    <li class="nav-item {{ (request()->is("mahasiswa/dokumen")) ? 'active' : '' }}">
-        <a class="nav-link pb-0" href="{{ route('mahasiswa.dokumen.index') }}">
-            <i class="fas fa-fw fa-file-alt"></i>
-            <span>Dokumen KP</span>
-        </a>
-    </li>
 
     <li class="nav-item {{ (request()->is("mahasiswa/log")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('mahasiswa.log-activity.index') }}">

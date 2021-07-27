@@ -22,7 +22,7 @@
                         
                         <tr>
                             <td>1</td>
-                            <td>Bukti telah diterima KP</td>
+                            <td>Upload bukti KRS</td>
                             <td>
                                 <form>
                                     <div class="form-group">
@@ -34,7 +34,7 @@
 
                         <tr>
                             <td>2</td>
-                            <td>Bukti telah menjalani KP</td>
+                            <td>Bukti telah diterima KP</td>
                             <td>
                                 <form>
                                     <div class="form-group">
@@ -46,7 +46,7 @@
 
                         <tr>
                             <td>3</td>
-                            <td>Upload bukti KRS</td>
+                            <td>Laporan KP</td>
                             <td>
                                 <form>
                                     <div class="form-group">
@@ -56,6 +56,17 @@
                             </td>
                         </tr>
                        
+                        <tr>
+                            <td>4</td>
+                            <td>Bukti telah menjalani KP</td>
+                            <td>
+                                <form>
+                                    <div class="form-group">
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>

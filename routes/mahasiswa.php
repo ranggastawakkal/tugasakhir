@@ -4,6 +4,8 @@ use App\Http\Controllers\Mahasiswa\BuatPengajuanController;
 use App\Http\Controllers\Mahasiswa\DaftarPengajuanController;
 use App\Http\Controllers\Mahasiswa\DashboardController;
 use App\Http\Controllers\Mahasiswa\DokumenController;
+use App\Http\Controllers\Mahasiswa\KerjaPraktekDataController;
+use App\Http\Controllers\Mahasiswa\KerjaPraktekDokumenController;
 use App\Http\Controllers\Mahasiswa\LogActivityController;
 use App\Http\Controllers\Mahasiswa\PembimbingAkademikController;
 use App\Http\Controllers\Mahasiswa\PembimbingLapanganController;
@@ -32,8 +34,13 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
         Route::get('/', [UbahPasswordController::class, 'index'])->name('mahasiswa.ubah-password.index');
         Route::post('/update', [UbahPasswordController::class, 'update'])->name('mahasiswa.ubah-password.update');
     });
+
+    Route::group(['prefix' => 'kerja-praktek'], function () {
+        Route::get('/data', [KerjaPraktekDataController::class, 'index'])->name('mahasiswa.kerja-praktek.data.index');
+        Route::get('/dokumen', [KerjaPraktekDokumenController::class, 'index'])->name('mahasiswa.kerja-praktek.dokumen.index');
+        Route::get('/data/create', [KerjaPraktekDataController::class, 'create'])->name('mahasiswa.kerja-praktek.data.create');
+    });
     
-    Route::get('/dokumen', [DokumenController::class, 'index'])->name('mahasiswa.dokumen.index');
     Route::get('/template-laporan', [TemplateLaporanController::class, 'index'])->name('mahasiswa.template-laporan.index');
     Route::get('/log', [LogActivityController::class, 'index'])->name('mahasiswa.log-activity.index');
 });
