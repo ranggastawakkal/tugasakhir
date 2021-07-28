@@ -220,7 +220,7 @@
             <div class="modal-footer">
                 <form action="{{ route('admin.data.kelas.destroy', $kls->id ) }}" method="GET">
                 @csrf
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>

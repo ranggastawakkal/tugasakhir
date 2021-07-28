@@ -45,7 +45,12 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
             Route::get('/destroy/{id}', [AdminKelasController::class, 'destroy'])->name('admin.data.kelas.destroy');
         });
     });
-    Route::get('/surat-pengantar', [AdminSuratPengantarController::class, 'index'])->name('admin.surat-pengantar');
+    Route::prefix('surat-pengantar')->group(function () {
+        Route::get('/', [AdminSuratPengantarController::class, 'index'])->name('admin.surat-pengantar');
+        Route::post('/store', [AdminSuratPengantarController::class, 'store'])->name('admin.surat-pengantar.store');
+        Route::post('/update{id}', [AdminSuratPengantarController::class, 'update'])->name('admin.surat-pengantar.update');
+        Route::get('/destroy/{id}', [AdminSuratPengantarController::class, 'destroy'])->name('admin.surat-pengantar.destroy');
+    });
     Route::get('/template-laporan', [AdminTemplateLaporanController::class, 'index'])->name('admin.template-laporan');
     Route::get('/dokumen-kp', [AdminDokumenKPController::class, 'index'])->name('admin.dokumen-kp');
 });

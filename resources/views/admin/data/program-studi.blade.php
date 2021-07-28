@@ -195,7 +195,7 @@
             <div class="modal-footer">
                 <form action="{{ route('admin.data.program-studi.destroy', $prodi->id ) }}" method="GET">
                 @csrf
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>
