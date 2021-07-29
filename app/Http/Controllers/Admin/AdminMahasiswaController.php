@@ -84,15 +84,15 @@ class AdminMahasiswaController extends Controller
         return view('admin.data.mahasiswa.show', compact('mahasiswa'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         // buat validasi utk semua field yang diinput
         $rules = [
-            'nim'                   => 'required|unique:mahasiswa,nim',
+            'nim'                   => 'required|unique:mahasiswa,nim,' . $request->id,
             'nama'                  => 'required',
             'id_kelas'              => 'required',
             'id_peminatan'          => 'required',
-            'email'                 => 'required|email|unique:mahasiswa,email',
+            'email'                 => 'required|email|unique:mahasiswa,email,' . $request->id,
         ];
 
         $messages = [
@@ -112,23 +112,7 @@ class AdminMahasiswaController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all);
         }
 
-        // insert setiap request dari form ke database via model
-        $data = array(
-            'nim' => $request->nim,
-            'nama' => $request->nama,
-            'nama' => $request->nama,
-            'id_kelas' => $request->id_kelas,
-            'id_peminatan' => $request->id_peminatan,
-            'email' => $request->email,
-            'no_telepon' => $request->no_telepon,
-            'alamat' => $request->alamat,
-            'jenis_kelamin' => $request->jenis_kelamin,
-            'tempat_lahir' => $request->tempat_lahir,
-            'tanggal_lahir' => $request->tanggal_lahir,
-            'password' => $request->password
-        );
-
-        $simpan = DB::table('mahasiswa')->where('id', $request->id)->update($data);
+        $simpan = Mahasiswa::find($id)->update($request->all());
 
         if ($simpan) {
             Session::flash('success', 'Data berhasil diubah.');

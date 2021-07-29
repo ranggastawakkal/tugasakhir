@@ -31,7 +31,7 @@
                         </ul>
                     </div>
                 @endif
-                <table class="table table-striped table-bordered display nowrap" id="dataTable">
+                <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>

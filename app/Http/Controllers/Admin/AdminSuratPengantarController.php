@@ -45,7 +45,7 @@ class AdminSuratPengantarController extends Controller
         if (File::exists('storage/' . $surat_pengantar->file)) {
             File::delete('storage/' . $surat_pengantar->file);
         }
-        if ($request->file != null) {
+        if ($request->status === "Diterima") {
             $fileName = $request->file->getClientOriginalName();
             $request->file('file')->storeAs('public', $fileName);
         } else {

@@ -35,7 +35,7 @@
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
                     <i class="fas fa-plus"></i> Tambah Data
                 </button>
-                <table class="table table-striped table-bordered display nowrap" id="dataTable">
+                <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>

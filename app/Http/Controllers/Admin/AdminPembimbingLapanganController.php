@@ -76,38 +76,37 @@ class AdminPembimbingLapanganController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PembimbingLapangan  $pembimbingLapangan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PembimbingLapangan $pembimbingLapangan)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        // buat validasi utk semua field yang diinput
+        $rules = [
+            'nip'                   => 'required|unique:pembimbing_lapangan,nip,' . $request->id,
+            'email'                 => 'required|email|unique:pembimbing_lapangan,email,' . $request->id,
+        ];
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PembimbingLapangan  $pembimbingLapangan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PembimbingLapangan $pembimbingLapangan)
-    {
-        //
-    }
+        $messages = [
+            'nip.required'          => 'NIP wajib diisi.',
+            'nip.unique'            => 'NIP sudah terdaftar.',
+            'email.required'        => 'Email wajib diisi',
+            'email.email'           => 'Email tidak valid',
+            'email.unique'          => 'Email sudah terdaftar',
+        ];
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PembimbingLapangan  $pembimbingLapangan
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PembimbingLapangan $pembimbingLapangan)
-    {
-        //
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        $simpan = PembimbingLapangan::find($id)->update($request->all());
+
+        if ($simpan) {
+            Session::flash('success', 'Data berhasil diubah.');
+            return redirect()->route('admin.data.pembimbing-lapangan');
+        } else {
+            Session::flash('errors', 'Data gagal diubah.');
+            return redirect()->route('admin.data.pembimbing-lapangan');
+        }
     }
 
     /**
