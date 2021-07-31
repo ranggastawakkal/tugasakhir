@@ -18,7 +18,7 @@ Route::middleware(['auth:pembimbing-akademik'])->prefix('pembimbing-akademik')->
     });
     Route::get('/log-kegiatan', [PembAkademikLogKegiatanController::class, 'index'])->name('pembimbing-akademik.log-kegiatan');
     Route::get('/penilaian', [PembAkademikPenilaianController::class, 'index'])->name('pembimbing-akademik.penilaian');
+    Route::get('/form-penilaian', [PembAkademikFormPenilaianController::class, 'index'])->name('pembimbing-akademik.form-penilaian');
     Route::get('/laporan-kp', [PembAkademikLaporanKPController::class, 'index'])->name('pembimbing-akademik.laporan-kp');
     Route::get('/profil', [PembAkademikProfileController::class, 'index'])->name('pembimbing-akademik.profil');
-    Route::get('/form-penilaian', [PembAkademikFormPenilaianController::class, 'index'])->name('pembimbing-akademik.form-penilaian');
 });

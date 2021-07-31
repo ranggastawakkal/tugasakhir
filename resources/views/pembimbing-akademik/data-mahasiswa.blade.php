@@ -17,7 +17,7 @@
                         <div class="card-body">
                           <h5 class="card-title">{{ $mkp->nama }}</h5>
                           <p class="card-text">{{ $mkp->nama_kelas }}</p>
-                          <a href="{{ route('pembimbing-akademik.data-mahasiswa.detail-mahasiswa') }}" class="btn btn-primary">Detail Mahasiswa</a>
+                          <a href="{{ route('pembimbing-akademik.data-mahasiswa.detail-mahasiswa', $mkp->nim) }}" class="btn btn-primary" id=" {{ $mkp->nim }}">Detail Mahasiswa</a>
                         </div>
                       </div>
                 </div>

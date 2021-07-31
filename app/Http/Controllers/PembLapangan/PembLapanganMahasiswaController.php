@@ -26,7 +26,7 @@ class PembLapanganMahasiswaController extends Controller
             ->join('kerja_praktek', 'mahasiswa.nim', '=', 'kerja_praktek.nim')
             ->join('kelas', 'mahasiswa.id_kelas', '=', 'kelas.id')
             ->select('mahasiswa.*', 'kerja_praktek.*', 'kelas.*')
-            ->where('kerja_praktek.nip_pemb_akd', '=', $nip)
+            ->where('kerja_praktek.nip_pemb_lap', '=', $nip)
             ->get();
 
         return view('pembimbing-lapangan/data-mahasiswa', compact('mahasiswa', 'mahasiswakp'));

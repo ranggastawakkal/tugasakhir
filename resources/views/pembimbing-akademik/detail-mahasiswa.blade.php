@@ -16,15 +16,16 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
+                @foreach ($detailmahasiswakp as $mkp)
                 <table class="table table-borderless" width="100%" cellspacing="0">
                     <tbody>
                         <tr>
                             <td style="width: 20%;">Nama</td>
-                            <td style="width: 80%;">{{ $mkp->nama }}</td>
+                            <td style="width: 80%;">{{ $mkp-> nama }}</td>
                         </tr>
                         <tr>
                             <td>NIM</td>
-                            <td>{{ $mkp->nim }}</td>
+                            <td>{{ $mkp-> nim }}</td>
                         </tr>
                         <tr>
                             <td>Email</td>
@@ -52,7 +53,7 @@
                         </tr>
                     </tbody>
                 </table>
-                
+                @endforeach     
             </div>
         </div>
     </div>
