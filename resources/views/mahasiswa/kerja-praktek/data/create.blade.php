@@ -8,88 +8,118 @@
         <h6 class="m-0 font-weight-bold text-dark"> Data Kerja Praktek</h6>
     </div>
     <div class="card-body">
-        <div class="form-group row">
-            <label for="nipakd" class="col-md-2 col-form-label text-md-left ml-2">NIP Pembimbing Akademik</label>
-
-            <div class="col-md-9">
-                <input id="nipakd" type="text" class="form-control @error('name') is-invalid @enderror" name="nipakd" value="{{ $nipakd ?? old('nipakd') }}" required autocomplete="nipakd" autofocus>
-
-                @error('nipakd')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="nip" class="col-md-2 col-form-label text-md-left ml-2">NIP</label>
-
-            <div class="col-md-9">
-                <input id="nip" type="text" class="form-control @error('name') is-invalid @enderror" name="nip" value="{{ $nip ?? old('nip') }}" required autocomplete="nip" autofocus>
-
-                @error('nip')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="email" class="col-md-2 col-form-label text-md-left ml-2">Email</label>
-
-            <div class="col-md-9">
-                <input id="email" type="email" class="form-control @error('name') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
-
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="nomorHp" class="col-md-2 col-form-label text-md-left ml-2">Nomor HP</label>
-
-            <div class="col-md-9">
-                <input id="nomorHp" type="text" class="form-control @error('name') is-invalid @enderror" name="nomorHp" value="{{ $nomorHp ?? old('nomorHp') }}" required autocomplete="nomorHp" autofocus>
-
-                @error('nomorHp')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="perusahaan" class="col-md-2 col-form-label text-md-left ml-2">Perusahaan</label>
-
-            <div class="col-md-9">
-                <input id="perusahaan" type="text" class="form-control @error('name') is-invalid @enderror" name="perusahaan" value="{{ $perusahaan ?? old('perusahaan') }}" required autocomplete="perusahaan" autofocus>
-
-                @error('perusahaan')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="posisi" class="col-md-2 col-form-label text-md-left ml-2">Posisi</label>
-
-            <div class="col-md-9">
-                <input id="posisi" type="text" class="form-control @error('name') is-invalid @enderror" name="posisi" value="{{ $posisi ?? old('posisi') }}" required autocomplete="posisi" autofocus>
-
-                @error('posisi')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-        </div>
         
-        <div class="text-center">
-            <button class="btn btn-success col-md-2">Save</button>
-        </div>
+        <form method=POST action="{{ route('mahasiswa.kerja-praktek.data.store') }}">
+            @csrf
+            <div class="form-group row">
+                <label for="nipakd" class="col-md-2 col-form-label text-md-left ml-2">NIP Pembimbing Akademik</label>
+
+                <div class="col-md-9">
+                    <input id="nipakd" type="text" class="form-control @error('nipakd') is-invalid @enderror" name="nipakd" value="{{ $dataKerjaPraktek->pembAkd->nip }}" disabled autocomplete="nipakd" autofocus>
+
+                    @error('nipakd')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="niplap" class="col-md-2 col-form-label text-md-left ml-2">NIP Pembimbing Lapangan</label>
+
+                <div class="col-md-9">
+                    <input id="niplap" type="text" class="form-control @error('niplap') is-invalid @enderror" name="niplap" value="{{ $dataKerjaPraktek->pembLap->nip }}" disabled autocomplete="niplap" autofocus>
+
+                    @error('niplap')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="perusahaan" class="col-md-2 col-form-label text-md-left ml-2">Perusahaan</label>
+
+                <div class="col-md-9">
+                    <input id="perusahaan" type="perusahaan" class="form-control @error('perusahaan') is-invalid @enderror" name="perusahaan" value="{{ $dataKerjaPraktek->pembLap->nama_perusahaan }}" disabled autofocus>
+
+                    @error('perusahaan')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="unitkerja" class="col-md-2 col-form-label text-md-left ml-2">Unit Kerja / Divisi</label>
+
+                <div class="col-md-9">
+                    <input id="unitkerja" type="text" class="form-control @error('unitkerja') is-invalid @enderror" name="unitkerja" value="{{ $unitkerja ?? old('unitkerja') }}" required autocomplete="unitkerja" autofocus>
+
+                    @error('unitkerja')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tanggalmulai" class="col-md-2 col-form-label text-md-left ml-2">Tanggal Mulai</label>
+
+                <div class="col-md-9">
+                    <input id="tanggalmulai" type="date" class="form-control @error('tanggalmulai') is-invalid @enderror" name="tanggalmulai" value="{{ $tanggalmulai ?? old('tanggalmulai') }}" required autocomplete="tanggalmulai" autofocus>
+
+                    @error('tanggalmulai')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="tanggalberakhir" class="col-md-2 col-form-label text-md-left ml-2">Tanggal Berakhir</label>
+
+                <div class="col-md-9">
+                    <input id="tanggalberakhir" type="date" class="form-control @error('tanggalberakhir') is-invalid @enderror" name="tanggalberakhir" value="{{ $tanggalberakhir ?? old('tanggalberakhir') }}" required autocomplete="tanggalberakhir" autofocus>
+
+                    @error('tanggalberakhir')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="target" class="col-md-2 col-form-label text-md-left ml-2">Target</label>
+
+                <div class="col-md-9">
+                    <input id="target" type="text" class="form-control @error('target') is-invalid @enderror" name="target" value="{{ $target ?? old('target') }}" required autocomplete="target" autofocus>
+
+                    @error('target')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="programkegiatan" class="col-md-2 col-form-label text-md-left ml-2">Program Kegiatan</label>
+
+                <div class="col-md-9">
+                    <input id="programkegiatan" type="text" class="form-control @error('programkegiatan') is-invalid @enderror" name="programkegiatan" value="{{ $programkegiatan ?? old('programkegiatan') }}" required autocomplete="programkegiatan" autofocus>
+
+                    @error('programkegiatan')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-success col-md-2" type="submit">Save</button>
+            </div>
+        </form>
     </div>
 </div>
 @endsection

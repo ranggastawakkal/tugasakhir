@@ -15,7 +15,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item {{ (request()->is("mahasiswa/surat-pengantar")) ? 'active' : '' }}">
         <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseSuratPengantar" aria-expanded="true" aria-controls="collapseSuratPengantar">
-            <i class="fas fa-fw fa-database"></i>
+            <i class="fas fa-fw fa-envelope"></i>
             <span>Surat Pengantar</span>
         </a>
         <div id="collapseSuratPengantar" class="collapse mt-2" data-parent="#accordionSidebar">
@@ -29,7 +29,7 @@
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item {{ (request()->is("mahasiswa/pembimbing")) ? 'active' : '' }}">
         <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapsePembimbing" aria-expanded="true" aria-controls="collapsePembimbing">
-            <i class="fas fa-fw fa-file-alt"></i>
+            <i class="fas fa-fw fa-users"></i>
             <span>Pembimbing</span>
         </a>
         <div id="collapsePembimbing" class="collapse mt-2" data-parent="#accordionSidebar">

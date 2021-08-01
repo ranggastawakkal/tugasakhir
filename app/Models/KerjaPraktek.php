@@ -28,4 +28,14 @@ class KerjaPraktek extends Model
     {
         return $this->belongsTo(Mahasiswa::class, 'nim', 'nim');
     }
+
+    public function pembAkd()
+    {
+        return $this->belongsTo(PembimbingAkademik::class, 'id_pemb_akd');
+    }
+
+    public function pembLap()
+    {
+        return $this->belongsTo(PembimbingLapangan::class, 'id_pemb_lap');
+    }
 }

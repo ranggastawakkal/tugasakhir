@@ -26,8 +26,11 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
     });
     Route::group(['prefix' => 'pembimbing'], function () {
         Route::get('/akademik', [PembimbingAkademikController::class, 'index'])->name('mahasiswa.pembimbing.akademik.index');
+        Route::post('/akademik/store', [PembimbingAkademikController::class, 'store'])->name('mahasiswa.pembimbing.akademik.store');
         Route::get('/lapangan', [PembimbingLapanganController::class, 'index'])->name('mahasiswa.pembimbing.lapangan.index');
         Route::get('/lapangan/create', [PembimbingLapanganController::class, 'create'])->name('mahasiswa.pembimbing.lapangan.create');
+        Route::post('/lapangan/store', [PembimbingLapanganController::class, 'store'])->name('mahasiswa.pembimbing.lapangan.store');
+        Route::post('/lapangan/store/new', [PembimbingLapanganController::class, 'storeNew'])->name('mahasiswa.pembimbing.lapangan.store.new');
     });
 
     Route::group(['prefix' => 'ubah-password'], function () {
@@ -39,6 +42,7 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
         Route::get('/data', [KerjaPraktekDataController::class, 'index'])->name('mahasiswa.kerja-praktek.data.index');
         Route::get('/dokumen', [KerjaPraktekDokumenController::class, 'index'])->name('mahasiswa.kerja-praktek.dokumen.index');
         Route::get('/data/create', [KerjaPraktekDataController::class, 'create'])->name('mahasiswa.kerja-praktek.data.create');
+        Route::post('/data/store', [KerjaPraktekDataController::class, 'store'])->name('mahasiswa.kerja-praktek.data.store');
     });
     
     Route::get('/template-laporan', [TemplateLaporanController::class, 'index'])->name('mahasiswa.template-laporan.index');
