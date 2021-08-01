@@ -62,38 +62,32 @@ class AdminProgramStudiController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ProgramStudi  $programStudi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ProgramStudi $programStudi)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $rules = [
+            'nama_prodi'            => 'required|unique:program_studi,nama_prodi,' . $request->id,
+        ];
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ProgramStudi  $programStudi
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ProgramStudi $programStudi)
-    {
-        //
-    }
+        $messages = [
+            'nama_prodi.required'          => 'Nama prodi wajib diisi.',
+            'nama_prodi.unique'            => 'Nama prodi sudah terdaftar.',
+        ];
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProgramStudi  $programStudi
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ProgramStudi $programStudi)
-    {
-        //
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        $simpan = ProgramStudi::find($id)->update($request->all());
+
+        if ($simpan) {
+            Session::flash('success', 'Data berhasil diubah.');
+            return redirect()->route('admin.data.program-studi');
+        } else {
+            Session::flash('errors', 'Data gagal diubah.');
+            return redirect()->route('admin.data.program-studi');
+        }
     }
 
     /**

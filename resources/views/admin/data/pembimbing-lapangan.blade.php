@@ -34,7 +34,7 @@
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
                     <i class="fas fa-plus"></i> Tambah Data
                 </button>
-                <table class="table table-striped table-bordered display nowrap" id="dataTable">
+                <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -322,7 +322,7 @@
             <div class="modal-footer">
                 <form action="{{ route('admin.data.pembimbing-lapangan.destroy', $pemb_lap->id ) }}" method="GET">
                 @csrf
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>

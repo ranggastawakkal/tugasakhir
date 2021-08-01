@@ -22,6 +22,7 @@ class SuratPengantar extends Model
         'kota_instansi',
         'kontak_instansi',
         'bidang_minat',
+        'status',
         'file',
     ];
 
@@ -33,6 +34,11 @@ class SuratPengantar extends Model
     public function getUpdatedAtAttribute()
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
+    }
+
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('d-m-Y H:i:s');
     }
 
     public function mahasiswa()

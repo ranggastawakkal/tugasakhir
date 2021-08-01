@@ -35,7 +35,7 @@
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
                     <i class="fas fa-plus"></i> Tambah Data
                 </button>
-                <table class="table table-striped table-bordered display nowrap" id="dataTable">
+                <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -76,7 +76,6 @@
                             <td scope="row">{{ $mhs->created_at->format('d-m-Y H:i:s') }}</td>
                             <td scope="row">{{ $mhs->updated_at->format('d-m-Y H:i:s') }}</td>
                             <td scope="row">
-                                {{-- <button type="button" onclick="location.href='{{ route('admin.data.pembimbing-akademik') }}'" class="btn btn-success mb-3 mx-3"> --}}
                                     <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $mhs->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr>    |  
                                     <abbr title="Edit data"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $mhs->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr>    |    
                                     <abbr title="Hapus data"><a href="" data-bs-toggle="modal" data-bs-target="#modalHapusData{{ $mhs->id }}" class="text-danger"><i class="fas fa-sm fa-trash-alt"></i></a></abbr>
@@ -354,7 +353,7 @@
             <div class="modal-footer">
                 <form action="{{ route('admin.data.mahasiswa.destroy', $mhs->id ) }}" method="GET">
                 @csrf
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>
