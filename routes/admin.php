@@ -50,7 +50,14 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
         Route::post('/store', [AdminSuratPengantarController::class, 'store'])->name('admin.surat-pengantar.store');
         Route::post('/update{id}', [AdminSuratPengantarController::class, 'update'])->name('admin.surat-pengantar.update');
         Route::get('/destroy/{id}', [AdminSuratPengantarController::class, 'destroy'])->name('admin.surat-pengantar.destroy');
+        Route::get('/get/{file}', [AdminSuratPengantarController::class, 'getFile'])->name('admin.surat-pengantar.get');
     });
-    Route::get('/template-laporan', [AdminTemplateLaporanController::class, 'index'])->name('admin.template-laporan');
+    Route::prefix('template-laporan')->group(function () {
+        Route::get('/', [AdminTemplateLaporanController::class, 'index'])->name('admin.template-laporan');
+        Route::post('/store', [AdminTemplateLaporanController::class, 'store'])->name('admin.template-laporan.store');
+        Route::post('/update{id}', [AdminTemplateLaporanController::class, 'update'])->name('admin.template-laporan.update');
+        Route::get('/destroy/{id}', [AdminTemplateLaporanController::class, 'destroy'])->name('admin.template-laporan.destroy');
+        Route::get('/get/{file}', [AdminTemplateLaporanController::class, 'getFile'])->name('admin.template-laporan.get');
+    });
     Route::get('/dokumen-kp', [AdminDokumenKPController::class, 'index'])->name('admin.dokumen-kp');
 });

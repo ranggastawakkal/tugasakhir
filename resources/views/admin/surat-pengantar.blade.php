@@ -2,7 +2,6 @@
 @section('title','Surat Pengantar')
 
 @section('main-content')
-<h1 class="h3 mb-4 text-gray-800">Surat Pengantar</h1>
 <div class="row">
     <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
@@ -11,25 +10,23 @@
             </div>
             <div class="card-body">
                 @if ($message = Session::get('success'))
-                    <div class="alert alert-success text-center">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <p>{{ $message }}</p>
-                    </div>
+                <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <p>{{ $message }}</p>
+                </div>
                 @endif
-                @if(session('errors'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Ada kesalahan:
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                @if(session()->has('errors'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Ada kesalahan:
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <ul>
+                        {{session('errors')}}
+                    </ul>
+                </div>
                 @endif
                 <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
                     <thead class="text-center">
@@ -54,7 +51,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php 
+                        @php
                         $i = 1;
                         @endphp
                         @foreach ($surat_pengantar as $sp)
@@ -74,17 +71,22 @@
                             <td scope="row">{{ $sp->created_at }}</td>
                             <td scope="row">{{ $sp->updated_at }}</td>
                             @if ($sp->status === "Diterima")
-                                <td class="text-success font-weight-bold" scope="row">{{ $sp->status }}</td>
+                            <td class="text-success font-weight-bold" scope="row">{{ $sp->status }}</td>
                             @else
-                                <td class="text-danger font-weight-bold" scope="row">{{ $sp->status }}</td>
+                            <td class="text-danger font-weight-bold" scope="row">{{ $sp->status }}</td>
                             @endif
-                            <td scope="row">{{ $sp->file }}</td>
+                            @if ($sp->file === "-")
+                            <td scope="row">{{ Str::limit($sp->file, 50) }}</td>
+                            @else
+                            <td scope="row"><a href="{{ route('admin.surat-pengantar.get',$sp->file) }}">{{ Str::limit($sp->file, 50) }}</a></td>
+                            @endif
+
                             <td scope="row">
-                                    <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $sp->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr>    |  
-                                    <abbr title="Hapus data"><a href="" data-bs-toggle="modal" data-bs-target="#modalHapusData{{ $sp->id }}" class="text-danger"><i class="fas fa-sm fa-trash-alt"></i></a></abbr>
+                                <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $sp->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr> |
+                                <abbr title="Hapus data"><a href="" data-bs-toggle="modal" data-bs-target="#modalHapusData{{ $sp->id }}" class="text-danger"><i class="fas fa-sm fa-trash-alt"></i></a></abbr>
                             </td>
                         </tr>
-                        @php 
+                        @php
                         $i++;
                         @endphp
                         @endforeach
@@ -97,7 +99,7 @@
 
 {{-- modal tampil data --}}
 @foreach ($surat_pengantar as $sp)
-    
+
 <div class="modal fade" id="modalTampilData{{ $sp->id }}" tabindex="-1" aria-labelledby="modalTampilDataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -164,14 +166,26 @@
                     </div>
                     <div class="mb-3">
                         <label for="status" class="col-form-label">Status:</label>
-                        <select class="form-control" name="status" id="status">
+                        @if ($sp->status === "Diterima")
+                            <input type="text" class="text-success font-weight-bold form-control" value="{{ $sp->status }}" disabled>
+                        @else
+                            <input type="text" class="text-danger font-weight-bold form-control" value="{{ $sp->status }}" disabled>
+                        @endif
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">File Surat Pengantar:</label><br>
+                        <textarea class="form-control" disabled>{{ $sp->file }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="col-form-label">Ubah Status:</label>
+                        <select class="form-control" name="status" id="status" required>
                             <option value="" selected disabled>--- Pilih ---</option>
                             <option class="text-success font-weight-bold" value="Diterima">Diterima</option>
                             <option class="text-danger font-weight-bold" value="Ditolak">Ditolak</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="file" class="col-form-label">File Surat Pengantar:</label>
+                        <label for="file" class="col-form-label">Ubah File Surat Pengantar:</label>
                         <input type="file" class="form-control-file" id="file" name="file" accept="application/pdf">
                     </div>
             </div>
@@ -179,7 +193,7 @@
                 <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                 <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Save</button>
             </div>
-                </form>
+            </form>
         </div>
     </div>
 </div>
@@ -208,8 +222,8 @@
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.surat-pengantar.destroy', $sp->id ) }}" method="GET">
-                @csrf
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    @csrf
+                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>

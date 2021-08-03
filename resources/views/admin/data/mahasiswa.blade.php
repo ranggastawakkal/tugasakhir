@@ -2,7 +2,6 @@
 @section('title','Data Mahasiswa')
 
 @section('main-content')
-<h1 class="h3 mb-4 text-gray-800">Data Mahasiswa</h1>
 
 <div class="row">
     <div class="col-xl-12 col-lg-12">
@@ -12,25 +11,25 @@
             </div>
             <div class="card-body">
                 @if ($message = Session::get('success'))
-                    <div class="alert alert-success text-center">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <p>{{ $message }}</p>
-                    </div>
+                <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <p>{{ $message }}</p>
+                </div>
                 @endif
                 @if(session('errors'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Ada kesalahan:
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Ada kesalahan:
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endif
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
                     <i class="fas fa-plus"></i> Tambah Data
@@ -76,9 +75,9 @@
                             <td scope="row">{{ $mhs->created_at->format('d-m-Y H:i:s') }}</td>
                             <td scope="row">{{ $mhs->updated_at->format('d-m-Y H:i:s') }}</td>
                             <td scope="row">
-                                    <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $mhs->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr>    |  
-                                    <abbr title="Edit data"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $mhs->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr>    |    
-                                    <abbr title="Hapus data"><a href="" data-bs-toggle="modal" data-bs-target="#modalHapusData{{ $mhs->id }}" class="text-danger"><i class="fas fa-sm fa-trash-alt"></i></a></abbr>
+                                <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $mhs->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr> |
+                                <abbr title="Edit data"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $mhs->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr> |
+                                <abbr title="Hapus data"><a href="" data-bs-toggle="modal" data-bs-target="#modalHapusData{{ $mhs->id }}" class="text-danger"><i class="fas fa-sm fa-trash-alt"></i></a></abbr>
                             </td>
                         </tr>
                         @php
@@ -94,7 +93,7 @@
 
 {{-- modal tampil data --}}
 @foreach ($mahasiswa as $mhs)
-    
+
 <div class="modal fade" id="modalTampilData{{ $mhs->id }}" tabindex="-1" aria-labelledby="modalTampilDataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -144,7 +143,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tempat_lahir" class="col-form-label"">Tempat Lahir:</label>
-                        <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="{{ $mhs->tempat_lahir }}" disabled>
+                        <input type=" text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="{{ $mhs->tempat_lahir }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="tanggal_lahir" class="col-form-label">Tanggal Lahir:</label>
@@ -162,7 +161,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
             </div>
-                </form>
+            </form>
         </div>
     </div>
 </div>
@@ -180,7 +179,7 @@
             </div>
             <div class="modal-body">
                 <form method="POST" action="{{ route('admin.data.mahasiswa.store') }}">
-                @csrf
+                    @csrf
                     <div class="mb-3">
                         <label for="nim" class="col-form-label">NIM:</label>
                         <input type="text" class="form-control" id="nim" name="nim" required>
@@ -194,7 +193,7 @@
                         <select class="form-control" name="id_kelas" id="id_kelas" required>
                             <option selected disabled>--- Pilih ---</option>
                             @foreach ($kelas as $kls)
-                                <option value="{{ $kls->id }}">{{ $kls->nama_kelas }}</option>
+                            <option value="{{ $kls->id }}">{{ $kls->nama_kelas }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -203,7 +202,7 @@
                         <select class="form-control" name="id_peminatan" id="id_peminatan" required>
                             <option selected disabled>--- Pilih ---</option>
                             @foreach ($peminatan as $minat)
-                                <option value="{{ $minat->id }}">{{ $minat->nama }}</option>
+                            <option value="{{ $minat->id }}">{{ $minat->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -241,14 +240,14 @@
                 <button type="reset" class="btn btn-warning">Reset</button>
                 <button type="submit" class="btn btn-success">Save</button>
             </div>
-                </form>
+            </form>
         </div>
     </div>
 </div>
 
 {{-- modal edit data --}}
 @foreach ($mahasiswa as $mhs)
-    
+
 <div class="modal fade" id="modalEditData{{ $mhs->id }}" tabindex="-1" aria-labelledby="modalEditDataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -260,7 +259,7 @@
             </div>
             <div class="modal-body">
                 <form method="POST" action="{{ route('admin.data.mahasiswa.update', $mhs->id) }}">
-                @csrf
+                    @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $mhs->id }}" required>
                     <div class="mb-3">
                         <label for="nim" class="col-form-label">NIM:</label>
@@ -276,7 +275,7 @@
                             <option disabled>--- Pilih ---</option>
                             <option value="{{ $mhs->kelas->id }}" selected hidden>{{ $mhs->kelas->nama_kelas }}</option>
                             @foreach ($kelas as $kls)
-                                <option value="{{ $kls->id }}">{{ $kls->nama_kelas }}</option>
+                            <option value="{{ $kls->id }}">{{ $kls->nama_kelas }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -286,7 +285,7 @@
                             <option selected disabled>--- Pilih ---</option>
                             <option value="{{ $mhs->peminatan->id }}" selected hidden>{{ $mhs->peminatan->nama }}</option>
                             @foreach ($peminatan as $minat)
-                                <option value="{{ $minat->id }}">{{ $minat->nama }}</option>
+                            <option value="{{ $minat->id }}">{{ $minat->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -313,7 +312,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tempat_lahir" class="col-form-label"">Tempat Lahir:</label>
-                        <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="{{ $mhs->tempat_lahir }}" required>
+                        <input type=" text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="{{ $mhs->tempat_lahir }}" required>
                     </div>
                     <div class="mb-3">
                         <label for="tanggal_lahir" class="col-form-label">Tanggal Lahir:</label>
@@ -325,7 +324,7 @@
                 <button type="reset" class="btn btn-warning">Reset</button>
                 <button type="submit" class="btn btn-success">Save</button>
             </div>
-                </form>
+            </form>
         </div>
     </div>
 </div>
@@ -352,7 +351,7 @@
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.data.mahasiswa.destroy', $mhs->id ) }}" method="GET">
-                @csrf
+                    @csrf
                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
