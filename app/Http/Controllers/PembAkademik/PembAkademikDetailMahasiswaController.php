@@ -28,12 +28,6 @@ class PembAkademikDetailMahasiswaController extends Controller
             ->where('kerja_praktek.nip_pemb_akd', '=', $nip)
             ->get();
 
-        $detailmahasiswakp = DB::table('mahasiswa')
-            ->join('kerja_praktek', 'mahasiswa.nim', '=', 'kerja_praktek.nim')
-            ->join('kelas', 'mahasiswa.id_kelas', '=', 'kelas.id')
-            ->select('mahasiswa.*', 'kerja_praktek.*', 'kelas.*')
-            ->get();
-
         return view('pembimbing-akademik/detail-mahasiswa', compact('mahasiswa', 'mahasiswakp', 'detailmahasiswakp'));
     }
 }

@@ -4,27 +4,54 @@
 @section('main-content')
     <h1 class="h3 mb-4 text-gray-800">Data Mahasiswa</h1>
     <div class="row">
-        <div class="col-xl-12 col-lg-12">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-success">Data Mahasiswa</h6>
-                </div>
-            <div class=" card-columns">
+        <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
+            <thead class="text-center">
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">NIM</th>
+                    <th scope="col">Nama</th>
+                    <th scope="col">Program Studi</th>
+                    <th scope="col">Kelas</th>
+                    <th scope="col">Peminatan</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">No. Telepon</th>
+                    <th scope="col">Alamat</th>
+                    <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">TTL</th>
+                    <th scope="col">Dibuat</th>
+                    <th scope="col">Diperbarui</th>
+                    <th scope="col">Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php
+                $i = 1;
+                @endphp
                 @foreach ($mahasiswakp as $mkp)
-                <div class="card-body">
-                    <div class="card" style="width: 12rem; ">
-                        <img src="{{ asset('img/'.$mkp->image) }}" class="card-img-top" width="100%" height="100%" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">{{ $mkp->nama }}</h5>
-                          <p class="card-text">{{ $mkp->nama_kelas }}</p>
-                          <a href="{{ route('pembimbing-akademik.data-mahasiswa.detail-mahasiswa', $mkp->nim) }}" class="btn btn-primary" id=" {{ $mkp->nim }}">Detail Mahasiswa</a>
-                        </div>
-                      </div>
-                </div>
+                <tr>
+                    <td scope="row" class="text-center">{{ $i }}</td>
+                    <td scope="row">{{ $mkp->nim }}</td>
+                    <td scope="row">{{ $mkp->nama }}</td>
+                    <td scope="row">{{ $mkp->kelas->prodi->nama_prodi }}</td>
+                    <td scope="row">{{ $mkp->kelas->nama_kelas }}</td>
+                    <td scope="row">{{ $mkp->peminatan->nama }}</td>
+                    <td scope="row">{{ $mkp->email }}</td>
+                    <td scope="row">{{ $mkp->no_telepon }}</td>
+                    <td scope="row">{{ Str::limit($mkp->alamat,50) }}</td>
+                    <td scope="row">{{ $mkp->jenis_kelamin }}</td>
+                    <td scope="row">{{ $mkp->tempat_lahir }}, {{ $mkp->tanggal_lahir }}</td>
+                    <td scope="row">{{ $mkp->created_at->format('d-m-Y H:i:s') }}</td>
+                    <td scope="row">{{ $mkp->updated_at->format('d-m-Y H:i:s') }}</td>
+                    <td scope="row">
+                            <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $mhs->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr> 
+                    </td>
+                </tr>
+                @php
+                $i++;
+                @endphp
                 @endforeach
-
-            </div>
-            </div>
-        </div>
+            </tbody>
+        </table>
     </div>
 @endsection
