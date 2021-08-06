@@ -23,8 +23,8 @@ class CreateSuratPengantarsTable extends Migration
             $table->string('kota_instansi');
             $table->string('kontak_instansi');
             $table->string('bidang_minat');
-            $table->string('status')->nullable();
-            $table->string('file')->nullable();
+            $table->string('status')->default('-');
+            $table->string('file')->default('-');
             $table->timestamps();
 
             $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa')->onUpdate('cascade')->onDelete('cascade');

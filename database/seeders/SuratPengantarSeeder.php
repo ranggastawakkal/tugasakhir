@@ -24,8 +24,6 @@ class SuratPengantarSeeder extends Seeder
                 'kota_instansi' => 'Bandung',
                 'kontak_instansi' => '8712674',
                 'bidang_minat' => 'Enterprise Intelligent System Development',
-                'status' => '',
-                'file' => '',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

@@ -67,18 +67,20 @@
                             <td scope="row">{{ $sp->alamat_instansi }}</td>
                             <td scope="row">{{ $sp->kota_instansi }}</td>
                             <td scope="row">{{ $sp->kontak_instansi }}</td>
-                            <td scope="row">{{ $sp->bidang_minat }}</td>
+                            <td scope="row">{{ $sp->mahasiswa->peminatan->nama }}</td>
                             <td scope="row">{{ $sp->created_at }}</td>
                             <td scope="row">{{ $sp->updated_at }}</td>
                             @if ($sp->status === "Diterima")
-                            <td class="text-success font-weight-bold" scope="row">{{ $sp->status }}</td>
+                                <td class="text-success font-weight-bold" scope="row">{{ $sp->status }}</td>
+                            @elseif($sp->status === "Ditolak")
+                                <td class="text-danger font-weight-bold" scope="row">{{ $sp->status }}</td>
                             @else
-                            <td class="text-danger font-weight-bold" scope="row">{{ $sp->status }}</td>
+                                <td scope="row">{{ $sp->file }}</td>
                             @endif
                             @if ($sp->file === "-")
-                            <td scope="row">{{ Str::limit($sp->file, 50) }}</td>
+                                <td scope="row">{{ $sp->file }}</td>
                             @else
-                            <td scope="row"><a href="{{ route('admin.surat-pengantar.get',$sp->file) }}">{{ Str::limit($sp->file, 50) }}</a></td>
+                                <td scope="row"><a href="{{ route('admin.surat-pengantar.get',$sp->file) }}">{{ Str::limit($sp->file, 50) }}</a></td>
                             @endif
 
                             <td scope="row">

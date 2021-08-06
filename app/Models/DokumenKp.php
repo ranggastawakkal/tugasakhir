@@ -6,26 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
-class ProgramStudi extends Model
+class DokumenKp extends Model
 {
     use HasFactory;
-    protected $table = "program_studi";
+
+    protected $table = "dokumen_kp";
     protected $primaryKey = "id";
     protected $fillable = [
-        'nama_prodi',
+        'nama',
+        'deskripsi',
+        'file',
     ];
 
-    public function kelas()
+    public function getUpdatedAtAttribute()
     {
-        return $this->belongsTo(Kelas::class, 'id', 'id_prodi');
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
     }
 
     public function getCreatedAtAttribute()
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('d-m-Y H:i:s');
-    }
-
-    public function getUpdatedAtAttribute()
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('d-m-Y H:i:s');
     }

@@ -7,8 +7,8 @@ use App\Http\Controllers\Admin\AdminPembimbingAkademikController;
 use App\Http\Controllers\Admin\AdminPembimbingLapanganController;
 use App\Http\Controllers\Admin\AdminProgramStudiController;
 use App\Http\Controllers\Admin\AdminSuratPengantarController;
-use App\Http\Controllers\Admin\AdminTemplateLaporanController;
-use App\Http\Controllers\Admin\AdminDokumenKPController;
+use App\Http\Controllers\Admin\AdminDokumenKpController;
+use App\Http\Controllers\Admin\AdminDokumenMahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
@@ -52,12 +52,15 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
         Route::get('/destroy/{id}', [AdminSuratPengantarController::class, 'destroy'])->name('admin.surat-pengantar.destroy');
         Route::get('/get/{file}', [AdminSuratPengantarController::class, 'getFile'])->name('admin.surat-pengantar.get');
     });
-    Route::prefix('template-laporan')->group(function () {
-        Route::get('/', [AdminTemplateLaporanController::class, 'index'])->name('admin.template-laporan');
-        Route::post('/store', [AdminTemplateLaporanController::class, 'store'])->name('admin.template-laporan.store');
-        Route::post('/update{id}', [AdminTemplateLaporanController::class, 'update'])->name('admin.template-laporan.update');
-        Route::get('/destroy/{id}', [AdminTemplateLaporanController::class, 'destroy'])->name('admin.template-laporan.destroy');
-        Route::get('/get/{file}', [AdminTemplateLaporanController::class, 'getFile'])->name('admin.template-laporan.get');
+    Route::prefix('dokumen-kp')->group(function () {
+        Route::get('/', [AdminDokumenKpController::class, 'index'])->name('admin.dokumen-kp');
+        Route::post('/store', [AdminDokumenKpController::class, 'store'])->name('admin.dokumen-kp.store');
+        Route::post('/update{id}', [AdminDokumenKpController::class, 'update'])->name('admin.dokumen-kp.update');
+        Route::get('/destroy/{id}', [AdminDokumenKpController::class, 'destroy'])->name('admin.dokumen-kp.destroy');
+        Route::get('/get/{file}', [AdminDokumenKpController::class, 'getFile'])->name('admin.dokumen-kp.get');
     });
-    Route::get('/dokumen-kp', [AdminDokumenKPController::class, 'index'])->name('admin.dokumen-kp');
+    Route::prefix('dokumen-mahasiswa')->group(function () {
+        Route::get('/', [AdminDokumenMahasiswaController::class, 'index'])->name('admin.dokumen-mahasiswa');
+        Route::get('/get/{file}', [AdminDokumenMahasiswaController::class, 'getFile'])->name('admin.dokumen-mahasiswa.get');
+    });
 });

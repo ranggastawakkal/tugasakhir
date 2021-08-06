@@ -27,7 +27,7 @@ class AdminSuratPengantarController extends Controller
 
     public function getFile(Request $request)
     {
-        if (Storage::disk('public')->exists("surat-pengantar/$request->file")); {
+        if (Storage::disk('public')->exists("surat-pengantar/$request->file")) {
             $path = Storage::disk('public')->path("surat-pengantar/$request->file");
             $content = file_get_contents($path);
             return response($content)->withHeaders([

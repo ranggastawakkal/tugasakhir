@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDokumensTable extends Migration
+class CreateDokumenMahasiswasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateDokumensTable extends Migration
      */
     public function up()
     {
-        Schema::create('dokumen', function (Blueprint $table) {
+        Schema::create('dokumen_mahasiswa', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_mahasiswa')->unique();
-            $table->string('surat_diterima')->nullable();
-            $table->string('laporan')->nullable();
-            $table->string('surat_selesai')->nullable();
-            $table->string('krs')->nullable();
+            $table->string('surat_diterima')->default('-');
+            $table->string('laporan')->default('-');
+            $table->string('surat_selesai')->default('-');
+            $table->string('krs')->default('-');
             $table->timestamps();
 
             $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa')->onUpdate('cascade')->onDelete('cascade');
@@ -33,6 +33,6 @@ class CreateDokumensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dokumen');
+        Schema::dropIfExists('dokumen_mahasiswa');
     }
 }

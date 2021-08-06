@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class DokumenSeeder extends Seeder
+class DokumenMahasiswaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,18 +14,18 @@ class DokumenSeeder extends Seeder
      */
     public function run()
     {
-        $dokumen = [
+        $dokumen_mahasiswa = [
             [
                 'id_mahasiswa' => 2,
-                'surat_diterima' => 'default.jpg',
-                'laporan' => 'default.jpg',
-                'surat_selesai' => 'default.jpg',
-                'krs' => 'default.jpg',
+                'surat_diterima' => 'Curriculum Vitae_.pdf',
+                'laporan' => 'Developing_Web_Applications.pdf',
+                'surat_selesai' => 'CV-Rangga.pdf',
+                'krs' => 'KUIS MANLAY.pdf',
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
         ];
 
-        DB::table('dokumen')->insert($dokumen);
+        DB::table('dokumen_mahasiswa')->insert($dokumen_mahasiswa);
     }
 }

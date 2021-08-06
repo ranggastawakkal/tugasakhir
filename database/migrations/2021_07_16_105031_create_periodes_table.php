@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTemplateLaporansTable extends Migration
+class CreatePeriodesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateTemplateLaporansTable extends Migration
      */
     public function up()
     {
-        Schema::create('template_laporan', function (Blueprint $table) {
+        Schema::create('periode', function (Blueprint $table) {
             $table->id();
-            $table->string('file');
+            $table->enum('semester', ['GANJIL', 'GENAP']);
+            $table->string('tahun_ajaran');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateTemplateLaporansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('template_laporan');
+        Schema::dropIfExists('periode');
     }
 }

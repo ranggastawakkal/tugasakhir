@@ -47,4 +47,9 @@ class PembimbingAkademik extends Authenticatable
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
     }
+
+    public function kerjaPraktek()
+    {
+        return $this->belongsTo(KerjaPraktek::class, 'id_pemb_akd', 'id');
+    }
 }

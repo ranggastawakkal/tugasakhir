@@ -6,14 +6,19 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
-class TemplateLaporan extends Model
+class DokumenMahasiswa extends Model
 {
     use HasFactory;
 
-    protected $table = "template_laporan";
+    protected $table = "dokumen_mahasiswa";
     protected $primaryKey = "id";
+    protected $foreignKey = "id_mahasiswa";
     protected $fillable = [
-        'file',
+        'id_mahasiswa',
+        'surat_diterima',
+        'laporan',
+        'surat_selesai',
+        'krs',
     ];
 
     public function getUpdatedAtAttribute()
@@ -24,5 +29,10 @@ class TemplateLaporan extends Model
     public function getCreatedAtAttribute()
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('d-m-Y H:i:s');
+    }
+
+    public function mahasiswa()
+    {
+        return $this->hasOne(Mahasiswa::class, 'id', 'id_mahasiswa');
     }
 }

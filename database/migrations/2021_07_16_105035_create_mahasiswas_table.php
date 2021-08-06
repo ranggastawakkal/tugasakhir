@@ -19,6 +19,7 @@ class CreateMahasiswasTable extends Migration
             $table->string('nama');
             $table->unsignedBigInteger('id_kelas');
             $table->unsignedBigInteger('id_peminatan');
+            $table->unsignedBigInteger('id_periode');
             $table->string('email')->unique();
             $table->string('no_telepon');
             $table->string('alamat');
@@ -30,6 +31,7 @@ class CreateMahasiswasTable extends Migration
 
             $table->foreign('id_kelas')->references('id')->on('kelas')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id_peminatan')->references('id')->on('peminatan')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_periode')->references('id')->on('periode')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

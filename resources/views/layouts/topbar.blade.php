@@ -2,7 +2,7 @@
 
     <!-- Sidebar Toggle (Topbar) -->
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-        <i class="fa fa-bars succe"></i>
+        <i class="fa fa-bars success"></i>
     </button>
 
     <!-- Topbar Navbar -->
@@ -15,7 +15,9 @@
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                     <strong>
-                    @if (Str::length(Auth::guard('admin')->user()) > 0)
+                    {{ Auth::user()->nama }}
+
+                    {{-- @if (Str::length(Auth::guard('admin')->user()) > 0)
                         {{ Auth::guard('admin')->user()->nama }}
                     @elseif (Str::length(Auth::guard('mahasiswa')->user()) > 0)
                         {{ Auth::guard('mahasiswa')->user()->nama }}
@@ -23,7 +25,7 @@
                         {{ Auth::guard('pembimbing-akademik')->user()->nama }}
                     @elseif (Str::length(Auth::guard('pembimbing-lapangan')->user()) > 0)
                         {{ Auth::guard('pembimbing-lapangan')->user()->nama }}
-                    @endif
+                    @endif --}}
                     </strong>
                 </span>
                 <i class="fas fa-user fa-fw mb-1"></i>

@@ -72,8 +72,8 @@
                             <td scope="row">{{ Str::limit($mhs->alamat,50) }}</td>
                             <td scope="row">{{ $mhs->jenis_kelamin }}</td>
                             <td scope="row">{{ $mhs->tempat_lahir }}, {{ $mhs->tanggal_lahir }}</td>
-                            <td scope="row">{{ $mhs->created_at->format('d-m-Y H:i:s') }}</td>
-                            <td scope="row">{{ $mhs->updated_at->format('d-m-Y H:i:s') }}</td>
+                            <td scope="row">{{ $mhs->created_at }}</td>
+                            <td scope="row">{{ $mhs->updated_at }}</td>
                             <td scope="row">
                                 <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $mhs->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr> |
                                 <abbr title="Edit data"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $mhs->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr> |

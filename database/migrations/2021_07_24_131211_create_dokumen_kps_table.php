@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateClosTable extends Migration
+class CreateDokumenKpsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateClosTable extends Migration
      */
     public function up()
     {
-        Schema::create('clo', function (Blueprint $table) {
+        Schema::create('dokumen_kp', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_clo');
-            $table->string('deskripsi');
-            $table->unsignedBigInteger('id_plo');
+            $table->string('nama');
+            $table->text('deskripsi');
+            $table->string('file');
             $table->timestamps();
-
-            $table->foreign('id_plo')->references('id')->on('plo')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -31,6 +29,6 @@ class CreateClosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('clo');
+        Schema::dropIfExists('dokumen_kp');
     }
 }
