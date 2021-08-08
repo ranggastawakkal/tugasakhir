@@ -2,7 +2,7 @@
 @section('title','Dashboard')
 
 @section('main-content')
-<h1 class="h3 mb-2 text-gray-800">Dokumen Upload</h1>
+<h1 class="h3 mb-2 text-gray-800">Upload Dokumen</h1>
 
     <div class="row">
 

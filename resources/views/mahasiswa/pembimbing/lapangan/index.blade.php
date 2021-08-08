@@ -85,15 +85,3 @@
     @endif
 @endsection
 
-<script>
-    $('#selectLapangan').on('change', function() {
-        var dosen = $('#selectLapangan').val();
-        console.log('change');
-        if (dosen == -1) {
-            $('#btnSave').prop('disabled', true);
-        } else {
-            $('#btnSave').prop('disabled', false);
-        }
-    });​
-    
-</script>

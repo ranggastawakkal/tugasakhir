@@ -15,6 +15,6 @@ class KerjaPraktekDokumenController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.kerja-praktek.dokumen.index');
+        return view('mahasiswa.kerja-praktek.dokumen-kp.index');
     }
 }

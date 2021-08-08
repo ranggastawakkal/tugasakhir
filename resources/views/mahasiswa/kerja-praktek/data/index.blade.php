@@ -36,12 +36,12 @@
                 <table class="table table-borderless" width="100%" cellspacing="0">
                     <tbody>
                         <tr>
-                            <td style="width: 20%;">NIP Pembimbing Akademik</td>
-                            <td style="width: 80%;">{{ $dataKerjaPraktek->pembAkd->nip }}</td>
+                            <td style="width: 20%;">Nama Pembimbing Akademik</td>
+                            <td style="width: 80%;">{{ $dataKerjaPraktek->pembAkd->nama }}</td>
                         </tr>
                         <tr>
-                            <td>NIP Pembimbing Lapangan</td>
-                            <td>{{ $dataKerjaPraktek->pembLap->nip }}</td>
+                            <td>Nama Pembimbing Lapangan</td>
+                            <td>{{ $dataKerjaPraktek->pembLap->nama }}</td>
                         </tr>
                         <tr>
                             <td>Perusahaan</td>

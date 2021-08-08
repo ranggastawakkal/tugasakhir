@@ -4,6 +4,7 @@ use App\Http\Controllers\Mahasiswa\BuatPengajuanController;
 use App\Http\Controllers\Mahasiswa\DaftarPengajuanController;
 use App\Http\Controllers\Mahasiswa\DashboardController;
 use App\Http\Controllers\Mahasiswa\DokumenController;
+use App\Http\Controllers\Mahasiswa\DokumenMahasiswaController;
 use App\Http\Controllers\Mahasiswa\KerjaPraktekDataController;
 use App\Http\Controllers\Mahasiswa\KerjaPraktekDokumenController;
 use App\Http\Controllers\Mahasiswa\LogActivityController;
@@ -40,12 +41,17 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
 
     Route::group(['prefix' => 'kerja-praktek'], function () {
         Route::get('/data', [KerjaPraktekDataController::class, 'index'])->name('mahasiswa.kerja-praktek.data.index');
-        Route::get('/dokumen', [KerjaPraktekDokumenController::class, 'index'])->name('mahasiswa.kerja-praktek.dokumen.index');
+        Route::get('/dokumen-kp', [KerjaPraktekDokumenController::class, 'index'])->name('mahasiswa.kerja-praktek.dokumen-kp.index');
         Route::get('/data/create', [KerjaPraktekDataController::class, 'create'])->name('mahasiswa.kerja-praktek.data.create');
         Route::post('/data/store', [KerjaPraktekDataController::class, 'store'])->name('mahasiswa.kerja-praktek.data.store');
     });
     
-    Route::get('/template-laporan', [TemplateLaporanController::class, 'index'])->name('mahasiswa.template-laporan.index');
-    Route::get('/log', [LogActivityController::class, 'index'])->name('mahasiswa.log-activity.index');
+    Route::group(['prefix' => 'log'], function () {
+        Route::get('/', [LogActivityController::class, 'index'])->name('mahasiswa.log-activity.index');
+        Route::post('/store', [LogActivityController::class, 'store'])->name('mahasiswa.log-activity.store');
+        Route::post('/update', [LogActivityController::class, 'update'])->name('mahasiswa.log-activity.update');
+    });
+
+    Route::get('/dokumen-mahasiswa', [DokumenMahasiswaController::class, 'index'])->name('mahasiswa.template-laporan.index');
 });
 

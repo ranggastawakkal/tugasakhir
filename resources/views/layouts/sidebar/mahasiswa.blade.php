@@ -48,7 +48,7 @@
         <div id="collapseKerjaPraktek" class="collapse mt-2" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('mahasiswa.kerja-praktek.data.index') }}">Data Kerja Praktek</a>
-                <a class="collapse-item" href="{{ route('mahasiswa.kerja-praktek.dokumen.index') }}">Dokumen</a>
+                <a class="collapse-item" href="{{ route('mahasiswa.kerja-praktek.dokumen-kp.index') }}">Dokumen KP</a>
             </div>
         </div>
     </li>
@@ -56,10 +56,10 @@
  
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item {{ (request()->is("mahasiswa/template-laporan")) ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->is("mahasiswa/dokumen-mahasiswa")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('mahasiswa.template-laporan.index') }}">
             <i class="fas fa-fw fa-envelope-open-text"></i>
-            <span>Template Laporan</span></a>
+            <span>Dokumen Mahasiswa</span></a>
     </li>
 
 
