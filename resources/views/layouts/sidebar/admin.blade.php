@@ -38,16 +38,16 @@
         <span>Surat Pengantar</span></a>
 </li>
 
-<li class="nav-item {{ (request()->is("admin/template-laporan")) ? 'active' : '' }}">
-    <a class="nav-link pb-0" href="{{ route('admin.template-laporan') }}">
-        <i class="fas fa-fw fa-envelope-open-text"></i>
-        <span>Template Laporan</span></a>
-</li>
-
 <li class="nav-item {{ (request()->is("admin/dokumen-kp")) ? 'active' : '' }}">
     <a class="nav-link pb-0" href="{{ route('admin.dokumen-kp') }}">
         <i class="fas fa-fw fa-envelope-open-text"></i>
         <span>Dokumen KP</span></a>
+</li>
+
+<li class="nav-item {{ (request()->is("admin/dokumen-mahasiswa")) ? 'active' : '' }}">
+    <a class="nav-link pb-0" href="{{ route('admin.dokumen-mahasiswa') }}">
+        <i class="fas fa-fw fa-envelope-open-text"></i>
+        <span>Dokumen Mahasiswa</span></a>
 </li>
 
 <!-- Divider -->

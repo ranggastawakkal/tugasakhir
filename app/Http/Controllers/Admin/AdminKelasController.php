@@ -66,38 +66,34 @@ class AdminKelasController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Kelas  $kelas
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Kelas $kelas)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $rules = [
+            'nama_kelas'            => 'required|unique:kelas,nama_kelas,' . $request->id,
+            'id_prodi'              => 'required',
+        ];
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Kelas  $kelas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Kelas $kelas)
-    {
-        //
-    }
+        $messages = [
+            'nama_kelas.required'          => 'Nama kelas wajib diisi.',
+            'nama_kelas.unique'            => 'Nama kelas sudah terdaftar.',
+            'id_prodi.required'            => 'Program studi wajib diisi.',
+        ];
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kelas  $kelas
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Kelas $kelas)
-    {
-        //
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        $simpan = Kelas::find($id)->update($request->all());
+
+        if ($simpan) {
+            Session::flash('success', 'Data berhasil diubah.');
+            return redirect()->route('admin.data.kelas');
+        } else {
+            Session::flash('errors', 'Data gagal diubah.');
+            return redirect()->route('admin.data.kelas');
+        }
     }
 
     /**

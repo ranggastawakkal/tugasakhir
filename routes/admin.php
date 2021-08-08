@@ -7,8 +7,8 @@ use App\Http\Controllers\Admin\AdminPembimbingAkademikController;
 use App\Http\Controllers\Admin\AdminPembimbingLapanganController;
 use App\Http\Controllers\Admin\AdminProgramStudiController;
 use App\Http\Controllers\Admin\AdminSuratPengantarController;
-use App\Http\Controllers\Admin\AdminTemplateLaporanController;
-use App\Http\Controllers\Admin\AdminDokumenKPController;
+use App\Http\Controllers\Admin\AdminDokumenKpController;
+use App\Http\Controllers\Admin\AdminDokumenMahasiswaController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
@@ -50,7 +50,17 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
         Route::post('/store', [AdminSuratPengantarController::class, 'store'])->name('admin.surat-pengantar.store');
         Route::post('/update{id}', [AdminSuratPengantarController::class, 'update'])->name('admin.surat-pengantar.update');
         Route::get('/destroy/{id}', [AdminSuratPengantarController::class, 'destroy'])->name('admin.surat-pengantar.destroy');
+        Route::get('/get/{file}', [AdminSuratPengantarController::class, 'getFile'])->name('admin.surat-pengantar.get');
     });
-    Route::get('/template-laporan', [AdminTemplateLaporanController::class, 'index'])->name('admin.template-laporan');
-    Route::get('/dokumen-kp', [AdminDokumenKPController::class, 'index'])->name('admin.dokumen-kp');
+    Route::prefix('dokumen-kp')->group(function () {
+        Route::get('/', [AdminDokumenKpController::class, 'index'])->name('admin.dokumen-kp');
+        Route::post('/store', [AdminDokumenKpController::class, 'store'])->name('admin.dokumen-kp.store');
+        Route::post('/update{id}', [AdminDokumenKpController::class, 'update'])->name('admin.dokumen-kp.update');
+        Route::get('/destroy/{id}', [AdminDokumenKpController::class, 'destroy'])->name('admin.dokumen-kp.destroy');
+        Route::get('/get/{file}', [AdminDokumenKpController::class, 'getFile'])->name('admin.dokumen-kp.get');
+    });
+    Route::prefix('dokumen-mahasiswa')->group(function () {
+        Route::get('/', [AdminDokumenMahasiswaController::class, 'index'])->name('admin.dokumen-mahasiswa');
+        Route::get('/get/{file}', [AdminDokumenMahasiswaController::class, 'getFile'])->name('admin.dokumen-mahasiswa.get');
+    });
 });

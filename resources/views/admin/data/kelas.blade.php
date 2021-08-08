@@ -2,8 +2,7 @@
 @section('title','Data Kelas')
 
 @section('main-content')
-    <h1 class="h3 mb-4 text-gray-800">Data Kelas</h1>
-    <div class="row">
+<div class="row">
     <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -11,25 +10,25 @@
             </div>
             <div class="card-body">
                 @if ($message = Session::get('success'))
-                    <div class="alert alert-success text-center">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <p>{{ $message }}</p>
-                    </div>
+                <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <p>{{ $message }}</p>
+                </div>
                 @endif
                 @if(session('errors'))
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        Ada kesalahan:
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Ada kesalahan:
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endif
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
                     <i class="fas fa-plus"></i> Tambah Data
@@ -47,7 +46,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @php 
+                        @php
                         $i = 1;
                         @endphp
                         @foreach ($kelas as $kls)
@@ -59,12 +58,12 @@
                             <td scope="row">{{ $kls->created_at }}</td>
                             <td scope="row">{{ $kls->updated_at }}</td>
                             <td scope="row">
-                                <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $kls->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr>    |  
-                                <abbr title="Edit data"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $kls->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr>  |  
+                                <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $kls->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr> |
+                                <abbr title="Edit data"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $kls->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr> |
                                 <abbr title="Hapus data"><a href="" data-bs-toggle="modal" data-bs-target="#modalHapusData{{ $kls->id }}" class="text-danger"><i class="fas fa-sm fa-trash-alt"></i></a></abbr>
                             </td>
                         </tr>
-                        @php 
+                        @php
                         $i++;
                         @endphp
                         @endforeach
@@ -87,7 +86,7 @@
             </div>
             <div class="modal-body">
                 <form method="POST" action="{{ route('admin.data.kelas.store') }}">
-                @csrf
+                    @csrf
                     <div class="mb-3">
                         <label for="nama_kelas" class="col-form-label">Nama Kelas:</label>
                         <input type="text" class="form-control" id="nama_kelas" name="nama_kelas" required>
@@ -97,16 +96,16 @@
                         <select class="form-control" name="id_prodi" id="id_prodi" required>
                             <option selected disabled>--- Pilih ---</option>
                             @foreach ($program_studi as $prodi)
-                                <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
+                            <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
                             @endforeach
                         </select>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="reset" class="btn btn-warning">Reset</button>
-                    <button type="submit" class="btn btn-success">Save</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="reset" class="btn btn-warning">Reset</button>
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
             </form>
         </div>
     </div>
@@ -114,7 +113,7 @@
 
 {{-- modal tampil data --}}
 @foreach ($kelas as $kls)
-    
+
 <div class="modal fade" id="modalTampilData{{ $kls->id }}" tabindex="-1" aria-labelledby="modalTampilDataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -126,7 +125,7 @@
             </div>
             <div class="modal-body">
                 <form method="POST" action="{{ route('admin.data.kelas.store', $kls->id) }}">
-                @csrf
+                    @csrf
                     <div class="mb-3">
                         <label for="id" class="col-form-label">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $kls->id }}" disabled>
@@ -151,7 +150,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
             </div>
-                </form>
+            </form>
         </div>
     </div>
 </div>
@@ -159,7 +158,7 @@
 
 {{-- modal edit data --}}
 @foreach ($kelas as $kls)
-    
+
 <div class="modal fade" id="modalEditData{{ $kls->id }}" tabindex="-1" aria-labelledby="modalEditDataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
@@ -171,7 +170,7 @@
             </div>
             <div class="modal-body">
                 <form method="POST" action="{{ route('admin.data.kelas.update', $kls->id) }}">
-                @csrf
+                    @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $kls->id }}" required>
                     <div class="mb-3">
                         <label for="nama_kelas" class="col-form-label">Nama Kelas:</label>
@@ -179,11 +178,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="id_prodi" class="col-form-label">Program Studi:</label>
-                        <select class="form-control" name="id_prodi" id="id_kelas" required>
+                        <select class="form-control" name="id_prodi" id="id_prodi" required>
                             <option disabled>--- Pilih ---</option>
                             <option value="{{ $kls->prodi->id }}" selected hidden>{{ $kls->prodi->nama_prodi }}</option>
                             @foreach ($program_studi as $prodi)
-                                <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
+                            <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -193,7 +192,7 @@
                 <button type="reset" class="btn btn-warning">Reset</button>
                 <button type="submit" class="btn btn-success">Save</button>
             </div>
-                </form>
+            </form>
         </div>
     </div>
 </div>
@@ -219,7 +218,7 @@
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.data.kelas.destroy', $kls->id ) }}" method="GET">
-                @csrf
+                    @csrf
                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
