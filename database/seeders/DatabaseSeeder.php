@@ -2,10 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\BobotPenilaian;
-use App\Models\KelompokKeahlian;
-use App\Models\Peminatan;
-use App\Models\SuratPengantar;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,6 +20,7 @@ class DatabaseSeeder extends Seeder
             PembimbingLapanganSeeder::class,
             AdminSeeder::class,
             ProgramStudiSeeder::class,
+            PeriodeSeeder::class,
             KelompokKeahlianSeeder::class,
             PeminatanSeeder::class,
             KelasSeeder::class,
@@ -32,12 +29,12 @@ class DatabaseSeeder extends Seeder
             KerjaPraktekSeeder::class,
             DokumenMahasiswaSeeder::class,
             DokumenKpSeeder::class,
+            LogAktivitasSeeder::class,
+            PloSeeder::class,
             CloSeeder::class,
             SubCloSeeder::class,
-            BobotPenilaianSeeder::class,
-            PenilaianPembimbingLapanganSeeder::class,
-            PenilaianSeeder::class,
-            LogActivitySeeder::class,
+            BobotPembAkdSeeder::class,
+            BobotPembLapSeeder::class,
         ]);
     }
 }

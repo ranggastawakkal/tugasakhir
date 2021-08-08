@@ -17,15 +17,23 @@ class KelompokKeahlianSeeder extends Seeder
         $kk = [
             [
                 'nama_kk' => "Production and Manufacturing System",
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nama_kk' => "Engineering Management System",
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nama_kk' => "Enterprise and Industrial System",
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nama_kk' => "Cybernetics",
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ];
 

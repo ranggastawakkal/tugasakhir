@@ -40,6 +40,8 @@
                             <tr>
                                 <th scope="col">No.</th>
                                 <th scope="col">ID</th>
+                                <th scope="col">Nama File</th>
+                                <th scope="col">Deskripsi</th>
                                 <th scope="col">File</th>
                                 <th scope="col">Dibuat</th>
                                 <th scope="col">Diperbarui</th>

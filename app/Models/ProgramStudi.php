@@ -20,6 +20,11 @@ class ProgramStudi extends Model
         return $this->belongsTo(Kelas::class, 'id', 'id_prodi');
     }
 
+    public function peminatan()
+    {
+        return $this->belongsTo(Peminatan::class, 'id', 'id_prodi');
+    }
+
     public function getCreatedAtAttribute()
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('d-m-Y H:i:s');

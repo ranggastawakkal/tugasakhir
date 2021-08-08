@@ -1,5 +1,5 @@
 @extends('layouts/main')
-@section('title','Dashboard')
+@section('title','Data Mahasiswa Bimbingan')
 
 @section('main-content')
 <div class="row">
@@ -47,6 +47,7 @@
                             <th scope="col">Tanggal Berakhir</th>
                             <th scope="col">Target</th>
                             <th scope="col">Program Kegiatan</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -69,6 +70,7 @@
                             <td scope="row">{{ $kp->tanggal_berakhir }}</td>
                             <td scope="row">{{ $kp->target }}</td>
                             <td scope="row">{{ $kp->program_kegiatan }}</td>
+                            <td scope="row"><a href="{{ route('pembimbing-akademik.data-mahasiswa.show') }}" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $kp->id }}">Detail</a></td>
                         </tr>
                         @php
                         $i++;

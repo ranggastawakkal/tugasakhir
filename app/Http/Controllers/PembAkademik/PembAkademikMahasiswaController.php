@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\PembAkademik;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kelas;
 use App\Models\KerjaPraktek;
-use App\Models\Mahasiswa;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class PembAkademikMahasiswaController extends Controller
@@ -26,6 +22,12 @@ class PembAkademikMahasiswaController extends Controller
 
         $kerja_praktek = KerjaPraktek::where('id_pemb_akd',  $id)->get();
 
-        return view('pembimbing-akademik/data-mahasiswa', compact('kerja_praktek'));
+        return view('pembimbing-akademik/data-mahasiswa/index', compact('kerja_praktek'));
+    }
+
+    public function show($id)
+    {
+        $kerja_praktek = KerjaPraktek::find($id);
+        return view('pembimbing-akademik/data-mahasiswa/detail', compact('kerja_praktek'));
     }
 }

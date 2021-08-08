@@ -6,16 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
-class SubClo extends Model
+class PenilaianPembimbingLapangan extends Model
 {
     use HasFactory;
 
-    protected $table = "sub_clo";
+    protected $table = "bobot_pemb_akd";
     protected $primaryKey = "id";
-    protected $foreignKey = "id_clo";
+    protected $foreignKey = "id_sub_clo";
     protected $fillable = [
-        'deskripsi',
-        'id_clo',
+        'id_sub_clo',
+        'bobot',
     ];
 
     public function getCreatedAtAttribute()
@@ -28,8 +28,8 @@ class SubClo extends Model
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
     }
 
-    public function clo()
+    public function subClo()
     {
-        return $this->hasOne(Clo::class, 'id', 'id_clo');
+        return $this->hasOne(SubClo::class, 'id', 'id_sub_clo');
     }
 }

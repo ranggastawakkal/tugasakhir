@@ -20,8 +20,8 @@
         </a>
     </li>
 
-    <li class="nav-item {{ (request()->is("pembimbing-akademik/log-kegiatan")) ? 'active' : '' }}">
-        <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.log-kegiatan') }}">
+    <li class="nav-item {{ (request()->is("pembimbing-akademik/log-aktivitas")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.log-aktivitas') }}">
             <i class="fas fa-fw fa-envelope-open-text"></i>
             <span>Log Aktivitas</span></a>
     </li>
