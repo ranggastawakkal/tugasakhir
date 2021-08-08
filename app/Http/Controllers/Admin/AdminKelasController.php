@@ -104,7 +104,7 @@ class AdminKelasController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('kelas')->where('id', $id)->delete();
+        Kelas::where('id', $id)->delete();
 
         return redirect()->route('admin.data.kelas')->with('success', 'Data berhasil dihapus.');
     }

@@ -15,12 +15,17 @@ class Mahasiswa extends Authenticatable
 
     protected $table = "mahasiswa";
     protected $primaryKey = "id";
-    protected $foreignKey = "id_kelas";
+    protected $foreignKey = [
+        'id_kelas',
+        'id_peminatan',
+        'id_periode',
+    ];
     protected $fillable = [
         'nim',
         'nama',
         'id_kelas',
         'id_peminatan',
+        'id_periode',
         'email',
         'no_telepon',
         'alamat',
@@ -72,5 +77,10 @@ class Mahasiswa extends Authenticatable
     public function peminatan()
     {
         return $this->hasOne(Peminatan::class, 'id', 'id_peminatan');
+    }
+
+    public function periode()
+    {
+        return $this->hasOne(Periode::class, 'id', 'id_periode');
     }
 }

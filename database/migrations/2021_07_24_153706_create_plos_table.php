@@ -15,7 +15,7 @@ class CreatePlosTable extends Migration
     {
         Schema::create('plo', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_plo')->unique();
+            $table->string('kode_plo');
             $table->text('deskripsi');
             $table->unsignedBigInteger('id_periode');
             $table->unsignedBigInteger('id_prodi');

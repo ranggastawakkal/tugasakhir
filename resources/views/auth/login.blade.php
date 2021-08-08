@@ -5,9 +5,9 @@
 <div class="container">
 
     <!-- Outer Row -->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center py-5">
 
-        <div class="col-xl-10 col-lg-12 col-md-9">
+        <div class="col-xl-10 col-lg-12 col-md-9 my-5">
 
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
@@ -49,18 +49,11 @@
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Enter Password...">
                                     </div>
+                                    <hr>
                                     <button type="submit" class="btn btn-success btn-user btn-block">
                                         Login
                                     </button>
                                 </form>
-                                <hr>
-                                <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                    {{-- <br>
-                                    <?= strtotime("1999-10-22") ?>
-                                    <br>
-                                    <?= date("Y-m-d", 940550400) ?> --}}
-                                </div>
                             </div>
                         </div>
                     </div>

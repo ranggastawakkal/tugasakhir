@@ -27,9 +27,27 @@
             <a class="collapse-item {{ (request()->is("admin/data/pembimbing-lapangan*")) ? 'active' : '' }}" href="{{ route('admin.data.pembimbing-lapangan') }}">Pembimbing Lapangan</a>
             <a class="collapse-item {{ (request()->is("admin/data/program-studi*")) ? 'active' : '' }}" href="{{ route('admin.data.program-studi') }}">Program Studi</a>
             <a class="collapse-item {{ (request()->is("admin/data/kelas*")) ? 'active' : '' }}" href="{{ route('admin.data.kelas') }}">Kelas</a>
+            <a class="collapse-item {{ (request()->is("admin/data/kelompok-keahlian*")) ? 'active' : '' }}" href="{{ route('admin.data.kelompok-keahlian') }}">Kelompok Keahlian</a>
+            <a class="collapse-item {{ (request()->is("admin/data/peminatan*")) ? 'active' : '' }}" href="{{ route('admin.data.peminatan') }}">Peminatan</a>
+            <a class="collapse-item {{ (request()->is("admin/data/periode*")) ? 'active' : '' }}" href="{{ route('admin.data.periode') }}">Periode</a>
         </div>
     </div>
 </li>
+
+{{-- <!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item {{ (request()->is("admin/plo-clo/*")) ? 'active' : '' }}">
+    <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapsePloClo" aria-expanded="true" aria-controls="collapsePloClo">
+        <i class="fas fa-fw fa-database"></i>
+        <span>PLO & CLO</span>
+    </a>
+    <div id="collapsePloClo" class="collapse mt-2" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/plo*")) ? 'active' : '' }}" href="{{ route('admin.learning-outcomes.plo') }}">PLO</a>
+            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/clo*")) ? 'active' : '' }}" href="{{ route('admin.learning-outcomes.clo') }}">CLO</a>
+            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/sub-clo*")) ? 'active' : '' }}" href="{{ route('admin.learning-outcomes.sub-clo') }}">Sub Clo</a>
+        </div>
+    </div>
+</li> --}}
 
 <!-- Nav Item - Charts -->
 <li class="nav-item {{ (request()->is("admin/surat-pengantar")) ? 'active' : '' }}">

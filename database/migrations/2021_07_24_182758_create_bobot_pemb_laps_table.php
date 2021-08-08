@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIndikatorPenilaiansTable extends Migration
+class CreateBobotPembLapsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateIndikatorPenilaiansTable extends Migration
      */
     public function up()
     {
-        Schema::create('indikator_penilaian', function (Blueprint $table) {
+        Schema::create('bobot_pemb_lap', function (Blueprint $table) {
             $table->id();
-            $table->string('indikator_penilaian');
-            $table->string('kriteria');
-            $table->string('nilai_angka');
+            $table->unsignedBigInteger('id_sub_clo')->unique();
+            $table->integer('bobot');
             $table->timestamps();
+
+            $table->foreign('id_sub_clo')->references('id')->on('sub_clo')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -29,6 +30,6 @@ class CreateIndikatorPenilaiansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('indikator_penilaian');
+        Schema::dropIfExists('bobot_pemb_lap');
     }
 }

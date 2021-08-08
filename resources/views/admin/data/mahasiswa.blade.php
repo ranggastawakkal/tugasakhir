@@ -44,6 +44,7 @@
                             <th scope="col">Program Studi</th>
                             <th scope="col">Kelas</th>
                             <th scope="col">Peminatan</th>
+                            <th scope="col">Periode</th>
                             <th scope="col">Email</th>
                             <th scope="col">No. Telepon</th>
                             <th scope="col">Alamat</th>
@@ -67,6 +68,7 @@
                             <td scope="row">{{ $mhs->kelas->prodi->nama_prodi }}</td>
                             <td scope="row">{{ $mhs->kelas->nama_kelas }}</td>
                             <td scope="row">{{ $mhs->peminatan->nama }}</td>
+                            <td scope="row">{{ $mhs->periode->semester }} | {{ $mhs->periode->tahun_ajaran }}</td>
                             <td scope="row">{{ $mhs->email }}</td>
                             <td scope="row">{{ $mhs->no_telepon }}</td>
                             <td scope="row">{{ Str::limit($mhs->alamat,50) }}</td>
@@ -124,6 +126,10 @@
                     <div class="mb-3">
                         <label for="peminatan" class="col-form-label">Peminatan:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $mhs->peminatan->nama }}" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label for="periode" class="col-form-label">Periode:</label>
+                        <input type="text" class="form-control" id="periode" name="periode" value="{{ $mhs->periode->semester }} | {{ $mhs->periode->tahun_ajaran }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="col-form-label">Email:</label>
@@ -189,7 +195,7 @@
                         <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                     <div class="mb-3">
-                        <label for="kelas" class="col-form-label">Kelas:</label>
+                        <label for="id_kelas" class="col-form-label">Kelas:</label>
                         <select class="form-control" name="id_kelas" id="id_kelas" required>
                             <option selected disabled>--- Pilih ---</option>
                             @foreach ($kelas as $kls)
@@ -198,11 +204,20 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="peminatan" class="col-form-label">Peminatan:</label>
+                        <label for="id_peminatan" class="col-form-label">Peminatan:</label>
                         <select class="form-control" name="id_peminatan" id="id_peminatan" required>
                             <option selected disabled>--- Pilih ---</option>
                             @foreach ($peminatan as $minat)
                             <option value="{{ $minat->id }}">{{ $minat->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_periode" class="col-form-label">Periode:</label>
+                        <select class="form-control" name="id_periode" id="id_periode" required>
+                            <option selected disabled>--- Pilih ---</option>
+                            @foreach ($periode as $p)
+                            <option value="{{ $p->id }}">{{ $p->semester }} | {{ $p->tahun_ajaran }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -286,6 +301,16 @@
                             <option value="{{ $mhs->peminatan->id }}" selected hidden>{{ $mhs->peminatan->nama }}</option>
                             @foreach ($peminatan as $minat)
                             <option value="{{ $minat->id }}">{{ $minat->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_periode" class="col-form-label">Periode:</label>
+                        <select class="form-control" name="id_periode" id="id_periode" required>
+                            <option selected disabled>--- Pilih ---</option>
+                            <option value="{{ $mhs->periode->id }}" selected hidden>{{ $mhs->periode->semester }} | {{ $mhs->periode->tahun_ajaran }}</option>
+                            @foreach ($periode as $p)
+                            <option value="{{ $p->id }}">{{ $p->semester }} | {{ $p->tahun_ajaran }}</option>
                             @endforeach
                         </select>
                     </div>

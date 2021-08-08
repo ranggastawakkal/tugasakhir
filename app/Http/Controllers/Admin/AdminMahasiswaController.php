@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Kelas;
 use App\Models\Mahasiswa;
 use App\Models\Peminatan;
+use App\Models\Periode;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -20,8 +21,9 @@ class AdminMahasiswaController extends Controller
         $mahasiswa = Mahasiswa::all();
         $peminatan = Peminatan::all();
         $kelas = Kelas::all();
+        $periode = Periode::all();
 
-        return view('admin/data/mahasiswa', compact('mahasiswa', 'peminatan', 'kelas'));
+        return view('admin/data/mahasiswa', compact('mahasiswa', 'peminatan', 'kelas', 'periode'));
     }
 
     public function store(Request $request)
@@ -58,6 +60,7 @@ class AdminMahasiswaController extends Controller
         $mhs->nama = $request->nama;
         $mhs->id_kelas = $request->id_kelas;
         $mhs->id_peminatan = $request->id_peminatan;
+        $mhs->id_periode = $request->id_periode;
         $mhs->email = $request->email;
         $mhs->no_telepon = $request->no_telepon;
         $mhs->alamat = $request->alamat;

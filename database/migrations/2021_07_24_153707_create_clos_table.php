@@ -16,7 +16,7 @@ class CreateClosTable extends Migration
         Schema::create('clo', function (Blueprint $table) {
             $table->id();
             $table->string('kode_clo');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->unsignedBigInteger('id_plo');
             $table->timestamps();
 

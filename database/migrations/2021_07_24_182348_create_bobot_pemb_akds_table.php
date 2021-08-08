@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSubClosTable extends Migration
+class CreateBobotPembAkdsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSubClosTable extends Migration
      */
     public function up()
     {
-        Schema::create('sub_clo', function (Blueprint $table) {
+        Schema::create('bobot_pemb_akd', function (Blueprint $table) {
             $table->id();
-            $table->text('deskripsi');
-            $table->unsignedBigInteger('id_clo');
+            $table->unsignedBigInteger('id_sub_clo')->unique();
+            $table->integer('bobot');
             $table->timestamps();
 
-            $table->foreign('id_clo')->references('id')->on('clo')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_sub_clo')->references('id')->on('sub_clo')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateSubClosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sub_clo');
+        Schema::dropIfExists('bobot_pemb_akd');
     }
 }

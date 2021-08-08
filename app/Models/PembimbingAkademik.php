@@ -18,14 +18,13 @@ class PembimbingAkademik extends Authenticatable
     protected $fillable = [
         'nip',
         'nama',
-        'email',
         'kode_dosen',
-        'tempat_lahir',
-        'tanggal_lahir',
+        'email',
         'no_telepon',
         'alamat',
         'jenis_kelamin',
-        'image',
+        'tempat_lahir',
+        'tanggal_lahir',
         'password',
     ];
 
