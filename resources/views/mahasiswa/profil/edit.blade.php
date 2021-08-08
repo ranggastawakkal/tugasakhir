@@ -30,7 +30,7 @@
                 <label for="tanggalLahir" class="col-md-2 col-form-label text-md-left ml-2">Tanggal Lahir</label>
 
                 <div class="col-md-9">
-                    <input id="tanggalLahir" type="date" class="form-control @error('tanggalLahir') is-invalid @enderror" name="tanggalLahir" value="{{ $user->tanggal_lahir ?? old('tanggalLahir') }}" required autocomplete="tanggalLahir" autofocus>
+                    <input id="tanggalLahir" type="date" class="form-control @error('tanggalLahir') is-invalid @enderror" name="tanggalLahir" value="{{ date_format(date_create($user->tanggal_lahir), 'Y-m-d') ?? old('tanggalLahir') }}" required autocomplete="tanggalLahir" autofocus>
 
                     @error('tanggalLahir')
                         <span class="invalid-feedback" role="alert">

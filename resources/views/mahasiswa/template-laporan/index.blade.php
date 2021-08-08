@@ -19,13 +19,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        @foreach($dokumenKp as $dokumen)
                         <tr>
-                            <td>1</td>
-                            <td>Kerja Praktek</td>
-                            <td><button class="btn btn-sm btn-success">Download</button></td>
+                            <td>{{ $dokumen->id }}</td>
+                            <td>{{ $dokumen->nama }}</td>
+                            <td><a href="{{ route('mahasiswa.template-laporan.download', $dokumen->file) }}" class="btn btn-sm btn-success">Download</a></td>
                         </tr>
-                       
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -71,7 +71,7 @@ class Mahasiswa extends Authenticatable
 
     public function kerjaPraktek()
     {
-        return $this->belongsTo(KerjaPraktek::class, 'id_mahasiswa', 'id');
+        return $this->hasOne(KerjaPraktek::class, 'id_mahasiswa', 'id');
     }
 
     public function peminatan()

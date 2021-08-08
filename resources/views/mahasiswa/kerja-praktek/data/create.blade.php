@@ -12,10 +12,10 @@
         <form method=POST action="{{ route('mahasiswa.kerja-praktek.data.store') }}">
             @csrf
             <div class="form-group row">
-                <label for="nipakd" class="col-md-2 col-form-label text-md-left ml-2">NIP Pembimbing Akademik</label>
+                <label for="nipakd" class="col-md-2 col-form-label text-md-left ml-2">Nama Pembimbing Akademik</label>
 
                 <div class="col-md-9">
-                    <input id="nipakd" type="text" class="form-control @error('nipakd') is-invalid @enderror" name="nipakd" value="{{ $dataKerjaPraktek->pembAkd->nip }}" disabled autocomplete="nipakd" autofocus>
+                    <input id="nipakd" type="text" class="form-control @error('nipakd') is-invalid @enderror" name="nipakd" value="{{ $dataKerjaPraktek->pembAkd->nama }}" disabled autocomplete="nipakd" autofocus>
 
                     @error('nipakd')
                         <span class="invalid-feedback" role="alert">
@@ -25,10 +25,10 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="niplap" class="col-md-2 col-form-label text-md-left ml-2">NIP Pembimbing Lapangan</label>
+                <label for="niplap" class="col-md-2 col-form-label text-md-left ml-2">Nama Pembimbing Lapangan</label>
 
                 <div class="col-md-9">
-                    <input id="niplap" type="text" class="form-control @error('niplap') is-invalid @enderror" name="niplap" value="{{ $dataKerjaPraktek->pembLap->nip }}" disabled autocomplete="niplap" autofocus>
+                    <input id="niplap" type="text" class="form-control @error('niplap') is-invalid @enderror" name="niplap" value="{{ $dataKerjaPraktek->pembLap->nama }}" disabled autocomplete="niplap" autofocus>
 
                     @error('niplap')
                         <span class="invalid-feedback" role="alert">

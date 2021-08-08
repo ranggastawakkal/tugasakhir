@@ -48,7 +48,7 @@ class ProfileController extends Controller
 
         $user = Auth::user();
 
-        $model = Mahasiswa::find($user->nim);
+        $model = Mahasiswa::find($user->id);
         $model->tempat_lahir = $request->tempatLahir;
         $model->tanggal_lahir = $request->tanggalLahir;
         $model->no_telepon = $request->noTelp;

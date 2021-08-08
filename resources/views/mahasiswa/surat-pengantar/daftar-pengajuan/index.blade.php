@@ -14,7 +14,6 @@
                     <thead>
                         <tr>
                             <th>Tanggal</th>
-                            <th>Jenis</th>
                             <th>Tujuan Surat</th>
                             <th>Perusahaan</th>
                             <th>Kota</th>
@@ -23,14 +22,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($suratPengantar as $surat)
                         <tr>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td>{{ $surat->tanggal }}</td>
+                            <td>{{ $surat->tujuan_surat }}</td>
+                            <td>{{ $surat->nama_instansi }}</td>
+                            <td>{{ $surat->kota_instansi }}</td>
+                            <td>{{ $surat->status }}</td>
                             <td></td>
                         </tr>
                         @endforeach

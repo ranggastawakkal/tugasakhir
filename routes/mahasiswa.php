@@ -41,7 +41,13 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
 
     Route::group(['prefix' => 'kerja-praktek'], function () {
         Route::get('/data', [KerjaPraktekDataController::class, 'index'])->name('mahasiswa.kerja-praktek.data.index');
-        Route::get('/dokumen-kp', [KerjaPraktekDokumenController::class, 'index'])->name('mahasiswa.kerja-praktek.dokumen-kp.index');
+        Route::group(['prefix' => 'dokumen-kp'], function () {
+            Route::get('/', [KerjaPraktekDokumenController::class, 'index'])->name('mahasiswa.kerja-praktek.dokumen-kp.index');
+            Route::post('/krs', [KerjaPraktekDokumenController::class, 'storeKrs'])->name('mahasiswa.kerja-praktek.dokumen-kp.storeKrs');
+            Route::post('/bukti-diterima', [KerjaPraktekDokumenController::class, 'storeDiterima'])->name('mahasiswa.kerja-praktek.dokumen-kp.storeDiterima');
+            Route::post('/laporan', [KerjaPraktekDokumenController::class, 'storeLaporan'])->name('mahasiswa.kerja-praktek.dokumen-kp.storeLaporan');
+            Route::post('/bukti-selesai', [KerjaPraktekDokumenController::class, 'storeSelesai'])->name('mahasiswa.kerja-praktek.dokumen-kp.storeSelesai');
+        });
         Route::get('/data/create', [KerjaPraktekDataController::class, 'create'])->name('mahasiswa.kerja-praktek.data.create');
         Route::post('/data/store', [KerjaPraktekDataController::class, 'store'])->name('mahasiswa.kerja-praktek.data.store');
     });
@@ -52,6 +58,11 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
         Route::post('/update', [LogActivityController::class, 'update'])->name('mahasiswa.log-activity.update');
     });
 
+    Route::group(['prefix' => 'surat-pengantar'], function () {
+        Route::post('/', [BuatPengajuanController::class, 'store'])->name('mahasiswa.surat-pengantar.store');
+    });
+
     Route::get('/dokumen-mahasiswa', [DokumenMahasiswaController::class, 'index'])->name('mahasiswa.template-laporan.index');
+    Route::get('/dokumen-mahasiswa/download/{namaFile}', [DokumenMahasiswaController::class, 'download'])->name('mahasiswa.template-laporan.download');
 });
 

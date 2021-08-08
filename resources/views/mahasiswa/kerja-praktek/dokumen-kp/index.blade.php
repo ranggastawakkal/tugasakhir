@@ -14,15 +14,25 @@
                         <div class="text-s font-weight-bold text-secondary text-uppercase mb-1">
                         Upload bukti KRS</div>
                         <div class="mb-0 mt-3 font-weight-bold text-gray-800">
-                            <form>
+                            @if($dokumenMahasiswa->krs)
+                            <span><i class="fa fa-file mr-2 mb-3"></i>{{ $dokumenMahasiswa->krs }}</span>
+                            @endif
+                            <form method="POST" action="{{ route('mahasiswa.kerja-praktek.dokumen-kp.storeKrs') }}" enctype="multipart/form-data">
+                                @csrf
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile">
+                                <input type="file" class="form-control custom-file-input @error('buktiKrs') is-invalid @enderror" id="customFile" name="buktiKrs">
+                                <!-- <input type="file" class="form-control @error('buktiKrs') is-invalid @enderror" name="buktiKrs"> -->
+                                @error('buktiKrs')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
-                            </form>
                             <div class="text-left">
-                                <button class="btn btn-success mt-3 col-md-2 btn-sm">Save</button>
+                                <button class="btn btn-success mt-3 col-md-2 btn-sm" type="submit">Save</button>
                             </div>
+                            </form>
                         </div>
                     </div>
                     <div class="col-auto">
@@ -41,15 +51,25 @@
                         <div class="text-s font-weight-bold text-secondary text-uppercase mb-1">
                         Laporan KP</div>
                         <div class="mb-0 mt-3 font-weight-bold text-gray-800">
-                        <form>
+                        @if($dokumenMahasiswa->laporan)
+                            <span><i class="fa fa-file mr-2 mb-3"></i>{{ $dokumenMahasiswa->laporan }}</span>
+                            @endif
+                        <form method="POST" action="{{ route('mahasiswa.kerja-praktek.dokumen-kp.storeLaporan') }}" enctype="multipart/form-data">
+                            @csrf
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile">
+                                <input type="file" class="custom-file-input" id="customFile" name="laporan">
+                                @error('laporan')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
-                            </form>
+                            
                             <div class="text-left">
-                                <button class="btn btn-success mt-3 col-md-2 btn-sm">Save</button>
+                                <button class="btn btn-success mt-3 col-md-2 btn-sm" type="submit">Save</button>
                             </div>
+                        </form>
                         </div>
                     </div>
                     <div class="col-auto">
@@ -68,15 +88,25 @@
                         <div class="text-s font-weight-bold text-secondary text-uppercase mb-1">
                         Bukti telah diterima KP</div>
                         <div class="mb-0 mt-3 font-weight-bold text-gray-800">
-                            <form>
+                        @if($dokumenMahasiswa->surat_diterima)
+                            <span><i class="fa fa-file mr-2 mb-3"></i>{{ $dokumenMahasiswa->surat_diterima }}</span>
+                            @endif
+                            <form method="POST" action="{{ route('mahasiswa.kerja-praktek.dokumen-kp.storeDiterima') }}" enctype="multipart/form-data">
+                                @csrf
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile">
+                                <input type="file" class="custom-file-input" id="customFile" name="surat_diterima">
+                                @error('surat_diterima')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
-                            </form>
+                            
                             <div class="text-left">
-                                <button class="btn btn-success mt-3 col-md-2 btn-sm">Save</button>
+                                <button class="btn btn-success mt-3 col-md-2 btn-sm" type="submit">Save</button>
                             </div>
+                        </form>
                         </div>
                     </div>
                     <div class="col-auto">
@@ -93,17 +123,27 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-s font-weight-bold text-secondary text-uppercase mb-1">
-                        Bukti telah menjalani KP</div>
+                        Bukti telah selesai KP</div>
                         <div class="mb-0 mt-3 font-weight-bold text-gray-800">
-                        <form>
+                        @if($dokumenMahasiswa->surat_selesai)
+                            <span><i class="fa fa-file mr-2 mb-3"></i>{{ $dokumenMahasiswa->surat_selesai }}</span>
+                            @endif
+                        <form method="POST" action="{{ route('mahasiswa.kerja-praktek.dokumen-kp.storeSelesai') }}" enctype="multipart/form-data">
+                            @csrf
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="customFile">
+                                <input type="file" class="custom-file-input" id="customFile" name="surat_selesai">
+                                @error('surat_selesai')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                                 <label class="custom-file-label" for="customFile">Choose file</label>
                             </div>
-                            </form>
+                           
                             <div class="text-left">
-                                <button class="btn btn-success mt-3 col-md-2 btn-sm">Save</button>
+                                <button class="btn btn-success mt-3 col-md-2 btn-sm" type="submit">Save</button>
                             </div>
+                        </form>
                         </div>
                     </div>
                     <div class="col-auto">
@@ -113,73 +153,13 @@
             </div>
         </div>
     </div>
+@endsection
 
-    <!-- DataTales Example -->
-    <!-- <div class="card shadow mb-4">
-        <div class="card-header py-2">
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Jenis</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        
-                        <tr>
-                            <td>1</td>
-                            <td>Upload bukti KRS</td>
-                            <td>
-                                <form>
-                                    <div class="form-group">
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                    </div>
-                                </form>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>2</td>
-                            <td>Bukti telah diterima KP</td>
-                            <td>
-                                <form>
-                                    <div class="form-group">
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                    </div>
-                                </form>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>3</td>
-                            <td>Laporan KP</td>
-                            <td>
-                                <form>
-                                    <div class="form-group">
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                    </div>
-                                </form>
-                            </td>
-                        </tr>
-                       
-                        <tr>
-                            <td>4</td>
-                            <td>Bukti telah menjalani KP</td>
-                            <td>
-                                <form>
-                                    <div class="form-group">
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                                    </div>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div> -->
+@section('page-script')
+<script>
+    $('document').ready(function () {
+        var filename = $('input[type=file]').val().split('\\').pop();
+        console.log(filename);
+    });
+</script>
 @endsection

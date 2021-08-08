@@ -29,15 +29,15 @@ class KerjaPraktek extends Model
         return $this->hasOne(Mahasiswa::class, 'id', 'id_mahasiswa');
     }
 
-    public function pembimbingAkademik()
-    {
-        return $this->hasOne(PembimbingAkademik::class, 'id', 'id_pemb_akd');
-    }
+    // public function pembimbingAkademik()
+    // {
+    //     return $this->hasOne(PembimbingAkademik::class, 'id', 'id_pemb_akd');
+    // }
 
-    public function pembimbingLapangan()
-    {
-        return $this->hasOne(PembimbingLapangan::class, 'id', 'id_pemb_lap');
-    }
+    // public function pembimbingLapangan()
+    // {
+    //     return $this->hasOne(PembimbingLapangan::class, 'id', 'id_pemb_lap');
+    // }
 
     public function pembAkd()
     {
