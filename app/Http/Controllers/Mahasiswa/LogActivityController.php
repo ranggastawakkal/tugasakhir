@@ -43,8 +43,8 @@ class LogActivityController extends Controller
 
         $log = new LogActivity();
         $log->id_mahasiswa = $user->id;
-        $log->id_pemb_akd = $user->kerjaPraktek->pembAkd->id;
-        $log->id_pemb_lap = $user->kerjaPraktek->pembLap->id;
+        $log->id_pemb_akd = $user->kerjaPraktek->pembimbingAkademik->id;
+        $log->id_pemb_lap = $user->kerjaPraktek->pembimbingLapangan->id;
         $log->tanggal = $request->tanggal;
         $log->jam_datang = $request->jamdatang;
         $log->jam_pulang = $request->jampulang;

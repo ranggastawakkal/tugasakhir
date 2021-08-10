@@ -43,23 +43,23 @@
                     <tbody>
                         <tr>
                             <td style="width: 20%;">Nama Dosen</td>
-                            <td style="width: 80%;">{{ $dataKerjaPraktek->pembAkd->nama }}</td>
+                            <td style="width: 80%;">{{ $dataKerjaPraktek->pembimbingAkademik->nama }}</td>
                         </tr>
                         <tr>
                             <td>NIP</td>
-                            <td>{{ $dataKerjaPraktek->pembAkd->nip }}</td>
+                            <td>{{ $dataKerjaPraktek->pembimbingAkademik->nip }}</td>
                         </tr>
                         <tr>
                             <td>Kode Dosen</td>
-                            <td>{{ $dataKerjaPraktek->pembAkd->kode_dosen }}</td>
+                            <td>{{ $dataKerjaPraktek->pembimbingAkademik->kode_dosen }}</td>
                         </tr>
                         <tr>
                             <td>No Telp</td>
-                            <td>{{ $dataKerjaPraktek->pembAkd->no_telepon }}</td>
+                            <td>{{ $dataKerjaPraktek->pembimbingAkademik->no_telepon }}</td>
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td>{{ $dataKerjaPraktek->pembAkd->email }}</td>
+                            <td>{{ $dataKerjaPraktek->pembimbingAkademik->email }}</td>
                         </tr>
                     </tbody>
                 </table>

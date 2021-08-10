@@ -16,7 +16,7 @@
         </div>
         <div class="card-body">
             <p class="mb-0">Data kerja praktek belum tersedia, silahkan tambahkan</p>
-            @if(isset($dataKerjaPraktek->pembAkd) && isset($dataKerjaPraktek->pembLap))
+            @if(isset($dataKerjaPraktek->pembimbingAkademik) && isset($dataKerjaPraktek->pembLap))
             <a href="{{ route('mahasiswa.kerja-praktek.data.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mt-2"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
             @else
@@ -36,15 +36,15 @@
                     <tbody>
                         <tr>
                             <td style="width: 20%;">Nama Pembimbing Akademik</td>
-                            <td style="width: 80%;">{{ $dataKerjaPraktek->pembAkd->nama }}</td>
+                            <td style="width: 80%;">{{ $dataKerjaPraktek->pembimbingAkademik->nama }}</td>
                         </tr>
                         <tr>
                             <td>Nama Pembimbing Lapangan</td>
-                            <td>{{ $dataKerjaPraktek->pembLap->nama }}</td>
+                            <td>{{ $dataKerjaPraktek->pembimbingLapangan->nama }}</td>
                         </tr>
                         <tr>
                             <td>Perusahaan</td>
-                            <td>{{ $dataKerjaPraktek->pembLap->nama_perusahaan }}</td>
+                            <td>{{ $dataKerjaPraktek->pembimbingLapangan->nama_perusahaan }}</td>
                         </tr>
                         <tr>
                             <td>Unit Kerja / Divisi</td>
