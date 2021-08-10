@@ -15,7 +15,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
                         Dosen Pembimbing Akademik</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ isset($dataKerjaPraktek->pembAkd->nama) ? $dataKerjaPraktek->pembAkd->nama : "-"}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ isset($dataKerjaPraktek->pembimbingAkademik->nama) ? $dataKerjaPraktek->pembimbingAkademik->nama : "-"}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -33,7 +33,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
                         Pembimbing Lapangan</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ isset($dataKerjaPraktek->pembLap->nama) ? $dataKerjaPraktek->pembLap->nama : "-"}}</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ isset($dataKerjaPraktek->pembimbingLapangan->nama) ? $dataKerjaPraktek->pembimbingLapangan->nama : "-"}}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-user fa-2x text-gray-300"></i>
