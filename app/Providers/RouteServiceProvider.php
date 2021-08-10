@@ -30,6 +30,7 @@ class RouteServiceProvider extends ServiceProvider
     protected $adminNamespace = 'App\\Http\\Controllers\\Admin';
     protected $pembakademikNamespace = 'App\\Http\\Controllers\\PembAkademik';
     protected $pemblapanganNamespace = 'App\\Http\\Controllers\\PembLapangan';
+    protected $mahasiswaNamespace = 'App\\Http\\Controllers\\Mahasiswa';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -61,6 +62,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->adminNamespace)
                 ->group(base_path('routes/admin.php'));
+
+            Route::middleware('web')
+                ->namespace($this->mahasiswaNamespace)
+                ->group(base_path('routes/mahasiswa.php'));
         });
     }
 

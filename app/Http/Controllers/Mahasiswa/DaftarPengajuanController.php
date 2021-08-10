@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DaftarPengajuanController extends Controller
 {
@@ -15,7 +16,9 @@ class DaftarPengajuanController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.surat-pengantar.daftar-pengajuan.index');
+        $users = Mahasiswa::all();
+
+        return view('mahasiswa.surat-pengantar.daftar-pengajuan.index', compact('users'));
     }
 
 }

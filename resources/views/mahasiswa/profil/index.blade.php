@@ -37,27 +37,27 @@
                         </tr>
                         <tr>
                             <td>Program Studi</td>
-                            <td>Sistem Informasi</td>
+                            <td>{{ $user->kelas->prodi->nama_prodi }}</td>
                         </tr>
                         <tr>
                             <td>Tempat Lahir</td>
-                            <td>{{ $user-> tempat_lahir}}</td>
+                            <td>{{ $user->tempat_lahir}}</td>
                         </tr>
                         <tr>
                             <td>Tanggal Lahir</td>
-                            <td>{{ $user-> tanggal_lahir}}</td>
+                            <td>{{ $user->tanggal_lahir}}</td>
                         </tr>
                         <tr>
                             <td>No Telp</td>
-                            <td>{{ $user-> no_telepon}}</td>
+                            <td>{{ $user->no_telepon}}</td>
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td>{{ $user-> email}}</td>
+                            <td>{{ $user->email}}</td>
                         </tr>
                         <tr>
                             <td>Alamat</td>
-                            <td>{{ $user-> alamat}}</td>
+                            <td>{{ $user->alamat}}</td>
                         </tr>
                     </tbody>
                 </table>

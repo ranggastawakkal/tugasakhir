@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mahasiswa;
 use App\Http\Controllers\Controller;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BuatPengajuanController extends Controller
 {
@@ -15,7 +16,8 @@ class BuatPengajuanController extends Controller
      */
     public function index()
     {
-        return view('mahasiswa.surat-pengantar.buat-pengajuan.index');
+        $user = Auth::user();
+        return view('mahasiswa.surat-pengantar.buat-pengajuan.index', compact('user'));
     }
 
 }
