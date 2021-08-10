@@ -36,6 +36,10 @@
                             <td>{{ $user->nim }}</td>
                         </tr>
                         <tr>
+                            <td>Kelas</td>
+                            <td>{{ $user->kelas->nama_kelas }}</td>
+                        </tr>
+                        <tr>
                             <td>Program Studi</td>
                             <td>{{ $user->kelas->prodi->nama_prodi }}</td>
                         </tr>

@@ -5,7 +5,7 @@
 <h1 class="h3 mb-2 text-gray-800">Upload Dokumen</h1>
 
     <div class="row">
-
+    
     <div class="col-xl-6 col-md-6 mb-4">
         <div class="card border-left-success border-bottom-success shadow h-100 py-2">
             <div class="card-body">
@@ -14,7 +14,7 @@
                         <div class="text-s font-weight-bold text-secondary text-uppercase mb-1">
                         Upload bukti KRS</div>
                         <div class="mb-0 mt-3 font-weight-bold text-gray-800">
-                            @if($dokumenMahasiswa->krs)
+                            @if (isset($dokumenMahasiswa->krs))
                             <span><i class="fa fa-file mr-2 mb-3"></i>{{ $dokumenMahasiswa->krs }}</span>
                             @endif
                             <form method="POST" action="{{ route('mahasiswa.kerja-praktek.dokumen-kp.storeKrs') }}" enctype="multipart/form-data">
@@ -51,7 +51,7 @@
                         <div class="text-s font-weight-bold text-secondary text-uppercase mb-1">
                         Laporan KP</div>
                         <div class="mb-0 mt-3 font-weight-bold text-gray-800">
-                        @if($dokumenMahasiswa->laporan)
+                        @if (isset($dokumenMahasiswa->laporan))
                             <span><i class="fa fa-file mr-2 mb-3"></i>{{ $dokumenMahasiswa->laporan }}</span>
                             @endif
                         <form method="POST" action="{{ route('mahasiswa.kerja-praktek.dokumen-kp.storeLaporan') }}" enctype="multipart/form-data">
@@ -88,7 +88,7 @@
                         <div class="text-s font-weight-bold text-secondary text-uppercase mb-1">
                         Bukti telah diterima KP</div>
                         <div class="mb-0 mt-3 font-weight-bold text-gray-800">
-                        @if($dokumenMahasiswa->surat_diterima)
+                        @if (isset($dokumenMahasiswa->surat_diterima))
                             <span><i class="fa fa-file mr-2 mb-3"></i>{{ $dokumenMahasiswa->surat_diterima }}</span>
                             @endif
                             <form method="POST" action="{{ route('mahasiswa.kerja-praktek.dokumen-kp.storeDiterima') }}" enctype="multipart/form-data">
@@ -125,7 +125,7 @@
                         <div class="text-s font-weight-bold text-secondary text-uppercase mb-1">
                         Bukti telah selesai KP</div>
                         <div class="mb-0 mt-3 font-weight-bold text-gray-800">
-                        @if($dokumenMahasiswa->surat_selesai)
+                        @if (isset($dokumenMahasiswa->surat_selesai))
                             <span><i class="fa fa-file mr-2 mb-3"></i>{{ $dokumenMahasiswa->surat_selesai }}</span>
                             @endif
                         <form method="POST" action="{{ route('mahasiswa.kerja-praktek.dokumen-kp.storeSelesai') }}" enctype="multipart/form-data">
