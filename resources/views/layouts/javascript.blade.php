@@ -151,7 +151,8 @@
     } );
 
 </script>
-
+@section('page-script')
+@show
 </body>
 
 </html>

@@ -52,6 +52,10 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/web.php'));
 
             Route::middleware('web')
+                ->namespace($this->mahasiswaNamespace)
+                ->group(base_path('routes/mahasiswa.php'));
+
+            Route::middleware('web')
                 ->namespace($this->pembakademikNamespace)
                 ->group(base_path('routes/pembakademik.php'));
 
@@ -62,10 +66,6 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->adminNamespace)
                 ->group(base_path('routes/admin.php'));
-
-            Route::middleware('web')
-                ->namespace($this->mahasiswaNamespace)
-                ->group(base_path('routes/mahasiswa.php'));
         });
     }
 

@@ -2,12 +2,11 @@
 @section('title','Dashboard')
 
 @section('main-content')
-<h1 class="h3 mb-2 text-gray-800">Template Laporan</h1>
-    <p class="mb-4">Ini deskripsi</p>
+<h1 class="h3 mb-2 text-gray-800">Dokumen Mahasiswa</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-3">
+        <div class="card-header py-2">
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -20,13 +19,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        @foreach($dokumenKp as $dokumen)
                         <tr>
-                            <td>1</td>
-                            <td>Kerja Praktek</td>
-                            <td><button class="btn btn-sm btn-success">Download</button></td>
+                            <td>{{ $dokumen->id }}</td>
+                            <td>{{ $dokumen->nama }}</td>
+                            <td><a href="{{ route('mahasiswa.template-laporan.download', $dokumen->file) }}" class="btn btn-sm btn-success">Download</a></td>
                         </tr>
-                       
+                        @endforeach
                     </tbody>
                 </table>
             </div>
