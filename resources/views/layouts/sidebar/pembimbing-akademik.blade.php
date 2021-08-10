@@ -13,29 +13,37 @@
     </div>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item {{ (request()->is("pembimbing-akademik/data-mahasiswa")) ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->is("pembimbing-akademik/data-mahasiswa*")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.data-mahasiswa') }}">
             <i class="fas fa-fw fa-address-book"></i>
             <span>Data Mahasiswa</span>
         </a>
     </li>
 
-    <li class="nav-item {{ (request()->is("pembimbing-akademik/log-aktivitas")) ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->is("pembimbing-akademik/log-aktivitas*")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.log-aktivitas') }}">
             <i class="fas fa-fw fa-envelope-open-text"></i>
             <span>Log Aktivitas</span></a>
     </li>
 
-    <li class="nav-item {{ (request()->is("pembimbing-akademik/penilaian")) ? 'active' : '' }}">
-        <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.penilaian') }}">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
-            <span>Penilaian</span></a>
-    </li>
-
-    <li class="nav-item {{ (request()->is("pembimbing-akademik/laporan-kp")) ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->is("pembimbing-akademik/laporan-kp*")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.laporan-kp') }}">
             <i class="fas fa-fw fa-envelope-open-text"></i>
             <span>Laporan KP</span></a>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item {{ (request()->is("pembimbing-akademik/penilaian*")) ? 'active' : '' }}">
+        <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapsePenilaian" aria-expanded="true" aria-controls="collapsePenilaian">
+            <i class="fas fa-fw fa-database"></i>
+            <span>Penilaian</span>
+        </a>
+        <div id="collapsePenilaian" class="collapse mt-2" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item {{ (request()->is("pembimbing-akademik/penilaian/indikator-penilaian*")) ? 'active' : '' }}" href="{{ route('pembimbing-akademik.penilaian.indikator-penilaian') }}">Indikator Penilaian</a>
+                <a class="collapse-item {{ (request()->is("pembimbing-akademik/penilaian/penilaian-mahasiswa*")) ? 'active' : '' }}" href="{{ route('pembimbing-akademik.penilaian.penilaian-mahasiswa.index') }}">Penilaian Mahasiswa</a>
+            </div>
+        </div>
     </li>
 
     <!-- Divider -->

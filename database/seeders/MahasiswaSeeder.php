@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
+use Illuminate\Support\Facades\Hash;
 
 class MahasiswaSeeder extends Seeder
 {
@@ -83,7 +84,7 @@ class MahasiswaSeeder extends Seeder
                 'jenis_kelamin' => $faker->randomElement(['Laki-laki', 'Perempuan']),
                 'tempat_lahir' => $faker->city,
                 'tanggal_lahir' => $faker->dateTimeBetween('-22 years', '-18 years', null)->format('Y-m-d'),
-                'password' => '$2b$10$zi4/A4nayjuwORlMah.IQuGZpHLUtfiMdEOI.0UXS6ucL8VSbFVpe',
+                'password' => Hash::make('password'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

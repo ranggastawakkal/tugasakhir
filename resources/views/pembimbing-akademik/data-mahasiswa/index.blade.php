@@ -70,7 +70,7 @@
                             <td scope="row">{{ $kp->tanggal_berakhir }}</td>
                             <td scope="row">{{ $kp->target }}</td>
                             <td scope="row">{{ $kp->program_kegiatan }}</td>
-                            <td scope="row"><a href="{{ route('pembimbing-akademik.data-mahasiswa.show') }}" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $kp->id }}">Detail</a></td>
+                            <td scope="row"><a href="{{ route('pembimbing-akademik.data-mahasiswa.show', $kp->id) }}">Lihat Detail</a></td>
                         </tr>
                         @php
                         $i++;

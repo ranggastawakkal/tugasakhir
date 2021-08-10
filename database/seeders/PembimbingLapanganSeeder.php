@@ -6,6 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Hash;
 
 class PembimbingLapanganSeeder extends Seeder
 {
@@ -110,7 +111,7 @@ class PembimbingLapanganSeeder extends Seeder
                 'kota_perusahaan' => $faker->city,
                 'email_perusahaan' => $faker->companyEmail,
                 'no_telepon_perusahaan' => $faker->phoneNumber,
-                'password' => '$2b$10$zi4/A4nayjuwORlMah.IQuGZpHLUtfiMdEOI.0UXS6ucL8VSbFVpe',
+                'password' => Hash::make('password'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

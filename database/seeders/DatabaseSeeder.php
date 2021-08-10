@@ -35,6 +35,8 @@ class DatabaseSeeder extends Seeder
             SubCloSeeder::class,
             BobotPembAkdSeeder::class,
             BobotPembLapSeeder::class,
+            NilaiPembLapSeeder::class,
+            NilaiPembAkdSeeder::class,
         ]);
     }
 }

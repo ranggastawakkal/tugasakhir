@@ -28,6 +28,7 @@ class PembAkademikMahasiswaController extends Controller
     public function show($id)
     {
         $kerja_praktek = KerjaPraktek::find($id);
-        return view('pembimbing-akademik/data-mahasiswa/detail', compact('kerja_praktek'));
+
+        return view('pembimbing-akademik/data-mahasiswa/show', compact('kerja_praktek'));
     }
 }

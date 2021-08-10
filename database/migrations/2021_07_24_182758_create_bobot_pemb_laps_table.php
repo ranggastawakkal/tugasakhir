@@ -16,7 +16,7 @@ class CreateBobotPembLapsTable extends Migration
         Schema::create('bobot_pemb_lap', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_sub_clo')->unique();
-            $table->integer('bobot');
+            $table->double('bobot');
             $table->timestamps();
 
             $table->foreign('id_sub_clo')->references('id')->on('sub_clo')->onUpdate('cascade')->onDelete('cascade');

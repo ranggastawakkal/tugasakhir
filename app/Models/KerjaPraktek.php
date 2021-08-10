@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class KerjaPraktek extends Model
 {
@@ -24,18 +25,43 @@ class KerjaPraktek extends Model
         'surat_selesai',
     ];
 
+    public function getTanggalMulaiAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_mulai'])->format('d M Y');
+    }
+
+    public function getTanggalBerakhirAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_berakhir'])->format('d M Y');
+    }
+
+    // public function mahasiswa()
+    // {
+    //     return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
+    // }
+
+    // public function pembimbingAkademik()
+    // {
+    //     return $this->belongsTo(PembimbingAkademik::class, 'id_pemb_akd');
+    // }
+
+    // public function pembimbingLapangan()
+    // {
+    //     return $this->belongsTo(PembimbingLapangan::class, 'id_pemb_lap');
+    // }
+
     public function mahasiswa()
     {
-        return $this->hasOne(Mahasiswa::class, 'id', 'id_mahasiswa');
+        return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
     }
 
     public function pembimbingAkademik()
     {
-        return $this->hasOne(PembimbingAkademik::class, 'id', 'id_pemb_akd');
+        return $this->belongsTo(PembimbingAkademik::class, 'id_pemb_akd');
     }
 
     public function pembimbingLapangan()
     {
-        return $this->hasOne(PembimbingLapangan::class, 'id', 'id_pemb_lap');
+        return $this->belongsTo(PembimbingLapangan::class, 'id_pemb_lap');
     }
 }

@@ -23,11 +23,15 @@ class AdminDokumenKpController extends Controller
     public function store(Request $request)
     {
         $rules = [
+            'nama' => 'required',
+            'deskripsi' => 'required',
             'file' => 'max:50000',
         ];
 
         $messages = [
-            'file.max' => 'Ukuran file maksimal adalah 50MB.'
+            'nama.required' => 'Nama file harus diisi',
+            'deskripsi.required' => 'Deskripsi file harus diisi',
+            'file.max' => 'Ukuran file maksimal adalah 50MB.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -40,6 +44,8 @@ class AdminDokumenKpController extends Controller
         $request->file('file')->storeAs('public/dokumen-kp', $fileName);
 
         $dokumen_kp = new DokumenKp;
+        $dokumen_kp->nama = $request->nama;
+        $dokumen_kp->deskripsi = $request->deskripsi;
         $dokumen_kp->file = $fileName;
 
         $simpan = $dokumen_kp->save();
@@ -90,6 +96,8 @@ class AdminDokumenKpController extends Controller
         $request->file('file')->storeAs('public/dokumen-kp', $fileName);
 
         $simpan = $dokumen_kp->update([
+            'nama' => $request->nama,
+            'deskripsi' => $request->deskripsi,
             'file' => $fileName,
         ]);
 

@@ -41,7 +41,7 @@ class Mahasiswa extends Authenticatable
 
     public function getTanggalLahirAttribute()
     {
-        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_lahir'])->format('d-m-Y');
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_lahir'])->format('d M Y');
     }
 
     public function getCreatedAtAttribute()
@@ -69,9 +69,13 @@ class Mahasiswa extends Authenticatable
         return $this->belongsTo(Dokumen::class, 'id_mahasiswa', 'id');
     }
 
+    // public function kerjaPraktek()
+    // {
+    //     return $this->belongsTo(KerjaPraktek::class, 'id_mahasiswa', 'id');
+    // }
     public function kerjaPraktek()
     {
-        return $this->belongsTo(KerjaPraktek::class, 'id_mahasiswa', 'id');
+        return $this->hasOne(KerjaPraktek::class, 'id_mahasiswa');
     }
 
     public function peminatan()
