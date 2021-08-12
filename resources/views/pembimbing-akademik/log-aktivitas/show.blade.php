@@ -114,7 +114,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="id_prodi" class="col-form-label">Jam Pulang:</label>
-                        <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $log->jam_puulang }}" disabled>
+                        <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $log->jam_pulang }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="id_prodi" class="col-form-label">Aktivitas:</label>

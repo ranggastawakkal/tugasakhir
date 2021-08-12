@@ -34,20 +34,20 @@
     </div>
 </li>
 
-{{-- <!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item {{ (request()->is("admin/plo-clo/*")) ? 'active' : '' }}">
-    <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapsePloClo" aria-expanded="true" aria-controls="collapsePloClo">
+<!-- Nav Item - Pages Collapse Menu -->
+<li class="nav-item {{ (request()->is("admin/learning-outcomes/*")) ? 'active' : '' }}">
+    <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseLearningOutcomes" aria-expanded="true" aria-controls="collapseLearningOutcomes">
         <i class="fas fa-fw fa-database"></i>
-        <span>PLO & CLO</span>
+        <span>Learning Outcomes</span>
     </a>
-    <div id="collapsePloClo" class="collapse mt-2" data-parent="#accordionSidebar">
+    <div id="collapseLearningOutcomes" class="collapse mt-2" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/plo*")) ? 'active' : '' }}" href="{{ route('admin.learning-outcomes.plo') }}">PLO</a>
-            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/clo*")) ? 'active' : '' }}" href="{{ route('admin.learning-outcomes.clo') }}">CLO</a>
-            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/sub-clo*")) ? 'active' : '' }}" href="{{ route('admin.learning-outcomes.sub-clo') }}">Sub Clo</a>
+            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/plo*")) ? 'active' : '' }}" href="{{ route('learning-outcomes.plo') }}">PLO</a>
+            {{-- <a class="collapse-item {{ (request()->is("admin/learning-outcomes/clo*")) ? 'active' : '' }}" href="{{ route('admin.learning-outcomes.clo') }}">CLO</a>
+            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/sub-clo*")) ? 'active' : '' }}" href="{{ route('admin.learning-outcomes.sub-clo') }}">Sub Clo</a> --}}
         </div>
     </div>
-</li> --}}
+</li>
 
 <!-- Nav Item - Charts -->
 <li class="nav-item {{ (request()->is("admin/surat-pengantar")) ? 'active' : '' }}">

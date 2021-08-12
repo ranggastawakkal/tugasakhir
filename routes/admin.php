@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\AdminPeriodeController;
 use App\Http\Controllers\Admin\AdminSuratPengantarController;
 use App\Http\Controllers\Admin\AdminDokumenKpController;
 use App\Http\Controllers\Admin\AdminDokumenMahasiswaController;
+use App\Http\Controllers\Admin\PloController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
@@ -67,24 +68,24 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
         });
     });
 
-    Route::prefix('clo-plo')->group(function () {
+    Route::prefix('learning-outcomes')->group(function () {
         Route::prefix('plo')->group(function () {
-            Route::get('/', [AdminPloController::class, 'index'])->name('admin.plo');
-            Route::post('/store', [AdminPloController::class, 'store'])->name('admin.plo.store');
-            Route::post('/update/{id}', [AdminPloController::class, 'update'])->name('admin.plo.update');
-            Route::get('/destroy/{id}', [AdminPloController::class, 'destroy'])->name('admin.plo.destroy');
+            Route::get('/', [PloController::class, 'index'])->name('learning-outcomes.plo');
+            Route::post('/store', [PloController::class, 'store'])->name('learning-outcomes.plo.store');
+            Route::post('/update/{id}', [PloController::class, 'update'])->name('learning-outcomes.plo.update');
+            Route::get('/destroy/{id}', [PloController::class, 'destroy'])->name('learning-outcomes.plo.destroy');
         });
         Route::prefix('clo')->group(function () {
-            Route::get('/', [AdminCloController::class, 'index'])->name('admin.clo');
-            Route::post('/store', [AdminCloController::class, 'store'])->name('admin.clo.store');
-            Route::post('/update/{id}', [AdminCloController::class, 'update'])->name('admin.clo.update');
-            Route::get('/destroy/{id}', [AdminCloController::class, 'destroy'])->name('admin.clo.destroy');
+            Route::get('/', [CloController::class, 'index'])->name('learning-outcomes.clo');
+            Route::post('/store', [CloController::class, 'store'])->name('learning-outcomes.clo.store');
+            Route::post('/update/{id}', [CloController::class, 'update'])->name('learning-outcomes.clo.update');
+            Route::get('/destroy/{id}', [CloController::class, 'destroy'])->name('learning-outcomes.clo.destroy');
         });
         Route::prefix('sub-clo')->group(function () {
-            Route::get('/', [AdminSubCloController::class, 'index'])->name('admin.sub-clo');
-            Route::post('/store', [AdminSubCloController::class, 'store'])->name('admin.sub-clo.store');
-            Route::post('/update/{id}', [AdminSubCloController::class, 'update'])->name('admin.sub-clo.update');
-            Route::get('/destroy/{id}', [AdminSubCloController::class, 'destroy'])->name('admin.sub-clo.destroy');
+            Route::get('/', [SubCloController::class, 'index'])->name('learning-outcomes.sub-clo');
+            Route::post('/store', [SubCloController::class, 'store'])->name('learning-outcomes.sub-clo.store');
+            Route::post('/update/{id}', [SubCloController::class, 'update'])->name('learning-outcomes.sub-clo.update');
+            Route::get('/destroy/{id}', [SubCloController::class, 'destroy'])->name('learning-outcomes.sub-clo.destroy');
         });
     });
 

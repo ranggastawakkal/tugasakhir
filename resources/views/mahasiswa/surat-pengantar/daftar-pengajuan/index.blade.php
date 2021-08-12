@@ -29,7 +29,7 @@
                             <td>{{ $surat->nama_instansi }}</td>
                             <td>{{ $surat->kota_instansi }}</td>
                             <td>{{ $surat->status }}</td>
-                            <td></td>
+                            <td><a href="{{ route('mahasiswa.daftar-pengajuan.get', $surat->file) }}">{{ $surat->file }}</a></td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -23,9 +23,8 @@ class DokumenMahasiswaController extends Controller
 
     public function download($namaFile)
     {
-        $path = Storage::disk('public')->download($namaFile);
+        $path = Storage::disk('public/dokumen-kp')->download($namaFile);
 
         return $path;
     }
-
 }

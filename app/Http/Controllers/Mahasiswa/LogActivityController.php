@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Mahasiswa;
 
 use App\Http\Controllers\Controller;
-use App\Models\LogActivity;
+use App\Models\LogAktivitas;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +19,7 @@ class LogActivityController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $logs = LogActivity::where(['id_mahasiswa' => $user->id])->get();
+        $logs = LogAktivitas::where(['id_mahasiswa' => $user->id])->get();
         return view('mahasiswa.log-activity.index', compact('logs'));
     }
 
@@ -28,10 +28,10 @@ class LogActivityController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-            'tanggal' => ['required'],
-            'jamdatang' => ['required'],
-            'jampulang' => ['required'],
-            'aktivitas' => ['required'],
+                'tanggal' => ['required'],
+                'jamdatang' => ['required'],
+                'jampulang' => ['required'],
+                'aktivitas' => ['required'],
             ]
         );
 
@@ -41,7 +41,7 @@ class LogActivityController extends Controller
 
         $user = Auth::user();
 
-        $log = new LogActivity();
+        $log = new LogAktivitas();
         $log->id_mahasiswa = $user->id;
         $log->id_pemb_akd = $user->kerjaPraktek->pembimbingAkademik->id;
         $log->id_pemb_lap = $user->kerjaPraktek->pembimbingLapangan->id;
@@ -56,14 +56,14 @@ class LogActivityController extends Controller
 
     public function update(Request $request)
     {
-        
+
         $validator = Validator::make(
             $request->all(),
             [
-            'tanggal' => ['required'],
-            'jamdatang' => ['required'],
-            'jampulang' => ['required'],
-            'aktivitas' => ['required'],
+                'tanggal' => ['required'],
+                'jamdatang' => ['required'],
+                'jampulang' => ['required'],
+                'aktivitas' => ['required'],
             ]
         );
 
@@ -71,7 +71,7 @@ class LogActivityController extends Controller
             return redirect()->route('mahasiswa.log-activity.index')->withInput()->withErrors($validator);
         }
 
-        $log = LogActivity::find($request->id);
+        $log = LogAktivitas::find($request->id);
         $log->tanggal = $request->tanggal;
         $log->jam_datang = $request->jamdatang;
         $log->jam_pulang = $request->jampulang;
@@ -80,5 +80,4 @@ class LogActivityController extends Controller
 
         return redirect()->route('mahasiswa.log-activity.index');
     }
-
 }

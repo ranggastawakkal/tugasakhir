@@ -18,8 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('mahasiswa.index');
     Route::get('/buat-pengajuan/index', [BuatPengajuanController::class, 'index'])->name('mahasiswa.buat-pengajuan.index');
-    Route::get('/daftar-pengajuan/index', [DaftarPengajuanController::class, 'index'])->name('mahasiswa.daftar-pengajuan.index');
-
+    Route::group(['prefix' => 'daftar-pengajuan'], function () {
+        Route::get('/index', [DaftarPengajuanController::class, 'index'])->name('mahasiswa.daftar-pengajuan.index');
+        Route::get('/get/{file}', [DaftarPengajuanController::class, 'getFile'])->name('mahasiswa.daftar-pengajuan.get');
+    });
     Route::group(['prefix' => 'profil'], function () {
         Route::get('/', [ProfileController::class, 'index'])->name('mahasiswa.profil.index');
         Route::get('/edit', [ProfileController::class, 'edit'])->name('mahasiswa.profil.edit');
