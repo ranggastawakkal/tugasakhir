@@ -4,10 +4,8 @@
 @section('main-content')
 
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Biodata Pembimbing Lapangan</h1>
+        <h1 class="h3 mb-0 text-gray-800">Ganti Pembimbing Lapangan</h1>
         @if(isset($dataKerjaPraktek->id_pemb_lap))
-        <a href="{{ route ('mahasiswa.pembimbing.lapangan.edit') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                class="fas fa-edit fa-sm text-white-50"></i> Ganti Pembimbing</a>
         @endif
     </div>
 

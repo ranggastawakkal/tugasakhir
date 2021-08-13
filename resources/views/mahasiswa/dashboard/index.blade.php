@@ -14,8 +14,10 @@
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
-                        Dosen Pembimbing Akademik</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ isset($dataKerjaPraktek->pembimbingAkademik->nama) ? $dataKerjaPraktek->pembimbingAkademik->nama : "-"}}</div>
+                        Pembimbing Akademik</div>
+                        <a href="{{ route ('mahasiswa.pembimbing.akademik.index') }}">
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ isset($dataKerjaPraktek->pembimbingAkademik->nama) ? $dataKerjaPraktek->pembimbingAkademik->nama : "-"}}</div>
+                        </a>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -33,7 +35,9 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">
                         Pembimbing Lapangan</div>
+                        <a href="{{ route ('mahasiswa.pembimbing.lapangan.index') }}">
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ isset($dataKerjaPraktek->pembimbingLapangan->nama) ? $dataKerjaPraktek->pembimbingLapangan->nama : "-"}}</div>
+                        </a>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -42,5 +46,5 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
 @endsection

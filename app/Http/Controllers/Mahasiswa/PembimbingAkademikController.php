@@ -60,4 +60,12 @@ class PembimbingAkademikController extends Controller
         return redirect()->route('mahasiswa.pembimbing.akademik.index');
     }
 
+    public function edit()
+    {
+        $user = Auth::user();
+        $akademik = PembimbingAkademik::all();
+       
+        return view('mahasiswa.pembimbing.akademik.edit', compact('akademik'));
+    }
+
 }

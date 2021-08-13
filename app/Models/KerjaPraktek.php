@@ -25,15 +25,15 @@ class KerjaPraktek extends Model
         'surat_selesai',
     ];
 
-    public function getTanggalMulaiAttribute()
-    {
-        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_mulai'])->format('d M Y');
-    }
+    // public function getTanggalMulaiAttribute()
+    // {
+    //     return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_mulai'])->format('d M Y');
+    // }
 
-    public function getTanggalBerakhirAttribute()
-    {
-        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_berakhir'])->format('d M Y');
-    }
+    // public function getTanggalBerakhirAttribute()
+    // {
+    //     return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_berakhir'])->format('d M Y');
+    // }
 
     // public function mahasiswa()
     // {

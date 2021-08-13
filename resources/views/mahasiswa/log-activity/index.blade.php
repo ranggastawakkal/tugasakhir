@@ -18,6 +18,7 @@
                 <table class="table table-bordered" id="dataTableLog" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Nomor</th>
                             <th>Hari dan Tanggal</th>
                             <th>Jam datang</th>
                             <th>Jam pulang</th>
@@ -26,14 +27,17 @@
                             <th>Edit</th>
                         </tr>
                     </thead>
-                    @foreach($logs as $log)          
+                    @foreach($logs as $key => $log)          
                         <tr>
+                            <td>{{ $key+1 }}</td>
                             <td>{{ $log->tanggal }}</td>
                             <td>{{ $log->jam_datang }}</td>
                             <td>{{ $log->jam_pulang }}</td>
                             <td>{{ $log->aktivitas }}</td>
                             <td>{{ $log->evaluasi }}</td>
-                            <td><a id="editModal" href="#" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}"><i class="fa fa-edit"></i></a></td>
+                            <td>
+                                <a id="editModal" href="#" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}"><i class="fa fa-edit"></i></a>
+                            </td>
                         </tr>
                     @endforeach
                 </table>

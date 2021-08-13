@@ -16,7 +16,7 @@
         </div>
         <div class="card-body">
             <p class="mb-0">Data kerja praktek belum tersedia, silahkan tambahkan</p>
-            @if(isset($dataKerjaPraktek->pembimbingAkademik) && isset($dataKerjaPraktek->pembLap))
+            @if(isset($dataKerjaPraktek->pembimbingAkademik) && isset($dataKerjaPraktek->pembimbingLapangan))
             <a href="{{ route('mahasiswa.kerja-praktek.data.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mt-2"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
             @else

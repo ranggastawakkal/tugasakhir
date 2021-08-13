@@ -12,12 +12,12 @@
         <form method=POST action="{{ route('mahasiswa.kerja-praktek.data.store') }}">
             @csrf
             <div class="form-group row">
-                <label for="nipakd" class="col-md-2 col-form-label text-md-left ml-2">Nama Pembimbing Akademik</label>
+                <label for="namaakd" class="col-md-2 col-form-label text-md-left ml-2">Nama Pembimbing Akademik</label>
 
                 <div class="col-md-9">
-                    <input id="nipakd" type="text" class="form-control @error('nipakd') is-invalid @enderror" name="nipakd" value="{{ $dataKerjaPraktek->pembAkd->nama }}" disabled autocomplete="nipakd" autofocus>
+                    <input id="namaakd" type="text" class="form-control @error('namaakd') is-invalid @enderror" name="namaakd" value="{{ $dataKerjaPraktek->pembimbingAkademik->nama }}" disabled autocomplete="namaakd" autofocus>
 
-                    @error('nipakd')
+                    @error('namaakd')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -25,12 +25,12 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="niplap" class="col-md-2 col-form-label text-md-left ml-2">Nama Pembimbing Lapangan</label>
+                <label for="namalap" class="col-md-2 col-form-label text-md-left ml-2">Nama Pembimbing Lapangan</label>
 
                 <div class="col-md-9">
-                    <input id="niplap" type="text" class="form-control @error('niplap') is-invalid @enderror" name="niplap" value="{{ $dataKerjaPraktek->pembLap->nama }}" disabled autocomplete="niplap" autofocus>
+                    <input id="namalap" type="text" class="form-control @error('namalap') is-invalid @enderror" name="namalap" value="{{ $dataKerjaPraktek->pembimbingLapangan->nama }}" disabled autocomplete="namalap" autofocus>
 
-                    @error('niplap')
+                    @error('namalap')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -41,7 +41,7 @@
                 <label for="perusahaan" class="col-md-2 col-form-label text-md-left ml-2">Perusahaan</label>
 
                 <div class="col-md-9">
-                    <input id="perusahaan" type="perusahaan" class="form-control @error('perusahaan') is-invalid @enderror" name="perusahaan" value="{{ $dataKerjaPraktek->pembLap->nama_perusahaan }}" disabled autofocus>
+                    <input id="perusahaan" type="perusahaan" class="form-control @error('perusahaan') is-invalid @enderror" name="perusahaan" value="{{ $dataKerjaPraktek->pembimbingLapangan->nama_perusahaan }}" disabled autofocus>
 
                     @error('perusahaan')
                         <span class="invalid-feedback" role="alert">
