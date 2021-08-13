@@ -150,6 +150,50 @@
             .appendTo( '#dataTable_wrapper .col-md-5:eq(0)' );
     } );
 
+    $(document).ready(function() {
+        var table = $('#dataTableAdmin2').DataTable( {
+
+            buttons: [ 'copy', 'csv', 'print', 'excel', 'pdf', 'colvis' ],
+            dom:
+                "<'row'<'col-md-3'l><'col-md-5'B><'col-md-4'f>>"+
+                "<'row'<'col-md-12'tr>>"+
+                "<'row'<'col-md-5'i><'col-md-7'p>>",
+            lengthMenu:[
+                [5,10,25,50,100,-1],
+                [5,10,25,50,100,"All"]
+            ],
+
+            "language": {
+            
+                "search": "Cari:",
+                
+                "lengthMenu": "Tampilkan _MENU_ baris",
+                
+                "zeroRecords": "Data tidak ditemukan",
+                
+                "info": "Halaman _PAGE_ dari _PAGES_",
+                
+                "infoEmpty": "Tidak ada data",
+                
+                "infoFiltered": "(pencarian dari _MAX_ data)",
+
+                "buttons": {
+				    "colvis": "Kolom"
+				}
+            
+            },
+            
+            responsive: true,
+            
+            stateSave: true, // keep paging
+
+            "scrollX": true
+        } );
+    
+        table.buttons().container()
+            .appendTo( '#dataTable_wrapper .col-md-5:eq(0)' );
+    } );
+
 </script>
 @section('page-script')
 @show

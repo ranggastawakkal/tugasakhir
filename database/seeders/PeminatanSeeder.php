@@ -141,6 +141,13 @@ class PeminatanSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'nama' => "-",
+                'id_kk' => 5,
+                'id_prodi' => 4,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         DB::table('peminatan')->insert($peminatan);

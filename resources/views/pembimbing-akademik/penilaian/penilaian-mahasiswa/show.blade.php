@@ -119,6 +119,7 @@
                         <thead class="text-center">
                             <tr>
                                 <th>No.</th>
+                                <th hidden>ID</th>
                                 <th>Indikator Penilaian</th>
                                 <th>Nilai Angka</th>
                             </tr>
@@ -130,6 +131,7 @@
                             @foreach ($bobot_pemb as $indikator)
                             <tr>
                                 <td class="text-center">{{ $i }}</td>
+                                <td hidden>{{ $indikator->subClo->id }}</td>
                                 <td>{{ $indikator->subClo->deskripsi }}</td>
                                 <td><input type="number" class="form-control" id="{{ $indikator->subClo->deskripsi }}" name="nilai_angka" required></td>
                             </tr>

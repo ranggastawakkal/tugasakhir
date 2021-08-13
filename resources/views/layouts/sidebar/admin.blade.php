@@ -43,8 +43,9 @@
     <div id="collapseLearningOutcomes" class="collapse mt-2" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item {{ (request()->is("admin/learning-outcomes/plo*")) ? 'active' : '' }}" href="{{ route('learning-outcomes.plo') }}">PLO</a>
-            {{-- <a class="collapse-item {{ (request()->is("admin/learning-outcomes/clo*")) ? 'active' : '' }}" href="{{ route('admin.learning-outcomes.clo') }}">CLO</a>
-            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/sub-clo*")) ? 'active' : '' }}" href="{{ route('admin.learning-outcomes.sub-clo') }}">Sub Clo</a> --}}
+            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/clo*")) ? 'active' : '' }}" href="{{ route('learning-outcomes.clo') }}">CLO</a>
+            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/sub-clo*")) ? 'active' : '' }}" href="{{ route('learning-outcomes.sub-clo') }}">Sub CLO</a>
+            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/bobot-nilai*")) ? 'active' : '' }}" href="{{ route('learning-outcomes.bobot-nilai') }}">Bobot Nilai</a>
         </div>
     </div>
 </li>
@@ -66,6 +67,18 @@
     <a class="nav-link pb-0" href="{{ route('admin.dokumen-mahasiswa') }}">
         <i class="fas fa-fw fa-envelope-open-text"></i>
         <span>Dokumen Mahasiswa</span></a>
+</li>
+
+<li class="nav-item {{ (request()->is("admin/dokumen-mahasiswa")) ? 'active' : '' }}">
+    <a class="nav-link pb-0" href="{{ route('admin.dokumen-mahasiswa') }}">
+        <i class="fas fa-fw fa-envelope-open-text"></i>
+        <span>Kerja Praktek</span></a>
+</li>
+
+<li class="nav-item {{ (request()->is("admin/dokumen-mahasiswa")) ? 'active' : '' }}">
+    <a class="nav-link pb-0" href="{{ route('admin.dokumen-mahasiswa') }}">
+        <i class="fas fa-fw fa-envelope-open-text"></i>
+        <span>Nilai Mahasiswa</span></a>
 </li>
 
 <!-- Divider -->

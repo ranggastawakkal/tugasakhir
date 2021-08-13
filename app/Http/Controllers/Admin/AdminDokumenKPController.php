@@ -25,12 +25,14 @@ class AdminDokumenKpController extends Controller
         $rules = [
             'nama' => 'required',
             'deskripsi' => 'required',
+            'aktor' => 'required',
             'file' => 'max:50000',
         ];
 
         $messages = [
             'nama.required' => 'Nama file harus diisi',
             'deskripsi.required' => 'Deskripsi file harus diisi',
+            'aktor.required' => 'Aktor tujuan harus dipilih',
             'file.max' => 'Ukuran file maksimal adalah 50MB.',
         ];
 
@@ -46,6 +48,7 @@ class AdminDokumenKpController extends Controller
         $dokumen_kp = new DokumenKp;
         $dokumen_kp->nama = $request->nama;
         $dokumen_kp->deskripsi = $request->deskripsi;
+        $dokumen_kp->aktor = $request->aktor;
         $dokumen_kp->file = $fileName;
 
         $simpan = $dokumen_kp->save();
@@ -98,6 +101,7 @@ class AdminDokumenKpController extends Controller
         $simpan = $dokumen_kp->update([
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
+            'aktor' => $request->aktor,
             'file' => $fileName,
         ]);
 

@@ -13,6 +13,9 @@ use App\Http\Controllers\Admin\AdminSuratPengantarController;
 use App\Http\Controllers\Admin\AdminDokumenKpController;
 use App\Http\Controllers\Admin\AdminDokumenMahasiswaController;
 use App\Http\Controllers\Admin\PloController;
+use App\Http\Controllers\Admin\CloController;
+use App\Http\Controllers\Admin\SubCloController;
+use App\Http\Controllers\Admin\BobotNilaiController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
@@ -87,12 +90,21 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
             Route::post('/update/{id}', [SubCloController::class, 'update'])->name('learning-outcomes.sub-clo.update');
             Route::get('/destroy/{id}', [SubCloController::class, 'destroy'])->name('learning-outcomes.sub-clo.destroy');
         });
+        Route::prefix('bobot-nilai')->group(function () {
+            Route::get('/', [BobotNilaiController::class, 'index'])->name('learning-outcomes.bobot-nilai');
+            Route::post('/store/pembimbing-akademik', [BobotNilaiController::class, 'storePembAkd'])->name('learning-outcomes.bobot-nilai.pembimbing-akademik.store');
+            Route::post('/store/pembimbing-lapangan', [BobotNilaiController::class, 'storePembLap'])->name('learning-outcomes.bobot-nilai.pembimbing-lapangan.store');
+            Route::post('/update/pembimbing-akademik/{id}', [BobotNilaiController::class, 'updatePembAkd'])->name('learning-outcomes.bobot-nilai.pembimbing-akademik.update');
+            Route::post('/update/pembimbing-lapangan/{id}', [BobotNilaiController::class, 'updatePembLap'])->name('learning-outcomes.bobot-nilai.pembimbing-lapangan.update');
+            Route::get('/destroy/pembimbing-akademik/{id}', [BobotNilaiController::class, 'destroyPembAkd'])->name('learning-outcomes.bobot-nilai.pembimbing-akademik.destroy');
+            Route::get('/destroy/pembimbing-lapangan/{id}', [BobotNilaiController::class, 'destroyPembLap'])->name('learning-outcomes.bobot-nilai.pembimbing-lapangan.destroy');
+        });
     });
 
     Route::prefix('surat-pengantar')->group(function () {
         Route::get('/', [AdminSuratPengantarController::class, 'index'])->name('admin.surat-pengantar');
         Route::post('/store', [AdminSuratPengantarController::class, 'store'])->name('admin.surat-pengantar.store');
-        Route::post('/update{id}', [AdminSuratPengantarController::class, 'update'])->name('admin.surat-pengantar.update');
+        Route::post('/update/{id}', [AdminSuratPengantarController::class, 'update'])->name('admin.surat-pengantar.update');
         Route::get('/destroy/{id}', [AdminSuratPengantarController::class, 'destroy'])->name('admin.surat-pengantar.destroy');
         Route::get('/get/{file}', [AdminSuratPengantarController::class, 'getFile'])->name('admin.surat-pengantar.get');
     });
@@ -100,7 +112,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::prefix('dokumen-kp')->group(function () {
         Route::get('/', [AdminDokumenKpController::class, 'index'])->name('admin.dokumen-kp');
         Route::post('/store', [AdminDokumenKpController::class, 'store'])->name('admin.dokumen-kp.store');
-        Route::post('/update{id}', [AdminDokumenKpController::class, 'update'])->name('admin.dokumen-kp.update');
+        Route::post('/update/{id}', [AdminDokumenKpController::class, 'update'])->name('admin.dokumen-kp.update');
         Route::get('/destroy/{id}', [AdminDokumenKpController::class, 'destroy'])->name('admin.dokumen-kp.destroy');
         Route::get('/get/{file}', [AdminDokumenKpController::class, 'getFile'])->name('admin.dokumen-kp.get');
     });

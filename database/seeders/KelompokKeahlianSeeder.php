@@ -35,6 +35,11 @@ class KelompokKeahlianSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'nama_kk' => "-",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         DB::table('kelompok_keahlian')->insert($kk);

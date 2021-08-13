@@ -15,7 +15,7 @@ class CreatePeriodesTable extends Migration
     {
         Schema::create('periode', function (Blueprint $table) {
             $table->id();
-            $table->enum('semester', ['GANJIL', 'GENAP']);
+            $table->enum('semester', ['GANJIL', 'GENAP', '-']);
             $table->string('tahun_ajaran');
             $table->timestamps();
         });

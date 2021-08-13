@@ -43,8 +43,8 @@
                             <th scope="col">Pembimbing Lapangan</th>
                             <th scope="col">Perusahaan</th>
                             <th scope="col">Unit Kerja</th>
-                            <th scope="col">Tanggal Mulai</th>
-                            <th scope="col">Tanggal Berakhir</th>
+                            {{-- <th scope="col">Tanggal Mulai</th>
+                            <th scope="col">Tanggal Berakhir</th> --}}
                             <th scope="col">Target</th>
                             <th scope="col">Program Kegiatan</th>
                             <th scope="col">Aksi</th>
@@ -66,8 +66,8 @@
                             <td scope="row">{{ $kp->pembimbingLapangan->nama }}</td>
                             <td scope="row">{{ $kp->pembimbingLapangan->nama_perusahaan }}</td>
                             <td scope="row">{{ $kp->unit_kerja }}</td>
-                            <td scope="row">{{ $kp->tanggal_mulai }}</td>
-                            <td scope="row">{{ $kp->tanggal_berakhir }}</td>
+                            {{-- <td scope="row">{{ $kp->tanggal_mulai }}</td>
+                            <td scope="row">{{ $kp->tanggal_berakhir }}</td> --}}
                             <td scope="row">{{ $kp->target }}</td>
                             <td scope="row">{{ $kp->program_kegiatan }}</td>
                             <td scope="row"><a href="{{ route('pembimbing-akademik.data-mahasiswa.show', $kp->id) }}">Lihat Detail</a></td>

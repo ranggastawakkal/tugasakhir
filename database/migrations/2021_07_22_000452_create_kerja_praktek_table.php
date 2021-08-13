@@ -16,13 +16,13 @@ class CreateKerjaPraktekTable extends Migration
         Schema::create('kerja_praktek', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_mahasiswa')->unique();
-            $table->unsignedBigInteger('id_pemb_akd');
+            $table->unsignedBigInteger('id_pemb_akd')->nullable();
             $table->unsignedBigInteger('id_pemb_lap')->nullable();
-            $table->string('unit_kerja')->nullable();
+            $table->string('unit_kerja')->nullable()->default('-');
             $table->date('tanggal_mulai')->nullable();
             $table->date('tanggal_berakhir')->nullable();
-            $table->text('target')->nullable();
-            $table->text('program_kegiatan')->nullable();
+            $table->text('target')->nullable()->default("-");
+            $table->text('program_kegiatan')->nullable()->default("-");
             $table->timestamps();
 
             $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa')->onUpdate('cascade')->onDelete('cascade');

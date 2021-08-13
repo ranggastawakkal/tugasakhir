@@ -40,6 +40,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Nama File</th>
                             <th scope="col">Deskripsi</th>
+                            <th scope="col">Aktor</th>
                             <th scope="col">File</th>
                             <th scope="col">Dibuat</th>
                             <th scope="col">Diperbarui</th>
@@ -56,6 +57,7 @@
                             <td scope="row">{{ $dok->id }}</td>
                             <td scope="row">{{ $dok->nama }}</td>
                             <td scope="row">{{ Str::limit($dok->deskripsi, 50) }}</td>
+                            <td scope="row">{{ $dok->aktor }}</td>
                             <td scope="row"><a href="{{ route('admin.dokumen-kp.get',$dok->file) }}">{{ Str::limit($dok->file, 50) }}</a></td>
                             <td scope="row">{{ $dok->created_at }}</td>
                             <td scope="row">{{ $dok->updated_at }}</td>
@@ -98,6 +100,15 @@
                         <textarea class="form-control" id="deskripsi" name="deskripsi" required></textarea>
                     </div>
                     <div class="mb-3">
+                        <label for="aktor" class="col-form-label">Untuk Aktor:</label>
+                        <select class="form-control" name="aktor" id="aktor" required>
+                            <option disabled selected>--- Pilih ---</option>
+                            <option value="Mahasiswa">Mahasiswa</option>
+                            <option value="Pembimbing Akademik">Pembimbing Akademik</option>
+                            <option value="Pembimbing Lapangan">Pembimbing Lapangan</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="file" class="col-form-label">File Dokumen KP:</label>
                         <input type="file" class="form-control-file" id="file" name="file" accept="application/pdf" required>
                     </div>
@@ -138,6 +149,10 @@
                     <div class="mb-3">
                         <label for="deskripsi" class="col-form-label">Deskripsi:</label>
                         <textarea name="deskripsi" id="deskripsi" class="form-control" disabled>{{ $dok->deskripsi }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="aktor" class="col-form-label">Untuk Aktor:</label>
+                        <textarea name="aktor" id="aktor" class="form-control" disabled>{{ $dok->aktor }}</textarea>
                     </div>
                     <div class="mb-3">
                         <label for="file_template" class="col-form-label">File Dokumen KP:</label><br>
@@ -186,8 +201,18 @@
                         <textarea name="deskripsi" id="deskripsi" class="form-control" requred>{{ $dok->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
+                        <label for="aktor" class="col-form-label">Aktor:</label>
+                        <select class="form-control" name="aktor" id="aktor" required>
+                            <option disabled>--- Pilih ---</option>
+                            <option value="{{ $dok->aktor }}" selected hidden>{{ $dok->aktor }}</option>
+                            <option value="Mahasiswa">Mahasiswa</option>
+                            <option value="Pembimbing Akademik">Pembimbing Akademik</option>
+                            <option value="Pembimbing Lapangan">Pembimbing Lapangan</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="file" class="col-form-label">Ubah File Dokumen KP:</label>
-                        <input type="file" class="form-control-file" id="file" name="file" accept="application/pdf">
+                        <input type="file" class="form-control-file" id="file" name="file" accept="application/pdf" required>
                     </div>
             </div>
             <div class="modal-footer">
@@ -217,7 +242,7 @@
                 <ul>
                     <li>ID: {{ $dok->id }}</li>
                     <li>Nama File: {{ $dok->nama }}</li>
-                    <li>Deskripsi: {{ $dok->deskripsi }}</li>
+                    <li>Untuk Aktor: {{ $dok->aktor }}</li>
                     <li>File: {{ $dok->file }}</li>
                 </ul>
             </div>

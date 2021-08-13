@@ -1,12 +1,12 @@
 @extends('layouts/main')
-@section('title','PLO')
+@section('title','Sub CLO')
 
 @section('main-content')
 <div class="row">
     <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-success">Data PLO (<i>Program Learning Outcomes</i>)</h6>
+                <h6 class="m-0 font-weight-bold text-success">Data Sub CLO</h6>
             </div>
             <div class="card-body">
                 @if ($message = Session::get('success'))
@@ -38,10 +38,8 @@
                         <tr>
                             <th scope="col">No.</th>
                             <th scope="col">ID</th>
-                            <th scope="col">Kode PLO</th>
                             <th scope="col">Deskripsi</th>
-                            <th scope="col">Periode</th>
-                            <th scope="col">Program Studi</th>
+                            <th scope="col">Kode CLO</th>
                             <th scope="col">Dibuat</th>
                             <th scope="col">Diperbarui</th>
                             <th scope="col">Aksi</th>
@@ -51,14 +49,12 @@
                         @php
                         $i = 1;
                         @endphp
-                        @foreach ($plo as $lo)
+                        @foreach ($sub_clo as $lo)
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
                             <td scope="row">{{ $lo->id }}</td>
-                            <td scope="row">{{ $lo->kode_plo }}</td>
                             <td scope="row">{{ Str::limit($lo->deskripsi, 50) }}</td>
-                            <td scope="row">{{ $lo->periode->semester }}</td>
-                            <td scope="row">{{ $lo->prodi->nama_prodi }}</td>
+                            <td scope="row">{{ $lo->clo->kode_clo }}</td>
                             <td scope="row">{{ $lo->created_at }}</td>
                             <td scope="row">{{ $lo->updated_at }}</td>
                             <td scope="row">
@@ -83,37 +79,24 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTambahDataLabel">Tambah Data PLO</h5>
+                <h5 class="modal-title" id="modalTambahDataLabel">Tambah Data Sub CLO</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('learning-outcomes.plo.store') }}">
+                <form method="POST" action="{{ route('learning-outcomes.sub-clo.store') }}">
                     @csrf
-                    <div class="mb-3">
-                        <label for="kode_plo" class="col-form-label">Kode PLO:</label>
-                        <input type="text" class="form-control" id="kode_plo" name="kode_plo" required>
-                    </div>
                     <div class="mb-3">
                         <label for="deskripsi" class="col-form-label">Deskripsi:</label>
                         <textarea class="form-control" name="deskripsi" id="deskripsi" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="id_periode" class="col-form-label">Periode:</label>
-                        <select class="form-control" name="id_periode" id="id_periode" required>
+                        <label for="id_clo" class="col-form-label">Kode CLO:</label>
+                        <select class="form-control" name="id_clo" id="id_clo" required>
                             <option selected disabled>--- Pilih ---</option>
-                            @foreach ($periodes as $periode)
-                            <option value="{{ $periode->id }}">{{ $periode->semester }} | {{ $periode->tahun_ajaran }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
-                        <select class="form-control" name="id_prodi" id="id_prodi" required>
-                            <option selected disabled>--- Pilih ---</option>
-                            @foreach ($program_studi as $prodi)
-                            <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
+                            @foreach ($clo as $lo)
+                            <option value="{{ $lo->id }}">{{ $lo->kode_clo }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -129,13 +112,13 @@
 </div>
 
 {{-- modal tampil data --}}
-@foreach ($plo as $lo)
+@foreach ($sub_clo as $lo)
 
 <div class="modal fade" id="modalTampilData{{ $lo->id }}" tabindex="-1" aria-labelledby="modalTampilDataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTampilDataLabel">Detail Data PLO</h5>
+                <h5 class="modal-title" id="modalTampilDataLabel">Detail Data Sub CLO</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -148,20 +131,12 @@
                         <input type="text" class="form-control" id="id" name="id" value="{{ $lo->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Kode PLO:</label>
-                        <input type="text" class="form-control" id="nama" name="nama" value="{{ $lo->kode_plo }}" disabled>
+                        <label for="deskripsi" class="col-form-label">Deskripsi:</label>
+                        <textarea class="form-control" name="deskripsi" id="deskripsi" disabled>{{ $lo->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Deskripsi:</label>
-                        <input type="text" class="form-control" id="nama" name="nama" value="{{ $lo->deskripsi }}" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Periode:</label>
-                        <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $lo->periode->semester }} | {{ $lo->periode->tahun_ajaran }}" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
-                        <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $lo->prodi->nama_prodi }}" disabled>
+                        <label for="id_prodi" class="col-form-label">Kode CLO:</label>
+                        <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $lo->clo->kode_clo }}" disabled>
                     </div>
                     <div class="mb-3">
                         <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
@@ -182,46 +157,32 @@
 @endforeach
 
 {{-- modal edit data --}}
-@foreach ($plo as $lo)
+@foreach ($sub_clo as $lo)
 
 <div class="modal fade" id="modalEditData{{ $lo->id }}" tabindex="-1" aria-labelledby="modalEditDataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEditDataLabel">Edit Data PLO</h5>
+                <h5 class="modal-title" id="modalEditDataLabel">Edit Data Sub CLO</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('learning-outcomes.plo.update', $lo->id) }}">
+                <form method="POST" action="{{ route('learning-outcomes.sub-clo.update', $lo->id) }}">
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $lo->id }}" required>
-                    <div class="mb-3">
-                        <label for="kode_plo" class="col-form-label">Kode PLO:</label>
-                        <input type="text" class="form-control" id="kode_plo" name="kode_plo" value="{{ $lo->kode_plo }}" required>
-                    </div>
                     <div class="mb-3">
                         <label for="deskripsi" class="col-form-label">Deskripsi:</label>
                         <textarea class="form-control" name="deskripsi" id="deskripsi" required>{{ $lo->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="id_periode" class="col-form-label">Periode:</label>
-                        <select class="form-control" name="id_periode" id="id_periode" required>
+                        <label for="id_clo" class="col-form-label">Kode CLO:</label>
+                        <select class="form-control" name="id_clo" id="id_clo" required>
                             <option disabled>--- Pilih ---</option>
-                            <option value="{{ $lo->periode->id }}" selected hidden>{{ $lo->periode->semester }} | {{ $lo->periode->tahun_ajaran }}</option>
-                            @foreach ($periodes as $periode)
-                            <option value="{{ $periode->id }}">{{ $periode->semester }} | {{ $periode->tahun_ajaran }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
-                        <select class="form-control" name="id_prodi" id="id_prodi" required>
-                            <option disabled>--- Pilih ---</option>
-                            <option value="{{ $lo->prodi->id }}" selected hidden>{{ $lo->prodi->nama_prodi }}</option>
-                            @foreach ($program_studi as $prodi)
-                            <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
+                            <option value="{{ $lo->clo->id }}" selected hidden>{{ $lo->clo->kode_clo }}</option>
+                            @foreach ($clo as $lo)
+                            <option value="{{ $lo->id }}">{{ $lo->kode_clo }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -238,27 +199,26 @@
 @endforeach
 
 {{-- modal hapus data --}}
-@foreach ($plo as $lo)
+@foreach ($sub_clo as $lo)
 <div class="modal fade" id="modalHapusData{{ $lo->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Hapus Data PLO</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Sub CLO</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <h6>Anda yakin ingin menghapus data PLO ini?</h6>
+                <h6>Anda yakin ingin menghapus data Sub CLO ini?</h6>
                 <ul>
                     <li>ID: {{ $lo->id }}</li>
-                    <li>Kode PLO: {{ $lo->kode_plo }}</li>
-                    <li>Periode: {{ $lo->periode->semester }} | {{ $lo->periode->tahun_ajaran }}</li>
-                    <li>Program Studi: {{ $lo->prodi->nama_prodi }}</li>
+                    <li>Deskripsi: {{ $lo->deskripsi }}</li>
+                    <li>Kode CLO: {{ $lo->clo->kode_clo }}</li>
                 </ul>
             </div>
             <div class="modal-footer">
-                <form action="{{ route('learning-outcomes.plo.destroy', $lo->id ) }}" method="GET">
+                <form action="{{ route('learning-outcomes.sub-clo.destroy', $lo->id ) }}" method="GET">
                     @csrf
                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>

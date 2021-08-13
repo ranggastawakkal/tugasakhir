@@ -17,6 +17,7 @@ class CreateDokumenKpsTable extends Migration
             $table->id();
             $table->string('nama');
             $table->text('deskripsi');
+            $table->enum('aktor', ['Mahasiswa', 'Pembimbing Akademik', 'Pembimbing Lapangan']);
             $table->string('file');
             $table->timestamps();
         });

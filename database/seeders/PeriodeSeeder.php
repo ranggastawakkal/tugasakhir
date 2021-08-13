@@ -27,6 +27,12 @@ class PeriodeSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'semester' => "-",
+                'tahun_ajaran' => "-",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         DB::table('periode')->insert($periode);

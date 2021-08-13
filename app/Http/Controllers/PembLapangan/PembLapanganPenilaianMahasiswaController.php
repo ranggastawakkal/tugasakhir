@@ -30,45 +30,18 @@ class PembLapanganPenilaianMahasiswaController extends Controller
         $id_pemb_lap = Auth::user()->id;
         $nilai_pemb_lap = NilaiPembLap::where('id_mahasiswa', $id)->get();
         $kerja_praktek = KerjaPraktek::where('id_mahasiswa',  $id)->where('id_pemb_lap', $id_pemb_lap)->get();
+        $mahasiswa = Mahasiswa::where('id', $id)->get();
+        // $id_bobot = BobotPembLap::where('id', $mahasiswa->periode->plo->clo->subClo->id)->get();
+        // ->join('sub_clo', 'bobot_pemb_lap.id_sub_clo', '=', 'sub_clo.id')
+        // ->join('clo', 'sub_clo.id_clo', '=', 'clo.id')
+        // ->join('plo', 'clo.id_plo', '=', 'plo.id')
+        // ->join('periode', 'plo.id_periode', '=', 'periode.id')
+        // ->join('program_studi', 'plo.id_prodi', '=', 'program_studi.id')
+        // ->join('mahasiswa', 'plo.id_periode', '=', 'mahasiswa.id_periode')
+        // ->select('bobot_pemb_lap.id')
 
-        // $mahasiswa = Mahasiswa::join
-        // $bobot_pemb_lap = BobotPembLap::join('sub_clo', 'bobot_pemb_lap.id_sub_clo', '=', 'sub_clo.id')
-        //     ->join('clo', 'sub_clo.id_clo', '=', 'clo.id')
-        //     ->join('plo', 'clo.id_plo', '=', 'plo.id')
-        //     ->join('periode', 'plo.id_periode', '=', 'periode.id')
-        //     ->join('program_studi', 'plo.id_prodi', '=', 'program_studi.id')
-        //     ->join('mahasiswa', 'plo.id_periode', '=', 'mahasiswa.id_periode')
-        //     ->join('kelas', 'mahasiswa.id_kelas', '=', 'kelas.id')
-        //     ->join('nilai_pemb_lap', 'bobot_pemb_lap.id', '=', 'nilai_pemb_lap.id_bobot')
-        //     ->select('bobot_pemb_lap.id')
-        //     ->where('mahasiswa.id', '=', $id)
-        // ->where('mahasiswa.id_periode', '=', 'periode.id')
-        // ->where('mahasiswa.id_kelas', '=', 'kelas.id')
-        // ->where('kelas.id_prodi', '=', 'program_studi.id')
-        // ->where('plo.id_prodi', '=', 'program_studi.id')
-        // ->where('plo.id_periode', '=', 'periode.id')
-        // ->where('clo.id_plo', '=', 'plo.id')
-        // ->where('sub_clo.id_clo', '=', 'clo.id')
-        // ->where('bobot_pemb_lap.id_sub_clo', '=', 'sub_clo.id')
-        // ->get();
 
         $bobot_pemb = BobotPembLap::all();
-
-        // $id_sub_clo = DB::table('bobot_pemb_lap')
-        //     ->join('sub_clo', 'bobot_pemb_lap.id_sub_clo', '=', 'sub_clo.id')
-        //     ->join('clo', 'sub_clo.id_clo', '=', 'clo.id')
-        //     ->join('plo', 'clo.id_plo', '=', 'plo.id')
-        //     ->join('periode', 'plo.id_periode', '=', 'periode.id')
-        //     ->join('mahasiswa', 'periode.id', '=', 'mahasiswa.id_periode')
-        //     ->join('kelas', 'mahasiswa.id_kelas', '=', 'kelas.id')
-        //     ->join('program_studi', 'kelas.id_prodi', '=', 'program_studi.id')
-        //     ->select('sub_clo.id')
-        //     ->where('mahasiswa.id_periode', '=', 'periode.id')
-        //     ->where('mahasiswa.id_kelas', '=', 'kelas.id')
-        //     ->where('mahasiswa.id_kelas', '=', $id)
-        //     ->where('kelas.id_prodi', '=', 'program_studi.id')
-        //     ->get();
-        // $sub_clo = BobotPembLap::where('id_sub_clo',  $id_sub_clo)->get();
 
         if ($kerja_praktek) {
             return view('pembimbing-lapangan/penilaian/penilaian-mahasiswa/show', compact('nilai_pemb_lap', 'kerja_praktek', 'bobot_pemb'));
