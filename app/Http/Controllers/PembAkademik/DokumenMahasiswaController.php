@@ -13,13 +13,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class PembAkademikLaporanKpController extends Controller
+class DokumenMahasiswaController extends Controller
 {
     public function index()
     {
         $id = Auth::user()->id;
 
-        $laporan_kp = DB::table('dokumen_mahasiswa')
+        $dokumen = DB::table('dokumen_mahasiswa')
             ->join('kerja_praktek', 'dokumen_mahasiswa.id_mahasiswa', '=', 'kerja_praktek.id_mahasiswa')
             ->join('mahasiswa', 'dokumen_mahasiswa.id_mahasiswa', '=', 'mahasiswa.id')
             ->join('kelas', 'mahasiswa.id_kelas', '=', 'kelas.id')
@@ -31,18 +31,26 @@ class PembAkademikLaporanKpController extends Controller
         // $kerja_praktek = KerjaPraktek::where('id_pemb_akd',  $id)->get();
         // $laporan_kp = DokumenMahasiswa::where('id_mahasiswa', $kerja_praktek->mahasiswa->id)->get();
 
-        return view('pembimbing-akademik/laporan-kp', compact('laporan_kp'));
+        return view('pembimbing-akademik/dokumen-mahasiswa', compact('dokumen'));
     }
 
     public function getFile(Request $request)
     {
-        if (Storage::disk('public')->exists("dokumen-mahasiswa/laporan/$request->file")) {
+        if (Storage::disk('public')->exists("dokumen-mahasiswa/surat-diterima/$request->file")) {
+            $path = Storage::disk('public')->path("dokumen-mahasiswa/surat-diterima/$request->file");
+        } elseif (Storage::disk('public')->exists("dokumen-mahasiswa/laporan/$request->file")) {
             $path = Storage::disk('public')->path("dokumen-mahasiswa/laporan/$request->file");
-            $content = file_get_contents($path);
-            return response($content)->withHeaders([
-                'Content-Type' => mime_content_type($path)
-            ]);
+        } elseif (Storage::disk('public')->exists("dokumen-mahasiswa/surat-selesai/$request->file")) {
+            $path = Storage::disk('public')->path("dokumen-mahasiswa/surat-selesai/$request->file");
+        } else {
+            $path = Storage::disk('public')->path("dokumen-mahasiswa/krs/$request->file");
         }
-        return redirect()->route('pembimbing-akademik.laporan-kp')->with('errors', 'Gagal mengunduh file.');
+
+        $content = file_get_contents($path);
+        return response($content)->withHeaders([
+            'Content-Type' => mime_content_type($path)
+        ]);
+
+        return redirect()->route('pembimbing-akademik.dokumen-mahasiswa')->with('errors', 'Gagal mengunduh file.');
     }
 }

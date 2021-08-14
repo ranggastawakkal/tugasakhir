@@ -19,7 +19,11 @@
                     <tr>
                         <th>Perusahaan</th>
                         <td>:</td>
-                        <td>{{ $kp->pembimbingLapangan->nama_perusahaan }}</td>
+                        @if ($kp->id_pemb_lap != null)
+                            <td>{{ $kp->pembimbingLapangan->nama_perusahaan }}</td>
+                        @else
+                            <td>-</td>
+                        @endif
                     </tr>
                     <tr>
                         <th>Unit Kerja</th>

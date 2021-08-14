@@ -21,6 +21,7 @@ class CreateNilaiPembLapsTable extends Migration
             $table->double('nilai');
             $table->timestamps();
 
+            $table->foreign('id_mahasiswa')->references('id')->on('mahasiswa')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id_bobot')->references('id')->on('bobot_pemb_lap')->onUpdate('cascade')->onDelete('cascade');
         });
     }

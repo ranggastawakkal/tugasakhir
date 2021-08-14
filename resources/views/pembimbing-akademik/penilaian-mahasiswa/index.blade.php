@@ -31,7 +31,7 @@
                             <td scope="row">{{ $kp->mahasiswa->nama }}</td>
                             <td scope="row">{{ $kp->unit_kerja }}</td>
                             <td scope="row">{{ Str::limit($kp->program_kegiatan, 50) }}</td>
-                            <td scope="row"><a href="{{ route('pembimbing-akademik.penilaian.penilaian-mahasiswa.show', $kp->mahasiswa->id) }}">Lihat Nilai</a></td>
+                            <td scope="row"><a href="{{ route('pembimbing-akademik.penilaian-mahasiswa.show', $kp->mahasiswa->id) }}">Lihat Nilai</a></td>
                         </tr>
                         @php
                         $i++;

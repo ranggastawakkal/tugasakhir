@@ -53,6 +53,7 @@
                 <h6 class="m-0 font-weight-bold text-success">Data Pembimbing Akademik</h6>
             </div>
             <div class="card-body">
+                @if ($kerja_praktek->id_pemb_akd != null)
                 <table class="table table-borderless table-responsive">
                     <tr>
                         <th>NIP</th>
@@ -75,6 +76,11 @@
                         <td>{{ $kerja_praktek->pembimbingAkademik->no_telepon }}</td>
                     </tr>
                 </table>
+                @else
+                <div class="alert alert-danger fade show">
+                    <p>Mahasiswa belum menginputkan data pembimbing akademik.</p>
+                </div>
+                @endif
             </div>
         </div>
     </div>

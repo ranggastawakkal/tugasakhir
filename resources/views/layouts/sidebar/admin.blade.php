@@ -69,8 +69,8 @@
         <span>Dokumen Mahasiswa</span></a>
 </li>
 
-<li class="nav-item {{ (request()->is("admin/dokumen-mahasiswa")) ? 'active' : '' }}">
-    <a class="nav-link pb-0" href="{{ route('admin.dokumen-mahasiswa') }}">
+<li class="nav-item {{ (request()->is("admin/kerja-praktek")) ? 'active' : '' }}">
+    <a class="nav-link pb-0" href="{{ route('kerja-praktek') }}">
         <i class="fas fa-fw fa-envelope-open-text"></i>
         <span>Kerja Praktek</span></a>
 </li>

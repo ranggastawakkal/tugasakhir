@@ -92,16 +92,12 @@
                             @else
                                 <td class="text-success font-weight-bold" scope="row">Sudah Dievaluasi</td>
                             @endif
-                            @if ($log->evaluasi === '-')
-                                <td scope="row"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $log->id }}">Beri Evaluasi</a></td>
-                            @else
-                                <td scope="row">{{ Str::limit($log->evaluasi, 50) }}</td>
-                            @endif
+                            <td scope="row">{{ Str::limit($log->evaluasi, 50) }}</td>
                             <td scope="row">{{ $log->created_at }}</td>
                             <td scope="row">{{ $log->updated_at }}</td>
                             <td scope="row">
                                 <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $log->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr> |
-                                <abbr title="Edit data"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr>
+                                <abbr title="Beri Evaluasi"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr>
                             </td>
                         </tr>
                         @php

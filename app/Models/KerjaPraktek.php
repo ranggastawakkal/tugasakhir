@@ -27,43 +27,36 @@ class KerjaPraktek extends Model
 
     public function getTanggalMulaiAttribute()
     {
-        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_mulai'])->format('d M Y');
+        if ($this->attributes['tanggal_mulai'] != null) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_mulai'])->format('d M Y');
+        } else {
+            echo ('-');
+        }
     }
 
     public function getTanggalBerakhirAttribute()
     {
-        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_berakhir'])->format('d M Y');
+        if ($this->attributes['tanggal_berakhir'] != null) {
+            return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal_berakhir'])->format('d M Y');
+        } else {
+            echo ('-');
+        }
     }
 
-    // public function mahasiswa()
-    // {
-    //     return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
-    // }
+    public function getCreatedAtAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('d-m-Y H:i:s');
+    }
 
-    // public function pembimbingAkademik()
-    // {
-    //     return $this->belongsTo(PembimbingAkademik::class, 'id_pemb_akd');
-    // }
-
-    // public function pembimbingLapangan()
-    // {
-    //     return $this->belongsTo(PembimbingLapangan::class, 'id_pemb_lap');
-    // }
+    public function getUpdatedAtAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
+    }
 
     public function mahasiswa()
     {
         return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
     }
-
-    // public function pembimbingAkademik()
-    // {
-    //     return $this->hasOne(PembimbingAkademik::class, 'id', 'id_pemb_akd');
-    // }
-
-    // public function pembimbingLapangan()
-    // {
-    //     return $this->hasOne(PembimbingLapangan::class, 'id', 'id_pemb_lap');
-    // }
 
     public function pembimbingAkademik()
     {

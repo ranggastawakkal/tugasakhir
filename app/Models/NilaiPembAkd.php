@@ -33,4 +33,9 @@ class NilaiPembAkd extends Model
     {
         return $this->hasOne(BobotPembAkd::class, 'id', 'id_bobot');
     }
+
+    public function mahasiswa()
+    {
+        return $this->hasOne(Mahasiswa::class, 'id', 'id_mahasiswa');
+    }
 }

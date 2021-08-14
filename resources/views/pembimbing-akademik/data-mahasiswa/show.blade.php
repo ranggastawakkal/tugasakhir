@@ -53,6 +53,7 @@
                 <h6 class="m-0 font-weight-bold text-success">Data Pembimbing Lapangan</h6>
             </div>
             <div class="card-body">
+                @if ($kerja_praktek->id_pemb_lap != null)
                 <table class="table table-borderless table-responsive">
                     <tr>
                         <th>NIP</th>
@@ -80,6 +81,11 @@
                         <td>{{ $kerja_praktek->pembimbingLapangan->jabatan }}</td>
                     </tr>
                 </table>
+                @else
+                <div class="alert alert-danger fade show">
+                    <p>Mahasiswa belum menginputkan data pembimbing lapangan.</p>
+                </div>
+                @endif
             </div>
         </div>
     </div>
@@ -91,6 +97,7 @@
                 <h6 class="m-0 font-weight-bold text-success">Data Kerja Praktek</h6>
             </div>
             <div class="card-body">
+                @if ($kerja_praktek->id_pemb_lap != null)
                 <table class="table table-borderless table-responsive">
                     <tr>
                         <th>Perusahaan</th>
@@ -122,6 +129,13 @@
                         <td>:</td>
                         <td>{{ $kerja_praktek->unit_kerja }}</td>
                     </tr>
+                </table>
+                @else
+                <div class="alert alert-danger fade show">
+                    <p>Mahasiswa belum menginputkan data perusahaan.</p>
+                </div>
+                @endif
+                <table class="table table-borderless table-responsive">
                     <tr>
                         <th>Tanggal Mulai</th>
                         <td>:</td>

@@ -33,17 +33,16 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ (request()->is("pembimbing-lapangan/penilaian*")) ? 'active' : '' }}">
-        <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapsePenilaian" aria-expanded="true" aria-controls="collapsePenilaian">
-            <i class="fas fa-fw fa-database"></i>
-            <span>Penilaian</span>
-        </a>
-        <div id="collapsePenilaian" class="collapse mt-2" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item {{ (request()->is("pembimbing-lapangan/penilaian/indikator-penilaian*")) ? 'active' : '' }}" href="{{ route('pembimbing-lapangan.penilaian.indikator-penilaian') }}">Indikator Penilaian</a>
-                <a class="collapse-item {{ (request()->is("pembimbing-lapangan/penilaian/penilaian-mahasiswa*")) ? 'active' : '' }}" href="{{ route('pembimbing-lapangan.penilaian.penilaian-mahasiswa.index') }}">Penilaian Mahasiswa</a>
-            </div>
-        </div>
+    <li class="nav-item {{ (request()->is("pembimbing-lapangan/dokumen-kp*")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('pembimbing-lapangan.dokumen-kp') }}">
+            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <span>Dokumen KP</span></a>
+    </li>
+
+    <li class="nav-item {{ (request()->is("pembimbing-lapangan/penilaian-mahasiswa*")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('pembimbing-lapangan.penilaian-mahasiswa') }}">
+            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <span>Penilaian Mahasiswa</span></a>
     </li>
 
     <!-- Divider -->
