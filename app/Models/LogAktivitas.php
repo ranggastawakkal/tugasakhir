@@ -28,11 +28,6 @@ class LogAktivitas extends Model
         'evaluasi',
     ];
 
-    public function getTanggalAttribute()
-    {
-        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal'])->format('d-m-Y');
-    }
-
     public function getCreatedAtAttribute()
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('d-m-Y H:i:s');

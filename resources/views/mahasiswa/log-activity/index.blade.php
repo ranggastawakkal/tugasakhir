@@ -69,10 +69,10 @@
         var data = table.row($tr).data();
         var log = $(this).data('id');
 
-        $('#tanggal').val(data[0]);
-        $('#jamdatang').val(data[1]);
-        $('#jampulang').val(data[2]);
-        $('textarea#aktivitas').val(data[3]);
+        $('#tanggal').val(data[1]);
+        $('#jamdatang').val(data[2]);
+        $('#jampulang').val(data[3]);
+        $('textarea#aktivitas').val(data[4]);
         $('#logID').val(log);
 
         $('#btnAddText').text('Edit');
@@ -89,4 +89,3 @@
     });
 </script>
 @endsection
-
