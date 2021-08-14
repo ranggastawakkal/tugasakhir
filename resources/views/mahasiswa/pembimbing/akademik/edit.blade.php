@@ -3,11 +3,7 @@
 
 @section('main-content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Biodata Dosen Pembimbing Akademik</h1>
-        @if(isset($dataKerjaPraktek->id_pemb_akd))
-        <a href="{{ route('mahasiswa.pembimbing.akademik.edit') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                class="fas fa-edit fa-sm text-white-50"></i> Ganti Pembimbing</a>
-        @endif
+        <h1 class="h3 mb-0 text-gray-800">Ganti Dosen Pembimbing Akademik</h1>
     </div>
 
     @if(!isset($dataKerjaPraktek->id_pemb_akd))
@@ -21,9 +17,10 @@
                     <label for="selectAkademik">Pilih Dosen Pembimbing Akademik</label>
                     <select class="form-control @error('selectAkademik') is-invalid @enderror" id="selectAkademik" name="selectAkademik">
                         <option value="" data-id="">- Pilih Dosen Pembimbing -</option>
-                        @foreach($dosen as $data)
+                        @foreach($akademik as $data)
                         <option value="{{ $data->id }}" data-id="{{ $data }}">{{ $data->nama }}</option>
                         @endforeach
+                      
                     </select>
 
                     @error('selectAkademik')
@@ -74,7 +71,7 @@
                     <tbody>
                         <tr>
                             <td style="width: 20%;">Nama Dosen</td>
-                            <td style="width: 80%;">{{ $dataKerjaPraktek->pembimbingAkademik->nama }}</td>
+                            <td style="width: 80%;">p</td>
                         </tr>
                         <tr>
                             <td>NIP</td>

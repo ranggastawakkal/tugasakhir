@@ -30,10 +30,15 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
     Route::group(['prefix' => 'pembimbing'], function () {
         Route::get('/akademik', [PembimbingAkademikController::class, 'index'])->name('mahasiswa.pembimbing.akademik.index');
         Route::post('/akademik/store', [PembimbingAkademikController::class, 'store'])->name('mahasiswa.pembimbing.akademik.store');
+        Route::get('/akademik/edit', [PembimbingAkademikController::class, 'edit'])->name('mahasiswa.pembimbing.akademik.edit');
+        Route::post('/akademik/update', [PembimbingAkademikController::class, 'update'])->name('mahasiswa.pembimbing.akademik.update');
+
         Route::get('/lapangan', [PembimbingLapanganController::class, 'index'])->name('mahasiswa.pembimbing.lapangan.index');
         Route::get('/lapangan/create', [PembimbingLapanganController::class, 'create'])->name('mahasiswa.pembimbing.lapangan.create');
         Route::post('/lapangan/store', [PembimbingLapanganController::class, 'store'])->name('mahasiswa.pembimbing.lapangan.store');
         Route::post('/lapangan/store/new', [PembimbingLapanganController::class, 'storeNew'])->name('mahasiswa.pembimbing.lapangan.store.new');
+        Route::get('/lapangan/edit', [PembimbingLapanganController::class, 'edit'])->name('mahasiswa.pembimbing.lapangan.edit');
+        Route::post('/lapangan/update', [PembimbingLapanganController::class, 'update'])->name('mahasiswa.pembimbing.lapangan.store.update');
     });
 
     Route::group(['prefix' => 'ubah-password'], function () {
@@ -43,7 +48,7 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
 
     Route::group(['prefix' => 'kerja-praktek'], function () {
         Route::get('/data', [KerjaPraktekDataController::class, 'index'])->name('mahasiswa.kerja-praktek.data.index');
-        Route::group(['prefix' => 'dokumen-kp'], function () {
+        Route::group(['prefix' => 'dokumen-mahasiswa'], function () {
             Route::get('/', [KerjaPraktekDokumenController::class, 'index'])->name('mahasiswa.kerja-praktek.dokumen-kp.index');
             Route::post('/krs', [KerjaPraktekDokumenController::class, 'storeKrs'])->name('mahasiswa.kerja-praktek.dokumen-kp.storeKrs');
             Route::post('/bukti-diterima', [KerjaPraktekDokumenController::class, 'storeDiterima'])->name('mahasiswa.kerja-praktek.dokumen-kp.storeDiterima');
@@ -58,12 +63,13 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
         Route::get('/', [LogActivityController::class, 'index'])->name('mahasiswa.log-activity.index');
         Route::post('/store', [LogActivityController::class, 'store'])->name('mahasiswa.log-activity.store');
         Route::post('/update', [LogActivityController::class, 'update'])->name('mahasiswa.log-activity.update');
+        Route::post('/delete/{id}', [LogActivityController::class, 'delete'])->name('mahasiswa.log-activity.delete');
     });
 
     Route::group(['prefix' => 'surat-pengantar'], function () {
         Route::post('/', [BuatPengajuanController::class, 'store'])->name('mahasiswa.surat-pengantar.store');
     });
 
-    Route::get('/dokumen-mahasiswa', [DokumenMahasiswaController::class, 'index'])->name('mahasiswa.template-laporan.index');
-    Route::get('/dokumen-mahasiswa/download/{namaFile}', [DokumenMahasiswaController::class, 'download'])->name('mahasiswa.template-laporan.download');
+    Route::get('/dokumen-kp', [DokumenMahasiswaController::class, 'index'])->name('mahasiswa.template-laporan.index');
+    Route::get('/dokumen-kp/download/{namaFile}', [DokumenMahasiswaController::class, 'download'])->name('mahasiswa.template-laporan.download');
 });

@@ -13,7 +13,7 @@
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ (request()->is("mahasiswa/surat-pengantar")) ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->is("mahasiswa/surat-pengantar*")) ? 'active' : '' }}">
         <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseSuratPengantar" aria-expanded="true" aria-controls="collapseSuratPengantar">
             <i class="fas fa-fw fa-envelope"></i>
             <span>Surat Pengantar</span>
@@ -27,7 +27,7 @@
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item {{ (request()->is("mahasiswa/pembimbing")) ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->is("mahasiswa/pembimbing*")) ? 'active' : '' }}">
         <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapsePembimbing" aria-expanded="true" aria-controls="collapsePembimbing">
             <i class="fas fa-fw fa-users"></i>
             <span>Pembimbing</span>
@@ -40,7 +40,7 @@
         </div>
     </li>
 
-    <li class="nav-item {{ (request()->is("mahasiswa/kerja-praktek")) ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->is("mahasiswa/kerja-praktek*")) ? 'active' : '' }}">
         <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseKerjaPraktek" aria-expanded="true" aria-controls="collapseKerjaPraktek">
             <i class="fas fa-fw fa-database"></i>
             <span>Kerja Praktek</span>
@@ -48,7 +48,7 @@
         <div id="collapseKerjaPraktek" class="collapse mt-2" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item" href="{{ route('mahasiswa.kerja-praktek.data.index') }}">Data Kerja Praktek</a>
-                <a class="collapse-item" href="{{ route('mahasiswa.kerja-praktek.dokumen-kp.index') }}">Dokumen KP</a>
+                <a class="collapse-item" href="{{ route('mahasiswa.kerja-praktek.dokumen-kp.index') }}">Dokumen Mahasiswa</a>
             </div>
         </div>
     </li>
@@ -56,10 +56,10 @@
  
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item {{ (request()->is("mahasiswa/dokumen-mahasiswa")) ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->is("mahasiswa/dokumen-kp")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('mahasiswa.template-laporan.index') }}">
             <i class="fas fa-fw fa-envelope-open-text"></i>
-            <span>Dokumen Mahasiswa</span></a>
+            <span>Dokumen KP</span></a>
     </li>
 
 

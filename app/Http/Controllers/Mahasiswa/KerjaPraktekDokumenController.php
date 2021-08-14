@@ -8,8 +8,10 @@ use App\Models\DokumenMahasiswa;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Alert;
 
 class KerjaPraktekDokumenController extends Controller
 {
@@ -79,6 +81,11 @@ class KerjaPraktekDokumenController extends Controller
         $user = Auth::user();
         $dokumenMahasiswa = DokumenMahasiswa::where(['id_mahasiswa' => $user->id])->first();
 
+        if ($dokumenMahasiswa->buktiKrs == "-" || $dokumenMahasiswa->surat_diterima == "-") {
+            Alert::warning('', 'Dokumen KRS/surat diterima belum upload');
+            return redirect()->route('mahasiswa.kerja-praktek.dokumen-kp.index');
+        }
+
         if (!$dokumenMahasiswa) {
             $dokumenMahasiswa = new DokumenMahasiswa();
             $dokumenMahasiswa->id_mahasiswa = $user->id;
@@ -141,6 +148,11 @@ class KerjaPraktekDokumenController extends Controller
 
         $user = Auth::user();
         $dokumenMahasiswa = DokumenMahasiswa::where(['id_mahasiswa' => $user->id])->first();
+
+        if ($dokumenMahasiswa->buktiKrs == "-" || $dokumenMahasiswa->surat_diterima == "-") {
+            Alert::warning('', 'Dokumen KRS/surat diterima belum upload');
+            return redirect()->route('mahasiswa.kerja-praktek.dokumen-kp.index');
+        }
 
         if (!$dokumenMahasiswa) {
             $dokumenMahasiswa = new DokumenMahasiswa();

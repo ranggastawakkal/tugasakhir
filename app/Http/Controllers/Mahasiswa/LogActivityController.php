@@ -60,7 +60,7 @@ class LogActivityController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-                'tanggal' => ['required'],
+                'tanggal' => ['required', 'date', 'before:tomorrow'],
                 'jamdatang' => ['required'],
                 'jampulang' => ['required'],
                 'aktivitas' => ['required'],
@@ -77,6 +77,14 @@ class LogActivityController extends Controller
         $log->jam_pulang = $request->jampulang;
         $log->aktivitas = $request->aktivitas;
         $log->save();
+
+        return redirect()->route('mahasiswa.log-activity.index');
+    }
+
+    public function delete(Request $request)
+    {
+        $log = LogAktivitas::find($request->id);
+        $log->delete();
 
         return redirect()->route('mahasiswa.log-activity.index');
     }

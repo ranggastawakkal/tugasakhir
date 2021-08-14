@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Alert;
 
 class UbahPasswordController extends Controller
 {
@@ -23,15 +24,11 @@ class UbahPasswordController extends Controller
 
     public function update(Request $request)
     {
-        // $validator = $request->validate([
-        //     'oldPassword' => ['required'],
-        //     'password' => ['required','confirmed','min:8'],
-        // ]);
 
         $validator = Validator::make(
             $request->all(), 
             [
-            'oldPassword' => ['required'],
+            'currentPassword' => ['required'],
             'password' => ['required','confirmed','min:8']
             ]
         );
@@ -40,16 +37,18 @@ class UbahPasswordController extends Controller
             return redirect()->route('mahasiswa.ubah-password.index')->withErrors($validator);
         }
 
-        // if ( !Hash::check($request->oldPassword, Auth::user()->password) ) {
-        //    $flasher->addError('Password salah!');
-        // }
+        if (!Hash::check($request->currentPassword, Auth::user()->password)) {
+            Alert::warning('', 'Password lama tidak sama!');
+            return redirect()->route('mahasiswa.ubah-password.index');
+        }
 
         $user = Auth::user();
 
-        $userData = Mahasiswa::find($user->nim);
+        $userData = Mahasiswa::find($user->id);
         $userData->password = bcrypt($request->password);
         $userData->save();
 
-        return redirect()->route('mahasiswa.profil.index');
+        Alert::success('Password berhasil diubah!');
+        return redirect()->route('mahasiswa.ubah-password.index');
     }
 }

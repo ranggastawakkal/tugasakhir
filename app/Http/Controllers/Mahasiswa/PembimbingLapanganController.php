@@ -9,6 +9,7 @@ use App\Models\PembimbingLapangan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Alert;
 
 class PembimbingLapanganController extends Controller
 {
@@ -29,6 +30,11 @@ class PembimbingLapanganController extends Controller
     {
         $user = Auth::user();
         $dataKerjaPraktek = KerjaPraktek::where(['id_mahasiswa' => $user->id])->first();
+
+        if (!isset($dataKerjaPraktek->pembimbingAkademik)) {
+            Alert::warning('', 'Silahkan isi pembimbing akademik terlebih dahulu');
+            return redirect()->route('mahasiswa.pembimbing.lapangan.index');
+        }
 
         $validator = Validator::make(
             $request->all(), 
@@ -78,8 +84,6 @@ class PembimbingLapanganController extends Controller
         if ($validator->fails()) {
             return redirect()->route('mahasiswa.pembimbing.lapangan.create')->withErrors($validator);
         }
-
-        // dd($request->all());
         
         $pembLap = new PembimbingLapangan();
         $pembLap->nama = $request->nama;
@@ -89,7 +93,7 @@ class PembimbingLapanganController extends Controller
         $pembLap->nama_perusahaan = $request->namaperusahaan;
         $pembLap->alamat_perusahaan = $request->alamatperusahaan;
         $pembLap->kota_perusahaan = $request->kotaperusahaan;
-        $pembLap->email_perusahaan = $request->emailperusahaan;
+        $pembLap->email_perusahaan = $request->email_perusahaan;
         $pembLap->no_telepon_perusahaan = $request->phoneperusahaan;
         $pembLap->jabatan = $request->jabatan;
         $pembLap->password = bcrypt('password');
@@ -114,6 +118,22 @@ class PembimbingLapanganController extends Controller
     public function create()
     {
         return view('mahasiswa.pembimbing.lapangan.create');
+    }
+
+    public function edit()
+    {
+        $user = Auth::user();
+        $lapangan = PembimbingLapangan::all();
+       
+        return view('mahasiswa.pembimbing.lapangan.edit', compact('lapangan'));
+    }
+
+    public function update()
+    {
+        $user = Auth::user();
+        $lapangan = PembimbingLapangan::all();
+       
+        return view('mahasiswa.pembimbing.lapangan.edit', compact('lapangan'));
     }
 
 }

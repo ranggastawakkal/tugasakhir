@@ -18,6 +18,7 @@
                 <table class="table table-bordered" id="dataTableLog" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>Nomor</th>
                             <th>Hari dan Tanggal</th>
                             <th>Jam datang</th>
                             <th>Jam pulang</th>
@@ -26,14 +27,17 @@
                             <th>Edit</th>
                         </tr>
                     </thead>
-                    @foreach($logs as $log)          
+                    @foreach($logs as $key => $log)          
                         <tr>
+                            <td>{{ $key+1 }}</td>
                             <td>{{ $log->tanggal }}</td>
                             <td>{{ $log->jam_datang }}</td>
                             <td>{{ $log->jam_pulang }}</td>
                             <td>{{ $log->aktivitas }}</td>
                             <td>{{ $log->evaluasi }}</td>
-                            <td><a id="editModal" href="#" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}"><i class="fa fa-edit"></i></a></td>
+                            <td>
+                                <a id="editModal" href="#" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}"><i class="fa fa-edit"></i></a>
+                            </td>
                         </tr>
                     @endforeach
                 </table>
@@ -65,10 +69,10 @@
         var data = table.row($tr).data();
         var log = $(this).data('id');
 
-        $('#tanggal').val(data[0]);
-        $('#jamdatang').val(data[1]);
-        $('#jampulang').val(data[2]);
-        $('textarea#aktivitas').val(data[3]);
+        $('#tanggal').val(data[1]);
+        $('#jamdatang').val(data[2]);
+        $('#jampulang').val(data[3]);
+        $('textarea#aktivitas').val(data[4]);
         $('#logID').val(log);
 
         $('#btnAddText').text('Edit');
@@ -85,4 +89,3 @@
     });
 </script>
 @endsection
-

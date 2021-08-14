@@ -2,7 +2,7 @@
 @section('title','Dashboard')
 
 @section('main-content')
-<h1 class="h3 mb-2 text-gray-800">Dokumen Mahasiswa</h1>
+<h1 class="h3 mb-2 text-gray-800">Dokumen KP</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
