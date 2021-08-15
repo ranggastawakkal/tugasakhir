@@ -6,6 +6,8 @@
     <!-- DataTales Example -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Data Kerja Praktek</h1>
+        <a href="{{ route('mahasiswa.kerja-praktek.data.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                class="fas fa-edit fa-sm text-white-50"></i> Ganti Data Kerja Praktek</a>
         
     </div>
 
@@ -48,23 +50,23 @@
                         </tr>
                         <tr>
                             <td>Unit Kerja / Divisi</td>
-                            <td>{{ $dataKerjaPraktek->unit_kerja }}</td>
+                            <td id="divisi">{{ $dataKerjaPraktek->unit_kerja }}</td>
                         </tr>
                         <tr>
                             <td>Tanggal Mulai</td>
-                            <td>{{ $dataKerjaPraktek->tanggal_mulai }}</td>
+                            <td id="tanggal_mulai">{{ $dataKerjaPraktek->tanggal_mulai }}</td>
                         </tr>
                         <tr>
                             <td>Tanggal Berakhir</td>
-                            <td>{{ $dataKerjaPraktek->tanggal_berakhir }}</td>
+                            <td id="tanggal_berakhir">{{ $dataKerjaPraktek->tanggal_berakhir }}</td>
                         </tr>
                         <tr>
                             <td>Target</td>
-                            <td>{{ $dataKerjaPraktek->target }}</td>
+                            <td id="target">{{ $dataKerjaPraktek->target }}</td>
                         </tr>
                         <tr>
                             <td>Program Kegiatan</td>
-                            <td>{{ $dataKerjaPraktek->program_kegiatan }}</td>
+                            <td id="program_kegiatan">{{ $dataKerjaPraktek->program_kegiatan }}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -89,4 +91,28 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('page-script')
+<script>
+    $('data').ready(function() {
+        $('#dataKerjaPraktek').hide();
+    });
+
+    $('#selectDataKerjaPraktek').change(function() {
+        var dataSelected = $('#selectDataKerjaPraktek').find(":selected").attr('data-id');
+        console.log(dataSelected);
+        if (dataSelected != "") {
+            $('#dataKerjaPraktek').show();
+            var data = JSON.parse(dataSelected);
+            $('#divisi').html(data.divisi);
+            $('#tanggal_mulai').html(data.tanggal_mulai);
+            $('#tanggal_berakhir').html(data.tanggal_berakhir);
+            $('#target').html(data.target);
+            $('#program_kegiatan').html(data.program_kegiatan);
+        } else {
+            $('#dataKerjaPraktek').hide();
+        }
+    });
+</script>
 @endsection
