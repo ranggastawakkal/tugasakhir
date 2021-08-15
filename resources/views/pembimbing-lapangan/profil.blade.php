@@ -84,7 +84,7 @@
                 </table>
             </div>
             <div class="modal-footer bg-light">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalEditData">
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditData">
                     <i class="fas fa-edit"></i> Edit Profil
                 </button>
             </div>

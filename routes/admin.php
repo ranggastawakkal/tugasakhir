@@ -17,6 +17,9 @@ use App\Http\Controllers\Admin\CloController;
 use App\Http\Controllers\Admin\SubCloController;
 use App\Http\Controllers\Admin\BobotNilaiController;
 use App\Http\Controllers\Admin\KerjaPraktekController;
+use App\Http\Controllers\Admin\NilaiMahasiswaController;
+use App\Http\Controllers\Admin\ProfilController;
+use App\Http\Controllers\Admin\UbahPasswordController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
@@ -126,7 +129,20 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::prefix('kerja-praktek')->group(function () {
         Route::get('/', [KerjaPraktekController::class, 'index'])->name('kerja-praktek');
         Route::post('/store', [KerjaPraktekController::class, 'store'])->name('kerja-praktek.store');
+        Route::get('/show/{id}', [KerjaPraktekController::class, 'show'])->name('kerja-praktek.show');
         Route::post('/update/{id}', [KerjaPraktekController::class, 'update'])->name('kerja-praktek.update');
         Route::get('/destroy/{id}', [KerjaPraktekController::class, 'destroy'])->name('kerja-praktek.destroy');
+    });
+    Route::prefix('nilai-mahasiswa')->group(function () {
+        Route::get('/', [NilaiMahasiswaController::class, 'index'])->name('admin.nilai-mahasiswa');
+        Route::get('/show/{id}', [NilaiMahasiswaController::class, 'show'])->name('admin.nilai-mahasiswa.show');
+    });
+    Route::prefix('profil')->group(function () {
+        Route::get('/', [ProfilController::class, 'index'])->name('admin.profil');
+        Route::post('/update', [ProfilController::class, 'update'])->name('admin.profil.update');
+    });
+    Route::prefix('ubah-password')->group(function () {
+        Route::get('/', [UbahPasswordController::class, 'index'])->name('admin.ubah-password');
+        Route::post('/update', [UbahPasswordController::class, 'update'])->name('admin.ubah-password.update');
     });
 });

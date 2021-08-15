@@ -32,19 +32,9 @@
                 @endif
                 <table class="table table-borderless table-responsive">
                     <tr>
-                        <th>NIP</th>
-                        <td>:</td>
-                        <td>{{ $user->nip }}</td>
-                    </tr>
-                    <tr>
                         <th>Nama</th>
                         <td>:</td>
                         <td>{{ $user->nama }}</td>
-                    </tr>
-                    <tr>
-                        <th>Kode Dosen</th>
-                        <td>:</td>
-                        <td>{{ $user->kode_dosen }}</td>
                     </tr>
                     <tr>
                         <th>Email</th>
@@ -52,24 +42,14 @@
                         <td>{{ $user->email }}</td>
                     </tr>
                     <tr>
-                        <th>No. Telepon</th>
+                        <th>Dibuat</th>
                         <td>:</td>
-                        <td>{{ $user->no_telepon }}</td>
+                        <td>{{ $user->created_at }}</td>
                     </tr>
                     <tr>
-                        <th>Alamat</th>
+                        <th>Pembaruan Terakhir</th>
                         <td>:</td>
-                        <td>{{ $user->alamat }}</td>
-                    </tr>
-                    <tr>
-                        <th>Jenis Kelamin</th>
-                        <td>:</td>
-                        <td>{{ $user->jenis_kelamin }}</td>
-                    </tr>
-                    <tr>
-                        <th>TTL</th>
-                        <td>:</td>
-                        <td>{{ $user->tempat_lahir }}, {{ $user->tanggal_lahir }}</td>
+                        <td>{{ $user->updated_at }}</td>
                     </tr>
                 </table>
             </div>
@@ -93,49 +73,16 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('pembimbing-akademik.profil.update') }}">
+                <form method="POST" action="{{ route('admin.profil.update') }}">
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $user->id }}" required>
-                    <div class="mb-3">
-                        <label for="nip" class="col-form-label">NIP:</label>
-                        <input type="text" class="form-control" id="nip" name="nip" value="{{ $user->nip }}" required>
-                    </div>
                     <div class="mb-3">
                         <label for="nama" class="col-form-label">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $user->nama }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="kode_dosen" class="col-form-label">Kode Dosen:</label>
-                        <input type="text" class="form-control" id="kode_dosen" name="kode_dosen" value="{{ $user->kode_dosen }}" required>
-                    </div>
-                    <div class="mb-3">
                         <label for="email" class="col-form-label">Email:</label>
-                        <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="no_telepon" class="col-form-label">No. Telepon:</label>
-                        <input type="text" class="form-control" id="no_telepon" name="no_telepon" value="{{ $user->no_telepon }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="alamat" class="col-form-label">Alamat:</label>
-                        <textarea class="form-control" id="alamat" name="alamat" required>{{ $user->alamat }}</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="jenis_kelamin" class="col-form-label">Jenis Kelamin:</label>
-                        <select class="form-control" name="jenis_kelamin" id="jenis_kelamin" name="jenis_kelamin" value="{{ $user->jenis_kelamin }}" required>
-                            <option value="" disabled>--- Pilih ---</option>
-                            <option value="{{ $user->jenis_kelamin }}" selected hidden>{{ $user->jenis_kelamin }}</option>
-                            <option value="Laki-laki">Laki-laki</option>
-                            <option value="Perempuan">Perempuan</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tempat_lahir" class="col-form-label">Tempat Lahir:</label>
-                        <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="{{ $user->tempat_lahir }}" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tanggal_lahir" class="col-form-label">Tanggal Lahir:</label>
-                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $user->tanggal_lahir }}" required>
+                        <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}" required>
                     </div>
             </div>
             <div class="modal-footer">

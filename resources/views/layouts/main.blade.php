@@ -1,6 +1,6 @@
 @include('layouts/header')
 
-@include('sweetalert::alert')
+        @include('sweetalert::alert')
 
 <!-- Page Wrapper -->
 <div id="wrapper">

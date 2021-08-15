@@ -51,32 +51,32 @@
 </li>
 
 <!-- Nav Item - Charts -->
-<li class="nav-item {{ (request()->is("admin/surat-pengantar")) ? 'active' : '' }}">
+<li class="nav-item {{ (request()->is("admin/surat-pengantar*")) ? 'active' : '' }}">
     <a class="nav-link pb-0" href="{{ route('admin.surat-pengantar') }}">
         <i class="fas fa-fw fa-envelope-open-text"></i>
         <span>Surat Pengantar</span></a>
 </li>
 
-<li class="nav-item {{ (request()->is("admin/dokumen-kp")) ? 'active' : '' }}">
+<li class="nav-item {{ (request()->is("admin/dokumen-kp*")) ? 'active' : '' }}">
     <a class="nav-link pb-0" href="{{ route('admin.dokumen-kp') }}">
         <i class="fas fa-fw fa-envelope-open-text"></i>
         <span>Dokumen KP</span></a>
 </li>
 
-<li class="nav-item {{ (request()->is("admin/dokumen-mahasiswa")) ? 'active' : '' }}">
+<li class="nav-item {{ (request()->is("admin/dokumen-mahasiswa*")) ? 'active' : '' }}">
     <a class="nav-link pb-0" href="{{ route('admin.dokumen-mahasiswa') }}">
         <i class="fas fa-fw fa-envelope-open-text"></i>
         <span>Dokumen Mahasiswa</span></a>
 </li>
 
-<li class="nav-item {{ (request()->is("admin/kerja-praktek")) ? 'active' : '' }}">
+<li class="nav-item {{ (request()->is("admin/kerja-praktek*")) ? 'active' : '' }}">
     <a class="nav-link pb-0" href="{{ route('kerja-praktek') }}">
         <i class="fas fa-fw fa-envelope-open-text"></i>
         <span>Kerja Praktek</span></a>
 </li>
 
-<li class="nav-item {{ (request()->is("admin/dokumen-mahasiswa")) ? 'active' : '' }}">
-    <a class="nav-link pb-0" href="{{ route('admin.dokumen-mahasiswa') }}">
+<li class="nav-item {{ (request()->is("admin/nilai-mahasiswa*")) ? 'active' : '' }}">
+    <a class="nav-link pb-0" href="{{ route('admin.nilai-mahasiswa') }}">
         <i class="fas fa-fw fa-envelope-open-text"></i>
         <span>Nilai Mahasiswa</span></a>
 </li>
@@ -90,15 +90,15 @@
 </div>
 
 <!-- Nav Item - Charts -->
-<li class="nav-item">
-    <a class="nav-link pb-0" href="charts.html">
-        <i class="fas fas fa-fw fa-user"></i>
-        <span>Profil</span></a>
-</li>
+<li class="nav-item {{ (request()->is("admin/profil*")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('admin.profil') }}">
+            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <span>Profil</span></a>
+    </li>
 
-<!-- Nav Item - Tables -->
-<li class="nav-item">
-    <a class="nav-link pb-0" href="tables.html">
-        <i class="fas fa-fw fa-key"></i>
-        <span>Ubah Password</span></a>
-</li>
+    <!-- Nav Item - Tables -->
+    <li class="nav-item {{ (request()->is("admin/ubah-password*")) ? 'active' : '' }}">
+        <a class="nav-link pb-0" href="{{ route('admin.ubah-password') }}">
+            <i class="fas fa-fw fa-key"></i>
+            <span>Ubah Password</span></a>
+    </li>

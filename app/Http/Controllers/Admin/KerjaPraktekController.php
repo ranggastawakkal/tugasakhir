@@ -13,8 +13,12 @@ class KerjaPraktekController extends Controller
     public function index()
     {
         $kerja_praktek = KerjaPraktek::all();
-        $pembimbing_akademik = PembimbingAkademik::all();
-        $pembimbing_lapangan = PembimbingLapangan::all();
-        return view('admin/kerja-praktek', compact('kerja_praktek', 'pembimbing_akademik', 'pembimbing_lapangan'));
+        return view('admin/kerja-praktek/index', compact('kerja_praktek'));
+    }
+
+    public function show($id)
+    {
+        $kerja_praktek = KerjaPraktek::find($id);
+        return view('admin/kerja-praktek/show', compact('kerja_praktek'));
     }
 }

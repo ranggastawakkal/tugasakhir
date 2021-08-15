@@ -17,7 +17,7 @@ class DokumenMahasiswaController extends Controller
      */
     public function index()
     {
-        $dokumenKp = DokumenKp::all();
+        $dokumenKp = DokumenKp::where('aktor', 'Mahasiswa')->get();
         return view('mahasiswa.template-laporan.index', compact('dokumenKp'));
     }
 

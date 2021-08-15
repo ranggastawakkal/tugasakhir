@@ -30,9 +30,6 @@
                     </ul>
                 </div>
                 @endif
-                <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
-                    <i class="fas fa-plus"></i> Tambah Data
-                </button>
                 <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
                     <thead class="text-center">
                         <tr>
@@ -80,11 +77,7 @@
                             <td scope="row">{{ $kp->tanggal_berakhir }}</td>
                             <td scope="row">{{ $kp->created_at }}</td>
                             <td scope="row">{{ $kp->updated_at }}</td>
-                            <td scope="row">
-                                <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $kp->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr> |
-                                <abbr title="Edit data"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $kp->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr> |
-                                <abbr title="Hapus data"><a href="" data-bs-toggle="modal" data-bs-target="#modalHapusData{{ $kp->id }}" class="text-danger"><i class="fas fa-sm fa-trash-alt"></i></a></abbr>
-                            </td>
+                            <td scope="row"><a href="{{ route('kerja-praktek.show', $kp->id) }}">Lihat Detail</a></td>
                         </tr>
                         @php
                         $i++;
