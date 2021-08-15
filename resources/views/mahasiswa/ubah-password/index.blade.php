@@ -1,10 +1,10 @@
 @extends('layouts/main')
-@section('title','Dashboard')
+@section('title','Ubah Password')
 
 @section('main-content')
-<h1 class="h3 mb-4 text-gray-800">Ubah Password</h1>
     <div class="card shadow mb-4">
     <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-success">Ubah Password</h6>
     </div>
     <div class="card-body">
         <form action="{{ route('mahasiswa.ubah-password.update') }}" method="post">

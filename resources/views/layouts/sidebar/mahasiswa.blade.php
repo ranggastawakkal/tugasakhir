@@ -20,8 +20,8 @@
         </a>
         <div id="collapseSuratPengantar" class="collapse mt-2" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('mahasiswa.daftar-pengajuan.index') }}">Daftar Pengajuan SP</a>
-                <a class="collapse-item" href="{{ route('mahasiswa.buat-pengajuan.index') }}">Buat Pengajuan SP</a>
+                <a class="collapse-item {{ (request()->is("mahasiswa/surat-pengantar/daftar-pengajuan/index*")) ? 'active' : '' }}" href="{{ route('mahasiswa.daftar-pengajuan.index') }}">Daftar Pengajuan SP</a>
+                <a class="collapse-item {{ (request()->is("mahasiswa/surat-pengantar/buat-pengajuan/index*")) ? 'active' : '' }}" href="{{ route('mahasiswa.buat-pengajuan.index') }}">Buat Pengajuan SP</a>
             </div>
         </div>
     </li>
@@ -34,8 +34,8 @@
         </a>
         <div id="collapsePembimbing" class="collapse mt-2" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="{{ route('mahasiswa.pembimbing.akademik.index') }}">Pembimbing Akademik</a>
-            <a class="collapse-item" href="{{ route('mahasiswa.pembimbing.lapangan.index') }}">Pembimbing Lapangan</a>
+            <a class="collapse-item {{ (request()->is("mahasiswa/pembimbing/akademik*")) ? 'active' : '' }}" href="{{ route('mahasiswa.pembimbing.akademik.index') }}">Pembimbing Akademik</a>
+            <a class="collapse-item {{ (request()->is("mahasiswa/pembimbing/lapangan*")) ? 'active' : '' }}" href="{{ route('mahasiswa.pembimbing.lapangan.index') }}">Pembimbing Lapangan</a>
             </div>
         </div>
     </li>
@@ -47,8 +47,8 @@
         </a>
         <div id="collapseKerjaPraktek" class="collapse mt-2" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{ route('mahasiswa.kerja-praktek.data.index') }}">Data Kerja Praktek</a>
-                <a class="collapse-item" href="{{ route('mahasiswa.kerja-praktek.dokumen-kp.index') }}">Dokumen Mahasiswa</a>
+                <a class="collapse-item {{ (request()->is("mahasiswa/kerja-praktek/data*")) ? 'active' : '' }}" href="{{ route('mahasiswa.kerja-praktek.data.index') }}">Data Kerja Praktek</a>
+                <a class="collapse-item {{ (request()->is("mahasiswa/kerja-praktek/dokumen-mahasiswa*")) ? 'active' : '' }}" href="{{ route('mahasiswa.kerja-praktek.dokumen-kp.index') }}">Dokumen Mahasiswa</a>
             </div>
         </div>
     </li>
@@ -66,7 +66,7 @@
     <li class="nav-item {{ (request()->is("mahasiswa/log")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('mahasiswa.log-activity.index') }}">
             <i class="fas fa-fw fa-file-alt"></i>
-            <span>Log Activity</span>
+            <span>Log Aktivitas</span>
         </a>
     </li>
 

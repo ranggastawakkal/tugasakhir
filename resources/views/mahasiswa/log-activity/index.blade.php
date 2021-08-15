@@ -1,40 +1,45 @@
 @extends('layouts/main')
-@section('title','Dashboard')
+@section('title','Log Aktivitas')
 
 @section('main-content')
     
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Log Activity</h1>
-       
         <a id="addLog" href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm" data-toggle="modal" data-target="#modalLog"><i
-                class="fas fa-edit fa-sm text-white-50"></i>Tambah Activity</a>
+                class="fas fa-edit fa-sm text-white-50"></i> Tambah Log Aktivitas</a>
     </div>
 
     <div class="card shadow mb-4">
-        <div class="card-header py-2">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-success">Log Aktivitas</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTableLog" width="100%" cellspacing="0">
-                    <thead>
+                <table class="table table-striped table-bordered" id="dataTableLog" width="100%" cellspacing="0">
+                    <thead class="text-center">
                         <tr>
                             <th>Nomor</th>
-                            <th>Hari dan Tanggal</th>
+                            <th>Tanggal</th>
                             <th>Jam datang</th>
                             <th>Jam pulang</th>
                             <th>Aktivitas</th>
-                            <th>Evaluasi dan Paraf</th>
+                            <th>Status</th>
+                            <th>Evaluasi</th>
                             <th>Edit</th>
                         </tr>
                     </thead>
                     @foreach($logs as $key => $log)          
                         <tr>
-                            <td>{{ $key+1 }}</td>
+                            <td class="text-center">{{ $key+1 }}</td>
                             <td>{{ $log->tanggal }}</td>
                             <td>{{ $log->jam_datang }}</td>
                             <td>{{ $log->jam_pulang }}</td>
-                            <td>{{ $log->aktivitas }}</td>
-                            <td>{{ $log->evaluasi }}</td>
+                            <td>{{ Str::limit($log->aktivitas, 50) }}</td>
+                            @if ($log->evaluasi === '-' || $log->evaluasi === '')
+                                <td class="text-danger font-weight-bold" scope="row">Belum Dievaluasi</td>
+                            @else
+                                <td class="text-success font-weight-bold" scope="row">Sudah Dievaluasi</td>
+                            @endif
+                            <td>{{ Str::limit($log->evaluasi,50) }}</td>
                             <td>
                                 <a id="editModal" href="#" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}"><i class="fa fa-edit"></i></a>
                             </td>
@@ -49,7 +54,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Tambah Aktivitas</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Log Aktivitas</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>

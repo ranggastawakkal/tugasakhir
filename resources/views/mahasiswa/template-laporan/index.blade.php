@@ -1,28 +1,30 @@
 @extends('layouts/main')
-@section('title','Dashboard')
+@section('title','Dokumen KP')
 
 @section('main-content')
-<h1 class="h3 mb-2 text-gray-800">Dokumen KP</h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
-        <div class="card-header py-2">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-success">Dokumen KP</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>No</th>
-                            <th>Jenis</th>
+                            <th>No.</th>
+                            <th>Nama File</th>
+                            <th>Deskripsi</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($dokumenKp as $dokumen)
                         <tr>
-                            <td>{{ $dokumen->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $dokumen->nama }}</td>
+                            <td>{{ $dokumen->deskripsi }}</td>
                             <td><a href="{{ route('mahasiswa.template-laporan.download', $dokumen->file) }}" class="btn btn-sm btn-success">Download</a></td>
                         </tr>
                         @endforeach

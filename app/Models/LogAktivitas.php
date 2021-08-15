@@ -38,6 +38,11 @@ class LogAktivitas extends Model
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
     }
 
+    public function getTanggalAttribute()
+    {
+        return Carbon::createFromFormat('Y-m-d', $this->attributes['tanggal'])->format('d-m-Y');
+    }
+
     public function mahasiswa()
     {
         return $this->hasOne(Mahasiswa::class, 'id', 'id_mahasiswa');

@@ -1,5 +1,5 @@
 @extends('layouts/main')
-@section('title','Dashboard')
+@section('title','Dokumen Mahasiswa')
 
 @section('main-content')
 <h1 class="h3 mb-2 text-gray-800">Dokumen Mahasiswa</h1>
@@ -152,6 +152,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 @endsection
 

@@ -1,16 +1,16 @@
 @extends('layouts/main')
-@section('title','Dashboard')
+@section('title','Daftar Pengajuan SP')
 
 @section('main-content')
-<h1 class="h3 mb-2 text-gray-800">History</h1>
     
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-2">
+            <h6 class="m-0 font-weight-bold text-success">Daftar Pengajuan Surat Pengantar</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
                             <th>Tanggal</th>

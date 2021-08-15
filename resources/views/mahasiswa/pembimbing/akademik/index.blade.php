@@ -1,26 +1,26 @@
 @extends('layouts/main')
-@section('title','Dashboard')
+@section('title','Pembimbing Akademik')
 
 @section('main-content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Biodata Dosen Pembimbing Akademik</h1>
         @if(isset($dataKerjaPraktek->id_pemb_akd))
         <a href="{{ route('mahasiswa.pembimbing.akademik.edit') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                class="fas fa-edit fa-sm text-white-50"></i> Ganti Pembimbing</a>
+                class="fas fa-edit fa-sm text-white-50"></i> Ubah Pembimbing</a>
         @endif
     </div>
 
     @if(!isset($dataKerjaPraktek->id_pemb_akd))
     <div class="card shadow mb-4">
-        <div class="card-header py-2">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-success">Pembimbing Akademik</h6>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('mahasiswa.pembimbing.akademik.store') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="selectAkademik">Pilih Dosen Pembimbing Akademik</label>
+                    <label class=" font-weight-bold" for="selectAkademik">Pilih Pembimbing Akademik</label>
                     <select class="form-control @error('selectAkademik') is-invalid @enderror" id="selectAkademik" name="selectAkademik">
-                        <option value="" data-id="">- Pilih Dosen Pembimbing -</option>
+                        <option value="" data-id="">- Pilih Pembimbing Akademik-</option>
                         @foreach($dosen as $data)
                         <option value="{{ $data->id }}" data-id="{{ $data }}">{{ $data->nama }}</option>
                         @endforeach
@@ -37,23 +37,28 @@
                 <table class="table table-borderless" width="100%" cellspacing="0">
                     <tbody>
                         <tr>
-                            <td style="width: 20%;">Nama Pembimbing</td>
+                            <th style="width: 20%;">Nama Pembimbing</th>
+                            <td>:</td>
                             <td style="width: 80%;" id="nama_pembimbing">P</td>
                         </tr>
                         <tr>
-                            <td>NIP</td>
+                            <th>NIP</th>
+                            <td>:</td>
                             <td id="nip"></td>
                         </tr>
                         <tr>
-                            <td>Email</td>
+                            <th>Email</th>
+                            <td>:</td>
                             <td id="email"></td>
                         </tr>
                         <tr>
-                            <td>Kode Dosen</td>
+                            <th>Kode Dosen</th>
+                            <td>:</td>
                             <td id="kode_dosen"></td>
                         </tr>
                         <tr>
-                            <td>Nomor Telepon</td>
+                            <th>No. Telepon</th>
+                            <td>:</td>
                             <td id="no_telepon"></td>
                         </tr>
                     </tbody>
@@ -66,30 +71,35 @@
     @else
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-dark">Contact Information</h6>
+            <h6 class="m-0 font-weight-bold text-success">Pembimbing Akademik</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-borderless" width="100%" cellspacing="0">
                     <tbody>
                         <tr>
-                            <td style="width: 20%;">Nama Dosen</td>
+                            <th style="width: 20%;">Nama Pembimbing</th>
+                            <td>:</td>
                             <td style="width: 80%;">{{ $dataKerjaPraktek->pembimbingAkademik->nama }}</td>
                         </tr>
                         <tr>
-                            <td>NIP</td>
+                            <th>NIP</th>
+                            <td>:</td>
                             <td>{{ $dataKerjaPraktek->pembimbingAkademik->nip }}</td>
                         </tr>
                         <tr>
-                            <td>Kode Dosen</td>
+                            <th>Kode Dosen</th>
+                            <td>:</td>
                             <td>{{ $dataKerjaPraktek->pembimbingAkademik->kode_dosen }}</td>
                         </tr>
                         <tr>
-                            <td>No Telp</td>
+                            <th>No. Telepon</th>
+                            <td>:</td>
                             <td>{{ $dataKerjaPraktek->pembimbingAkademik->no_telepon }}</td>
                         </tr>
                         <tr>
-                            <td>Email</td>
+                            <th>Email</th>
+                            <td>:</td>
                             <td>{{ $dataKerjaPraktek->pembimbingAkademik->email }}</td>
                         </tr>
                     </tbody>

@@ -19,7 +19,7 @@ class DaftarPengajuanController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $suratPengantar = SuratPengantar::where('id_mahasiswa', $id);
+        $suratPengantar = SuratPengantar::where('id_mahasiswa', $id)->get();
 
         return view('mahasiswa.surat-pengantar.daftar-pengajuan.index', compact('suratPengantar'));
     }

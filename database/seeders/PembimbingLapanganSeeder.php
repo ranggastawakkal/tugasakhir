@@ -21,7 +21,7 @@ class PembimbingLapanganSeeder extends Seeder
             [
                 'nip' => 2000011111,
                 'nama' => "Nurmantyo",
-                'email' => "nurmantyo@gmail.com",
+                'email' => "nurmantyo@example.net",
                 'no_telepon' => "081284617829",
                 'jabatan' => "IT Manager",
                 'nama_perusahaan' => "PT. ABC",
@@ -36,7 +36,7 @@ class PembimbingLapanganSeeder extends Seeder
             [
                 'nip' => 2000011112,
                 'nama' => "Dadang",
-                'email' => "dadang@gmail.com",
+                'email' => "dadang@example.net",
                 'no_telepon' => "0817267182",
                 'jabatan' => "IT Staff",
                 'nama_perusahaan' => "PT. Tlkm",
@@ -51,7 +51,7 @@ class PembimbingLapanganSeeder extends Seeder
             [
                 'nip' => 2000011113,
                 'nama' => "Doni",
-                'email' => "doni@gmail.com",
+                'email' => "doni@example.net",
                 'no_telepon' => "0817274362",
                 'jabatan' => "IT Staff",
                 'nama_perusahaan' => "PT. Haj",
@@ -66,7 +66,7 @@ class PembimbingLapanganSeeder extends Seeder
             [
                 'nip' => 2000011114,
                 'nama' => "Joni",
-                'email' => "joni@gmail.com",
+                'email' => "joni@example.net",
                 'no_telepon' => "0892746151",
                 'jabatan' => "Web Designer",
                 'nama_perusahaan' => "PT. Joni",
@@ -81,7 +81,7 @@ class PembimbingLapanganSeeder extends Seeder
             [
                 'nip' => 2000011115,
                 'nama' => "Udin",
-                'email' => "udin@gmail.com",
+                'email' => "udin@example.net",
                 'no_telepon' => "0881725461",
                 'jabatan' => "UI UX Designer",
                 'nama_perusahaan' => "PT. Udin",

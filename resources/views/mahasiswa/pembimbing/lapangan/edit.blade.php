@@ -1,23 +1,18 @@
 @extends('layouts/main')
-@section('title','Dashboard')
+@section('title','Ubah Pembimbing Lapangan')
 
 @section('main-content')
 
-<div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Ganti Pembimbing Lapangan</h1>
-        @if(isset($dataKerjaPraktek->id_pemb_lap))
-        @endif
-    </div>
-
 @if(!isset($dataKerjaPraktek->id_pemb_lap))
 <div class="card shadow mb-4">
-        <div class="card-header py-2">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-success">Ubah Pembimbing Lapangan</h6>
         </div>
         <div class="card-body">
             <form method="POST" action="{{ route('mahasiswa.pembimbing.lapangan.store') }}">
                 @csrf
                 <div class="form-group">
-                    <label for="selectLapangan">Pilih Pembimbing Lapangan</label>
+                    <label class="font-weight-bold" for="selectLapangan">Pilih Pembimbing Lapangan</label>
                     <select class="form-control @error('selectLapangan') is-invalid @enderror" id="selectLapangan" name="selectLapangan">
                         <option value="" data-id="">- Pilih Pembimbing Lapangan-</option>
                         @foreach($lapangan as $data)
@@ -35,43 +30,53 @@
                 <table class="table table-borderless" width="100%" cellspacing="0">
                     <tbody>
                         <tr>
-                            <td style="width: 20%;">Nama Pembimbing</td>
+                            <th style="width: 20%;">Nama Pembimbing</th>
+                            <td>:</td>
                             <td style="width: 80%;" id="nama_pembimbing">P</td>
                         </tr>
                         <tr>
-                            <td>NIP</td>
+                            <th>NIP</th>
+                            <td>:</td>
                             <td id="nip"></td>
                         </tr>
                         <tr>
-                            <td>Email</td>
+                            <th>Email</th>
+                            <td>:</td>
                             <td id="email"></td>
                         </tr>
                         <tr>
-                            <td>Nomor Telepon</td>
+                            <th>No. Telepon</th>
+                            <td>:</td>
                             <td id="no_telepon"></td>
                         </tr>
                         <tr>
-                            <td>Jabatan</td>
+                            <th>Jabatan</th>
+                            <td>:</td>
                             <td id="jabatan"></td>
                         </tr>
                         <tr>
-                            <td>Nama Perusahaan</td>
+                            <th>Nama Perusahaan</th>
+                            <td>:</td>
                             <td id="nama_perusahaan"></td>
                         </tr>
                         <tr>
-                            <td>Alamat Perusahaan</td>
+                            <th>Alamat Perusahaan</th>
+                            <td>:</td>
                             <td id="alamat_perusahaan"></td>
                         </tr>
                         <tr>
-                            <td>Kota Perusahaan</td>
+                            <th>Kota Perusahaan</th>
+                            <td>:</td>
                             <td id="kota_perusahaan"></td>
                         </tr>
                         <tr>
-                            <td>Email Perusahaan</td>
+                            <th>Email Perusahaan</th>
+                            <td>:</td>
                             <td id="email_perusahaan"></td>
                         </tr>
                         <tr>
-                            <td>Nomor Telepon Perusahaan</td>
+                            <th>No. Telepon Perusahaan</th>
+                            <td>:</td>
                             <td id="no_telepon_perusahaan"></td>
                         </tr>
                     </tbody>
@@ -83,11 +88,11 @@
     </div>    
 
     <div class="card shadow mb-4">
-        <div class="card-header py-2">
-      
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-success">Tambah Data Pembimbing Lapangan</h6>
         </div>
         <div class="card-body">
-            <p class="mb-0">Apabila pembimbing lapangan belum tersedia, silahkan tambahkan</p>
+            <p class="mb-0 font-weight-bold">Apabila pembimbing lapangan belum tersedia, silahkan tambahkan</p>
             <a href="{{ route('mahasiswa.pembimbing.lapangan.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mt-2"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Tambah Biodata</a>
         </div>
@@ -95,7 +100,7 @@
 @else
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-dark">Contact Information</h6>
+            <h6 class="m-0 font-weight-bold text-success">Ubah Pembimbing Lapangan</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">

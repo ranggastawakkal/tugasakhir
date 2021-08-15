@@ -1,23 +1,22 @@
 @extends('layouts/main')
-@section('title','Dashboard')
+@section('title','Data Kerja Praktek')
 
 @section('main-content')
 
     <!-- DataTales Example -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Kerja Praktek</h1>
         <a href="{{ route('mahasiswa.kerja-praktek.data.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                class="fas fa-edit fa-sm text-white-50"></i> Ganti Data Kerja Praktek</a>
+                class="fas fa-edit fa-sm text-white-50"></i> Ubah Data Kerja Praktek</a>
         
     </div>
 
 @if(!isset($dataKerjaPraktek->tanggal_mulai))
     <div class="card shadow mb-4">
-        <div class="card-header py-2">
-      
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-success">Tambah Data Kerja Praktek</h6>
         </div>
         <div class="card-body">
-            <p class="mb-0">Data kerja praktek belum tersedia, silahkan tambahkan</p>
+            <p class="mb-0 font-weight-bold">Data kerja praktek belum tersedia, silahkan tambahkan</p>
             @if(isset($dataKerjaPraktek->pembimbingAkademik) && isset($dataKerjaPraktek->pembimbingLapangan))
             <a href="{{ route('mahasiswa.kerja-praktek.data.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm mt-2"><i
                 class="fas fa-plus fa-sm text-white-50"></i> Tambah Data</a>
@@ -30,42 +29,50 @@
 @else
 <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-dark">Contact Information</h6>
+            <h6 class="m-0 font-weight-bold text-success">Data Kerja Praktek</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-borderless" width="100%" cellspacing="0">
                     <tbody>
                         <tr>
-                            <td style="width: 20%;">Nama Pembimbing Akademik</td>
+                            <th style="width: 20%;">Nama Pembimbing Akademik</th>
+                            <td>:</td>
                             <td style="width: 80%;">{{ $dataKerjaPraktek->pembimbingAkademik->nama }}</td>
                         </tr>
                         <tr>
-                            <td>Nama Pembimbing Lapangan</td>
+                            <th>Nama Pembimbing Lapangan</th>
+                            <td>:</td>
                             <td>{{ $dataKerjaPraktek->pembimbingLapangan->nama }}</td>
                         </tr>
                         <tr>
-                            <td>Perusahaan</td>
+                            <th>Perusahaan</th>
+                            <td>:</td>
                             <td>{{ $dataKerjaPraktek->pembimbingLapangan->nama_perusahaan }}</td>
                         </tr>
                         <tr>
-                            <td>Unit Kerja / Divisi</td>
+                            <th>Unit Kerja / Divisi</th>
+                            <td>:</td>
                             <td id="divisi">{{ $dataKerjaPraktek->unit_kerja }}</td>
                         </tr>
                         <tr>
-                            <td>Tanggal Mulai</td>
+                            <th>Tanggal Mulai</th>
+                            <td>:</td>
                             <td id="tanggal_mulai">{{ $dataKerjaPraktek->tanggal_mulai }}</td>
                         </tr>
                         <tr>
-                            <td>Tanggal Berakhir</td>
+                            <th>Tanggal Berakhir</th>
+                            <td>:</td>
                             <td id="tanggal_berakhir">{{ $dataKerjaPraktek->tanggal_berakhir }}</td>
                         </tr>
                         <tr>
-                            <td>Target</td>
+                            <th>Target</th>
+                            <td>:</td>
                             <td id="target">{{ $dataKerjaPraktek->target }}</td>
                         </tr>
                         <tr>
-                            <td>Program Kegiatan</td>
+                            <th>Program Kegiatan</th>
+                            <td>:</td>
                             <td id="program_kegiatan">{{ $dataKerjaPraktek->program_kegiatan }}</td>
                         </tr>
                     </tbody>
@@ -84,7 +91,9 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Data pembimbing akademik dan pembimbing lapangan belum tersedia</div>
+            <div class="modal-body">Data pembimbing akademik dan pembimbing lapangan belum tersedia.
+                <br><br>
+                Silahkan tambahkan data pembimbing akademik, dan pembimbing lapangan terlebih dahulu.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
             </div>

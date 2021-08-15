@@ -1,10 +1,10 @@
 @extends('layouts/main')
-@section('title','Dashboard')
+@section('title','Buat Pengajuan SP')
 
 @section('main-content')
     <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-dark"> Formulir Pengajuan Surat Pengantar Permintaan Data untuk Tugas Kuliah</h6>
+        <h6 class="m-0 font-weight-bold text-success"> Formulir Pengajuan Surat Pengantar Permintaan Data untuk Tugas Kuliah</h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -27,7 +27,7 @@
     @csrf    
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-dark"> Data Perusahaan</h6>
+        <h6 class="m-0 font-weight-bold text-success"> Data Perusahaan</h6>
     </div>
     <div class="card-body">
         <div class="form-group row">
@@ -99,7 +99,7 @@
 </div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-dark">Bidang yang diminati</h6>
+        <h6 class="m-0 font-weight-bold text-success">Bidang yang diminati</h6>
     </div>
     <div class="card-body">
         <div class="form-group row">
