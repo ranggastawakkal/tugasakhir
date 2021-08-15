@@ -57,13 +57,13 @@ Route::group(['middleware' => ['auth:mahasiswa'], 'prefix' => 'mahasiswa'], func
         });
         Route::get('/data/create', [KerjaPraktekDataController::class, 'create'])->name('mahasiswa.kerja-praktek.data.create');
         Route::post('/data/store', [KerjaPraktekDataController::class, 'store'])->name('mahasiswa.kerja-praktek.data.store');
+        Route::post('/data/update', [KerjaPraktekDataController::class, 'update'])->name('mahasiswa.kerja-praktek.data.update');
     });
 
     Route::group(['prefix' => 'log'], function () {
         Route::get('/', [LogActivityController::class, 'index'])->name('mahasiswa.log-activity.index');
         Route::post('/store', [LogActivityController::class, 'store'])->name('mahasiswa.log-activity.store');
         Route::post('/update', [LogActivityController::class, 'update'])->name('mahasiswa.log-activity.update');
-        Route::post('/delete/{id}', [LogActivityController::class, 'delete'])->name('mahasiswa.log-activity.delete');
     });
 
     Route::group(['prefix' => 'surat-pengantar'], function () {
