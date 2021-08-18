@@ -12,9 +12,9 @@ class BobotPembLap extends Model
 
     protected $table = "bobot_pemb_lap";
     protected $primaryKey = "id";
-    protected $foreignKey = "id_sub_clo";
+    protected $foreignKey = "id_indikator";
     protected $fillable = [
-        'id_sub_clo',
+        'id_indikator',
         'bobot',
     ];
 
@@ -28,8 +28,8 @@ class BobotPembLap extends Model
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
     }
 
-    public function subClo()
+    public function indikatorPenilaian()
     {
-        return $this->hasOne(SubClo::class, 'id', 'id_sub_clo');
+        return $this->hasOne(IndikatorPenilaian::class, 'id', 'id_indikator');
     }
 }

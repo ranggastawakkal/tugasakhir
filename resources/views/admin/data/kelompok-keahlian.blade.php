@@ -33,7 +33,7 @@
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
                     <i class="fas fa-plus"></i> Tambah Data
                 </button>
-                <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -86,7 +86,7 @@
                 <form method="POST" action="{{ route('admin.data.kelompok-keahlian.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="nama_kk" class="col-form-label">Nama Kelompok Keahlian:</label>
+                        <label for="nama_kk" class="col-form-label font-weight-bold">Nama Kelompok Keahlian:</label>
                         <input type="text" class="form-control" id="nama_kk" name="nama_kk" required>
                     </div>
             </div>
@@ -116,19 +116,19 @@
                 <form method="POST" action="{{ route('admin.data.kelompok-keahlian.update', $kk->id) }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $kk->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $kk->nama_kk }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $kk->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $kk->updated_at }}" disabled>
                     </div>
             </div>
@@ -158,7 +158,7 @@
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $kk->id }}" required>
                     <div class="mb-3">
-                        <label for="nama_kk" class="col-form-label">Nama Kelompok Keahlian:</label>
+                        <label for="nama_kk" class="col-form-label font-weight-bold">Nama Kelompok Keahlian:</label>
                         <input type="text" class="form-control" id="nama_kk" name="nama_kk" value="{{ $kk->nama_kk }}" required>
                     </div>
             </div>
@@ -186,10 +186,18 @@
             </div>
             <div class="modal-body">
                 <h6>Anda yakin ingin menghapus data kelompok keahlian ini?</h6>
-                <ul>
-                    <li>ID : {{ $kk->id }}</li>
-                    <li>Nama KK: {{ $kk->nama_kk }}</li>
-                </ul>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>ID</th>
+                        <td>:</td>
+                        <td>{{ $kk->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama KK</th>
+                        <td>:</td>
+                        <td>{{ $kk->nama_kk }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.data.kelompok-keahlian.destroy', $kk->id ) }}" method="GET">

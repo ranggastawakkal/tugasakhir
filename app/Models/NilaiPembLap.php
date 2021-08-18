@@ -12,7 +12,10 @@ class NilaiPembLap extends Model
 
     protected $table = "nilai_pemb_lap";
     protected $primaryKey = "id";
-    protected $foreignKey = "id_bobot";
+    protected $foreignKey = [
+        'id_mahasiswa',
+        'id_bobot',
+    ];
     protected $fillable = [
         'id_mahasiswa',
         'id_bobot',
@@ -37,6 +40,6 @@ class NilaiPembLap extends Model
 
     public function mahasiswa()
     {
-        return $this->hasOne(Mahasiswa::class, 'id', 'id_mahasiswa');
+        return $this->hasOne(Mahasiswa::class, 'id_mahasiswa');
     }
 }

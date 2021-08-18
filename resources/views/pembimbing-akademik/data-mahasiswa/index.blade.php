@@ -75,7 +75,7 @@
                             <td scope="row">{{ $kp->tanggal_berakhir }}</td>
                             <td scope="row">{{ $kp->target }}</td>
                             <td scope="row">{{ $kp->program_kegiatan }}</td>
-                            <td scope="row"><a href="{{ route('pembimbing-akademik.data-mahasiswa.show', $kp->id) }}">Lihat Detail</a></td>
+                            <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-akademik.data-mahasiswa.show', $kp->id) }}"><i class="fas fa-sm fa-info"></i> Lihat Detail</a></td>
                         </tr>
                         @php
                         $i++;

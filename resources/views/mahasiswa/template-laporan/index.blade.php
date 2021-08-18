@@ -11,7 +11,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
+                    <thead class="text-center">
                         <tr>
                             <th>No.</th>
                             <th>Nama File</th>
@@ -25,7 +25,7 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $dokumen->nama }}</td>
                             <td>{{ $dokumen->deskripsi }}</td>
-                            <td><a href="{{ route('mahasiswa.template-laporan.download', $dokumen->file) }}" class="btn btn-sm btn-success">Download</a></td>
+                            <td class="text-center"><a href="{{ route('mahasiswa.template-laporan.download', $dokumen->file) }}" class="btn btn-sm btn-success"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
                         </tr>
                         @endforeach
                     </tbody>

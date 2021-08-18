@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             LogAktivitasSeeder::class,
             PloSeeder::class,
             CloSeeder::class,
-            SubCloSeeder::class,
+            IndikatorPenilaianSeeder::class,
             BobotPembAkdSeeder::class,
             BobotPembLapSeeder::class,
             NilaiPembLapSeeder::class,

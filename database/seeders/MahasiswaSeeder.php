@@ -73,7 +73,7 @@ class MahasiswaSeeder extends Seeder
 
         for ($i = 0; $i <= 50; $i++) {
             DB::table('mahasiswa')->insert([
-                'nim' => $faker->unique()->numberBetween(1202170000, 1202189999),
+                'nim' => $faker->unique()->numberBetween(1202174389, 1202189999),
                 'nama' => $faker->name,
                 'id_kelas' => $faker->numberBetween(1, 6),
                 'id_peminatan' => $faker->numberBetween(1, 15),

@@ -22,7 +22,7 @@
 
     <li class="nav-item {{ (request()->is("pembimbing-akademik/log-aktivitas*")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.log-aktivitas') }}">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <i class="fas fa-fw fa-file-alt"></i>
             <span>Log Aktivitas</span></a>
     </li>
 
@@ -40,7 +40,7 @@
 
     <li class="nav-item {{ (request()->is("pembimbing-akademik/penilaian-mahasiswa*")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.penilaian-mahasiswa') }}">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <i class="fas fa-fw fa-file-signature"></i>
             <span>Penilaian Mahasiswa</span></a>
     </li>
 
@@ -55,7 +55,7 @@
     <!-- Nav Item - Charts -->
     <li class="nav-item {{ (request()->is("pembimbing-akademik/profil*")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('pembimbing-akademik.profil') }}">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <i class="fas fa-fw fa-user"></i>
             <span>Profil</span></a>
     </li>
 

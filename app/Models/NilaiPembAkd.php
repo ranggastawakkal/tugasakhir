@@ -36,6 +36,6 @@ class NilaiPembAkd extends Model
 
     public function mahasiswa()
     {
-        return $this->hasOne(Mahasiswa::class, 'id', 'id_mahasiswa');
+        return $this->belongsTo(Mahasiswa::class, 'id_mahasiswa');
     }
 }

@@ -61,7 +61,7 @@ class AdminSuratPengantarController extends Controller
         if (($request->status === "Diterima") && ($request->file == null)) {
             return redirect()->route('admin.surat-pengantar')->with('errors', 'File surat pengantar belum dipilih.');
         } elseif ($request->status === "Diterima") {
-            $fileName = $request->file->getClientOriginalName();
+            $fileName = $request->nim . '_Surat Pengantar.' . $request->file->getClientOriginalExtension();
             $request->file('file')->storeAs('public/surat-pengantar', $fileName);
         } else {
             $fileName = "-";

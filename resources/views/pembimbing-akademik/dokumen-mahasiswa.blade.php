@@ -9,7 +9,7 @@
                 <h6 class="m-0 font-weight-bold text-success">Dokumen KP Mahasiswa</h6>
             </div>
             <div class="card-body">
-                <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
+                <table class="table table-striped table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -26,31 +26,31 @@
                         @php
                         $i = 1;
                         @endphp
-                        @foreach ($dokumen as $dok)
+                        @foreach ($kerja_praktek as $kp)
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
-                            <td scope="row">{{ $dok->nim }}</td>
-                            <td scope="row">{{ $dok->nama }}</td>
-                            <td scope="row">{{ $dok->nama_kelas }}</td>
-                            @if ($dok->surat_diterima === "-")
-                                <td scope="row">{{ $dok->surat_diterima }}</td>
+                            <td scope="row">{{ $kp->mahasiswa->nim }}</td>
+                            <td scope="row">{{ $kp->mahasiswa->nama }}</td>
+                            <td scope="row">{{ $kp->mahasiswa->kelas->nama_kelas }}</td>
+                            @if (!isset($kp->mahasiswa->dokumenMahasiswa->surat_diterima) || $kp->mahasiswa->dokumenMahasiswa->surat_diterima === "-" || $kp->mahasiswa->dokumenMahasiswa->surat_diterima === "")
+                                <td scope="row" class="text-center"><a class="btn btn-danger disabled btn-sm" href="">Belum Diunggah</a></td>
                             @else
-                                <td scope="row"><a href="{{ route('pembimbing-akademik.dokumen-mahasiswa.get',$dok->surat_diterima) }}">{{ Str::limit($dok->surat_diterima, 50) }}</a></td>
+                                <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-akademik.dokumen-mahasiswa.get',$kp->mahasiswa->dokumenMahasiswa->surat_diterima) }}"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
                             @endif
-                            @if ($dok->laporan === "-")
-                                <td scope="row">{{ $dok->laporan }}</td>
+                            @if (!isset($kp->mahasiswa->dokumenMahasiswa->laporan) || $kp->mahasiswa->dokumenMahasiswa->laporan === "-" || $kp->mahasiswa->dokumenMahasiswa->laporan === "")
+                                <td scope="row" class="text-center"><a class="btn btn-danger disabled btn-sm" href="">Belum Diunggah</a></td>
                             @else
-                                <td scope="row"><a href="{{ route('pembimbing-akademik.dokumen-mahasiswa.get',$dok->laporan) }}">{{ Str::limit($dok->laporan, 50) }}</a></td>
+                                <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-akademik.dokumen-mahasiswa.get',$kp->mahasiswa->dokumenMahasiswa->laporan) }}"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
                             @endif
-                            @if ($dok->surat_selesai === "-")
-                                <td scope="row">{{ $dok->surat_selesai }}</td>
+                            @if (!isset($kp->mahasiswa->dokumenMahasiswa->surat_selesai) || $kp->mahasiswa->dokumenMahasiswa->surat_selesai === "-" || $kp->mahasiswa->dokumenMahasiswa->surat_selesai === "")
+                                <td scope="row" class="text-center"><a class="btn btn-danger disabled btn-sm" href="">Belum Diunggah</a></td>
                             @else
-                                <td scope="row"><a href="{{ route('pembimbing-akademik.dokumen-mahasiswa.get',$dok->surat_selesai) }}">{{ Str::limit($dok->surat_selesai, 50) }}</a></td>
+                                <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-akademik.dokumen-mahasiswa.get',$kp->mahasiswa->dokumenMahasiswa->surat_selesai) }}"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
                             @endif
-                            @if ($dok->krs === "-")
-                                <td scope="row">{{ $dok->krs }}</td>
+                            @if (!isset($kp->mahasiswa->dokumenMahasiswa->krs) || $kp->mahasiswa->dokumenMahasiswa->krs === "-" || $kp->mahasiswa->dokumenMahasiswa->krs === "")
+                                <td scope="row" class="text-center"><a class="btn btn-danger disabled btn-sm" href="">Belum Diunggah</a></td>
                             @else
-                                <td scope="row"><a href="{{ route('pembimbing-akademik.dokumen-mahasiswa.get',$dok->krs) }}">{{ Str::limit($dok->krs, 50) }}</a></td>
+                                <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-akademik.dokumen-mahasiswa.get',$kp->mahasiswa->dokumenMahasiswa->krs) }}"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
                             @endif
                         </tr>
                         @php

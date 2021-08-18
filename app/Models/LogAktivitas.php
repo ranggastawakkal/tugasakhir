@@ -26,6 +26,7 @@ class LogAktivitas extends Model
         'jam_pulang',
         'aktivitas',
         'evaluasi',
+        'updated_at',
     ];
 
     public function getCreatedAtAttribute()
@@ -45,7 +46,7 @@ class LogAktivitas extends Model
 
     public function mahasiswa()
     {
-        return $this->hasOne(Mahasiswa::class, 'id', 'id_mahasiswa');
+        return $this->belongsToMany(Mahasiswa::class, 'id_mahasiswa');
     }
 
     public function pembimbingAkademik()

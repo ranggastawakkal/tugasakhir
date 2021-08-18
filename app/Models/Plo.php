@@ -15,8 +15,6 @@ class Plo extends Model
     protected $fillable = [
         'kode_plo',
         'deskripsi',
-        'id_periode',
-        'id_prodi',
     ];
 
     public function getCreatedAtAttribute()
@@ -27,15 +25,5 @@ class Plo extends Model
     public function getUpdatedAtAttribute()
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
-    }
-
-    public function periode()
-    {
-        return $this->hasOne(Periode::class, 'id', 'id_periode');
-    }
-
-    public function prodi()
-    {
-        return $this->hasOne(ProgramStudi::class, 'id', 'id_prodi');
     }
 }

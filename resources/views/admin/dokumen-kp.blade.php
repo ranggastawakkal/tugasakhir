@@ -58,7 +58,7 @@
                             <td scope="row">{{ $dok->nama }}</td>
                             <td scope="row">{{ Str::limit($dok->deskripsi, 50) }}</td>
                             <td scope="row">{{ $dok->aktor }}</td>
-                            <td scope="row"><a href="{{ route('admin.dokumen-kp.get',$dok->file) }}">{{ Str::limit($dok->file, 50) }}</a></td>
+                            <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('admin.dokumen-kp.get',$dok->file) }}"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
                             <td scope="row">{{ $dok->created_at }}</td>
                             <td scope="row">{{ $dok->updated_at }}</td>
                             <td scope="row">
@@ -92,15 +92,15 @@
                 <form method="POST" action="{{ route('admin.dokumen-kp.store') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama File:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama File:</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Deskripsi:</label>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Deskripsi:</label>
                         <textarea class="form-control" id="deskripsi" name="deskripsi" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="aktor" class="col-form-label">Untuk Aktor:</label>
+                        <label for="aktor" class="col-form-label font-weight-bold">Untuk Aktor:</label>
                         <select class="form-control" name="aktor" id="aktor" required>
                             <option disabled selected>--- Pilih ---</option>
                             <option value="Mahasiswa">Mahasiswa</option>
@@ -109,7 +109,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="file" class="col-form-label">File Dokumen KP:</label>
+                        <label for="file" class="col-form-label font-weight-bold">File Dokumen KP:</label>
                         <input type="file" class="form-control-file" id="file" name="file" accept="application/pdf" required>
                     </div>
             </div>
@@ -139,31 +139,31 @@
                 <form method="POST" action="{{ route('admin.dokumen-kp.update', $dok->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $dok->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama File:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama File:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $dok->nama }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Deskripsi:</label>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Deskripsi:</label>
                         <textarea name="deskripsi" id="deskripsi" class="form-control" disabled>{{ $dok->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="aktor" class="col-form-label">Untuk Aktor:</label>
+                        <label for="aktor" class="col-form-label font-weight-bold">Untuk Aktor:</label>
                         <textarea name="aktor" id="aktor" class="form-control" disabled>{{ $dok->aktor }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="file_template" class="col-form-label">File Dokumen KP:</label><br>
+                        <label for="file_template" class="col-form-label font-weight-bold">File Dokumen KP:</label><br>
                         <a href="{{ route('admin.dokumen-kp.get',$dok->file) }}" class="form-control border-0">{{ $dok->file }}</a>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $dok->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $dok->updated_at }}" disabled>
                     </div>
             </div>
@@ -193,25 +193,25 @@
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $dok->id }}" required>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama File:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama File:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $dok->nama }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Deskripsi:</label>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Deskripsi:</label>
                         <textarea name="deskripsi" id="deskripsi" class="form-control" requred>{{ $dok->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="aktor" class="col-form-label">Aktor:</label>
+                        <label for="aktor" class="col-form-label font-weight-bold">Aktor:</label>
                         <select class="form-control" name="aktor" id="aktor" required>
                             <option disabled>--- Pilih ---</option>
-                            <option value="{{ $dok->aktor }}" selected hidden>{{ $dok->aktor }}</option>
+                            <option value="{{ $dok->aktor }}" selected hidden disabled>{{ $dok->aktor }}</option>
                             <option value="Mahasiswa">Mahasiswa</option>
                             <option value="Pembimbing Akademik">Pembimbing Akademik</option>
                             <option value="Pembimbing Lapangan">Pembimbing Lapangan</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="file" class="col-form-label">Ubah File Dokumen KP:</label>
+                        <label for="file" class="col-form-label font-weight-bold">Ubah File Dokumen KP:</label>
                         <input type="file" class="form-control-file" id="file" name="file" accept="application/pdf" required>
                     </div>
             </div>
@@ -239,12 +239,28 @@
             </div>
             <div class="modal-body">
                 <h6>Anda yakin ingin menghapus data dan file Dokumen KP ini?</h6>
-                <ul>
-                    <li>ID: {{ $dok->id }}</li>
-                    <li>Nama File: {{ $dok->nama }}</li>
-                    <li>Untuk Aktor: {{ $dok->aktor }}</li>
-                    <li>File: {{ $dok->file }}</li>
-                </ul>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>ID</th>
+                        <td>:</td>
+                        <td>{{ $dok->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama File</th>
+                        <td>:</td>
+                        <td>{{ $dok->nama }}</td>
+                    </tr>
+                    <tr>
+                        <th>Aktor</th>
+                        <td>:</td>
+                        <td>{{ $dok->aktor }}</td>
+                    </tr>
+                    <tr>
+                        <th>File</th>
+                        <td>:</td>
+                        <td>{{ $dok->file }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.dokumen-kp.destroy', $dok->id ) }}" method="GET">

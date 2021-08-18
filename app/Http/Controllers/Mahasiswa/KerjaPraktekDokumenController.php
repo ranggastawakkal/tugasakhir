@@ -33,17 +33,17 @@ class KerjaPraktekDokumenController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-            'buktiKrs' => ['required', 'mimes:docx,pdf,doc'],
+                'buktiKrs' => ['required', 'mimes:docx,pdf,doc'],
             ]
         );
 
         if ($validator->fails()) {
             return redirect()->route('mahasiswa.kerja-praktek.dokumen-kp.index')->withInput()->withErrors($validator);
         }
-        
+
         if ($request->hasFile('buktiKrs')) {
-            $filename = $request->file('buktiKrs')->getClientOriginalName();
-            Storage::putFileAs('public', $request->file('buktiKrs'), $filename);
+            $filename = Auth::user()->nim . '_KRS.' . $request->file('buktiKrs')->getClientOriginalExtension();
+            Storage::putFileAs('public/dokumen-mahasiswa/krs', $request->file('buktiKrs'), $filename);
         }
 
         $user = Auth::user();
@@ -65,17 +65,17 @@ class KerjaPraktekDokumenController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-            'laporan' => ['required'],
+                'laporan' => ['required'],
             ]
         );
 
         if ($validator->fails()) {
             return redirect()->route('mahasiswa.kerja-praktek.dokumen-kp.index')->withInput()->withErrors($validator);
         }
-        
+
         if ($request->hasFile('laporan')) {
-            $filename = $request->file('laporan')->getClientOriginalName();
-            Storage::putFileAs('public', $request->file('laporan'), $filename);
+            $filename = Auth::user()->nim . '_Laporan KP.' . $request->file('laporan')->getClientOriginalExtension();
+            Storage::putFileAs('public/dokumen-mahasiswa/laporan', $request->file('laporan'), $filename);
         }
 
         $user = Auth::user();
@@ -102,7 +102,7 @@ class KerjaPraktekDokumenController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-            'surat_diterima' => ['required'],
+                'surat_diterima' => ['required'],
             ]
         );
 
@@ -110,8 +110,8 @@ class KerjaPraktekDokumenController extends Controller
             return redirect()->route('mahasiswa.kerja-praktek.dokumen-kp.index')->withInput()->withErrors($validator);
         }
         if ($request->hasFile('surat_diterima')) {
-            $filename = $request->file('surat_diterima')->getClientOriginalName();
-            Storage::putFileAs('public', $request->file('surat_diterima'), $filename);
+            $filename = Auth::user()->nim . '_Surat Diterima.' . $request->file('surat_diterima')->getClientOriginalExtension();
+            Storage::putFileAs('public/dokumen-mahasiswa/surat-diterima', $request->file('surat_diterima'), $filename);
         }
 
         $user = Auth::user();
@@ -133,17 +133,17 @@ class KerjaPraktekDokumenController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-            'surat_selesai' => ['required'],
+                'surat_selesai' => ['required'],
             ]
         );
 
         if ($validator->fails()) {
             return redirect()->route('mahasiswa.kerja-praktek.dokumen-kp.index')->withInput()->withErrors($validator);
         }
-        
+
         if ($request->hasFile('surat_selesai')) {
-            $filename = $request->file('surat_selesai')->getClientOriginalName();
-            Storage::putFileAs('public', $request->file('surat_selesai'), $filename);
+            $filename = Auth::user()->nim . '_Surat Selesai.' . $request->file('surat_selesai')->getClientOriginalExtension();
+            Storage::putFileAs('public/dokumen-mahasiswa/surat-selesai', $request->file('surat_selesai'), $filename);
         }
 
         $user = Auth::user();

@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SubCloSeeder extends Seeder
+class IndikatorPenilaianSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class SubCloSeeder extends Seeder
      */
     public function run()
     {
-        $sub_clo = [
+        $indikator_penilaian = [
             [
                 'deskripsi' => 'Kehadiran tepat waktu',
                 'id_clo' => 1,
@@ -65,6 +65,6 @@ class SubCloSeeder extends Seeder
             ],
         ];
 
-        DB::table('sub_clo')->insert($sub_clo);
+        DB::table('indikator_penilaian')->insert($indikator_penilaian);
     }
 }

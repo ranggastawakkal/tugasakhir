@@ -23,8 +23,14 @@ class DokumenMahasiswaController extends Controller
 
     public function download($namaFile)
     {
-        $path = Storage::disk('public/dokumen-kp')->download($namaFile);
+        if (Storage::disk('public')->exists("dokumen-kp/$namaFile")) {
+            $path = Storage::disk('public')->path("dokumen-kp/$namaFile");
+            $content = file_get_contents($path);
+            return response($content)->withHeaders([
+                'Content-Type' => mime_content_type($path)
+            ]);
+        }
 
-        return $path;
+        return redirect()->route('mahasiswa.template-laporan.index')->with('errors', 'Gagal mengunduh file.');
     }
 }

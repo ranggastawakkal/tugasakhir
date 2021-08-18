@@ -69,7 +69,7 @@
                             <th scope="col">Jam Datang</th>
                             <th scope="col">Jam Pulang</th>
                             <th scope="col">Aktivitas</th>
-                            <th scope="col">Status Evaluasi</th>
+                            <th scope="col">Evaluasi</th>
                             <th scope="col">Evaluasi</th>
                             <th scope="col">Dibuat</th>
                             <th scope="col">Diperbarui</th>
@@ -95,10 +95,14 @@
                             <td scope="row">{{ Str::limit($log->evaluasi, 50) }}</td>
                             <td scope="row">{{ $log->created_at }}</td>
                             <td scope="row">{{ $log->updated_at }}</td>
-                            <td scope="row">
-                                <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $log->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr> |
-                                <abbr title="Beri Evaluasi"><a href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr>
-                            </td>
+                            @if ($log->evaluasi === '-' || $log->evaluasi === '')
+                                <td scope="row" class="text-center"><a class="btn btn-danger btn-sm" href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i> Beri Evaluasi</a></td>
+                            @else
+                                <td scope="row" class="text-center">
+                                    <a class="btn btn-success btn-sm" href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $log->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i> Detail</a>
+                                    <a class="btn btn-danger btn-sm" href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i> Edit</a>
+                                </td>
+                            @endif
                         </tr>
                         @php
                         $i++;
@@ -127,31 +131,31 @@
                 <form method="POST" action="">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">Tanggal:</label>
+                        <label for="id" class="col-form-label font-weight-bold">Tanggal:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $log->tanggal }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Jam Datang:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Jam Datang:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $log->jam_datang }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Jam Pulang:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Jam Pulang:</label>
                         <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $log->jam_pulang }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Aktivitas:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Aktivitas:</label>
                         <textarea name="" id="" class="form-control" disabled>{{ $log->aktivitas }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Evaluasi Pembimbing Lapangan:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Evaluasi Pembimbing Lapangan:</label>
                         <textarea name="" id="" class="form-control" disabled>{{ $log->evaluasi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $log->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $log->updated_at }}" disabled>
                     </div>
             </div>
@@ -180,31 +184,31 @@
                 <form method="POST" action="{{ route('pembimbing-lapangan.log-aktivitas.update', $log->id) }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">Tanggal:</label>
+                        <label for="id" class="col-form-label font-weight-bold">Tanggal:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $log->tanggal }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Jam Datang:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Jam Datang:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $log->jam_datang }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Jam Pulang:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Jam Pulang:</label>
                         <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $log->jam_pulang }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Aktivitas:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Aktivitas:</label>
                         <textarea name="" id="" class="form-control" disabled>{{ $log->aktivitas }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="evaluasi" class="col-form-label">Evaluasi Pembimbing Lapangan:</label>
+                        <label for="evaluasi" class="col-form-label font-weight-bold">Evaluasi Pembimbing Lapangan:</label>
                         <textarea name="evaluasi" id="evaluasi" class="form-control" required>{{ $log->evaluasi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $log->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $log->updated_at }}" disabled>
                     </div>
             </div>

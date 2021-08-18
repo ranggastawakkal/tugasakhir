@@ -3,13 +3,6 @@
 
 @section('main-content')
 
-    <!-- DataTales Example -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <a href="{{ route('mahasiswa.kerja-praktek.data.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
-                class="fas fa-edit fa-sm text-white-50"></i> Ubah Data Kerja Praktek</a>
-        
-    </div>
-
 @if(!isset($dataKerjaPraktek->tanggal_mulai))
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -27,6 +20,13 @@
         </div>
     </div>
 @else
+<!-- DataTales Example -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <a href="{{ route('mahasiswa.kerja-praktek.data.create') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+                class="fas fa-edit fa-sm text-white-50"></i> Ubah Data Kerja Praktek</a>
+        
+    </div>
+
 <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-success">Data Kerja Praktek</h6>

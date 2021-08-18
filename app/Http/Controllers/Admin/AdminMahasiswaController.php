@@ -72,10 +72,10 @@ class AdminMahasiswaController extends Controller
         $simpan = $mhs->save();
 
         if ($simpan) {
-            Session::flash('success', 'Data berhasil ditambahkan.');
+            Session::flash('success', 'Data Mahasiswa berhasil ditambahkan.');
             return redirect()->route('admin.data.mahasiswa');
         } else {
-            Session::flash('errors', 'Data gagal ditambahkan.');
+            Session::flash('errors', 'Data Mahasiswa gagal ditambahkan.');
             return redirect()->route('admin.data.mahasiswa');
         }
     }
@@ -118,10 +118,10 @@ class AdminMahasiswaController extends Controller
         $simpan = Mahasiswa::find($id)->update($request->all());
 
         if ($simpan) {
-            Session::flash('success', 'Data berhasil diubah.');
+            Session::flash('success', 'Data Mahasiswa berhasil diubah.');
             return redirect()->route('admin.data.mahasiswa');
         } else {
-            Session::flash('errors', 'Data gagal diubah.');
+            Session::flash('errors', 'Data Mahasiswa gagal diubah.');
             return redirect()->route('admin.data.mahasiswa');
         }
     }
@@ -130,6 +130,6 @@ class AdminMahasiswaController extends Controller
     {
         DB::table('mahasiswa')->where('id', $id)->delete();
 
-        return redirect()->route('admin.data.mahasiswa')->with('success', 'Data berhasil dihapus.');
+        return redirect()->route('admin.data.mahasiswa')->with('success', 'Data Mahasiswa berhasil dihapus.');
     }
 }

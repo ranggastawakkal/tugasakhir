@@ -33,7 +33,7 @@
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
                     <i class="fas fa-plus"></i> Tambah Data
                 </button>
-                <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -88,11 +88,11 @@
                 <form method="POST" action="{{ route('admin.data.kelas.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="nama_kelas" class="col-form-label">Nama Kelas:</label>
+                        <label for="nama_kelas" class="col-form-label font-weight-bold">Nama Kelas:</label>
                         <input type="text" class="form-control" id="nama_kelas" name="nama_kelas" required>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Program Studi:</label>
                         <select class="form-control" name="id_prodi" id="id_prodi" required>
                             <option selected disabled>--- Pilih ---</option>
                             @foreach ($program_studi as $prodi)
@@ -127,23 +127,23 @@
                 <form method="POST" action="{{ route('admin.data.kelas.store', $kls->id) }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $kls->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama Kelas:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama Kelas:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $kls->nama_kelas }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Program Studi:</label>
                         <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $kls->prodi->nama_prodi }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $kls->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $kls->updated_at }}" disabled>
                     </div>
             </div>
@@ -173,11 +173,11 @@
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $kls->id }}" required>
                     <div class="mb-3">
-                        <label for="nama_kelas" class="col-form-label">Nama Kelas:</label>
+                        <label for="nama_kelas" class="col-form-label font-weight-bold">Nama Kelas:</label>
                         <input type="text" class="form-control" id="nama_kelas" name="nama_kelas" value="{{ $kls->nama_kelas }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Program Studi:</label>
                         <select class="form-control" name="id_prodi" id="id_prodi" required>
                             <option disabled>--- Pilih ---</option>
                             <option value="{{ $kls->prodi->id }}" selected hidden>{{ $kls->prodi->nama_prodi }}</option>
@@ -211,10 +211,23 @@
             </div>
             <div class="modal-body">
                 <h6>Anda yakin ingin menghapus data kelas ini?</h6>
-                <ul>
-                    <li>ID : {{ $kls->id }}</li>
-                    <li>Nama Kelas: {{ $kls->nama_kelas }}</li>
-                </ul>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>ID</th>
+                        <td>:</td>
+                        <td>{{ $kls->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama Kelas</th>
+                        <td>:</td>
+                        <td>{{ $kls->nama_kelas }}</td>
+                    </tr>
+                    <tr>
+                        <th>Program Studi</th>
+                        <td>:</td>
+                        <td>{{ $kls->prodi->nama_prodi }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.data.kelas.destroy', $kls->id ) }}" method="GET">

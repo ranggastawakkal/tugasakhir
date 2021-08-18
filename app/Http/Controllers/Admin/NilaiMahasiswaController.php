@@ -8,14 +8,19 @@ use App\Models\KerjaPraktek;
 use App\Models\NilaiPembAkd;
 use App\Models\NilaiPembLap;
 use App\Models\BobotPembAkd;
+use App\Models\BobotPembLap;
 
 class NilaiMahasiswaController extends Controller
 {
     public function index()
     {
         $kerja_praktek = KerjaPraktek::all();
+        $bobot_pemb_akd = BobotPembAkd::all();
+        $bobot_pemb_lap = BobotPembLap::all();
+        $nilai_pemb_akd = NilaiPembAkd::all();
+        $nilai_pemb_lap = NilaiPembLap::all();
 
-        return view('admin/nilai-mahasiswa/index', compact('kerja_praktek'));
+        return view('admin/nilai-mahasiswa/index', compact('kerja_praktek', 'bobot_pemb_lap', 'bobot_pemb_akd', 'nilai_pemb_akd', 'nilai_pemb_lap'));
     }
 
     public function show($id)

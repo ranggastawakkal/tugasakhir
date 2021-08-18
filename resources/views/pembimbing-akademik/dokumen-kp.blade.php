@@ -30,7 +30,7 @@
                     </ul>
                 </div>
                 @endif
-                <table class="table table-striped table-bordered display nowrap" id="dataTable">
+                <table class="table table-striped table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -49,8 +49,8 @@
                             <td scope="row" class="text-center">{{ $i }}</td>
                             <td scope="row">{{ $dok->nama }}</td>
                             <td scope="row">{{ Str::limit($dok->deskripsi, 50) }}</td>
-                            <td scope="row"><a href="{{ route('pembimbing-akademik.dokumen-kp.get',$dok->file) }}">{{ Str::limit($dok->file, 50) }}</a></td>
-                            <td scope="row"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $dok->id }}">Lihat Detail</a></td>
+                            <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-akademik.dokumen-kp.get',$dok->file) }}"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
+                            <td scope="row" class="text-center"><a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $dok->id }}" href=""><i class="fas fa-sm fa-info"></i> Detail</a></td>
                         </tr>
                         @php
                         $i++;
@@ -79,15 +79,15 @@
                 <form method="POST" action="{{ route('admin.dokumen-kp.update', $dok->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama File:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama File:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $dok->nama }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Deskripsi:</label>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Deskripsi:</label>
                         <textarea name="deskripsi" id="deskripsi" class="form-control" disabled>{{ $dok->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="file_template" class="col-form-label">File:</label><br>
+                        <label for="file_template" class="col-form-label font-weight-bold">File:</label><br>
                         <a href="{{ route('admin.dokumen-kp.get',$dok->file) }}" class="form-control border-0">{{ $dok->file }}</a>
                     </div>
             </div>

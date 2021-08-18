@@ -100,31 +100,31 @@
                 <form method="POST" action="{{ route('admin.data.pembimbing-akademik.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="nip" class="col-form-label">NIP:</label>
+                        <label for="nip" class="col-form-label font-weight-bold">NIP:</label>
                         <input type="text" class="form-control" id="nip" name="nip" required>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                     <div class="mb-3">
-                        <label for="kode_dosen" class="col-form-label">Kode Dosen:</label>
+                        <label for="kode_dosen" class="col-form-label font-weight-bold">Kode Dosen:</label>
                         <input type="text" class="form-control" id="kode_dosen" name="kode_dosen" required>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="col-form-label">Email:</label>
+                        <label for="email" class="col-form-label font-weight-bold">Email:</label>
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="mb-3">
-                        <label for="no_telepon" class="col-form-label">No. Telepon:</label>
+                        <label for="no_telepon" class="col-form-label font-weight-bold">No. Telepon:</label>
                         <input type="text" class="form-control" id="no_telepon" name="no_telepon" required>
                     </div>
                     <div class="mb-3">
-                        <label for="alamat" class="col-form-label">Alamat:</label>
+                        <label for="alamat" class="col-form-label font-weight-bold">Alamat:</label>
                         <textarea class="form-control" id="alamat" name="alamat" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="jenis_kelamin" class="col-form-label">Jenis Kelamin:</label>
+                        <label for="jenis_kelamin" class="col-form-label font-weight-bold">Jenis Kelamin:</label>
                         <select class="form-control" name="jenis_kelamin" id="jenis_kelamin" name="jenis_kelamin" required>
                             <option value="" selected disabled>--- Pilih ---</option>
                             <option value="Laki-laki">Laki-laki</option>
@@ -132,12 +132,12 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tempat_lahir" class="col-form-label">Tempat Lahir:</label>
+                        <label for="tempat_lahir" class="col-form-label font-weight-bold">Tempat Lahir:</label>
                         <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" required>
                     </div>
                     <div class="mb-3">
-                        <label for="tanggal_lahir" class="col-form-label">Tanggal Lahir:</label>
-                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="tanggal_lahir" required>
+                        <label for="tanggal_lahir" class="col-form-label font-weight-bold">Tanggal Lahir:</label>
+                        <input type="date" max="{{ date("Y-m-d") }}" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="tanggal_lahir" required>
                     </div>
             </div>
             <div class="modal-footer">
@@ -166,51 +166,51 @@
                 <form method="POST" action="{{ route('admin.data.pembimbing-akademik.update', $pemb_akd->id) }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $pemb_akd->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nip" class="col-form-label">NIP:</label>
+                        <label for="nip" class="col-form-label font-weight-bold">NIP:</label>
                         <input type="text" class="form-control" id="nip" name="nip" value="{{ $pemb_akd->nip }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $pemb_akd->nama }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="kode_dosen" class="col-form-label">Kode Dosen:</label>
+                        <label for="kode_dosen" class="col-form-label font-weight-bold">Kode Dosen:</label>
                         <input type="text" class="form-control" id="kode_dosen" name="kode_dosen" value="{{ $pemb_akd->kode_dosen }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="col-form-label">Email:</label>
+                        <label for="email" class="col-form-label font-weight-bold">Email:</label>
                         <input type="email" class="form-control" id="email" name="email" value="{{ $pemb_akd->email }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="no_telepon" class="col-form-label">No. Telepon:</label>
+                        <label for="no_telepon" class="col-form-label font-weight-bold">No. Telepon:</label>
                         <input type="text" class="form-control" id="no_telepon" name="no_telepon" value="{{ $pemb_akd->no_telepon }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="alamat" class="col-form-label">Alamat:</label>
+                        <label for="alamat" class="col-form-label font-weight-bold">Alamat:</label>
                         <textarea class="form-control" id="alamat" name="alamat" disabled>{{ $pemb_akd->alamat }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="jenis_kelamin" class="col-form-label">Jenis Kelamin:</label>
+                        <label for="jenis_kelamin" class="col-form-label font-weight-bold">Jenis Kelamin:</label>
                         <input type="text" class="form-control" id="no_telepon" name="no_telepon" value="{{ $pemb_akd->no_telepon }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="tempat_lahir" class="col-form-label">Tempat Lahir:</label>
+                        <label for="tempat_lahir" class="col-form-label font-weight-bold">Tempat Lahir:</label>
                         <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="{{ $pemb_akd->tempat_lahir }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="tanggal_lahir" class="col-form-label">Tanggal Lahir:</label>
+                        <label for="tanggal_lahir" class="col-form-label font-weight-bold">Tanggal Lahir:</label>
                         <input type="text" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $pemb_akd->tanggal_lahir }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $pemb_akd->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $pemb_akd->updated_at }}" disabled>
                     </div>
             </div>
@@ -240,31 +240,31 @@
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $pemb_akd->id }}" required>
                     <div class="mb-3">
-                        <label for="nip" class="col-form-label">NIP:</label>
+                        <label for="nip" class="col-form-label font-weight-bold">NIP:</label>
                         <input type="text" class="form-control" id="nip" name="nip" value="{{ $pemb_akd->nip }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $pemb_akd->nama }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="kode_dosen" class="col-form-label">Kode Dosen:</label>
+                        <label for="kode_dosen" class="col-form-label font-weight-bold">Kode Dosen:</label>
                         <input type="text" class="form-control" id="kode_dosen" name="kode_dosen" value="{{ $pemb_akd->kode_dosen }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="col-form-label">Email:</label>
+                        <label for="email" class="col-form-label font-weight-bold">Email:</label>
                         <input type="email" class="form-control" id="email" name="email" value="{{ $pemb_akd->email }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="no_telepon" class="col-form-label">No. Telepon:</label>
+                        <label for="no_telepon" class="col-form-label font-weight-bold">No. Telepon:</label>
                         <input type="text" class="form-control" id="no_telepon" name="no_telepon" value="{{ $pemb_akd->no_telepon }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="alamat" class="col-form-label">Alamat:</label>
+                        <label for="alamat" class="col-form-label font-weight-bold">Alamat:</label>
                         <textarea class="form-control" id="alamat" name="alamat" required>{{ $pemb_akd->alamat }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="jenis_kelamin" class="col-form-label">Jenis Kelamin:</label>
+                        <label for="jenis_kelamin" class="col-form-label font-weight-bold">Jenis Kelamin:</label>
                         <select class="form-control" name="jenis_kelamin" id="jenis_kelamin" name="jenis_kelamin" value="{{ $pemb_akd->jenis_kelamin }}" required>
                             <option value="" disabled>--- Pilih ---</option>
                             <option value="{{ $pemb_akd->jenis_kelamin }}" selected hidden>{{ $pemb_akd->jenis_kelamin }}</option>
@@ -273,12 +273,12 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tempat_lahir" class="col-form-label">Tempat Lahir:</label>
+                        <label for="tempat_lahir" class="col-form-label font-weight-bold">Tempat Lahir:</label>
                         <input type="text" class="form-control" id="tempat_lahir" name="tempat_lahir" value="{{ $pemb_akd->tempat_lahir }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="tanggal_lahir" class="col-form-label">Tanggal Lahir:</label>
-                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $pemb_akd->tanggal_lahir }}" required>
+                        <label for="tanggal_lahir" class="col-form-label font-weight-bold">Tanggal Lahir:</label>
+                        <input type="date" max="{{ date("Y-m-d") }}" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $pemb_akd->tanggal_lahir }}" required>
                     </div>
             </div>
             <div class="modal-footer">
@@ -305,11 +305,23 @@
             </div>
             <div class="modal-body">
                 <h6>Anda yakin ingin menghapus data pembimbing akademik ini?</h6>
-                <ul>
-                    <li>NIP : {{ $pemb_akd->nip }}</li>
-                    <li>Nama : {{ $pemb_akd->nama }}</li>
-                    <li>Kode Dosen : {{ $pemb_akd->kode_dosen }}</li>
-                </ul>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>NIP</th>
+                        <td>:</td>
+                        <td>{{ $pemb_akd->nip }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama</th>
+                        <td>:</td>
+                        <td>{{ $pemb_akd->nama }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kode Dosen</th>
+                        <td>:</td>
+                        <td>{{ $pemb_akd->kode_dosen }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.data.pembimbing-akademik.destroy', $pemb_akd->id ) }}" method="GET">

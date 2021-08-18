@@ -24,7 +24,7 @@
                             <th>Aktivitas</th>
                             <th>Status</th>
                             <th>Evaluasi</th>
-                            <th>Edit</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     @foreach($logs as $key => $log)          
@@ -40,9 +40,11 @@
                                 <td class="text-success font-weight-bold" scope="row">Sudah Dievaluasi</td>
                             @endif
                             <td>{{ Str::limit($log->evaluasi,50) }}</td>
-                            <td>
-                                <a id="editModal" href="#" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}"><i class="fa fa-edit"></i></a>
-                            </td>
+                            @if ($log->evaluasi === '-' || $log->evaluasi === '')
+                                <td scope="row" class="text-center"><a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i> Edit</a></td>
+                            @else
+                                <td scope="row" class="text-center"><a class="btn btn-danger btn-sm disabled" href="" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i> Edit</a></td>
+                            @endif
                         </tr>
                     @endforeach
                 </table>

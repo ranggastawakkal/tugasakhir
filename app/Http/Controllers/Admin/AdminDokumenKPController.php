@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
+use function GuzzleHttp\Promise\all;
+
 class AdminDokumenKpController extends Controller
 {
     public function index()
@@ -42,7 +44,7 @@ class AdminDokumenKpController extends Controller
             return redirect()->back()->withErrors($validator)->withInput($request->all);
         }
 
-        $fileName = $request->file->getClientOriginalName();
+        $fileName = $request->aktor . '_' . $request->nama . '.' . $request->file->getClientOriginalExtension();
         $request->file('file')->storeAs('public/dokumen-kp', $fileName);
 
         $dokumen_kp = new DokumenKp;
@@ -95,7 +97,7 @@ class AdminDokumenKpController extends Controller
             File::delete('storage/dokumen-kp/' . $dokumen_kp->file);
         }
 
-        $fileName = $request->file->getClientOriginalName();
+        $fileName = $request->aktor . '_' . $request->nama . '.' . $request->file->getClientOriginalExtension();
         $request->file('file')->storeAs('public/dokumen-kp', $fileName);
 
         $simpan = $dokumen_kp->update([

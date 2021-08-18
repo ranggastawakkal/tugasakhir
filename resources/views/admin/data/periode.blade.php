@@ -33,7 +33,7 @@
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
                     <i class="fas fa-plus"></i> Tambah Data
                 </button>
-                <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -88,7 +88,7 @@
                 <form method="POST" action="{{ route('admin.data.periode.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="semester" class="col-form-label">Semester:</label>
+                        <label for="semester" class="col-form-label font-weight-bold">Semester:</label>
                         <select class="form-control" name="semester" id="semester" required>
                             <option selected disabled>--- Pilih ---</option>
                             <option value="GANJIL">GANJIL</option>
@@ -96,7 +96,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tahun_ajaran" class="col-form-label">Tahun Ajaran:</label>
+                        <label for="tahun_ajaran" class="col-form-label font-weight-bold">Tahun Ajaran:</label>
                         <input type="text" class="form-control" id="tahun_ajaran" name="tahun_ajaran" required>
                     </div>
             </div>
@@ -126,23 +126,23 @@
                 <form method="POST" action="{{ route('admin.data.periode.update', $p->id) }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $p->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="semester" class="col-form-label">Semester:</label>
+                        <label for="semester" class="col-form-label font-weight-bold">Semester:</label>
                         <input type="text" class="form-control" id="semester" name="semester" value="{{ $p->semester }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="tahun_ajaran" class="col-form-label">Tahun Ajaran:</label>
+                        <label for="tahun_ajaran" class="col-form-label font-weight-bold">Tahun Ajaran:</label>
                         <input type="text" class="form-control" id="tahun_ajaran" name="tahun_ajaran" value="{{ $p->tahun_ajaran }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $p->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $p->updated_at }}" disabled>
                     </div>
             </div>
@@ -172,7 +172,7 @@
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $p->id }}" required>
                     <div class="mb-3">
-                        <label for="semester" class="col-form-label">Semester:</label>
+                        <label for="semester" class="col-form-label font-weight-bold">Semester:</label>
                         <select class="form-control" name="semester" id="semester" required>
                             <option selected disabled>--- Pilih ---</option>
                             <option value="{{ $p->semester }}" selected hidden>{{ $p->semester }}</option>
@@ -181,7 +181,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="tahun_ajaran" class="col-form-label">Tahun Ajaran:</label>
+                        <label for="tahun_ajaran" class="col-form-label font-weight-bold">Tahun Ajaran:</label>
                         <input type="text" class="form-control" id="tahun_ajaran" name="tahun_ajaran" value="{{ $p->tahun_ajaran }}" required>
                     </div>
             </div>
@@ -209,11 +209,23 @@
             </div>
             <div class="modal-body">
                 <h6>Anda yakin ingin menghapus data Periode ini?</h6>
-                <ul>
-                    <li>ID: {{ $p->id }}</li>
-                    <li>Semester: {{ $p->semester }}</li>
-                    <li>Tahun Ajaran: {{ $p->tahun_ajaran }}</li>
-                </ul>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>ID</th>
+                        <td>:</td>
+                        <td>{{ $p->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Semester</th>
+                        <td>:</td>
+                        <td>{{ $p->semester }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tahun Ajaran</th>
+                        <td>:</td>
+                        <td>{{ $p->tahun_ajaran }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.data.periode.destroy', $p->id ) }}" method="GET">

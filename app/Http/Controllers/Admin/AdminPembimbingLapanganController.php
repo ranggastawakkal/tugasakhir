@@ -33,8 +33,8 @@ class AdminPembimbingLapanganController extends Controller
     {
         // buat validasi utk semua field yang diinput
         $rules = [
-            'nip'                   => 'required|unique:pembimbing_akademik,nip',
-            'email'                 => 'required|email|unique:pembimbing_akademik,email',
+            'nip'                   => 'required|unique:pembimbing_lapangan,nip',
+            'email'                 => 'required|email|unique:pembimbing_lapangan,email',
         ];
 
         $messages = [
@@ -63,6 +63,7 @@ class AdminPembimbingLapanganController extends Controller
         $pemb_lap->kota_perusahaan = $request->kota_perusahaan;
         $pemb_lap->email_perusahaan = $request->email_perusahaan;
         $pemb_lap->no_telepon_perusahaan = $request->no_telepon_perusahaan;
+        $pemb_lap->password = "password";
         $pemb_lap->password = Hash::make($request->nip);
 
         $simpan = $pemb_lap->save();

@@ -15,9 +15,7 @@ class PloController extends Controller
     public function index()
     {
         $plo = Plo::all();
-        $periodes = Periode::all();
-        $program_studi = ProgramStudi::all();
-        return view('admin/learning-outcomes/plo', compact('plo', 'periodes', 'program_studi'));
+        return view('admin/learning-outcomes/plo', compact('plo'));
     }
 
     public function store(Request $request)
@@ -26,15 +24,11 @@ class PloController extends Controller
         $rules = [
             'kode_plo'            => 'required',
             'deskripsi'              => 'required',
-            'id_periode'              => 'required',
-            'id_prodi'              => 'required',
         ];
 
         $messages = [
             'kode_plo.required'          => 'Kode PLO wajib diisi.',
             'deskripsi.required'          => 'Deskripsi wajib diisi.',
-            'id_periode.required'          => 'Periode wajib diisi.',
-            'id_prodi.required'          => 'Program Studi wajib diisi.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);
@@ -47,8 +41,6 @@ class PloController extends Controller
         $plo = new Plo;
         $plo->kode_plo = $request->kode_plo;
         $plo->deskripsi = $request->deskripsi;
-        $plo->id_periode = $request->id_periode;
-        $plo->id_prodi = $request->id_prodi;
 
         $simpan = $plo->save();
 
@@ -66,15 +58,11 @@ class PloController extends Controller
         $rules = [
             'kode_plo'            => 'required',
             'deskripsi'              => 'required',
-            'id_periode'              => 'required',
-            'id_prodi'              => 'required',
         ];
 
         $messages = [
             'kode_plo.required'          => 'Kode PLO wajib diisi.',
             'deskripsi.required'          => 'Deskripsi wajib diisi.',
-            'id_periode.required'          => 'Periode wajib diisi.',
-            'id_prodi.required'          => 'Program Studi wajib diisi.',
         ];
 
         $validator = Validator::make($request->all(), $rules, $messages);

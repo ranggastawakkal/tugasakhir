@@ -17,7 +17,13 @@
 <script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
 <script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="https://datatables.net/release-datatables/extensions/FixedColumns/js/dataTables.fixedColumns.js"></script>
+<script type="text/javascript" src="https://datatables.net/release-datatables/media/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="https://datatables.net/release-datatables/media/js/dataTables.bootstrap4.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script src="{{ asset('vendor/jquery-ui/external/jquery/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('vendor/jquery-ui/jquery-ui.js') }}"></script>
 
 <script src="{{ asset('vendor/datatables/DataTables-1.10.25/js/jquery.dataTables.min.js') }}"></script>
 <script src="{{ asset('vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
@@ -160,8 +166,10 @@
                 [5,10,25,50,100,-1],
                 [5,10,25,50,100,"All"]
             ],
+            
+            fixedColumns: true,
 
-            "language": {
+            language: {
             
                 "search": "Cari:",
                 
@@ -185,7 +193,7 @@
             
             stateSave: true, // keep paging
 
-            "scrollX": true
+            scrollX: true
         } );
     
         table.buttons().container()
@@ -235,6 +243,8 @@
         table.buttons().container()
             .appendTo( '#dataTable_wrapper .col-md-5:eq(0)' );
     } );
+
+
 
 </script>
 @section('page-script')

@@ -90,15 +90,15 @@
                 <form method="POST" action="{{ route('learning-outcomes.clo.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="kode_clo" class="col-form-label">Kode CLO:</label>
+                        <label for="kode_clo" class="col-form-label font-weight-bold">Kode CLO:</label>
                         <input type="text" class="form-control" id="kode_clo" name="kode_clo" required>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Deskripsi:</label>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Deskripsi:</label>
                         <textarea class="form-control" name="deskripsi" id="deskripsi" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="id_plo" class="col-form-label">Kode PLO:</label>
+                        <label for="id_plo" class="col-form-label font-weight-bold">Kode PLO:</label>
                         <select class="form-control" name="id_plo" id="id_plo" required>
                             <option selected disabled>--- Pilih ---</option>
                             @foreach ($plo as $lo)
@@ -133,27 +133,27 @@
                 <form method="POST" action="">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $lo->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Kode CLO:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Kode CLO:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $lo->kode_clo }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Deskripsi:</label>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Deskripsi:</label>
                         <textarea class="form-control" name="deskripsi" id="deskripsi" disabled>{{ $lo->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Kode PLO:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Kode PLO:</label>
                         <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $lo->plo->kode_plo }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $lo->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $lo->updated_at }}" disabled>
                     </div>
             </div>
@@ -183,15 +183,15 @@
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $lo->id }}" required>
                     <div class="mb-3">
-                        <label for="kode_clo" class="col-form-label">Kode CLO:</label>
+                        <label for="kode_clo" class="col-form-label font-weight-bold">Kode CLO:</label>
                         <input type="text" class="form-control" id="kode_clo" name="kode_clo" value="{{ $lo->kode_clo }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Deskripsi:</label>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Deskripsi:</label>
                         <textarea class="form-control" name="deskripsi" id="deskripsi" required>{{ $lo->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="id_plo" class="col-form-label">Kode PLO:</label>
+                        <label for="id_plo" class="col-form-label font-weight-bold">Kode PLO:</label>
                         <select class="form-control" name="id_plo" id="id_plo" required>
                             <option disabled>--- Pilih ---</option>
                             <option value="{{ $lo->plo->id }}" selected hidden>{{ $lo->plo->kode_plo }}</option>
@@ -225,11 +225,23 @@
             </div>
             <div class="modal-body">
                 <h6>Anda yakin ingin menghapus data CLO ini?</h6>
-                <ul>
-                    <li>ID: {{ $lo->id }}</li>
-                    <li>Kode CLO: {{ $lo->kode_clo }}</li>
-                    <li>Kode PLO: {{ $lo->plo->kode_plo }}</li>
-                </ul>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>ID</th>
+                        <td>:</td>
+                        <td>{{ $lo->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kode CLO</th>
+                        <td>:</td>
+                        <td>{{ $lo->kode_clo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Deskripsi</th>
+                        <td>:</td>
+                        <td>{{ $lo->deskripsi }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
                 <form action="{{ route('learning-outcomes.clo.destroy', $lo->id ) }}" method="GET">

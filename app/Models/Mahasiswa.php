@@ -64,9 +64,9 @@ class Mahasiswa extends Authenticatable
         return $this->belongsTo(SuratPengantar::class, 'id_mahasiswa', 'id');
     }
 
-    public function dokumen()
+    public function dokumenMahasiswa()
     {
-        return $this->belongsTo(Dokumen::class, 'id_mahasiswa', 'id');
+        return $this->hasOne(DokumenMahasiswa::class, 'id_mahasiswa');
     }
 
     public function kerjaPraktek()
@@ -86,11 +86,16 @@ class Mahasiswa extends Authenticatable
 
     public function nilaiPembAkd()
     {
-        return $this->belongsTo(NilaiPembAkd::class, 'id', 'id_mahasiswa');
+        return $this->hasOne(NilaiPembAkd::class, 'id_mahasiswa');
+    }
+
+    public function logAktivitas()
+    {
+        return $this->hasMany(LogAktivitas::class, 'id_mahasiswa');
     }
 
     public function nilaiPembLap()
     {
-        return $this->belongsTo(NilaiPembLap::class, 'id', 'id_mahasiswa');
+        return $this->hasOne(NilaiPembLap::class, 'id_mahasiswa');
     }
 }

@@ -14,8 +14,8 @@ use App\Http\Controllers\Admin\AdminDokumenKpController;
 use App\Http\Controllers\Admin\AdminDokumenMahasiswaController;
 use App\Http\Controllers\Admin\PloController;
 use App\Http\Controllers\Admin\CloController;
-use App\Http\Controllers\Admin\SubCloController;
-use App\Http\Controllers\Admin\BobotNilaiController;
+use App\Http\Controllers\Admin\IndikatorPenilaianController;
+use App\Http\Controllers\Admin\BobotPenilaianController;
 use App\Http\Controllers\Admin\KerjaPraktekController;
 use App\Http\Controllers\Admin\NilaiMahasiswaController;
 use App\Http\Controllers\Admin\ProfilController;
@@ -88,20 +88,20 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
             Route::post('/update/{id}', [CloController::class, 'update'])->name('learning-outcomes.clo.update');
             Route::get('/destroy/{id}', [CloController::class, 'destroy'])->name('learning-outcomes.clo.destroy');
         });
-        Route::prefix('sub-clo')->group(function () {
-            Route::get('/', [SubCloController::class, 'index'])->name('learning-outcomes.sub-clo');
-            Route::post('/store', [SubCloController::class, 'store'])->name('learning-outcomes.sub-clo.store');
-            Route::post('/update/{id}', [SubCloController::class, 'update'])->name('learning-outcomes.sub-clo.update');
-            Route::get('/destroy/{id}', [SubCloController::class, 'destroy'])->name('learning-outcomes.sub-clo.destroy');
+        Route::prefix('indikator-penilaian')->group(function () {
+            Route::get('/', [IndikatorPenilaianController::class, 'index'])->name('learning-outcomes.indikator-penilaian');
+            Route::post('/store', [IndikatorPenilaianController::class, 'store'])->name('learning-outcomes.indikator-penilaian.store');
+            Route::post('/update/{id}', [IndikatorPenilaianController::class, 'update'])->name('learning-outcomes.indikator-penilaian.update');
+            Route::get('/destroy/{id}', [IndikatorPenilaianController::class, 'destroy'])->name('learning-outcomes.indikator-penilaian.destroy');
         });
-        Route::prefix('bobot-nilai')->group(function () {
-            Route::get('/', [BobotNilaiController::class, 'index'])->name('learning-outcomes.bobot-nilai');
-            Route::post('/store/pembimbing-akademik', [BobotNilaiController::class, 'storePembAkd'])->name('learning-outcomes.bobot-nilai.pembimbing-akademik.store');
-            Route::post('/store/pembimbing-lapangan', [BobotNilaiController::class, 'storePembLap'])->name('learning-outcomes.bobot-nilai.pembimbing-lapangan.store');
-            Route::post('/update/pembimbing-akademik/{id}', [BobotNilaiController::class, 'updatePembAkd'])->name('learning-outcomes.bobot-nilai.pembimbing-akademik.update');
-            Route::post('/update/pembimbing-lapangan/{id}', [BobotNilaiController::class, 'updatePembLap'])->name('learning-outcomes.bobot-nilai.pembimbing-lapangan.update');
-            Route::get('/destroy/pembimbing-akademik/{id}', [BobotNilaiController::class, 'destroyPembAkd'])->name('learning-outcomes.bobot-nilai.pembimbing-akademik.destroy');
-            Route::get('/destroy/pembimbing-lapangan/{id}', [BobotNilaiController::class, 'destroyPembLap'])->name('learning-outcomes.bobot-nilai.pembimbing-lapangan.destroy');
+        Route::prefix('bobot-penilaian')->group(function () {
+            Route::get('/', [BobotPenilaianController::class, 'index'])->name('bobot-penilaian');
+            Route::post('/store/pembimbing-akademik', [BobotPenilaianController::class, 'storePembAkd'])->name('bobot-penilaian.pembimbing-akademik.store');
+            Route::post('/store/pembimbing-lapangan', [BobotPenilaianController::class, 'storePembLap'])->name('bobot-penilaian.pembimbing-lapangan.store');
+            Route::post('/update/pembimbing-akademik/{id}', [BobotPenilaianController::class, 'updatePembAkd'])->name('bobot-penilaian.pembimbing-akademik.update');
+            Route::post('/update/pembimbing-lapangan/{id}', [BobotPenilaianController::class, 'updatePembLap'])->name('bobot-penilaian.pembimbing-lapangan.update');
+            Route::get('/destroy/pembimbing-akademik/{id}', [BobotPenilaianController::class, 'destroyPembAkd'])->name('bobot-penilaian.pembimbing-akademik.destroy');
+            Route::get('/destroy/pembimbing-lapangan/{id}', [BobotPenilaianController::class, 'destroyPembLap'])->name('bobot-penilaian.pembimbing-lapangan.destroy');
         });
     });
 
@@ -124,6 +124,7 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     Route::prefix('dokumen-mahasiswa')->group(function () {
         Route::get('/', [AdminDokumenMahasiswaController::class, 'index'])->name('admin.dokumen-mahasiswa');
         Route::get('/get/{file}', [AdminDokumenMahasiswaController::class, 'getFile'])->name('admin.dokumen-mahasiswa.get');
+        Route::get('/destroy/{id}', [AdminDokumenMahasiswaController::class, 'destroy'])->name('admin.dokumen-mahasiswa.destroy');
     });
 
     Route::prefix('kerja-praktek')->group(function () {

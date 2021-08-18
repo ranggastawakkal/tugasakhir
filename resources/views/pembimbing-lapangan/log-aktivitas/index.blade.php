@@ -9,14 +9,14 @@
                 <h6 class="m-0 font-weight-bold text-success">Log Aktivitas Mahasiswa</h6>
             </div>
             <div class="card-body">
-                <table class="table table-striped table-responsive-xl table-bordered display nowrap" id="dataTableTanpaScroll">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Kelas</th>
-                            <th scope="col">Peminatan</th>
+                            <th scope="col">Unit Kerja</th>
+                            <th scope="col">Program Kegiatan</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -29,9 +29,9 @@
                             <td scope="row" class="text-center">{{ $i }}</td>
                             <td scope="row">{{ $kp->mahasiswa->nim }}</td>
                             <td scope="row">{{ $kp->mahasiswa->nama }}</td>
-                            <td scope="row">{{ $kp->mahasiswa->kelas->nama_kelas }}</td>
-                            <td scope="row">{{ $kp->mahasiswa->peminatan->nama }}</td>
-                            <td scope="row"><a href="{{ route('pembimbing-lapangan.log-aktivitas.show', $kp->mahasiswa->id) }}">Lihat Log Aktivitas</a></td>
+                            <td scope="row">{{ $kp->unit_kerja }}</td>
+                            <td scope="row">{{ Str::limit($kp->program_kegiatan, 50) }}</td>
+                            <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-lapangan.log-aktivitas.show', $kp->mahasiswa->id) }}"><i class="fas fa-sm fa-info"></i> Lihat Log</a></td>
                         </tr>
                         @php
                         $i++;

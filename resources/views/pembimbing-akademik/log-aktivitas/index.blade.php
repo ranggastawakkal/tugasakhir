@@ -9,7 +9,7 @@
                 <h6 class="m-0 font-weight-bold text-success">Log Aktivitas Mahasiswa</h6>
             </div>
             <div class="card-body">
-                <table class="table table-striped table-responsive-xl table-bordered display nowrap" id="dataTableTanpaScroll">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -31,7 +31,7 @@
                             <td scope="row">{{ $kp->mahasiswa->nama }}</td>
                             <td scope="row">{{ $kp->mahasiswa->kelas->nama_kelas }}</td>
                             <td scope="row">{{ $kp->mahasiswa->peminatan->nama }}</td>
-                            <td scope="row"><a href="{{ route('pembimbing-akademik.log-aktivitas.show', $kp->mahasiswa->id) }}">Lihat Log Aktivitas</a></td>
+                            <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-akademik.log-aktivitas.show', $kp->mahasiswa->id) }}"><i class="fas fa-sm fa-info"></i> Lihat Log</a></td>
                         </tr>
                         @php
                         $i++;

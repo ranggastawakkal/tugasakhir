@@ -37,15 +37,15 @@
 <!-- Nav Item - Pages Collapse Menu -->
 <li class="nav-item {{ (request()->is("admin/learning-outcomes/*")) ? 'active' : '' }}">
     <a class="nav-link pb-0 collapsed" href="#" data-toggle="collapse" data-target="#collapseLearningOutcomes" aria-expanded="true" aria-controls="collapseLearningOutcomes">
-        <i class="fas fa-fw fa-database"></i>
+        <i class="fas fa-fw fa-graduation-cap"></i>
         <span>Learning Outcomes</span>
     </a>
     <div id="collapseLearningOutcomes" class="collapse mt-2" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item {{ (request()->is("admin/learning-outcomes/plo*")) ? 'active' : '' }}" href="{{ route('learning-outcomes.plo') }}">PLO</a>
             <a class="collapse-item {{ (request()->is("admin/learning-outcomes/clo*")) ? 'active' : '' }}" href="{{ route('learning-outcomes.clo') }}">CLO</a>
-            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/sub-clo*")) ? 'active' : '' }}" href="{{ route('learning-outcomes.sub-clo') }}">Sub CLO</a>
-            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/bobot-nilai*")) ? 'active' : '' }}" href="{{ route('learning-outcomes.bobot-nilai') }}">Bobot Nilai</a>
+            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/indikator-penilaian*")) ? 'active' : '' }}" href="{{ route('learning-outcomes.indikator-penilaian') }}">Indikator Penilaian</a>
+            <a class="collapse-item {{ (request()->is("admin/learning-outcomes/bobot-penilaian*")) ? 'active' : '' }}" href="{{ route('bobot-penilaian') }}">Bobot Penilaian</a>
         </div>
     </div>
 </li>
@@ -53,7 +53,7 @@
 <!-- Nav Item - Charts -->
 <li class="nav-item {{ (request()->is("admin/surat-pengantar*")) ? 'active' : '' }}">
     <a class="nav-link pb-0" href="{{ route('admin.surat-pengantar') }}">
-        <i class="fas fa-fw fa-envelope-open-text"></i>
+        <i class="fas fa-fw fa-file-alt"></i>
         <span>Surat Pengantar</span></a>
 </li>
 
@@ -71,13 +71,13 @@
 
 <li class="nav-item {{ (request()->is("admin/kerja-praktek*")) ? 'active' : '' }}">
     <a class="nav-link pb-0" href="{{ route('kerja-praktek') }}">
-        <i class="fas fa-fw fa-envelope-open-text"></i>
+        <i class="fas fa-fw fa-network-wired"></i>
         <span>Kerja Praktek</span></a>
 </li>
 
 <li class="nav-item {{ (request()->is("admin/nilai-mahasiswa*")) ? 'active' : '' }}">
     <a class="nav-link pb-0" href="{{ route('admin.nilai-mahasiswa') }}">
-        <i class="fas fa-fw fa-envelope-open-text"></i>
+        <i class="fas fa-fw fa-file-contract"></i>
         <span>Nilai Mahasiswa</span></a>
 </li>
 
@@ -92,7 +92,7 @@
 <!-- Nav Item - Charts -->
 <li class="nav-item {{ (request()->is("admin/profil*")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('admin.profil') }}">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <i class="fas fa-fw fa-user"></i>
             <span>Profil</span></a>
     </li>
 

@@ -30,7 +30,7 @@
                     </ul>
                 </div>
                 @endif
-                <table class="table table-striped table-responsive-xl table-bordered display nowrap" id="dataTableTanpaScroll">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -52,7 +52,7 @@
                             <td scope="row">{{ $kp->mahasiswa->nama }}</td>
                             <td scope="row">{{ $kp->unit_kerja }}</td>
                             <td scope="row">{{ Str::limit($kp->program_kegiatan, 50) }}</td>
-                            <td scope="row"><a href="{{ route('pembimbing-lapangan.data-mahasiswa.show', $kp->id) }}">Lihat Detail</a></td>
+                            <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-lapangan.data-mahasiswa.show', $kp->id) }}"><i class="fas fa-sm fa-info"></i> Lihat Detail</a></td>
                         </tr>
                         @php
                         $i++;

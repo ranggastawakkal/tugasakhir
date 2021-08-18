@@ -135,7 +135,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="tanggal_lahir" class="col-form-label">Tanggal Lahir:</label>
-                        <input type="date" class="form-control" id="tanggal_lahir" name="tanggal_lahir" value="{{ $user->tanggal_lahir }}" required>
+                        <input type="date" class="form-control" max="{{ date("Y-m-d") }}" id="tanggal_lahir" name="tanggal_lahir" value="{{ $user->tanggal_lahir }}" required>
                     </div>
             </div>
             <div class="modal-footer">

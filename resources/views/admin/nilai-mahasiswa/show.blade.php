@@ -56,7 +56,7 @@
                     <p>Nilai Mahasiswa belum diinputkan</p>
                 </div>
                 @else
-                <table class="table table-striped table-responsive-xl table-bordered display nowrap" id="dataTableTanpaScroll">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -73,7 +73,7 @@
                         @foreach ($nilai_pemb_lap as $nilai)
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
-                            <td scope="row">{{ $nilai->bobotPembLap->subClo->deskripsi }}</td>
+                            <td scope="row">{{ $nilai->bobotPembLap->indikatorPenilaian->deskripsi }}</td>
                             <td scope="row">{{ $nilai->bobotPembLap->bobot }}%</td>
                             <td scope="row">{{ $nilai->nilai_angka }}</td>
                             <td scope="row">{{ $nilai->nilai }}</td>
@@ -111,7 +111,7 @@
                     <p>Nilai Mahasiswa belum diinputkan</p>
                 </div>
                 @else
-                <table class="table table-striped table-responsive-xl table-bordered display nowrap" id="dataTableTanpaScroll2">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll2">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -128,7 +128,7 @@
                         @foreach ($nilai_pemb_akd as $nilai)
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
-                            <td scope="row">{{ $nilai->bobotPembAkd->subClo->deskripsi }}</td>
+                            <td scope="row">{{ $nilai->bobotPembAkd->indikatorPenilaian->deskripsi }}</td>
                             <td scope="row">{{ $nilai->bobotPembAkd->bobot }}%</td>
                             <td scope="row">{{ $nilai->nilai_angka }}</td>
                             <td scope="row">{{ $nilai->nilai }}</td>

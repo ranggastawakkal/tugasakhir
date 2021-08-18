@@ -9,13 +9,14 @@
                 <h6 class="m-0 font-weight-bold text-success">Laporan KP Mahasiswa</h6>
             </div>
             <div class="card-body">
-                <table class="table table-striped table-bordered table-responsive-xl display nowrap" id="dataTableTanpaScroll">
+                <table class="table table-striped table-bordered table-responsive-xl display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Kelas</th>
+                            <th scope="col">Unit Kerja</th>
+                            <th scope="col">Program Kegiatan</th>
                             <th scope="col">File Laporan KP</th>
                         </tr>
                     </thead>
@@ -23,16 +24,17 @@
                         @php
                         $i = 1;
                         @endphp
-                        @foreach ($laporan_kp as $laporan)
+                        @foreach ($kerja_praktek as $kp)
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
-                            <td scope="row">{{ $laporan->nim }}</td>
-                            <td scope="row">{{ $laporan->nama }}</td>
-                            <td scope="row">{{ $laporan->nama_kelas }}</td>
-                            @if ($laporan->laporan === "-")
-                                <td scope="row">{{ Str::limit($laporan->laporan, 50) }}</td>
+                            <td scope="row">{{ $kp->mahasiswa->nim }}</td>
+                            <td scope="row">{{ $kp->mahasiswa->nama }}</td>
+                            <td scope="row">{{ $kp->unit_kerja }}</td>
+                            <td scope="row">{{ $kp->program_kegiatan }}</td>
+                            @if (!isset($kp->mahasiswa->dokumenMahasiswa->laporan) || $kp->mahasiswa->dokumenMahasiswa->laporan === "-" || $kp->mahasiswa->dokumenMahasiswa->laporan === "")
+                                <td scope="row" class="text-center"><a class="btn btn-danger disabled btn-sm" href="">Belum Diunggah</a></td>
                             @else
-                                <td scope="row"><a href="{{ route('pembimbing-lapangan.laporan-kp.get',$laporan->laporan) }}">{{ Str::limit($laporan->laporan, 50) }}</a></td>
+                                <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-akademik.dokumen-mahasiswa.get',$kp->mahasiswa->dokumenMahasiswa->laporan) }}"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
                             @endif
                         </tr>
                         @php

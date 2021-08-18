@@ -1,5 +1,5 @@
 @extends('layouts/main')
-@section('title','Bobot Nilai')
+@section('title','Bobot Penilaian')
 
 @section('main-content')
 <div class="row">
@@ -12,12 +12,12 @@
             <p>{{ $message }}</p>
         </div>
         @endif
-        @if(session('errors'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            Ada kesalahan:
+        @if ($message = Session::get('errors'))
+        <div class="alert alert-danger alert-dismissible shadow fade show">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
+            Ada Kesalahan:
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -26,10 +26,47 @@
         </div>
         @endif
     </div>
+    <div class="col-xl-6 col-md-6 mb-4 mx-auto">
+        <div class="card border-left-success shadow h-100 pt-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="font-weight-bold text-success text-uppercase mb-1">
+                            Pembimbing Akademik</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_bobot_pemb_akd }}%</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-percent fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-6 col-md-6 mb-4 mx-auto">
+        <div class="card border-left-success shadow h-100 pt-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="font-weight-bold text-success text-uppercase mb-1">
+                            Pembimbing Lapangan</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $total_bobot_pemb_lap }}%</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-percent fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
     <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-success">Bobot Nilai Pembimbing Akademik</h6>
+                <h6 class="m-0 font-weight-bold text-success">Bobot Penilaian Pembimbing Akademik</h6>
             </div>
             <div class="card-body">
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
@@ -55,7 +92,7 @@
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
                             <td scope="row">{{ $bobot->id }}</td>
-                            <td scope="row">{{ Str::limit($bobot->subClo->deskripsi, 50) }}</td>
+                            <td scope="row">{{ Str::limit($bobot->indikatorPenilaian->deskripsi, 50) }}</td>
                             <td scope="row">{{ $bobot->bobot }}%</td>
                             <td scope="row">{{ $bobot->created_at }}</td>
                             <td scope="row">{{ $bobot->updated_at }}</td>
@@ -79,7 +116,7 @@
     <div class="col-xl-12 col-lg-12">
         <div class="card shadow mb-4">
             <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                <h6 class="m-0 font-weight-bold text-success">Bobot Nilai Pembimbing Lapangan</h6>
+                <h6 class="m-0 font-weight-bold text-success">Bobot Penilaian Pembimbing Lapangan</h6>
             </div>
             <div class="card-body">
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahDataPembLap">
@@ -105,7 +142,7 @@
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
                             <td scope="row">{{ $bobot->id }}</td>
-                            <td scope="row">{{ Str::limit($bobot->subClo->deskripsi, 50) }}</td>
+                            <td scope="row">{{ Str::limit($bobot->indikatorPenilaian->deskripsi, 50) }}</td>
                             <td scope="row">{{ $bobot->bobot }}%</td>
                             <td scope="row">{{ $bobot->created_at }}</td>
                             <td scope="row">{{ $bobot->updated_at }}</td>
@@ -128,31 +165,31 @@
 
 {{-- Modal pemb akd --}}
 
-{{-- modal tambah data --}}
+{{-- modal tambah data pemb akd--}}
 <div class="modal fade" id="modalTambahData" tabindex="-1" aria-labelledby="modalTambahDataLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTambahDataLabel">Tambah Bobot Nilai Pembimbing Akademik</h5>
+                <h5 class="modal-title" id="modalTambahDataLabel">Tambah Bobot Penilaian Pembimbing Akademik</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('learning-outcomes.bobot-nilai.pembimbing-akademik.store') }}">
+                <form method="POST" action="{{ route('bobot-penilaian.pembimbing-akademik.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="id_sub_clo" class="col-form-label">Indikator Penilaian:</label>
-                        <select class="form-control" name="id_sub_clo" id="id_sub_clo" required>
+                        <label for="id_indikator" class="col-form-label font-weight-bold">Indikator Penilaian:</label>
+                        <select class="form-control" name="id_indikator" id="id_indikator" required>
                             <option selected disabled>--- Pilih ---</option>
-                            @foreach ($sub_clo as $lo)
-                            <option value="{{ $lo->id }}">{{ $lo->id }} - {{ $lo->deskripsi }}</option>
+                            @foreach ($indikator_penilaian as $indikator)
+                            <option value="{{ $indikator->id }}">{{ $indikator->id }} - {{ $indikator->deskripsi }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <label for="bobot" class="col-form-label">Bobot:</label>
+                    <label for="bobot" class="col-form-label font-weight-bold">Bobot:</label>
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" id="bobot" name="bobot" min="0" required>
+                        <input type="number" class="form-control" id="bobot" name="bobot" min="0" max="100" required>
                         <div class="input-group-append">
                             <span class="input-group-text" id="basic-addon2">%</span>
                         </div>
@@ -175,7 +212,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTampilDataLabel">Detail Data Bobot Nilai Pembimbing Akademik</h5>
+                <h5 class="modal-title" id="modalTampilDataLabel">Detail Bobot Penilaian Pembimbing Akademik</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -184,23 +221,23 @@
                 <form method="POST" action="">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $bobot->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Indikator Penilaian:</label>
-                        <textarea class="form-control" name="deskripsi" id="deskripsi" disabled>{{ $bobot->subClo->deskripsi }}</textarea>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Indikator Penilaian:</label>
+                        <textarea class="form-control" name="deskripsi" id="deskripsi" disabled>{{ $bobot->indikatorPenilaian->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Bobot:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Bobot:</label>
                         <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $bobot->bobot }}%" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $bobot->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $bobot->updated_at }}" disabled>
                     </div>
             </div>
@@ -220,28 +257,28 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEditDataLabel">Edit Data Bobot Nilai Pembimbing Akademik</h5>
+                <h5 class="modal-title" id="modalEditDataLabel">Edit Bobot Penilaian Pembimbing Akademik</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('learning-outcomes.bobot-nilai.pembimbing-akademik.update', $bobot->id) }}">
+                <form method="POST" action="{{ route('bobot-penilaian.pembimbing-akademik.update', $bobot->id) }}">
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $bobot->id }}" required>
                     <div class="mb-3">
-                        <label for="id_sub_clo" class="col-form-label">Indikator Penilaian:</label>
-                        <select class="form-control" name="id_sub_clo" id="id_sub_clo" required>
+                        <label for="id_indikator" class="col-form-label font-weight-bold">Indikator Penilaian:</label>
+                        <select class="form-control" name="id_indikator" id="id_indikator" required>
                             <option disabled>--- Pilih ---</option>
-                            <option value="{{ $bobot->subClo->id }}" selected hidden>{{ $bobot->subClo->deskripsi }}</option>
-                            @foreach ($sub_clo as $lo)
-                            <option value="{{ $lo->id }}">{{ $lo->id }} - {{ $lo->deskripsi }}</option>
+                            <option value="{{ $bobot->indikatorPenilaian->id }}" selected hidden>{{ $bobot->indikatorPenilaian->deskripsi }}</option>
+                            @foreach ($indikator_penilaian as $indikator)
+                            <option value="{{ $indikator->id }}">{{ $indikator->id }} - {{ $indikator->deskripsi }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <label for="bobot" class="col-form-label">Bobot:</label>
+                    <label for="bobot" class="col-form-label font-weight-bold">Bobot:</label>
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" id="bobot" name="bobot" min="0" value="{{ $bobot->bobot }}" required>
+                        <input type="number" class="form-control" id="bobot" name="bobot" min="0" max="100" value="{{ $bobot->bobot }}" required>
                         <div class="input-group-append">
                             <span class="input-group-text" id="basic-addon2">%</span>
                         </div>
@@ -264,21 +301,33 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Bobot Nilai Pembimbing Akademik</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Bobot Penilaian Pembimbing Akademik</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <h6>Anda yakin ingin menghapus data Bobot Nilai Pembimbing Akademik ini?</h6>
-                <ul>
-                    <li>ID: {{ $bobot->id }}</li>
-                    <li>Indikator Penilaian: {{ $bobot->subClo->deskripsi }}</li>
-                    <li>Bobot: {{ $bobot->bobot }}%</li>
-                </ul>
+                <h6>Anda yakin ingin menghapus data Bobot Penilaian Pembimbing Akademik ini?</h6>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>ID</th>
+                        <td>:</td>
+                        <td>{{ $bobot->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Indikator</th>
+                        <td>:</td>
+                        <td>{{ $bobot->indikatorPenilaian->deskripsi }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bobot</th>
+                        <td>:</td>
+                        <td>{{ $bobot->bobot }}%</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
-                <form action="{{ route('learning-outcomes.bobot-nilai.pembimbing-akademik.destroy', $bobot->id ) }}" method="GET">
+                <form action="{{ route('bobot-penilaian.pembimbing-akademik.destroy', $bobot->id ) }}" method="GET">
                     @csrf
                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -298,26 +347,26 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTambahDataPembLapLabel">Tambah Bobot Nilai Pembimbing Lapangan</h5>
+                <h5 class="modal-title" id="modalTambahDataPembLapLabel">Tambah Bobot Penilaian Pembimbing Lapangan</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('learning-outcomes.bobot-nilai.pembimbing-lapangan.store') }}">
+                <form method="POST" action="{{ route('bobot-penilaian.pembimbing-lapangan.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="id_sub_clo" class="col-form-label">Indikator Penilaian:</label>
-                        <select class="form-control" name="id_sub_clo" id="id_sub_clo" required>
+                        <label for="id_indikator" class="col-form-label font-weight-bold">Indikator Penilaian:</label>
+                        <select class="form-control" name="id_indikator" id="id_indikator" required>
                             <option selected disabled>--- Pilih ---</option>
-                            @foreach ($sub_clo as $lo)
-                            <option value="{{ $lo->id }}">{{ $lo->id }} - {{ $lo->deskripsi }}</option>
+                            @foreach ($indikator_penilaian as $indikator)
+                            <option value="{{ $indikator->id }}">{{ $indikator->id }} - {{ $indikator->deskripsi }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <label for="bobot" class="col-form-label">Bobot:</label>
+                    <label for="bobot" class="col-form-label font-weight-bold">Bobot:</label>
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" id="bobot" name="bobot" min="0" required>
+                        <input type="number" class="form-control" id="bobot" name="bobot" min="0" max="100" required>
                         <div class="input-group-append">
                             <span class="input-group-text" id="basic-addon2">%</span>
                         </div>
@@ -340,7 +389,7 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalTampilDataPembLapLabel">Detail Data Bobot Nilai Pembimbing Lapangan</h5>
+                <h5 class="modal-title" id="modalTampilDataPembLapLabel">Detail Bobot Penilaian Pembimbing Lapangan</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -349,23 +398,23 @@
                 <form method="POST" action="">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $bobot->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Indikator Penilaian:</label>
-                        <textarea class="form-control" name="deskripsi" id="deskripsi" disabled>{{ $bobot->subClo->deskripsi }}</textarea>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Indikator Penilaian:</label>
+                        <textarea class="form-control" name="deskripsi" id="deskripsi" disabled>{{ $bobot->indikatorPenilaian->deskripsi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Bobot:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Bobot:</label>
                         <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $bobot->bobot }}%" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $bobot->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $bobot->updated_at }}" disabled>
                     </div>
             </div>
@@ -385,28 +434,28 @@
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="modalEditDataPembLapLabel">Edit Data Bobot Nilai Pembimbing Lapangan</h5>
+                <h5 class="modal-title" id="modalEditDataPembLapLabel">Edit Bobot Penilaian Pembimbing Lapangan</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form method="POST" action="{{ route('learning-outcomes.bobot-nilai.pembimbing-lapangan.update', $bobot->id) }}">
+                <form method="POST" action="{{ route('bobot-penilaian.pembimbing-lapangan.update', $bobot->id) }}">
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $bobot->id }}" required>
                     <div class="mb-3">
-                        <label for="id_sub_clo" class="col-form-label">Indikator Penilaian:</label>
-                        <select class="form-control" name="id_sub_clo" id="id_sub_clo" required>
+                        <label for="id_indikator" class="col-form-label font-weight-bold">Indikator Penilaian:</label>
+                        <select class="form-control" name="id_indikator" id="id_indikator" required>
                             <option disabled>--- Pilih ---</option>
-                            <option value="{{ $bobot->subClo->id }}" selected hidden>{{ $bobot->subClo->deskripsi }}</option>
-                            @foreach ($sub_clo as $lo)
-                            <option value="{{ $lo->id }}">{{ $lo->id }} - {{ $lo->deskripsi }}</option>
+                            <option value="{{ $bobot->indikatorPenilaian->id }}" selected hidden>{{ $bobot->indikatorPenilaian->deskripsi }}</option>
+                            @foreach ($indikator_penilaian as $indikator)
+                            <option value="{{ $indikator->id }}">{{ $indikator->id }} - {{ $indikator->deskripsi }}</option>
                             @endforeach
                         </select>
                     </div>
-                    <label for="bobot" class="col-form-label">Bobot:</label>
+                    <label for="bobot" class="col-form-label font-weight-bold">Bobot:</label>
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" id="bobot" name="bobot" min="0" value="{{ $bobot->bobot }}" required>
+                        <input type="number" class="form-control" id="bobot" name="bobot" min="0" max="100" value="{{ $bobot->bobot }}" required>
                         <div class="input-group-append">
                             <span class="input-group-text" id="basic-addon2">%</span>
                         </div>
@@ -429,21 +478,33 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Bobot Nilai Pembimbing Lapangan</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Hapus Data Bobot Penilaian Pembimbing Lapangan</h5>
                 <button class="close" type="button" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
-                <h6>Anda yakin ingin menghapus data Bobot Nilai Pembimbing Lapangan ini?</h6>
-                <ul>
-                    <li>ID: {{ $bobot->id }}</li>
-                    <li>Indikator Penilaian: {{ $bobot->subClo->deskripsi }}</li>
-                    <li>Bobot: {{ $bobot->bobot }}%</li>
-                </ul>
+                <h6>Anda yakin ingin menghapus data Bobot Penilaian Pembimbing Lapangan ini?</h6>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>ID</th>
+                        <td>:</td>
+                        <td>{{ $bobot->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Indikator</th>
+                        <td>:</td>
+                        <td>{{ $bobot->indikatorPenilaian->deskripsi }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bobot</th>
+                        <td>:</td>
+                        <td>{{ $bobot->bobot }}%</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
-                <form action="{{ route('learning-outcomes.bobot-nilai.pembimbing-lapangan.destroy', $bobot->id ) }}" method="GET">
+                <form action="{{ route('bobot-penilaian.pembimbing-lapangan.destroy', $bobot->id ) }}" method="GET">
                     @csrf
                     <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button type="submit" class="btn btn-danger">Delete</button>

@@ -90,11 +90,11 @@
                 <form method="POST" action="{{ route('admin.data.peminatan.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama Peminatan:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama Peminatan:</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                     <div class="mb-3">
-                        <label for="id_kk" class="col-form-label">Kelompok Keahlian:</label>
+                        <label for="id_kk" class="col-form-label font-weight-bold">Kelompok Keahlian:</label>
                         <select class="form-control" name="id_kk" id="id_kk" required>
                             <option selected disabled>--- Pilih ---</option>
                             @foreach ($kelompok_keahlian as $kk)
@@ -103,7 +103,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Program Studi:</label>
                         <select class="form-control" name="id_prodi" id="id_prodi" required>
                             <option selected disabled>--- Pilih ---</option>
                             @foreach ($program_studi as $prodi)
@@ -138,27 +138,27 @@
                 <form method="POST" action="{{ route('admin.data.peminatan.update', $minat->id) }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $minat->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $minat->nama }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="id_kk" class="col-form-label">Kelompok Keahlian:</label>
+                        <label for="id_kk" class="col-form-label font-weight-bold">Kelompok Keahlian:</label>
                         <input type="text" class="form-control" id="id_kk" name="id_kk" value="{{ $minat->kelompokKeahlian->nama_kk }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Program Studi:</label>
                         <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $minat->prodi->nama_prodi }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $minat->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $minat->updated_at }}" disabled>
                     </div>
             </div>
@@ -188,11 +188,11 @@
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $minat->id }}" required>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama Peminatan:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama Peminatan:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $minat->nama }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="id_kk" class="col-form-label">Kelompok Keahlian:</label>
+                        <label for="id_kk" class="col-form-label font-weight-bold">Kelompok Keahlian:</label>
                         <select class="form-control" name="id_kk" id="id_kk" required>
                             <option disabled>--- Pilih ---</option>
                             <option value="{{ $minat->kelompokKeahlian->id }}" selected hidden>{{ $minat->kelompokKeahlian->nama_kk }}</option>
@@ -202,7 +202,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Kelompok Keahlian:</label>
+                        <label for="id_prodi" class="col-form-label font-weight-bold">Kelompok Keahlian:</label>
                         <select class="form-control" name="id_prodi" id="id_prodi" required>
                             <option disabled>--- Pilih ---</option>
                             <option value="{{ $minat->prodi->id }}" selected hidden>{{ $minat->prodi->nama_prodi }}</option>
@@ -236,12 +236,28 @@
             </div>
             <div class="modal-body">
                 <h6>Anda yakin ingin menghapus data peminatan ini?</h6>
-                <ul>
-                    <li>ID : {{ $minat->id }}</li>
-                    <li>Nama : {{ $minat->nama }}</li>
-                    <li>Kelompok Keahlian : {{ $minat->kelompokKeahlian->nama_kk }}</li>
-                    <li>Program Studi: {{ $minat->prodi->nama_prodi }}</li>
-                </ul>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>ID</th>
+                        <td>:</td>
+                        <td>{{ $minat->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama</th>
+                        <td>:</td>
+                        <td>{{ $minat->nama }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kelompok Keahlian</th>
+                        <td>:</td>
+                        <td>{{ $minat->kelompokKeahlian->nama_kk }}</td>
+                    </tr>
+                    <tr>
+                        <th>Prodi</th>
+                        <td>:</td>
+                        <td>{{ $minat->prodi->nama_prodi }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.data.peminatan.destroy', $minat->id ) }}" method="GET">

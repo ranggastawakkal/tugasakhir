@@ -14,8 +14,7 @@ class DashboardController extends Controller
     {
         $id = Auth::user()->id;
         $kerja_praktek = KerjaPraktek::where('id_pemb_lap',  $id)->get();
-        $kp_latest = KerjaPraktek::where('id_pemb_lap',  $id)->latest('updated_at')->first()->updated_at;
 
-        return view('pembimbing-lapangan/index', compact('kerja_praktek', 'kp_latest'));
+        return view('pembimbing-lapangan/index', compact('kerja_praktek'));
     }
 }

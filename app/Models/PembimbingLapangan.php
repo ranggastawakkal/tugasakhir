@@ -26,6 +26,7 @@ class PembimbingLapangan extends Authenticatable
         'kota_perusahaan',
         'email_perusahaan',
         'no_telepon_perusahaan',
+        'plain_password',
         'password',
     ];
 

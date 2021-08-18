@@ -18,20 +18,24 @@ class PembLapanganLaporanKpController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-
-        $laporan_kp = DB::table('dokumen_mahasiswa')
-            ->join('kerja_praktek', 'dokumen_mahasiswa.id_mahasiswa', '=', 'kerja_praktek.id_mahasiswa')
+        $kerja_praktek = KerjaPraktek::where('id_pemb_lap', $id)->get();
+        $laporan_kp = DB::table('kerja_praktek')
+            ->leftjoin('dokumen_mahasiswa', 'kerja_praktek.id_mahasiswa', '=', 'dokumen_mahasiswa.id_mahasiswa')
             ->join('mahasiswa', 'dokumen_mahasiswa.id_mahasiswa', '=', 'mahasiswa.id')
-            ->join('kelas', 'mahasiswa.id_kelas', '=', 'kelas.id')
             ->join('peminatan', 'mahasiswa.id_peminatan', '=', 'peminatan.id')
-            ->select('dokumen_mahasiswa.*', 'kerja_praktek.*', 'mahasiswa.*', 'kelas.*')
+            ->select('dokumen_mahasiswa.*', 'kerja_praktek.*', 'mahasiswa.*')
             ->where('kerja_praktek.id_pemb_lap', '=', $id)
             ->get();
+        // $laporan_kp = DB::table('dokumen_mahasiswa')
+        //     ->join('kerja_praktek', 'dokumen_mahasiswa.id_mahasiswa', '=', 'kerja_praktek.id_mahasiswa')
+        //     ->join('mahasiswa', 'dokumen_mahasiswa.id_mahasiswa', '=', 'mahasiswa.id')
+        //     ->join('kelas', 'mahasiswa.id_kelas', '=', 'kelas.id')
+        //     ->join('peminatan', 'mahasiswa.id_peminatan', '=', 'peminatan.id')
+        //     ->select('dokumen_mahasiswa.*', 'kerja_praktek.*', 'mahasiswa.*', 'kelas.*')
+        //     ->where('kerja_praktek.id_pemb_lap', '=', $id)
+        //     ->get();
 
-        // $kerja_praktek = KerjaPraktek::where('id_pemb_lap',  $id)->get();
-        // $laporan_kp = DokumenMahasiswa::where('id_mahasiswa', $kerja_praktek->mahasiswa->id)->get();
-
-        return view('pembimbing-lapangan/laporan-kp', compact('laporan_kp'));
+        return view('pembimbing-lapangan/laporan-kp', compact('kerja_praktek', 'laporan_kp'));
     }
 
     public function getFile(Request $request)

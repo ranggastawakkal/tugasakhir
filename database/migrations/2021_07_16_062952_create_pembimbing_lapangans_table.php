@@ -25,6 +25,7 @@ class CreatePembimbingLapangansTable extends Migration
             $table->string('kota_perusahaan');
             $table->string('email_perusahaan')->nullable();
             $table->string('no_telepon_perusahaan')->nullable();
+            $table->string('plain_password')->nullable();
             $table->string('password');
             $table->timestamps();
         });

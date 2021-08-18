@@ -17,27 +17,35 @@
                         {{ session('success') }}
                     </div>
                 @endif
+                @if (session('error'))
+                    <div class="alert alert-danger alert-dismissible fade show">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                        {{ session('error') }}
+                    </div>
+                @endif
                 <form method="POST" action="{{ route('admin.ubah-password.update') }}">
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id">
                     <div class="mb-3">
-                        <label for="old_password" class="col-form-label">Password Saat Ini:</label>
-                        <input type="password" class="form-control" id="old_password" name="old_password" placeholder="Password saat ini...">
-                        @error('old_password')
-                            <div class="text-danger mt-2">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="password" class="col-form-label">Password Baru:</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Password baru...">
+                        <label for="password" class="col-form-label font-weight-bold">Password Saat Ini:</label>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
                         @error('password')
                             <div class="text-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="password_confirmation" class="col-form-label">Konfirmasi Password Baru:</label>
-                        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Ketik ulang password baru...">
-                        @error('password_confirmation')
+                        <label for="password_baru" class="col-form-label font-weight-bold">Password Baru:</label>
+                        <input type="password" class="form-control @error('password_baru') is-invalid @enderror" id="password_baru" name="password_baru">
+                        @error('password_baru')
+                            <div class="text-danger mt-2">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="password_baru_confirmation" class="col-form-label font-weight-bold">Konfirmasi Password Baru:</label>
+                        <input type="password" class="form-control @error('password_baru_confirmation') is-invalid @enderror" id="password_baru_confirmation" name="password_baru_confirmation">
+                        @error('password_baru_confirmation')
                             <div class="text-danger mt-2">{{ $message }}</div>
                         @enderror
                     </div>

@@ -26,10 +26,10 @@ class UbahPasswordController extends Controller
     {
 
         $validator = Validator::make(
-            $request->all(), 
+            $request->all(),
             [
-            'currentPassword' => ['required'],
-            'password' => ['required','confirmed','min:8']
+                'currentPassword' => ['required'],
+                'password' => ['required', 'confirmed', 'min:8']
             ]
         );
 

@@ -15,11 +15,11 @@ class CreateBobotPembLapsTable extends Migration
     {
         Schema::create('bobot_pemb_lap', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_sub_clo')->unique();
+            $table->unsignedBigInteger('id_indikator')->unique();
             $table->double('bobot');
             $table->timestamps();
 
-            $table->foreign('id_sub_clo')->references('id')->on('sub_clo')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_indikator')->references('id')->on('indikator_penilaian')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

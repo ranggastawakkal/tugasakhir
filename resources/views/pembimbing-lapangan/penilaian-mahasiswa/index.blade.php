@@ -9,7 +9,7 @@
                 <h6 class="m-0 font-weight-bold text-success">Penilaian Mahasiswa</h6>
             </div>
             <div class="card-body">
-                <table class="table table-striped table-responsive-xl table-bordered display nowrap" id="dataTableTanpaScroll">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -31,7 +31,11 @@
                             <td scope="row">{{ $kp->mahasiswa->nama }}</td>
                             <td scope="row">{{ $kp->unit_kerja }}</td>
                             <td scope="row">{{ Str::limit($kp->program_kegiatan, 50) }}</td>
-                            <td scope="row"><a href="{{ route('pembimbing-lapangan.penilaian-mahasiswa.show', $kp->mahasiswa->id) }}">Lihat Nilai</a></td>
+                            @if (!isset($kp->mahasiswa->nilaiPembLap->nilai_angka))
+                                <td scope="row" class="text-center"><a class="btn btn-danger btn-sm" href="{{ route('pembimbing-lapangan.penilaian-mahasiswa.show', $kp->mahasiswa->id) }}"><i class="fas fa-sm fa-edit"></i> Beri Nilai</a></td>
+                            @else
+                                <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-lapangan.penilaian-mahasiswa.show', $kp->mahasiswa->id) }}"><i class="fas fa-sm fa-info"></i> Lihat Nilai</a></td>
+                            @endif
                         </tr>
                         @php
                         $i++;

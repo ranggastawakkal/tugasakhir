@@ -5,7 +5,7 @@
 <div class="row">
     <div class="col-xl-12 col-lg-12">
         @if ($message = Session::get('success'))
-        <div class="alert alert-success alert-dismissible fade show">
+        <div class="alert alert-success alert-dismissible shadow fade show">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
             </button>
@@ -13,7 +13,7 @@
         </div>
         @endif
         @if(session('errors'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div class="alert alert-danger alert-dismissible shadow fade show" role="alert">
             Ada kesalahan:
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">×</span>
@@ -83,7 +83,7 @@
                 <button type="button" class="btn btn-warning mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalEditData">
                     <i class="fas fa-edit"></i> Edit Nilai
                 </button>
-                <table class="table table-striped table-responsive-xl table-bordered display nowrap" id="dataTableTanpaScroll">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
@@ -100,7 +100,7 @@
                         @foreach ($nilai_pemb_lap as $nilai)
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
-                            <td scope="row">{{ $nilai->bobotPembLap->subClo->deskripsi }}</td>
+                            <td scope="row">{{ $nilai->bobotPembLap->indikatorPenilaian->deskripsi }}</td>
                             <td scope="row">{{ $nilai->bobotPembLap->bobot }}%</td>
                             <td scope="row">{{ $nilai->nilai_angka }}</td>
                             <td scope="row">{{ $nilai->nilai }}</td>
@@ -164,7 +164,7 @@
                                 <td hidden><input id="id_mahasiswa" name="id_mahasiswa[]" value="{{ $kp->mahasiswa->id }}" readonly hidden></td>
                                 <td hidden><input id="id_bobot" name="id_bobot[]" value="{{ $indikator->id }}" readonly></td>
                                 <td hidden><input id="bobot" name="bobot[]" value="{{ $indikator->bobot }}" readonly></td>
-                                <td>{{ $indikator->subClo->deskripsi }}</td>
+                                <td>{{ $indikator->indikatorPenilaian->deskripsi }}</td>
                                 <td><input type="number" class="form-control" id="nilai_angka" name="nilai_angka[]" min="0" max="100" required></td>
                             </tr>
                             @php
@@ -217,7 +217,7 @@
                                 <td class="text-center">{{ $i }}</td>
                                 <td hidden><input id="id" name="id[]" value="{{ $nilai->id }}" readonly></td>
                                 <td hidden><input id="bobot" name="bobot[]" value="{{ $nilai->bobotPembLap->bobot }}" readonly></td>
-                                <td>{{ $nilai->bobotPembLap->subClo->deskripsi }}</td>
+                                <td>{{ $nilai->bobotPembLap->indikatorPenilaian->deskripsi }}</td>
                                 <td><input type="number" class="form-control" id="nilai_angka" name="nilai_angka[]" min="0" max="100" value="{{ $nilai->nilai_angka }}" required></td>
                             </tr>
                             @php

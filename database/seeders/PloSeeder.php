@@ -18,8 +18,6 @@ class PloSeeder extends Seeder
             [
                 'kode_plo' => "PLO-1",
                 'deskripsi' => "Ini adalah PLO 1",
-                'id_periode' => 3,
-                'id_prodi' => 4,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

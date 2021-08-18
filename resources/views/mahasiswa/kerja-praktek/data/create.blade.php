@@ -12,7 +12,7 @@
         <form method=POST action="{{ route('mahasiswa.kerja-praktek.data.store') }}">
             @csrf
             <div class="form-group row">
-                <label for="namaakd" class="col-md-2 col-form-label text-md-left ml-2">Nama Pembimbing Akademik</label>
+                <label for="namaakd" class="col-md-2 col-form-label font-weight-bold text-md-left ml-2">Nama Pembimbing Akademik</label>
 
                 <div class="col-md-9">
                     <input id="namaakd" type="text" class="form-control @error('namaakd') is-invalid @enderror" name="namaakd" value="{{ $dataKerjaPraktek->pembimbingAkademik->nama }}" disabled autocomplete="namaakd" autofocus>
@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="namalap" class="col-md-2 col-form-label text-md-left ml-2">Nama Pembimbing Lapangan</label>
+                <label for="namalap" class="col-md-2 col-form-label font-weight-bold text-md-left ml-2">Nama Pembimbing Lapangan</label>
 
                 <div class="col-md-9">
                     <input id="namalap" type="text" class="form-control @error('namalap') is-invalid @enderror" name="namalap" value="{{ $dataKerjaPraktek->pembimbingLapangan->nama }}" disabled autocomplete="namalap" autofocus>
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="perusahaan" class="col-md-2 col-form-label text-md-left ml-2">Perusahaan</label>
+                <label for="perusahaan" class="col-md-2 col-form-label font-weight-bold text-md-left ml-2">Perusahaan</label>
 
                 <div class="col-md-9">
                     <input id="perusahaan" type="perusahaan" class="form-control @error('perusahaan') is-invalid @enderror" name="perusahaan" value="{{ $dataKerjaPraktek->pembimbingLapangan->nama_perusahaan }}" disabled autofocus>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="unitkerja" class="col-md-2 col-form-label text-md-left ml-2">Unit Kerja / Divisi</label>
+                <label for="unitkerja" class="col-md-2 col-form-label font-weight-bold text-md-left ml-2">Unit Kerja / Divisi</label>
 
                 <div class="col-md-9">
                     <input id="unitkerja" type="text" class="form-control @error('unitkerja') is-invalid @enderror" name="unitkerja" value="{{ $unitkerja ?? old('unitkerja') }}" required autocomplete="unitkerja" autofocus>
@@ -64,7 +64,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="tanggalmulai" class="col-md-2 col-form-label text-md-left ml-2">Tanggal Mulai</label>
+                <label for="tanggalmulai" class="col-md-2 col-form-label font-weight-bold text-md-left ml-2">Tanggal Mulai</label>
 
                 <div class="col-md-9">
                     <input id="tanggalmulai" type="date" class="form-control @error('tanggalmulai') is-invalid @enderror" name="tanggalmulai" value="{{ $tanggalmulai ?? old('tanggalmulai') }}" required autocomplete="tanggalmulai" autofocus>
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="tanggalberakhir" class="col-md-2 col-form-label text-md-left ml-2">Tanggal Berakhir</label>
+                <label for="tanggalberakhir" class="col-md-2 col-form-label font-weight-bold text-md-left ml-2">Tanggal Berakhir</label>
 
                 <div class="col-md-9">
                     <input id="tanggalberakhir" type="date" class="form-control @error('tanggalberakhir') is-invalid @enderror" name="tanggalberakhir" value="{{ $tanggalberakhir ?? old('tanggalberakhir') }}" required autocomplete="tanggalberakhir" autofocus>
@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="target" class="col-md-2 col-form-label text-md-left ml-2">Target</label>
+                <label for="target" class="col-md-2 col-form-label font-weight-bold text-md-left ml-2">Target</label>
 
                 <div class="col-md-9">
                     <input id="target" type="text" class="form-control @error('target') is-invalid @enderror" name="target" value="{{ $target ?? old('target') }}" required autocomplete="target" autofocus>
@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="programkegiatan" class="col-md-2 col-form-label text-md-left ml-2">Program Kegiatan</label>
+                <label for="programkegiatan" class="col-md-2 col-form-label font-weight-bold text-md-left ml-2">Program Kegiatan</label>
 
                 <div class="col-md-9">
                     <input id="programkegiatan" type="text" class="form-control @error('programkegiatan') is-invalid @enderror" name="programkegiatan" value="{{ $programkegiatan ?? old('programkegiatan') }}" required autocomplete="programkegiatan" autofocus>

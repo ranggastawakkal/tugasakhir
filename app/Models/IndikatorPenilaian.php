@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
-class SubClo extends Model
+class IndikatorPenilaian extends Model
 {
     use HasFactory;
 
-    protected $table = "sub_clo";
+    protected $table = "indikator_penilaian";
     protected $primaryKey = "id";
     protected $foreignKey = "id_clo";
     protected $fillable = [

@@ -33,15 +33,13 @@
                 <button type="button" class="btn btn-success mb-3 mx-3" data-bs-toggle="modal" data-bs-target="#modalTambahData">
                     <i class="fas fa-plus"></i> Tambah Data
                 </button>
-                <table class="table table-striped table-bordered display nowrap" id="dataTableAdmin">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
                             <th scope="col">ID</th>
                             <th scope="col">Kode PLO</th>
                             <th scope="col">Deskripsi</th>
-                            <th scope="col">Periode</th>
-                            <th scope="col">Program Studi</th>
                             <th scope="col">Dibuat</th>
                             <th scope="col">Diperbarui</th>
                             <th scope="col">Aksi</th>
@@ -57,8 +55,6 @@
                             <td scope="row">{{ $lo->id }}</td>
                             <td scope="row">{{ $lo->kode_plo }}</td>
                             <td scope="row">{{ Str::limit($lo->deskripsi, 50) }}</td>
-                            <td scope="row">{{ $lo->periode->semester }}</td>
-                            <td scope="row">{{ $lo->prodi->nama_prodi }}</td>
                             <td scope="row">{{ $lo->created_at }}</td>
                             <td scope="row">{{ $lo->updated_at }}</td>
                             <td scope="row">
@@ -92,30 +88,12 @@
                 <form method="POST" action="{{ route('learning-outcomes.plo.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="kode_plo" class="col-form-label">Kode PLO:</label>
+                        <label for="kode_plo" class="col-form-label font-weight-bold">Kode PLO:</label>
                         <input type="text" class="form-control" id="kode_plo" name="kode_plo" required>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Deskripsi:</label>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Deskripsi:</label>
                         <textarea class="form-control" name="deskripsi" id="deskripsi" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_periode" class="col-form-label">Periode:</label>
-                        <select class="form-control" name="id_periode" id="id_periode" required>
-                            <option selected disabled>--- Pilih ---</option>
-                            @foreach ($periodes as $periode)
-                            <option value="{{ $periode->id }}">{{ $periode->semester }} | {{ $periode->tahun_ajaran }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
-                        <select class="form-control" name="id_prodi" id="id_prodi" required>
-                            <option selected disabled>--- Pilih ---</option>
-                            @foreach ($program_studi as $prodi)
-                            <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
-                            @endforeach
-                        </select>
                     </div>
             </div>
             <div class="modal-footer">
@@ -144,31 +122,23 @@
                 <form method="POST" action="">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $lo->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Kode PLO:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Kode PLO:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $lo->kode_plo }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Deskripsi:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Deskripsi:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $lo->deskripsi }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Periode:</label>
-                        <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $lo->periode->semester }} | {{ $lo->periode->tahun_ajaran }}" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
-                        <input type="text" class="form-control" id="id_prodi" name="id_prodi" value="{{ $lo->prodi->nama_prodi }}" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $lo->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $lo->updated_at }}" disabled>
                     </div>
             </div>
@@ -198,32 +168,12 @@
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $lo->id }}" required>
                     <div class="mb-3">
-                        <label for="kode_plo" class="col-form-label">Kode PLO:</label>
+                        <label for="kode_plo" class="col-form-label font-weight-bold">Kode PLO:</label>
                         <input type="text" class="form-control" id="kode_plo" name="kode_plo" value="{{ $lo->kode_plo }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="col-form-label">Deskripsi:</label>
+                        <label for="deskripsi" class="col-form-label font-weight-bold">Deskripsi:</label>
                         <textarea class="form-control" name="deskripsi" id="deskripsi" required>{{ $lo->deskripsi }}</textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_periode" class="col-form-label">Periode:</label>
-                        <select class="form-control" name="id_periode" id="id_periode" required>
-                            <option disabled>--- Pilih ---</option>
-                            <option value="{{ $lo->periode->id }}" selected hidden>{{ $lo->periode->semester }} | {{ $lo->periode->tahun_ajaran }}</option>
-                            @foreach ($periodes as $periode)
-                            <option value="{{ $periode->id }}">{{ $periode->semester }} | {{ $periode->tahun_ajaran }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="id_prodi" class="col-form-label">Program Studi:</label>
-                        <select class="form-control" name="id_prodi" id="id_prodi" required>
-                            <option disabled>--- Pilih ---</option>
-                            <option value="{{ $lo->prodi->id }}" selected hidden>{{ $lo->prodi->nama_prodi }}</option>
-                            @foreach ($program_studi as $prodi)
-                            <option value="{{ $prodi->id }}">{{ $prodi->nama_prodi }}</option>
-                            @endforeach
-                        </select>
                     </div>
             </div>
             <div class="modal-footer">
@@ -250,12 +200,23 @@
             </div>
             <div class="modal-body">
                 <h6>Anda yakin ingin menghapus data PLO ini?</h6>
-                <ul>
-                    <li>ID: {{ $lo->id }}</li>
-                    <li>Kode PLO: {{ $lo->kode_plo }}</li>
-                    <li>Periode: {{ $lo->periode->semester }} | {{ $lo->periode->tahun_ajaran }}</li>
-                    <li>Program Studi: {{ $lo->prodi->nama_prodi }}</li>
-                </ul>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>ID</th>
+                        <td>:</td>
+                        <td>{{ $lo->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Kode PLO</th>
+                        <td>:</td>
+                        <td>{{ $lo->kode_plo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Deskripsi</th>
+                        <td>:</td>
+                        <td>{{ $lo->deskripsi }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
                 <form action="{{ route('learning-outcomes.plo.destroy', $lo->id ) }}" method="GET">

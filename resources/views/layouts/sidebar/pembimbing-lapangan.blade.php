@@ -22,7 +22,7 @@
 
     <li class="nav-item {{ (request()->is("pembimbing-lapangan/log-aktivitas*")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('pembimbing-lapangan.log-aktivitas') }}">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <i class="fas fa-fw fa-file-alt"></i>
             <span>Log Aktivitas</span></a>
     </li>
 
@@ -41,7 +41,7 @@
 
     <li class="nav-item {{ (request()->is("pembimbing-lapangan/penilaian-mahasiswa*")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('pembimbing-lapangan.penilaian-mahasiswa') }}">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <i class="fas fa-fw fa-file-signature"></i>
             <span>Penilaian Mahasiswa</span></a>
     </li>
 
@@ -55,7 +55,7 @@
 
     <li class="nav-item {{ (request()->is("pembimbing-lapangan/profil*")) ? 'active' : '' }}">
         <a class="nav-link pb-0" href="{{ route('pembimbing-lapangan.profil.index') }}">
-            <i class="fas fa-fw fa-envelope-open-text"></i>
+            <i class="fas fa-fw fa-user"></i>
             <span>Profil</span></a>
     </li>
 

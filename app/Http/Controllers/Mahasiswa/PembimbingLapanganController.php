@@ -37,9 +37,9 @@ class PembimbingLapanganController extends Controller
         }
 
         $validator = Validator::make(
-            $request->all(), 
+            $request->all(),
             [
-            'selectLapangan' => ['required'],
+                'selectLapangan' => ['required'],
             ],
             [
                 'selectLapangan.required' => 'Pembimbing Lapangan tidak boleh kosong!'
@@ -49,7 +49,7 @@ class PembimbingLapanganController extends Controller
         if ($validator->fails()) {
             return redirect()->route('mahasiswa.pembimbing.lapangan.index')->withErrors($validator);
         }
-        
+
         if (!$dataKerjaPraktek) {
             $kp = new KerjaPraktek();
             $kp->id_mahasiswa = $user->id;
@@ -66,25 +66,25 @@ class PembimbingLapanganController extends Controller
     public function storeNew(Request $request)
     {
         $validator = Validator::make(
-            $request->all(), 
+            $request->all(),
             [
-            'nama' => ['required'],
-            'nip' => ['required', 'unique:pembimbing_lapangan'],
-            'phone' => ['required'],
-            'email' => ['required', 'email', 'unique:pembimbing_lapangan'],
-            'namaperusahaan' => ['required'],
-            'alamatperusahaan' => ['required'],
-            'kotaperusahaan' => ['required'],
-            'email_perusahaan' => ['required', 'unique:pembimbing_lapangan'],
-            'phoneperusahaan' => ['required'],
-            'jabatan' => ['required'],
+                'nama' => ['required'],
+                'nip' => ['required', 'unique:pembimbing_lapangan'],
+                'phone' => ['required'],
+                'email' => ['required', 'email', 'unique:pembimbing_lapangan'],
+                'namaperusahaan' => ['required'],
+                'alamatperusahaan' => ['required'],
+                'kotaperusahaan' => ['required'],
+                'email_perusahaan' => ['required', 'unique:pembimbing_lapangan'],
+                'phoneperusahaan' => ['required'],
+                'jabatan' => ['required'],
             ]
         );
 
         if ($validator->fails()) {
             return redirect()->route('mahasiswa.pembimbing.lapangan.create')->withErrors($validator);
         }
-        
+
         $pembLap = new PembimbingLapangan();
         $pembLap->nama = $request->nama;
         $pembLap->nip = $request->nip;
@@ -96,12 +96,13 @@ class PembimbingLapanganController extends Controller
         $pembLap->email_perusahaan = $request->email_perusahaan;
         $pembLap->no_telepon_perusahaan = $request->phoneperusahaan;
         $pembLap->jabatan = $request->jabatan;
+        $pembLap->plain_password = "password";
         $pembLap->password = bcrypt('password');
         $pembLap->save();
 
         $user = Auth::user();
         $dataKerjaPraktek = KerjaPraktek::where(['id_mahasiswa' => $user->id])->first();
-        
+
         if (!$dataKerjaPraktek) {
             $kp = new KerjaPraktek();
             $kp->id_mahasiswa = $user->id;
@@ -124,7 +125,7 @@ class PembimbingLapanganController extends Controller
     {
         $user = Auth::user();
         $lapangan = PembimbingLapangan::all();
-       
+
         return view('mahasiswa.pembimbing.lapangan.edit', compact('lapangan'));
     }
 
@@ -132,8 +133,7 @@ class PembimbingLapanganController extends Controller
     {
         $user = Auth::user();
         $lapangan = PembimbingLapangan::all();
-       
+
         return view('mahasiswa.pembimbing.lapangan.edit', compact('lapangan'));
     }
-
 }

@@ -48,6 +48,7 @@
                             <th scope="col">Kota Perusahaan</th>
                             <th scope="col">Email Perusahaan</th>
                             <th scope="col">No. Telepon Perusahaan</th>
+                            <th scope="col">Plain Password</th>
                             <th scope="col">Dibuat</th>
                             <th scope="col">Diperbarui</th>
                             <th scope="col">Aksi</th>
@@ -71,6 +72,7 @@
                             <td scope="row">{{ $pemb_lap->kota_perusahaan }}</td>
                             <td scope="row">{{ $pemb_lap->email_perusahaan }}</td>
                             <td scope="row">{{ $pemb_lap->no_telepon_perusahaan }}</td>
+                            <td scope="row">{{ $pemb_lap->plain_password }}</td>
                             <td scope="row">{{ $pemb_lap->created_at }}</td>
                             <td scope="row">{{ $pemb_lap->updated_at }}</td>
                             <td scope="row">
@@ -104,43 +106,43 @@
                 <form method="POST" action="{{ route('admin.data.pembimbing-lapangan.store') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="nip" class="col-form-label">NIP:</label>
+                        <label for="nip" class="col-form-label font-weight-bold">NIP:</label>
                         <input type="text" class="form-control" id="nip" name="nip" required>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" required>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="col-form-label">Email:</label>
+                        <label for="email" class="col-form-label font-weight-bold">Email:</label>
                         <input type="email" class="form-control" id="email" name="email" required>
                     </div>
                     <div class="mb-3">
-                        <label for="no_telepon" class="col-form-label">No. Telepon:</label>
+                        <label for="no_telepon" class="col-form-label font-weight-bold">No. Telepon:</label>
                         <input type="text" class="form-control" id="no_telepon" name="no_telepon" required>
                     </div>
                     <div class="mb-3">
-                        <label for="jabatan" class="col-form-label">Jabatan:</label>
+                        <label for="jabatan" class="col-form-label font-weight-bold">Jabatan:</label>
                         <input type="text" class="form-control" id="jabatan" name="jabatan" required>
                     </div>
                     <div class="mb-3">
-                        <label for="nama_perusahaan" class="col-form-label">Perusahaan:</label>
+                        <label for="nama_perusahaan" class="col-form-label font-weight-bold">Perusahaan:</label>
                         <input type="text" class="form-control" id="nama_perusahaan" name="nama_perusahaan" required>
                     </div>
                     <div class="mb-3">
-                        <label for="alamat_perusahaan" class="col-form-label">Alamat Perusahaan:</label>
+                        <label for="alamat_perusahaan" class="col-form-label font-weight-bold">Alamat Perusahaan:</label>
                         <textarea class="form-control" id="alamat_perusahaan" name="alamat_perusahaan" required></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="kota_perusahaan" class="col-form-label">Kota Perusahaan:</label>
+                        <label for="kota_perusahaan" class="col-form-label font-weight-bold">Kota Perusahaan:</label>
                         <input type="text" class="form-control" id="kota_perusahaan" name="kota_perusahaan" required>
                     </div>
                     <div class="mb-3">
-                        <label for="email_perusahaan" class="col-form-label">Email Perusahaan:</label>
+                        <label for="email_perusahaan" class="col-form-label font-weight-bold">Email Perusahaan:</label>
                         <input type="email_perusahaan" class="form-control" id="email_perusahaan" name="email_perusahaan" required>
                     </div>
                     <div class="mb-3">
-                        <label for="no_telepon_perusahaan" class="col-form-label">No. Telepon Perusahaan:</label>
+                        <label for="no_telepon_perusahaan" class="col-form-label font-weight-bold">No. Telepon Perusahaan:</label>
                         <input type="text" class="form-control" id="no_telepon_perusahaan" name="no_telepon_perusahaan" required>
                     </div>
             </div>
@@ -170,55 +172,55 @@
                 <form method="POST" action="{{ route('admin.data.pembimbing-lapangan.update', $pemb_lap->id) }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $pemb_lap->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nip" class="col-form-label">NIP:</label>
+                        <label for="nip" class="col-form-label font-weight-bold">NIP:</label>
                         <input type="text" class="form-control" id="nip" name="nip" value="{{ $pemb_lap->nip }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $pemb_lap->nama }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="col-form-label">Email:</label>
+                        <label for="email" class="col-form-label font-weight-bold">Email:</label>
                         <input type="email" class="form-control" id="email" name="email" value="{{ $pemb_lap->email }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="no_telepon" class="col-form-label">No. Telepon:</label>
+                        <label for="no_telepon" class="col-form-label font-weight-bold">No. Telepon:</label>
                         <input type="text" class="form-control" id="no_telepon" name="no_telepon" value="{{ $pemb_lap->no_telepon }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="jabatan" class="col-form-label">Jabatan:</label>
+                        <label for="jabatan" class="col-form-label font-weight-bold">Jabatan:</label>
                         <input type="text" class="form-control" id="jabatan" name="jabatan" value="{{ $pemb_lap->jabatan }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama_perusahaan" class="col-form-label">Nama Perusahan:</label>
+                        <label for="nama_perusahaan" class="col-form-label font-weight-bold">Nama Perusahan:</label>
                         <input type="text" class="form-control" id="nama_perusahaan" name="nama_perusahaan" value="{{ $pemb_lap->nama_perusahaan }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="alamat_perusahaan" class="col-form-label">Alamat Perusahaan:</label>
+                        <label for="alamat_perusahaan" class="col-form-label font-weight-bold">Alamat Perusahaan:</label>
                         <textarea class="form-control" id="alamat_perusahaan" name="alamat_perusahaan" disabled>{{ $pemb_lap->alamat_perusahaan }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="kota_perusahaan" class="col-form-label">Kota Perusahaan:</label>
+                        <label for="kota_perusahaan" class="col-form-label font-weight-bold">Kota Perusahaan:</label>
                         <input type="text" class="form-control" id="kota_perusahaan" name="kota_perusahaan" value="{{ $pemb_lap->kota_perusahaan }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="email_perusahaan" class="col-form-label">Email Perusahaan:</label>
+                        <label for="email_perusahaan" class="col-form-label font-weight-bold">Email Perusahaan:</label>
                         <input type="text" class="form-control" id="email_perusahaan" name="email_perusahaan" value="{{ $pemb_lap->email_perusahaan }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="no_telepon_perusahaan" class="col-form-label">No. Telepon Perusahaan:</label>
+                        <label for="no_telepon_perusahaan" class="col-form-label font-weight-bold">No. Telepon Perusahaan:</label>
                         <input type="text" class="form-control" id="no_telepon_perusahaan" name="no_telepon_perusahaan" value="{{ $pemb_lap->no_telepon_perusahaan }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $pemb_lap->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $pemb_lap->updated_at }}" disabled>
                     </div>
             </div>
@@ -248,43 +250,43 @@
                     @csrf
                     <input hidden type="text" class="form-control" id="id" name="id" value="{{ $pemb_lap->id }}" required>
                     <div class="mb-3">
-                        <label for="nip" class="col-form-label">NIP:</label>
+                        <label for="nip" class="col-form-label font-weight-bold">NIP:</label>
                         <input type="text" class="form-control" id="nip" name="nip" value="{{ $pemb_lap->nip }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama:</label>
+                        <label for="nama" class="col-form-label font-weight-bold">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $pemb_lap->nama }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="col-form-label">Email:</label>
+                        <label for="email" class="col-form-label font-weight-bold">Email:</label>
                         <input type="email" class="form-control" id="email" name="email" value="{{ $pemb_lap->email }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="no_telepon" class="col-form-label">No. Telepon:</label>
+                        <label for="no_telepon" class="col-form-label font-weight-bold">No. Telepon:</label>
                         <input type="text" class="form-control" id="no_telepon" name="no_telepon" value="{{ $pemb_lap->no_telepon }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="jabatan" class="col-form-label">Jabatan:</label>
+                        <label for="jabatan" class="col-form-label font-weight-bold">Jabatan:</label>
                         <input type="text" class="form-control" id="jabatan" name="jabatan" value="{{ $pemb_lap->jabatan }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="nama_perusahaan" class="col-form-label">Perusahaan:</label>
+                        <label for="nama_perusahaan" class="col-form-label font-weight-bold">Perusahaan:</label>
                         <input type="text" class="form-control" id="nama_perusahaan" name="nama_perusahaan" value="{{ $pemb_lap->nama_perusahaan }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="alamat_perusahaan" class="col-form-label">Alamat Perusahaan:</label>
+                        <label for="alamat_perusahaan" class="col-form-label font-weight-bold">Alamat Perusahaan:</label>
                         <textarea class="form-control" id="alamat_perusahaan" name="alamat_perusahaan" required>{{ $pemb_lap->alamat_perusahaan }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="kota_perusahaan" class="col-form-label">Kota Perusahaan:</label>
+                        <label for="kota_perusahaan" class="col-form-label font-weight-bold">Kota Perusahaan:</label>
                         <input type="text" class="form-control" id="kota_perusahaan" name="kota_perusahaan" value="{{ $pemb_lap->kota_perusahaan }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="email_perusahaan" class="col-form-label">Email Perusahaan:</label>
+                        <label for="email_perusahaan" class="col-form-label font-weight-bold">Email Perusahaan:</label>
                         <input type="email" class="form-control" id="email_perusahaan" name="email_perusahaan" value="{{ $pemb_lap->email_perusahaan }}" required>
                     </div>
                     <div class="mb-3">
-                        <label for="no_telepon_perusahaan" class="col-form-label">No. Telepon Perusahaan:</label>
+                        <label for="no_telepon_perusahaan" class="col-form-label font-weight-bold">No. Telepon Perusahaan:</label>
                         <input type="text" class="form-control" id="no_telepon_perusahaan" name="no_telepon_perusahaan" value="{{ $pemb_lap->no_telepon_perusahaan }}" required>
                     </div>
             </div>
@@ -312,11 +314,23 @@
             </div>
             <div class="modal-body">
                 <h6>Anda yakin ingin menghapus data pembimbing lapangan ini?</h6>
-                <ul>
-                    <li>NIP : {{ $pemb_lap->nip }}</li>
-                    <li>Nama : {{ $pemb_lap->nama }}</li>
-                    <li>Perusahaan : {{ $pemb_lap->nama_perusahaan }}</li>
-                </ul>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>NIP</th>
+                        <td>:</td>
+                        <td>{{ $pemb_lap->nip }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama</th>
+                        <td>:</td>
+                        <td>{{ $pemb_lap->nama }}</td>
+                    </tr>
+                    <tr>
+                        <th>Perusahaan</th>
+                        <td>:</td>
+                        <td>{{ $pemb_lap->nama_perusahaan }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.data.pembimbing-lapangan.destroy', $pemb_lap->id ) }}" method="GET">

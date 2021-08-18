@@ -54,7 +54,7 @@
                             <th scope="col">Jam Datang</th>
                             <th scope="col">Jam Pulang</th>
                             <th scope="col">Aktivitas</th>
-                            <th scope="col">Status Evaluasi</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Evaluasi</th>
                             <th scope="col">Dibuat</th>
                             <th scope="col">Diperbarui</th>
@@ -68,7 +68,7 @@
                         @foreach ($log_aktivitas as $log)
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
-                            <td scope="row">{{ $log->tanggal }}</td>
+                            <td scope="row"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $log->id }}">{{ $log->tanggal }}</a></td>
                             <td scope="row">{{ $log->jam_datang }}</td>
                             <td scope="row">{{ $log->jam_pulang }}</td>
                             <td scope="row">{{ Str::limit($log->aktivitas, 50) }}</td>

@@ -6,7 +6,7 @@
         <label for="tanggal" class="col-md-2 col-form-label text-md-left ml-2">Tanggal</label>
 
         <div class="col-md-9">
-            <input id="tanggal" type="date" class="form-control @error('tanggal') is-invalid @enderror" name="tanggal" value="{{ old('tanggal') }}" required autocomplete="tanggal" autofocus>
+            <input id="tanggal" type="date" max="{{ date("Y-m-d") }}" class="form-control @error('tanggal') is-invalid @enderror" name="tanggal" value="{{ old('tanggal') }}" required autocomplete="tanggal" autofocus>
 
             @error('tanggal')
                 <span class="invalid-feedback" role="alert">

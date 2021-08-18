@@ -75,16 +75,16 @@
                             @elseif($sp->status === "Ditolak")
                                 <td class="text-danger font-weight-bold" scope="row">{{ $sp->status }}</td>
                             @else
-                                <td scope="row">{{ $sp->file }}</td>
+                                <td scope="row">{{ $sp->status }}</td>
                             @endif
                             @if ($sp->file === "-")
                                 <td scope="row">{{ $sp->file }}</td>
                             @else
-                                <td scope="row"><a href="{{ route('admin.surat-pengantar.get',$sp->file) }}">{{ Str::limit($sp->file, 50) }}</a></td>
+                                <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('admin.surat-pengantar.get',$sp->file) }}"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
                             @endif
 
                             <td scope="row">
-                                <abbr title="Lihat Detail"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $sp->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i></a></abbr> |
+                                <abbr title="Respon Pengajuan"><a href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $sp->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i></a></abbr> |
                                 <abbr title="Hapus data"><a href="" data-bs-toggle="modal" data-bs-target="#modalHapusData{{ $sp->id }}" class="text-danger"><i class="fas fa-sm fa-trash-alt"></i></a></abbr>
                             </td>
                         </tr>
@@ -115,59 +115,60 @@
                 <form method="POST" action="{{ route('admin.surat-pengantar.update', $sp->id) }}" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="id" class="col-form-label">ID:</label>
+                        <label for="id" class="col-form-label font-weight-bold">ID:</label>
                         <input type="text" class="form-control" id="id" name="id" value="{{ $sp->id }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama" class="col-form-label">Nama:</label>
+                        <label for="nim" class="col-form-label font-weight-bold">NIM:</label>
+                        <input type="text" class="form-control" id="nim" name="nim" value="{{ $sp->mahasiswa->nim }}" disabled>
+                        <input type="text" class="form-control" id="nim" name="nim" value="{{ $sp->mahasiswa->nim }}" hidden>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nama" class="col-form-label font-weight-bold">Nama:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $sp->mahasiswa->nama }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="tanggal" class="col-form-label">Tanggal:</label>
+                        <label for="tanggal" class="col-form-label font-weight-bold">Tanggal:</label>
                         <input type="text" class="form-control" id="tanggal" name="tanggal" value="{{ $sp->tanggal }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nim" class="col-form-label">NIM:</label>
-                        <input type="text" class="form-control" id="nim" name="nim" value="{{ $sp->mahasiswa->nim }}" disabled>
-                    </div>
-                    <div class="mb-3">
-                        <label for="program_studi" class="col-form-label">Program Studi:</label>
+                        <label for="program_studi" class="col-form-label font-weight-bold">Program Studi:</label>
                         <input type="text" class="form-control" id="nama" name="nama" value="{{ $sp->mahasiswa->kelas->prodi->nama_prodi }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="tujuan_surat" class="col-form-label">Tujuan Surat:</label>
+                        <label for="tujuan_surat" class="col-form-label font-weight-bold">Tujuan Surat:</label>
                         <input type="text" class="form-control" id="tujuan_surat" name="tujuan_surat" value="{{ $sp->tujuan_surat }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="nama_instansi" class="col-form-label">Nama Instansi:</label>
+                        <label for="nama_instansi" class="col-form-label font-weight-bold">Nama Instansi:</label>
                         <input type="text" class="form-control" id="nama_instansi" name="nama_instansi" value="{{ $sp->nama_instansi }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="alamat_instansi" class="col-form-label">Alamat Instansi:</label>
+                        <label for="alamat_instansi" class="col-form-label font-weight-bold">Alamat Instansi:</label>
                         <textarea class="form-control" id="alamat_instansi" name="alamat_instansi" disabled>{{ $sp->alamat_instansi }}</textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="kota_instansi" class="col-form-label">Kota Instansi:</label>
+                        <label for="kota_instansi" class="col-form-label font-weight-bold">Kota Instansi:</label>
                         <input type="text" class="form-control" id="kota_instansi" name="kota_instansi" value="{{ $sp->kota_instansi }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="kontak_instansi" class="col-form-label">Kontak Instansi:</label>
+                        <label for="kontak_instansi" class="col-form-label font-weight-bold">Kontak Instansi:</label>
                         <input type="text" class="form-control" id="kontak_instansi" name="kontak_instansi" value="{{ $sp->kontak_instansi }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="bidang_minat" class="col-form-label">Bidang Minat:</label>
+                        <label for="bidang_minat" class="col-form-label font-weight-bold">Bidang Minat:</label>
                         <input type="text" class="form-control" id="bidang_minat" name="bidang_minat" value="{{ $sp->bidang_minat }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="created_at" class="col-form-label">Waktu Dibuat:</label>
+                        <label for="created_at" class="col-form-label font-weight-bold">Waktu Dibuat:</label>
                         <input type="text" class="form-control" id="created_at" name="created_at" value="{{ $sp->created_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="updated_at" class="col-form-label">Waktu Diperbarui:</label>
+                        <label for="updated_at" class="col-form-label font-weight-bold">Waktu Diperbarui:</label>
                         <input type="text" class="form-control" id="updated_at" name="updated_at" value="{{ $sp->updated_at }}" disabled>
                     </div>
                     <div class="mb-3">
-                        <label for="status" class="col-form-label">Status:</label>
+                        <label for="status" class="col-form-label font-weight-bold">Status:</label>
                         @if ($sp->status === "Diterima")
                             <input type="text" class="text-success font-weight-bold form-control" value="{{ $sp->status }}" disabled>
                         @else
@@ -175,11 +176,15 @@
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label class="col-form-label">File Surat Pengantar:</label><br>
+                        <label class="col-form-label font-weight-bold">File Surat Pengantar:</label><br>
+                        @if ($sp->file === "-")
                         <textarea class="form-control" disabled>{{ $sp->file }}</textarea>
+                        @else
+                            <a href="{{ route('admin.surat-pengantar.get',$sp->file) }}" class="form-control border-0">{{ $sp->file }}</a>
+                        @endif
                     </div>
                     <div class="mb-3">
-                        <label for="status" class="col-form-label">Ubah Status:</label>
+                        <label for="status" class="col-form-label font-weight-bold">Ubah Status:</label>
                         <select class="form-control" name="status" id="status" required>
                             <option value="" selected disabled>--- Pilih ---</option>
                             <option class="text-success font-weight-bold" value="Diterima">Diterima</option>
@@ -187,7 +192,7 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="file" class="col-form-label">Ubah File Surat Pengantar:</label>
+                        <label for="file" class="col-form-label font-weight-bold">Ubah File Surat Pengantar:</label>
                         <input type="file" class="form-control-file" id="file" name="file" accept="application/pdf">
                     </div>
             </div>
@@ -213,14 +218,34 @@
                 </button>
             </div>
             <div class="modal-body">
-                <h6>Anda yakin ingin menghapus data surat pengantar ini?</h6>
-                <ul>
-                    <li>ID : {{ $sp->id }}</li>
-                    <li>Nama : {{ $sp->mahasiswa->nama }}</li>
-                    <li>Program Studi : {{ $sp->mahasiswa->kelas->prodi->nama_prodi }}</li>
-                    <li>Tujuan Instansi : {{ $sp->nama_instansi }}</li>
-                    <li>Bidang Minat : {{ $sp->bidang_minat }}</li>
-                </ul>
+                <h6>Anda yakin ingin menghapus data dan file surat pengantar ini?</h6>
+                <table class="table table-borderless table-responsive">
+                    <tr>
+                        <th>ID</th>
+                        <td>:</td>
+                        <td>{{ $sp->id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nama</th>
+                        <td>:</td>
+                        <td>{{ $sp->mahasiswa->nama }}</td>
+                    </tr>
+                    <tr>
+                        <th>Program Studi</th>
+                        <td>:</td>
+                        <td>{{ $sp->mahasiswa->kelas->prodi->nama_prodi }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tujuan Instansi</th>
+                        <td>:</td>
+                        <td>{{ $sp->nama_instansi }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bidang Minat</th>
+                        <td>:</td>
+                        <td>{{ $sp->bidang_minat }}</td>
+                    </tr>
+                </table>
             </div>
             <div class="modal-footer">
                 <form action="{{ route('admin.surat-pengantar.destroy', $sp->id ) }}" method="GET">

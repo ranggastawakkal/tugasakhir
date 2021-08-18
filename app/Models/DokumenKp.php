@@ -15,6 +15,7 @@ class DokumenKp extends Model
     protected $fillable = [
         'nama',
         'deskripsi',
+        'aktor',
         'file',
     ];
 
