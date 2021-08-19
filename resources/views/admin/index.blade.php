@@ -164,11 +164,11 @@
                             <i class="fas fa-envelope-open-text fa-2x text-gray-300"></i>
                         </div>
                     </div>
-                    <div class="row no-gutters align-items-center">
+                    {{-- <div class="row no-gutters align-items-center">
                         <div class="col-auto">
                             <small class=" text-gray-400">Diperbarui {{ $sp_latest }}</small>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row no-gutters align-items-center">
                         <div class="col-auto">
                             <a href="{{ route('admin.surat-pengantar') }}">Lihat Detail</a>
@@ -177,6 +177,6 @@
                 </div>
             </div>
         </div>
-    </div>
         @endif
+    </div>
 @endsection
