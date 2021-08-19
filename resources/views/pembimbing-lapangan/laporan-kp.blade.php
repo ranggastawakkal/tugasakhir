@@ -34,7 +34,7 @@
                             @if (!isset($kp->mahasiswa->dokumenMahasiswa->laporan) || $kp->mahasiswa->dokumenMahasiswa->laporan === "-" || $kp->mahasiswa->dokumenMahasiswa->laporan === "")
                                 <td scope="row" class="text-center"><a class="btn btn-danger disabled btn-sm" href="">Belum Diunggah</a></td>
                             @else
-                                <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-akademik.dokumen-mahasiswa.get',$kp->mahasiswa->dokumenMahasiswa->laporan) }}"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
+                                <td scope="row" class="text-center"><a class="btn btn-success btn-sm" href="{{ route('pembimbing-lapangan.laporan-kp.get',$kp->mahasiswa->dokumenMahasiswa->laporan) }}"><i class="fas fa-sm fa-download"></i> Unduh</a></td>
                             @endif
                         </tr>
                         @php
