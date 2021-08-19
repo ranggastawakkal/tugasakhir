@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 use function GuzzleHttp\Promise\all;
 
-class AdminDokumenKpController extends Controller
+class AdminDokumenKPController extends Controller
 {
     public function index()
     {

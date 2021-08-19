@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\AdminKelompokKeahlianController;
 use App\Http\Controllers\Admin\AdminPeminatanController;
 use App\Http\Controllers\Admin\AdminPeriodeController;
 use App\Http\Controllers\Admin\AdminSuratPengantarController;
-use App\Http\Controllers\Admin\AdminDokumenKpController;
+use App\Http\Controllers\Admin\AdminDokumenKPController;
 use App\Http\Controllers\Admin\AdminDokumenMahasiswaController;
 use App\Http\Controllers\Admin\PloController;
 use App\Http\Controllers\Admin\CloController;
@@ -114,11 +114,11 @@ Route::middleware(['auth:admin'])->prefix('admin')->group(function () {
     });
 
     Route::prefix('dokumen-kp')->group(function () {
-        Route::get('/', [AdminDokumenKpController::class, 'index'])->name('admin.dokumen-kp');
-        Route::post('/store', [AdminDokumenKpController::class, 'store'])->name('admin.dokumen-kp.store');
-        Route::post('/update/{id}', [AdminDokumenKpController::class, 'update'])->name('admin.dokumen-kp.update');
-        Route::get('/destroy/{id}', [AdminDokumenKpController::class, 'destroy'])->name('admin.dokumen-kp.destroy');
-        Route::get('/get/{file}', [AdminDokumenKpController::class, 'getFile'])->name('admin.dokumen-kp.get');
+        Route::get('/', [AdminDokumenKPController::class, 'index'])->name('admin.dokumen-kp');
+        Route::post('/store', [AdminDokumenKPController::class, 'store'])->name('admin.dokumen-kp.store');
+        Route::post('/update/{id}', [AdminDokumenKPController::class, 'update'])->name('admin.dokumen-kp.update');
+        Route::get('/destroy/{id}', [AdminDokumenKPController::class, 'destroy'])->name('admin.dokumen-kp.destroy');
+        Route::get('/get/{file}', [AdminDokumenKPController::class, 'getFile'])->name('admin.dokumen-kp.get');
     });
 
     Route::prefix('dokumen-mahasiswa')->group(function () {
