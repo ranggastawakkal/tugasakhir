@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class PembLapanganLaporanKpController extends Controller
+class PembLapanganLaporanKPController extends Controller
 {
     public function index()
     {

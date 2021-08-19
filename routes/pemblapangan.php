@@ -6,7 +6,7 @@ use App\Http\Controllers\PembLapangan\PembLapanganDetailMahasiswaController;
 use App\Http\Controllers\PembLapangan\PembLapanganMahasiswaController;
 use App\Http\Controllers\PembLapangan\PembLapanganLogAktivitasController;
 use App\Http\Controllers\PembLapangan\PembLapanganPenilaianMahasiswaController;
-use App\Http\Controllers\PembLapangan\PembLapanganLaporanKpController;
+use App\Http\Controllers\PembLapangan\PembLapanganLaporanKPController;
 use App\Http\Controllers\PembLapangan\DokumenKpController;
 use App\Http\Controllers\PembLapangan\PenilaianMahasiswaController;
 use App\Http\Controllers\PembLapangan\PembLapanganProfilController;
@@ -24,8 +24,8 @@ Route::middleware(['auth:pembimbing-lapangan'])->prefix('pembimbing-lapangan')->
         Route::post('/update/{id}', [PembLapanganLogAktivitasController::class, 'update'])->name('pembimbing-lapangan.log-aktivitas.update');
     });
     Route::prefix('laporan-kp')->group(function () {
-        Route::get('/', [PembLapanganLaporanKpController::class, 'index'])->name('pembimbing-lapangan.laporan-kp');
-        Route::get('/get/{file}', [PembLapanganLaporanKpController::class, 'getFile'])->name('pembimbing-lapangan.laporan-kp.get');
+        Route::get('/', [PembLapanganLaporanKPController::class, 'index'])->name('pembimbing-lapangan.laporan-kp');
+        Route::get('/get/{file}', [PembLapanganLaporanKPController::class, 'getFile'])->name('pembimbing-lapangan.laporan-kp.get');
     });
     Route::prefix('dokumen-kp')->group(function () {
         Route::get('/', [DokumenKpController::class, 'index'])->name('pembimbing-lapangan.dokumen-kp');
