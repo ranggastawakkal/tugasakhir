@@ -9,13 +9,17 @@
                 <h6 class="m-0 font-weight-bold text-success">Nilai Mahasiswa</h6>
             </div>
             <div class="card-body">
-                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTableTanpaScroll">
+                <table class="table table-striped table-responsive-xl table-bordered display" id="dataTable">
                     <thead class="text-center">
                         <tr>
                             <th scope="col">No.</th>
                             <th scope="col">NIM</th>
                             <th scope="col">Nama</th>
                             <th scope="col">Kelas</th>
+                            <th scope="col">Kerja Praktek</th>
+                            @foreach($bobot_pemb_akd as $akd)
+                                <th scope="col">{{ $akd->indikatorPenilaian->deskripsi }}</th>
+                            @endforeach
                             <th scope="col">Peminatan</th>
                             <th scope="col">Aksi</th>
                         </tr>
@@ -23,15 +27,27 @@
                     <tbody>
                         @php
                         $i = 1;
+                        $length = $bobot_pemb_akd->count();
                         @endphp
-                        @foreach ($kerja_praktek as $kp)
+                        @foreach ($mahasiswas as $mhs)
                         <tr>
                             <td scope="row" class="text-center">{{ $i }}</td>
-                            <td scope="row">{{ $kp->mahasiswa->nim }}</td>
-                            <td scope="row">{{ $kp->mahasiswa->nama }}</td>
-                            <td scope="row">{{ $kp->mahasiswa->kelas->nama_kelas }}</td>
-                            <td scope="row">{{ Str::limit($kp->mahasiswa->peminatan->nama,50) }}</td>
-                            <td scope="row"><a href="{{ route('admin.nilai-mahasiswa.show', $kp->mahasiswa->id) }}">Lihat Nilai</a></td>
+                            <td scope="row">{{ $mhs->nim }}</td>
+                            <td scope="row">{{ $mhs->nama }}</td>
+                            <td scope="row">{{ $mhs->kelas->nama_kelas }}</td>
+                            <td scope="row">{{ $mhs->kerjaPraktek->unit_kerja }}</td>
+
+                            @if($mhs->nilaiPembAkd->count() !== 0)
+                                @foreach($mhs->nilaiPembAkd as $nilai)
+                                    <td scope="row">{{ $nilai->nilai_angka }}</td>
+                                @endforeach
+                            @else
+                                @for($i = 0; $i < $length; $i++)
+                                    <td scope="row">0</td>
+                                @endfor
+                            @endif
+                            <td scope="row">{{ Str::limit($mhs->peminatan->nama,50) }}</td>
+                            <td scope="row"><a href="{{ route('admin.nilai-mahasiswa.show', $mhs->id) }}">Lihat Nilai</a></td>
                         </tr>
                         @php
                         $i++;
