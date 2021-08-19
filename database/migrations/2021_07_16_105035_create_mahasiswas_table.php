@@ -14,22 +14,24 @@ class CreateMahasiswasTable extends Migration
     public function up()
     {
         Schema::create('mahasiswa', function (Blueprint $table) {
-            $table->integer('nim');
+            $table->id();
+            $table->integer('nim')->unique();
             $table->string('nama');
+            $table->unsignedBigInteger('id_kelas');
+            $table->unsignedBigInteger('id_peminatan');
+            $table->unsignedBigInteger('id_periode');
             $table->string('email')->unique();
-            $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
             $table->string('no_telepon');
             $table->string('alamat');
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
-            $table->unsignedBigInteger('id_kelas');
-            $table->integer('tahun_angkatan');
-            $table->string('image')->nullable();
+            $table->string('tempat_lahir');
+            $table->date('tanggal_lahir');
             $table->string('password');
             $table->timestamps();
 
-            $table->primary('nim');
             $table->foreign('id_kelas')->references('id')->on('kelas')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_peminatan')->references('id')->on('peminatan')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('id_periode')->references('id')->on('periode')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

@@ -3,8 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\ProgramStudi;
 use Illuminate\Http\Request;
+use App\Models\ProgramStudi;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdminProgramStudiController extends Controller
 {
@@ -20,16 +24,6 @@ class AdminProgramStudiController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -37,41 +31,63 @@ class AdminProgramStudiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // buat validasi utk semua field yang diinput
+        $rules = [
+            'nama_prodi'            => 'required|unique:program_studi,nama_prodi',
+        ];
+
+        $messages = [
+            'nama_prodi.required'          => 'Program Studi wajib diisi.',
+            'nama_prodi.unique'            => 'Program Studi sudah terdaftar.',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        // insert setiap request dari form ke database via model
+        $prodi = new ProgramStudi;
+        $prodi->nama_prodi = $request->nama_prodi;
+
+        $simpan = $prodi->save();
+
+        if ($simpan) {
+            Session::flash('success', 'Data berhasil ditambahkan.');
+            return redirect()->route('admin.data.program-studi');
+        } else {
+            Session::flash('errors', 'Data gagal ditambahkan.');
+            return redirect()->route('admin.data.program-studi');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\ProgramStudi  $programStudi
-     * @return \Illuminate\Http\Response
-     */
-    public function show(ProgramStudi $programStudi)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $rules = [
+            'nama_prodi'            => 'required|unique:program_studi,nama_prodi,' . $request->id,
+        ];
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\ProgramStudi  $programStudi
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(ProgramStudi $programStudi)
-    {
-        //
-    }
+        $messages = [
+            'nama_prodi.required'          => 'Nama prodi wajib diisi.',
+            'nama_prodi.unique'            => 'Nama prodi sudah terdaftar.',
+        ];
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ProgramStudi  $programStudi
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, ProgramStudi $programStudi)
-    {
-        //
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput($request->all);
+        }
+
+        $simpan = ProgramStudi::find($id)->update($request->all());
+
+        if ($simpan) {
+            Session::flash('success', 'Data berhasil diubah.');
+            return redirect()->route('admin.data.program-studi');
+        } else {
+            Session::flash('errors', 'Data gagal diubah.');
+            return redirect()->route('admin.data.program-studi');
+        }
     }
 
     /**
@@ -80,8 +96,10 @@ class AdminProgramStudiController extends Controller
      * @param  \App\Models\ProgramStudi  $programStudi
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProgramStudi $programStudi)
+    public function destroy($id)
     {
-        //
+        DB::table('program_studi')->where('id', $id)->delete();
+
+        return redirect()->route('admin.data.program-studi')->with('success', 'Data berhasil dihapus.');
     }
 }

@@ -31,6 +31,11 @@ class ProgramStudiSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'nama_prodi' => "-",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
         DB::table('program_studi')->insert($prodi);
     }

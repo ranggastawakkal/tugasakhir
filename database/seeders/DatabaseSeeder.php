@@ -16,12 +16,27 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         $this->call([
-            ProgramStudiSeeder::class,
-            KelasSeeder::class,
-            AdminSeeder::class,
-            MahasiswaSeeder::class,
             PembimbingAkademikSeeder::class,
             PembimbingLapanganSeeder::class,
+            AdminSeeder::class,
+            ProgramStudiSeeder::class,
+            PeriodeSeeder::class,
+            KelompokKeahlianSeeder::class,
+            PeminatanSeeder::class,
+            KelasSeeder::class,
+            MahasiswaSeeder::class,
+            SuratPengantarSeeder::class,
+            KerjaPraktekSeeder::class,
+            DokumenMahasiswaSeeder::class,
+            DokumenKpSeeder::class,
+            LogAktivitasSeeder::class,
+            PloSeeder::class,
+            CloSeeder::class,
+            SubCloSeeder::class,
+            BobotPembAkdSeeder::class,
+            BobotPembLapSeeder::class,
+            NilaiPembLapSeeder::class,
+            NilaiPembAkdSeeder::class,
         ]);
     }
 }

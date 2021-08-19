@@ -15,7 +15,7 @@
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Biodata Mahasiswa</h1>
-        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
+        <a href="{{ route('mahasiswa.profil.edit') }}" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i
                 class="fas fa-edit fa-sm text-white-50"></i> Edit Profile</a>
     </div>
 
@@ -36,28 +36,32 @@
                             <td>{{ $user->nim }}</td>
                         </tr>
                         <tr>
+                            <td>Kelas</td>
+                            <td>{{ $user->kelas->nama_kelas }}</td>
+                        </tr>
+                        <tr>
                             <td>Program Studi</td>
-                            <td>Sistem Informasi</td>
+                            <td>{{ $user->kelas->prodi->nama_prodi }}</td>
                         </tr>
                         <tr>
                             <td>Tempat Lahir</td>
-                            <td>{{ $user-> tempat_lahir}}</td>
+                            <td>{{ $user->tempat_lahir}}</td>
                         </tr>
                         <tr>
                             <td>Tanggal Lahir</td>
-                            <td>{{ $user-> tanggal_lahir}}</td>
+                            <td>{{ $user->tanggal_lahir}}</td>
                         </tr>
                         <tr>
                             <td>No Telp</td>
-                            <td>{{ $user-> no_telepon}}</td>
+                            <td>{{ $user->no_telepon}}</td>
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td>{{ $user-> email}}</td>
+                            <td>{{ $user->email}}</td>
                         </tr>
                         <tr>
                             <td>Alamat</td>
-                            <td>{{ $user-> alamat}}</td>
+                            <td>{{ $user->alamat}}</td>
                         </tr>
                     </tbody>
                 </table>

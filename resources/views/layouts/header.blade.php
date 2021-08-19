@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
 
@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>@yield('title') | Aplikasi KP FRI</title>
+    <link rel="icon" href="{{ asset('img/logo-fakultas.png') }}">
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
