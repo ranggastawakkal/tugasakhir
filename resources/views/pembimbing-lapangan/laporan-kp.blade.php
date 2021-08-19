@@ -9,6 +9,27 @@
                 <h6 class="m-0 font-weight-bold text-success">Laporan KP Mahasiswa</h6>
             </div>
             <div class="card-body">
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <p>{{ $message }}</p>
+                </div>
+                @endif
+                @if(session('errors'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    Ada kesalahan:
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <table class="table table-striped table-bordered table-responsive-xl display" id="dataTableTanpaScroll">
                     <thead class="text-center">
                         <tr>
