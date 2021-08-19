@@ -99,8 +99,8 @@
                                 <td scope="row" class="text-center"><a class="btn btn-danger btn-sm" href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i> Beri Evaluasi</a></td>
                             @else
                                 <td scope="row" class="text-center">
-                                    <a class="btn btn-success btn-sm" href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $log->id }}" class="text-primary"><i class="fas fa-sm fa-info"></i> Detail</a>
-                                    <a class="btn btn-danger btn-sm" href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i> Edit</a>
+                                    <a class="btn btn-success btn-sm" href="" data-bs-toggle="modal" data-bs-target="#modalTampilData{{ $log->id }}"><i class="fas fa-sm fa-info"></i> Detail</a>
+                                    <a class="btn btn-warning btn-sm" href="" data-bs-toggle="modal" data-bs-target="#modalEditData{{ $log->id }}"><i class="fas fa-sm fa-edit"></i> Edit</a>
                                 </td>
                             @endif
                         </tr>

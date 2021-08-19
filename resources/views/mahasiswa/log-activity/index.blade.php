@@ -41,9 +41,9 @@
                             @endif
                             <td>{{ Str::limit($log->evaluasi,50) }}</td>
                             @if ($log->evaluasi === '-' || $log->evaluasi === '')
-                                <td scope="row" class="text-center"><a class="btn btn-danger btn-sm" href="" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i> Edit</a></td>
+                                <td scope="row" class="text-center"><a id="editModal" class="btn btn-danger btn-sm" href="#" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i> Edit</a></td>
                             @else
-                                <td scope="row" class="text-center"><a class="btn btn-danger btn-sm disabled" href="" data-toggle="modal" data-target="#modalLog" data-id="{{ $log->id }}" class="text-warning"><i class="fas fa-sm fa-edit"></i> Edit</a></td>
+                                <td scope="row" class="text-center"><a class="btn btn-danger btn-sm disabled" href="#" class="text-warning"><i class="fas fa-sm fa-edit"></i> Edit</a></td>
                             @endif
                         </tr>
                     @endforeach
