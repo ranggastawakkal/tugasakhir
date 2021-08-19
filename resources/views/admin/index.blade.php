@@ -147,7 +147,7 @@
             </div>
         </div>
         
-        @if ($surat_pengantar->count()>1)
+        @if ($surat_pengantar->count()!=0)
             
         <!-- card surat pengantar -->
         <div class="col-xl-4 col-md-6 mb-4 mx-auto">
