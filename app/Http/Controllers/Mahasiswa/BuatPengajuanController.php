@@ -27,11 +27,11 @@ class BuatPengajuanController extends Controller
         $validator = Validator::make(
             $request->all(),
             [
-            'tujuan_surat' => ['required'],
-            'nama_instansi' => ['required'],
-            'alamat_instansi' => ['required'],
-            'kota_instansi' => ['required'],
-            'kontak_instansi' => ['required']
+                'tujuan_surat' => ['required'],
+                'nama_instansi' => ['required'],
+                'alamat_instansi' => ['required'],
+                'kota_instansi' => ['required'],
+                'kontak_instansi' => ['required']
             ]
         );
 
@@ -42,6 +42,7 @@ class BuatPengajuanController extends Controller
         $user = Auth::user();
 
         $suratPengantar = new SuratPengantar();
+        $suratPengantar->tanggal = now();
         $suratPengantar->id_mahasiswa = $user->id;
         $suratPengantar->bidang_minat = $user->peminatan->nama;
         $suratPengantar->fill($request->all());
@@ -49,5 +50,4 @@ class BuatPengajuanController extends Controller
 
         return redirect()->route('mahasiswa.daftar-pengajuan.index');
     }
-
 }
