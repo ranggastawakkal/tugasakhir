@@ -27,7 +27,6 @@ class AdminDashboardController extends Controller
         $kelas = Kelas::all();
         $kelas_latest = Kelas::latest('updated_at')->first()->updated_at;
         $surat_pengantar = SuratPengantar::all();
-        $sp_latest = SuratPengantar::latest('updated_at')->first()->updated_at;
 
         return view('admin/index', compact(
             'mahasiswa',
