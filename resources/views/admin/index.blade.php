@@ -147,6 +147,8 @@
             </div>
         </div>
         
+        @if ($surat_pengantar->count()>1)
+            
         <!-- card surat pengantar -->
         <div class="col-xl-4 col-md-6 mb-4 mx-auto">
             <div class="card border-left-danger shadow h-100 py-2">
@@ -176,4 +178,5 @@
             </div>
         </div>
     </div>
+        @endif
 @endsection

@@ -12,3 +12,7 @@ heroku run bash -> migrate & seeding
 git add .
 git commit -m "message"
 git push heroku dev-rangga:master
+
+pemb akd : ppratiwi@example.com
+pemb lap : ewinarsih@example.net
+mhs : martani.wulandari@example.com
