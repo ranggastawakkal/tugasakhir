@@ -51,7 +51,7 @@ class BobotPenilaianController extends Controller
         $total_bobot_pemb_lap = $bobot_pemb_lap->sum('bobot');
         $total_bobot = $total_bobot_pemb_lap + $total_bobot_pemb_akd + $request->bobot;
 
-        if ($total_bobot >= 100) {
+        if ($total_bobot > 100) {
             return redirect()->back()->withErrors('Jumlah bobot penilaian melebihi batas maksimal 100%.');
         } else {
             $bobot_pemb = new BobotPembAkd;
@@ -90,7 +90,7 @@ class BobotPenilaianController extends Controller
         $total_bobot_pemb_lap = $bobot_pemb_lap->sum('bobot');
         $total_bobot = $total_bobot_pemb_lap + $total_bobot_pemb_akd - $bobot->bobot + $request->bobot;
 
-        if ($total_bobot >= 100) {
+        if ($total_bobot > 100) {
             return redirect()->back()->withErrors('Jumlah bobot penilaian melebihi batas maksimal 100%.');
         } else {
             BobotPembAkd::find($id)->update($request->all());
@@ -136,7 +136,7 @@ class BobotPenilaianController extends Controller
         $total_bobot_pemb_lap = $bobot_pemb_lap->sum('bobot');
         $total_bobot = $total_bobot_pemb_lap + $total_bobot_pemb_akd + $request->bobot;
 
-        if ($total_bobot >= 100) {
+        if ($total_bobot > 100) {
             return redirect()->back()->withErrors('Jumlah bobot penilaian melebihi batas maksimal 100%.');
         } else {
             $bobot_pemb = new BobotPembLap;
@@ -175,7 +175,7 @@ class BobotPenilaianController extends Controller
         $total_bobot_pemb_lap = $bobot_pemb_lap->sum('bobot');
         $total_bobot = $total_bobot_pemb_lap + $total_bobot_pemb_akd - $bobot->bobot + $request->bobot;
 
-        if ($total_bobot >= 100) {
+        if ($total_bobot > 100) {
             return redirect()->back()->withErrors('Jumlah bobot penilaian melebihi batas maksimal 100%.');
         } else {
             BobotPembLap::find($id)->update($request->all());

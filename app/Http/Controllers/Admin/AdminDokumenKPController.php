@@ -99,7 +99,7 @@ class AdminDokumenKPController extends Controller
 
         $fileName = $request->aktor . '_' . $request->nama . '.' . $request->file->getClientOriginalExtension();
         $request->file('file')->storeAs('public/dokumen-kp', $fileName);
-
+        dd($fileName);
         $simpan = $dokumen_kp->update([
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
