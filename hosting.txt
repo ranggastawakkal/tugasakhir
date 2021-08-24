@@ -13,6 +13,6 @@ git add .
 git commit -m "message"
 git push heroku dev-rangga:master
 
-pemb akd : ppratiwi@example.com
-pemb lap : ewinarsih@example.net
-mhs : martani.wulandari@example.com
+pemb akd : awijaya@example.net
+pemb lap : cemplunk.nababan@example.net
+mhs : pudjiastuti.anastasia@example.com
