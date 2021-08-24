@@ -27,6 +27,7 @@
                             @endforeach
                             <th scope="col">Nilai Pembimbing Lapangan</th>
                             <th scope="col">Total Nilai</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,12 +67,12 @@
                                 @endfor
                                 <td scope="row" class="text-center bg-danger text-white">0</td>
                             @endif
-
                             @if($mhs->nilaiPembLap->count() !== 0)
-                                <td scope="row" class="text-center">{{ $total_nilai }}</td>
+                                <td scope="row" class="text-center font-weight-bold">{{ $total_nilai }}</td>
                             @else
                                 <td scope="row" class="text-center bg-danger text-white">0</td>
                             @endif
+                            <td scope="row"><a href="{{ route('admin.nilai-mahasiswa.show', $mhs->id) }}">Lihat Nilai</a></td>
                         </tr>
                         @php
                         $i++;
