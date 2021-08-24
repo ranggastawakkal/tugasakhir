@@ -35,7 +35,7 @@ class NilaiPembLap extends Model
 
     public function bobotPembLap()
     {
-        return $this->hasOne(BobotPembLap::class, 'id', 'id_bobot');
+        return $this->belongsTo(BobotPembLap::class, 'id_bobot');
     }
 
     public function mahasiswa()

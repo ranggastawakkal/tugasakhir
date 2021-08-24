@@ -15,18 +15,24 @@ class NilaiMahasiswaController extends Controller
 {
     public function index()
     {
-        $kerja_praktek = KerjaPraktek::all();
         $bobot_pemb_akd = BobotPembAkd::with('indikatorPenilaian')->get();
-        $bobot_pemb_lap = BobotPembLap::all();
+        $bobot_pemb_lap = BobotPembLap::with('indikatorPenilaian')->get();
         $nilai_pemb_akd = NilaiPembAkd::all();
         $nilai_pemb_lap = NilaiPembLap::all();
+        $total_nilai_pemb_lap = $nilai_pemb_lap->sum('nilai');
+        $total_nilai_pemb_akd = $nilai_pemb_akd->sum('nilai');
+        $total_nilai = $total_nilai_pemb_lap + $total_nilai_pemb_akd;
 
-        $mahasiswas = Mahasiswa::with('kelas', 'peminatan', 'nilaiPembAkd.bobotPembAkd.indikatorPenilaian')
+        $mahasiswas = Mahasiswa::with('kelas', 'nilaiPembAkd.bobotPembAkd.indikatorPenilaian', 'nilaiPembLap.bobotPembLap.indikatorPenilaian')
             ->whereHas('kerjaPraktek')->get();
 
         return view('admin/nilai-mahasiswa/index')
             ->with('mahasiswas', $mahasiswas)
-            ->with('bobot_pemb_akd', $bobot_pemb_akd);
+            ->with('bobot_pemb_akd', $bobot_pemb_akd)
+            ->with('bobot_pemb_lap', $bobot_pemb_lap)
+            ->with('total_nilai_pemb_akd', $total_nilai_pemb_akd)
+            ->with('total_nilai_pemb_lap', $total_nilai_pemb_lap)
+            ->with('total_nilai', $total_nilai);
     }
 
     public function show($id)

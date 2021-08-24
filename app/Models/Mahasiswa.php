@@ -96,6 +96,6 @@ class Mahasiswa extends Authenticatable
 
     public function nilaiPembLap()
     {
-        return $this->hasOne(NilaiPembLap::class, 'id_mahasiswa');
+        return $this->hasMany(NilaiPembLap::class, 'id_mahasiswa');
     }
 }
