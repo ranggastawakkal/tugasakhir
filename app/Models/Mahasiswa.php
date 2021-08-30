@@ -86,7 +86,7 @@ class Mahasiswa extends Authenticatable
 
     public function nilaiPembAkd()
     {
-        return $this->hasOne(NilaiPembAkd::class, 'id_mahasiswa');
+        return $this->hasMany(NilaiPembAkd::class, 'id_mahasiswa');
     }
 
     public function logAktivitas()
@@ -96,6 +96,6 @@ class Mahasiswa extends Authenticatable
 
     public function nilaiPembLap()
     {
-        return $this->hasOne(NilaiPembLap::class, 'id_mahasiswa');
+        return $this->hasMany(NilaiPembLap::class, 'id_mahasiswa');
     }
 }
