@@ -39,7 +39,11 @@
                         <tr>
                             <td scope="row" class="text-center">{{ $loop->iteration }}</td>
                             <td scope="row">{{ $mhs->kerjaPraktek->pembimbingAkademik->nama }}</td>
-                            <td scope="row">{{ $mhs->kerjaPraktek->pembimbingLapangan->nama_perusahaan }}</td>
+                            @if ($mhs->kerjaPraktek->id_pemb_lap != null)
+                                <td scope="row">{{ $mhs->kerjaPraktek->pembimbingLapangan->nama_perusahaan }}</td>
+                            @else
+                                <td scope="row">-</td>
+                            @endif
                             <td scope="row">{{ $mhs->nim }}</td>
                             <td scope="row">{{ $mhs->nama }}</td>
                             <td scope="row">{{ $mhs->kelas->prodi->nama_prodi }}</td>
