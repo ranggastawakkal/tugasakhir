@@ -19,11 +19,11 @@
                             <th scope="col">Nama Mahasiswa</th>
                             <th scope="col">Program Studi</th>
                             @foreach($bobot_pemb_akd as $akd)
-                                <th scope="col">{{ $akd->id }}. {{ $akd->indikatorPenilaian->deskripsi }}</th>
+                                <th scope="col">{{ $loop->iteration }}. {{ $akd->indikatorPenilaian->deskripsi }}</th>
                             @endforeach
                             <th scope="col">Nilai Pembimbing Akademik</th>
                             @foreach($bobot_pemb_lap as $lap)
-                                <th scope="col">{{ $lap->id }}. {{ $lap->indikatorPenilaian->deskripsi }}</th>
+                                <th scope="col">{{ $loop->iteration }}. {{ $lap->indikatorPenilaian->deskripsi }}</th>
                             @endforeach
                             <th scope="col">Nilai Pembimbing Lapangan</th>
                             <th scope="col">Total Nilai</th>
@@ -32,13 +32,12 @@
                     </thead>
                     <tbody>
                         @php
-                        $i = 1;
                         $bobot_pemb_akd_length = $bobot_pemb_akd->count();
                         $bobot_pemb_lap_length = $bobot_pemb_lap->count();
                         @endphp
                         @foreach ($mahasiswas as $mhs)
                         <tr>
-                            <td scope="row" class="text-center">{{ $i }}</td>
+                            <td scope="row" class="text-center">{{ $loop->iteration }}</td>
                             <td scope="row">{{ $mhs->kerjaPraktek->pembimbingAkademik->nama }}</td>
                             <td scope="row">{{ $mhs->kerjaPraktek->pembimbingLapangan->nama_perusahaan }}</td>
                             <td scope="row">{{ $mhs->nim }}</td>
@@ -74,9 +73,6 @@
                             @endif
                             <td scope="row"><a href="{{ route('admin.nilai-mahasiswa.show', $mhs->id) }}">Lihat Nilai</a></td>
                         </tr>
-                        @php
-                        $i++;
-                        @endphp
                         @endforeach
                     </tbody>
                 </table>
