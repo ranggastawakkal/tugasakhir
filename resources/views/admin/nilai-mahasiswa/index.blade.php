@@ -27,6 +27,8 @@
                             @endforeach
                             <th scope="col">Nilai Pembimbing Lapangan</th>
                             <th scope="col">Total Nilai</th>
+                            {{-- <th scope="col">Indeks Nilai</th>
+                            <th scope="col">Status Lulus</th> --}}
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
@@ -38,7 +40,11 @@
                         @foreach ($mahasiswas as $mhs)
                         <tr>
                             <td scope="row" class="text-center">{{ $loop->iteration }}</td>
-                            <td scope="row">{{ $mhs->kerjaPraktek->pembimbingAkademik->nama }}</td>
+                            @if ($mhs->kerjaPraktek->id_pemb_akd != null)
+                                <td scope="row">{{ $mhs->kerjaPraktek->pembimbingAkademik->nama }}</td>
+                            @else
+                                <td scope="row">-</td>
+                            @endif
                             @if ($mhs->kerjaPraktek->id_pemb_lap != null)
                                 <td scope="row">{{ $mhs->kerjaPraktek->pembimbingLapangan->nama_perusahaan }}</td>
                             @else
